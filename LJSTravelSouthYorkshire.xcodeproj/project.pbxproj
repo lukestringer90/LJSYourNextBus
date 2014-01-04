@@ -1,0 +1,518 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		874C763343B04AB8B0CDB41D /* libPods-LJSTravelSouthYorkshire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8EE5F3142B94472B28F0A04 /* libPods-LJSTravelSouthYorkshire.a */; };
+		A386ECF11878A064008372CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A386ECF01878A064008372CD /* Foundation.framework */; };
+		A386ECF31878A064008372CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A386ECF21878A064008372CD /* CoreGraphics.framework */; };
+		A386ECF51878A064008372CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A386ECF41878A064008372CD /* UIKit.framework */; };
+		A386ECFB1878A064008372CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A386ECF91878A064008372CD /* InfoPlist.strings */; };
+		A386ECFD1878A064008372CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ECFC1878A064008372CD /* main.m */; };
+		A386ED011878A064008372CD /* LJSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED001878A064008372CD /* LJSAppDelegate.m */; };
+		A386ED031878A064008372CD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A386ED021878A064008372CD /* Images.xcassets */; };
+		A386ED0A1878A064008372CD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A386ED091878A064008372CD /* XCTest.framework */; };
+		A386ED0B1878A065008372CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A386ECF01878A064008372CD /* Foundation.framework */; };
+		A386ED0C1878A065008372CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A386ECF41878A064008372CD /* UIKit.framework */; };
+		A386ED141878A065008372CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A386ED121878A065008372CD /* InfoPlist.strings */; };
+		A386ED161878A065008372CD /* LJSTravelSouthYorkshireTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED151878A065008372CD /* LJSTravelSouthYorkshireTests.m */; };
+		A386ED221878A612008372CD /* LJSTravelSouthYorkshire.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED211878A612008372CD /* LJSTravelSouthYorkshire.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A386ED0D1878A065008372CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A386ECE51878A064008372CD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A386ECEC1878A064008372CD;
+			remoteInfo = LJSTravelSouthYorkshire;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		012A59133CA345FD953375AB /* Pods-LJSTravelSouthYorkshire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshire.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshire.xcconfig"; sourceTree = "<group>"; };
+		A386ECED1878A064008372CD /* LJSTravelSouthYorkshire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJSTravelSouthYorkshire.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A386ECF01878A064008372CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A386ECF21878A064008372CD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A386ECF41878A064008372CD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A386ECF81878A064008372CD /* LJSTravelSouthYorkshire-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LJSTravelSouthYorkshire-Info.plist"; sourceTree = "<group>"; };
+		A386ECFA1878A064008372CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A386ECFC1878A064008372CD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A386ECFE1878A064008372CD /* LJSTravelSouthYorkshire-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LJSTravelSouthYorkshire-Prefix.pch"; sourceTree = "<group>"; };
+		A386ECFF1878A064008372CD /* LJSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJSAppDelegate.h; sourceTree = "<group>"; };
+		A386ED001878A064008372CD /* LJSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSAppDelegate.m; sourceTree = "<group>"; };
+		A386ED021878A064008372CD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A386ED081878A064008372CD /* LJSTravelSouthYorkshireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LJSTravelSouthYorkshireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A386ED091878A064008372CD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A386ED111878A065008372CD /* LJSTravelSouthYorkshireTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LJSTravelSouthYorkshireTests-Info.plist"; sourceTree = "<group>"; };
+		A386ED131878A065008372CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A386ED151878A065008372CD /* LJSTravelSouthYorkshireTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSTravelSouthYorkshireTests.m; sourceTree = "<group>"; };
+		A386ED201878A612008372CD /* LJSTravelSouthYorkshire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSTravelSouthYorkshire.h; sourceTree = "<group>"; };
+		A386ED211878A612008372CD /* LJSTravelSouthYorkshire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSTravelSouthYorkshire.m; sourceTree = "<group>"; };
+		A8EE5F3142B94472B28F0A04 /* libPods-LJSTravelSouthYorkshire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A386ECEA1878A064008372CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A386ECF31878A064008372CD /* CoreGraphics.framework in Frameworks */,
+				A386ECF51878A064008372CD /* UIKit.framework in Frameworks */,
+				A386ECF11878A064008372CD /* Foundation.framework in Frameworks */,
+				874C763343B04AB8B0CDB41D /* libPods-LJSTravelSouthYorkshire.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A386ED051878A064008372CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A386ED0A1878A064008372CD /* XCTest.framework in Frameworks */,
+				A386ED0C1878A065008372CD /* UIKit.framework in Frameworks */,
+				A386ED0B1878A065008372CD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A386ECE41878A064008372CD = {
+			isa = PBXGroup;
+			children = (
+				A386ECF61878A064008372CD /* LJSTravelSouthYorkshire */,
+				A386ED0F1878A065008372CD /* LJSTravelSouthYorkshireTests */,
+				A386ECEF1878A064008372CD /* Frameworks */,
+				A386ECEE1878A064008372CD /* Products */,
+				012A59133CA345FD953375AB /* Pods-LJSTravelSouthYorkshire.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		A386ECEE1878A064008372CD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A386ECED1878A064008372CD /* LJSTravelSouthYorkshire.app */,
+				A386ED081878A064008372CD /* LJSTravelSouthYorkshireTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A386ECEF1878A064008372CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A386ECF01878A064008372CD /* Foundation.framework */,
+				A386ECF21878A064008372CD /* CoreGraphics.framework */,
+				A386ECF41878A064008372CD /* UIKit.framework */,
+				A386ED091878A064008372CD /* XCTest.framework */,
+				A8EE5F3142B94472B28F0A04 /* libPods-LJSTravelSouthYorkshire.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A386ECF61878A064008372CD /* LJSTravelSouthYorkshire */ = {
+			isa = PBXGroup;
+			children = (
+				A386ED201878A612008372CD /* LJSTravelSouthYorkshire.h */,
+				A386ED211878A612008372CD /* LJSTravelSouthYorkshire.m */,
+				A386ED1F1878A5E9008372CD /* App */,
+				A386ECF71878A064008372CD /* Supporting Files */,
+			);
+			path = LJSTravelSouthYorkshire;
+			sourceTree = "<group>";
+		};
+		A386ECF71878A064008372CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A386ECF81878A064008372CD /* LJSTravelSouthYorkshire-Info.plist */,
+				A386ECF91878A064008372CD /* InfoPlist.strings */,
+				A386ECFC1878A064008372CD /* main.m */,
+				A386ECFE1878A064008372CD /* LJSTravelSouthYorkshire-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A386ED0F1878A065008372CD /* LJSTravelSouthYorkshireTests */ = {
+			isa = PBXGroup;
+			children = (
+				A386ED151878A065008372CD /* LJSTravelSouthYorkshireTests.m */,
+				A386ED101878A065008372CD /* Supporting Files */,
+			);
+			path = LJSTravelSouthYorkshireTests;
+			sourceTree = "<group>";
+		};
+		A386ED101878A065008372CD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A386ED111878A065008372CD /* LJSTravelSouthYorkshireTests-Info.plist */,
+				A386ED121878A065008372CD /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A386ED1F1878A5E9008372CD /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A386ECFF1878A064008372CD /* LJSAppDelegate.h */,
+				A386ED001878A064008372CD /* LJSAppDelegate.m */,
+				A386ED021878A064008372CD /* Images.xcassets */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A386ECEC1878A064008372CD /* LJSTravelSouthYorkshire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A386ED191878A065008372CD /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshire" */;
+			buildPhases = (
+				61C8CCF4FC5440498474BB7B /* Check Pods Manifest.lock */,
+				A386ECE91878A064008372CD /* Sources */,
+				A386ECEA1878A064008372CD /* Frameworks */,
+				A386ECEB1878A064008372CD /* Resources */,
+				FC436C106EF34BCCAEE86AD1 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LJSTravelSouthYorkshire;
+			productName = LJSTravelSouthYorkshire;
+			productReference = A386ECED1878A064008372CD /* LJSTravelSouthYorkshire.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A386ED071878A064008372CD /* LJSTravelSouthYorkshireTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A386ED1C1878A065008372CD /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshireTests" */;
+			buildPhases = (
+				A386ED041878A064008372CD /* Sources */,
+				A386ED051878A064008372CD /* Frameworks */,
+				A386ED061878A064008372CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A386ED0E1878A065008372CD /* PBXTargetDependency */,
+			);
+			name = LJSTravelSouthYorkshireTests;
+			productName = LJSTravelSouthYorkshireTests;
+			productReference = A386ED081878A064008372CD /* LJSTravelSouthYorkshireTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A386ECE51878A064008372CD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LJS;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Luke Stringer";
+				TargetAttributes = {
+					A386ED071878A064008372CD = {
+						TestTargetID = A386ECEC1878A064008372CD;
+					};
+				};
+			};
+			buildConfigurationList = A386ECE81878A064008372CD /* Build configuration list for PBXProject "LJSTravelSouthYorkshire" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A386ECE41878A064008372CD;
+			productRefGroup = A386ECEE1878A064008372CD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A386ECEC1878A064008372CD /* LJSTravelSouthYorkshire */,
+				A386ED071878A064008372CD /* LJSTravelSouthYorkshireTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A386ECEB1878A064008372CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A386ECFB1878A064008372CD /* InfoPlist.strings in Resources */,
+				A386ED031878A064008372CD /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A386ED061878A064008372CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A386ED141878A065008372CD /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		61C8CCF4FC5440498474BB7B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FC436C106EF34BCCAEE86AD1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-LJSTravelSouthYorkshire-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A386ECE91878A064008372CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A386ED011878A064008372CD /* LJSAppDelegate.m in Sources */,
+				A386ECFD1878A064008372CD /* main.m in Sources */,
+				A386ED221878A612008372CD /* LJSTravelSouthYorkshire.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A386ED041878A064008372CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A386ED161878A065008372CD /* LJSTravelSouthYorkshireTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A386ED0E1878A065008372CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A386ECEC1878A064008372CD /* LJSTravelSouthYorkshire */;
+			targetProxy = A386ED0D1878A065008372CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A386ECF91878A064008372CD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A386ECFA1878A064008372CD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A386ED121878A065008372CD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A386ED131878A065008372CD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A386ED171878A065008372CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A386ED181878A065008372CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A386ED1A1878A065008372CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 012A59133CA345FD953375AB /* Pods-LJSTravelSouthYorkshire.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
+				INFOPLIST_FILE = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A386ED1B1878A065008372CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 012A59133CA345FD953375AB /* Pods-LJSTravelSouthYorkshire.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
+				INFOPLIST_FILE = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A386ED1D1878A065008372CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSTravelSouthYorkshire.app/LJSTravelSouthYorkshire";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "LJSTravelSouthYorkshireTests/LJSTravelSouthYorkshireTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A386ED1E1878A065008372CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSTravelSouthYorkshire.app/LJSTravelSouthYorkshire";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
+				INFOPLIST_FILE = "LJSTravelSouthYorkshireTests/LJSTravelSouthYorkshireTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A386ECE81878A064008372CD /* Build configuration list for PBXProject "LJSTravelSouthYorkshire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A386ED171878A065008372CD /* Debug */,
+				A386ED181878A065008372CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A386ED191878A065008372CD /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A386ED1A1878A065008372CD /* Debug */,
+				A386ED1B1878A065008372CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A386ED1C1878A065008372CD /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshireTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A386ED1D1878A065008372CD /* Debug */,
+				A386ED1E1878A065008372CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A386ECE51878A064008372CD /* Project object */;
+}
