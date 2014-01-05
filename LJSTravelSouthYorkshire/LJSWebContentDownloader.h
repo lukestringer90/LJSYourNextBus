@@ -10,10 +10,6 @@
 
 @interface LJSWebContentDownloader : NSObject
 
-@property (nonatomic, readonly) NSURL *url;
-
-- (instancetype)initWithURL:(NSURL *)url;
-
-- (NSString *)downloadHTML:(NSError **)error;
+- (NSString *)downloadHTMLFromURL:(NSURL *)url error:(NSError **)error;
 
 @end

@@ -10,27 +10,16 @@
 
 static BOOL const LoadHTMLFromBundle = NO;
 
-@interface LJSWebContentDownloader ()
-@property (nonatomic, strong, readwrite) NSURL *url;
-@end
-
 @implementation LJSWebContentDownloader
 
-- (instancetype)initWithURL:(NSURL *)url {
-    self = [super init];
-    if (self) {
-        self.url = url;
-    }
-    return self;
-}
 
-- (NSString *)downloadHTML:(NSError **)error {
+- (NSString *)downloadHTMLFromURL:(NSURL *)url error:(NSError **)error {
     if (LoadHTMLFromBundle) {
         NSString *path = [[NSBundle mainBundle] pathForResource:@"tram" ofType: @"html"];
         return [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
     }
     
-    return [[NSString alloc] initWithContentsOfURL:self.url
+    return [[NSString alloc] initWithContentsOfURL:url
                                           encoding:NSStringEncodingConversionAllowLossy
                                              error:error];
 }

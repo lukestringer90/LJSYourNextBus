@@ -13,6 +13,7 @@
 @interface LJSTravelSouthYorkshire ()
 @property (nonatomic, copy, readwrite) void (^completion)(NSDictionary *data, NSURL *nextPageURL, NSError *error);
 @property (nonatomic, strong) LJSScraper *scraper;
+@property (nonatomic, strong) LJSWebContentDownloader *contentDownloader;
 @end
 
 @implementation LJSTravelSouthYorkshire
@@ -21,6 +22,7 @@
     self = [super init];
     if (self) {
         self.scraper = [[LJSScraper alloc] init];
+        self.contentDownloader = [[LJSWebContentDownloader alloc] init];
     }
     return self;
 }
@@ -33,9 +35,8 @@
 - (void)requestDepatureDataAtURL:(NSURL *)url completion:(void (^)(id json, NSURL *nextPageURL, NSError *))completion {
     self.completion = completion;
     
-    LJSWebContentDownloader *contentDownloader = [[LJSWebContentDownloader alloc] initWithURL:url];
     NSError *error = nil;
-    NSString *htmlString = [contentDownloader downloadHTML:&error];
+    NSString *htmlString = [self.contentDownloader downloadHTMLFromURL:url error:&error];
     
     if (error) {
         [self safeCallCompletionBlockWithDepatureData:nil nextPageURL:nil error:error];
