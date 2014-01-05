@@ -23,17 +23,25 @@
     NSError *error = nil;
     NSString *htmlString = [contentDownloader downloadHTML:&error];
     
+    if (error) {
+        [self safeCallCompletionBlock:completion depatureData:nil nextPageURL:nil error:error];
+    }
+    
     LJSScraper *scraper = [[LJSScraper alloc] initWithHTMLString:htmlString];
-    NSDictionary *json = [scraper scrapeDepatureData];
+    NSDictionary *depatureData = [scraper scrapeDepatureData];
     NSURL *nextPageURL = [scraper scrapeNextPageURL];
     
-    if (completion) {
-        completion(json, nextPageURL, nil);
-    }
+    [self safeCallCompletionBlock:completion depatureData:depatureData nextPageURL:nextPageURL error:nil];
 }
 
 - (NSURL *)urlForStopNumber:(NSString *)stopNumber {
     return [NSURL URLWithString:[NSString stringWithFormat:@"http://tsy.acislive.com/pip/stop.asp?naptan=%@&textonly=1&pda=1", stopNumber]];
+}
+
+- (void)safeCallCompletionBlock:(void (^)(NSDictionary *data, NSURL *nextPageURL, NSError *error))completion depatureData:(NSDictionary *)depatureData nextPageURL:(NSURL *)nextPageURL error:(NSError *)error {
+    if (completion) {
+        completion(depatureData, nextPageURL, error);
+    }
 }
 
 @end

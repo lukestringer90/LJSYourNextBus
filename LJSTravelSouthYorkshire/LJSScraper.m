@@ -22,6 +22,10 @@ NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
 @implementation LJSScraper
 
 - (instancetype)initWithHTMLString:(NSString *)htmlString {
+    if (!htmlString) {
+        return nil;
+    }
+    
     self = [super init];
     if (self) {
         self.rootNode = [ObjectiveGumbo parseDocumentWithString:htmlString];
