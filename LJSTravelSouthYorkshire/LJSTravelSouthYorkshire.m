@@ -9,6 +9,8 @@
 #import "LJSTravelSouthYorkshire.h"
 #import <ObjectiveGumbo/ObjectiveGumbo.h>
 
+static BOOL const LoadHTMLFromBundle = YES;
+
 @implementation LJSTravelSouthYorkshire
 
 - (void)requestDepatureDataForStopNumber:(NSString *)stopNumber completion:(void (^)(id json, NSURL *nextPageURL, NSError *error))completion {
@@ -17,13 +19,12 @@
     NSError *error = nil;
     NSString *htmlString = [self htmlStringFromURLString:url error:&error];
     
-    
     OGNode *topNode = [ObjectiveGumbo parseDocumentWithString:htmlString];
     id json = [self scrapeIntoJSON:topNode];
-    NSString *nextPageURL = [self scrapeNextPageURL:topNode];
+    NSURL *nextPageURL = [self scrapeNextPageURL:topNode];
     
     if (completion) {
-        completion(json, nil, nil);
+        completion(json, nextPageURL, nil);
     }
 }
 
@@ -73,7 +74,7 @@
     return json;
 }
 
-- (NSString *)scrapeNextPageURL:(OGNode *)topNode {
+- (NSURL *)scrapeNextPageURL:(OGNode *)topNode {
     return nil;
 }
 
@@ -82,6 +83,11 @@
 }
 
 - (NSString *)htmlStringFromURLString:(NSURL *)url error:(NSError **)error {
+    if (LoadHTMLFromBundle) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"tram" ofType: @"html"];
+        return [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
+    }
+    
     return [[NSString alloc] initWithContentsOfURL:url
                                                         encoding:NSStringEncodingConversionAllowLossy
                                                            error:error];
