@@ -14,8 +14,6 @@ extern NSString * const LJSDepaturesKey;
 extern NSString * const LJSDestinationKey;
 extern NSString * const LJSExpectedDepatureTime;
 
-@class OGNode;
-
 @interface LJSScraper : NSObject
 
 - (NSDictionary *)scrapeDepatureDataFromHTML:(NSString *)html;
