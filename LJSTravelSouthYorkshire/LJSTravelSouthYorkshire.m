@@ -58,6 +58,7 @@
 - (void)safeCallCompletionBlockWithDepatureData:(NSDictionary *)depatureData nextPageURL:(NSURL *)nextPageURL error:(NSError *)error {
     if (self.completion) {
         self.completion(depatureData, nextPageURL, error);
+        self.completion = nil;
     }
 }
 

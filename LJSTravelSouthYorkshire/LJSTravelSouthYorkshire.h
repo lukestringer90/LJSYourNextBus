@@ -10,8 +10,6 @@
 
 @interface LJSTravelSouthYorkshire : NSObject
 
-@property (nonatomic, copy, readonly) void (^completion)(NSDictionary *data, NSURL *nextPageURL, NSError *error);
-
 - (void)requestDepatureDataForStopNumber:(NSString *)stopNumber completion:(void (^)(NSDictionary *data, NSURL *nextPageURL, NSError *error))completion;
 
 - (void)requestDepatureDataAtURL:(NSURL *)url completion:(void (^)(id json, NSURL *nextPageURL, NSError *))completion;
