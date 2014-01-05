@@ -11,8 +11,10 @@
 @class OGNode;
 @interface LJSScraper : NSObject
 
-- (NSDictionary *)scrapeDepatreData:(OGNode *)rootNode;
+- (instancetype)initWithHTMLString:(NSString *)htmlString;
 
-- (NSURL *)scrapeNextPageURL:(OGNode *)topNode;
+- (NSDictionary *)scrapeDepatreData;
+
+- (NSURL *)scrapeNextPageURL;
 
 @end

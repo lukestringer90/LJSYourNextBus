@@ -9,10 +9,22 @@
 #import "LJSScraper.h"
 #import <ObjectiveGumbo/ObjectiveGumbo.h>
 
+@interface LJSScraper ()
+@property (nonatomic, strong) OGNode *rootNode;
+@end
+
 @implementation LJSScraper
 
-- (NSDictionary *)scrapeDepatreData:(OGNode *)rootNode {
-    NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
+- (instancetype)initWithHTMLString:(NSString *)htmlString {
+    self = [super init];
+    if (self) {
+        self.rootNode = [ObjectiveGumbo parseDocumentWithString:htmlString];
+    }
+    return self;
+}
+
+- (NSDictionary *)scrapeDepatreData {
+    NSArray *tds = [self.rootNode elementsWithTag:GUMBO_TAG_TD];
     
     NSString *stopName = @"stop_name";
     NSString *serviceKey = @"service";
@@ -57,7 +69,7 @@
     return json;
 }
 
-- (NSURL *)scrapeNextPageURL:(OGNode *)topNode {
+- (NSURL *)scrapeNextPageURL {
     return nil;
 }
 

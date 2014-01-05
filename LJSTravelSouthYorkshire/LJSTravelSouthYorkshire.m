@@ -8,7 +8,6 @@
 
 #import "LJSTravelSouthYorkshire.h"
 #import "LJSScraper.h"
-#import <ObjectiveGumbo/ObjectiveGumbo.h>
 
 static BOOL const LoadHTMLFromBundle = YES;
 
@@ -23,10 +22,9 @@ static BOOL const LoadHTMLFromBundle = YES;
     NSError *error = nil;
     NSString *htmlString = [self htmlStringFromURLString:url error:&error];
     
-    OGNode *topNode = [ObjectiveGumbo parseDocumentWithString:htmlString];
-    LJSScraper *scraper = [[LJSScraper alloc] init];
-    NSDictionary *json = [scraper scrapeDepatreData:topNode];
-    NSURL *nextPageURL = [scraper scrapeNextPageURL:topNode];
+    LJSScraper *scraper = [[LJSScraper alloc] initWithHTMLString:htmlString];
+    NSDictionary *json = [scraper scrapeDepatreData];
+    NSURL *nextPageURL = [scraper scrapeNextPageURL];
     
     if (completion) {
         completion(json, nextPageURL, nil);
