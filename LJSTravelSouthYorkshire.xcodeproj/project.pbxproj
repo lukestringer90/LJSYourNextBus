@@ -23,6 +23,7 @@
 		A386ED221878A612008372CD /* LJSTravelSouthYorkshire.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED211878A612008372CD /* LJSTravelSouthYorkshire.m */; };
 		A386ED241878DFCB008372CD /* tram.html in Resources */ = {isa = PBXBuildFile; fileRef = A386ED231878DFCB008372CD /* tram.html */; };
 		A386ED271878E243008372CD /* LJSScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED261878E243008372CD /* LJSScraper.m */; };
+		A386ED2A1878EE89008372CD /* LJSWebContentDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED291878EE89008372CD /* LJSWebContentDownloader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		A386ED231878DFCB008372CD /* tram.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tram.html; sourceTree = "<group>"; };
 		A386ED251878E243008372CD /* LJSScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSScraper.h; sourceTree = "<group>"; };
 		A386ED261878E243008372CD /* LJSScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSScraper.m; sourceTree = "<group>"; };
+		A386ED281878EE89008372CD /* LJSWebContentDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSWebContentDownloader.h; sourceTree = "<group>"; };
+		A386ED291878EE89008372CD /* LJSWebContentDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSWebContentDownloader.m; sourceTree = "<group>"; };
 		A8EE5F3142B94472B28F0A04 /* libPods-LJSTravelSouthYorkshire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -123,6 +126,8 @@
 			children = (
 				A386ED201878A612008372CD /* LJSTravelSouthYorkshire.h */,
 				A386ED211878A612008372CD /* LJSTravelSouthYorkshire.m */,
+				A386ED281878EE89008372CD /* LJSWebContentDownloader.h */,
+				A386ED291878EE89008372CD /* LJSWebContentDownloader.m */,
 				A386ED251878E243008372CD /* LJSScraper.h */,
 				A386ED261878E243008372CD /* LJSScraper.m */,
 				A386ED231878DFCB008372CD /* tram.html */,
@@ -304,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A386ED271878E243008372CD /* LJSScraper.m in Sources */,
+				A386ED2A1878EE89008372CD /* LJSWebContentDownloader.m in Sources */,
 				A386ED011878A064008372CD /* LJSAppDelegate.m in Sources */,
 				A386ECFD1878A064008372CD /* main.m in Sources */,
 				A386ED221878A612008372CD /* LJSTravelSouthYorkshire.m in Sources */,

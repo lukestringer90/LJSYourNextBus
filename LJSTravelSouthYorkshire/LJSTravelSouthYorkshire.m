@@ -7,9 +7,9 @@
 //
 
 #import "LJSTravelSouthYorkshire.h"
+#import "LJSWebContentDownloader.h"
 #import "LJSScraper.h"
 
-static BOOL const LoadHTMLFromBundle = YES;
 
 @implementation LJSTravelSouthYorkshire
 
@@ -19,8 +19,9 @@ static BOOL const LoadHTMLFromBundle = YES;
 }
 
 - (void)requestDepatureDataAtURL:(NSURL *)url completion:(void (^)(id json, NSURL *nextPageURL, NSError *))completion {
+    LJSWebContentDownloader *contentDownloader = [[LJSWebContentDownloader alloc] initWithURL:url];
     NSError *error = nil;
-    NSString *htmlString = [self htmlStringFromURLString:url error:&error];
+    NSString *htmlString = [contentDownloader downloadHTML:&error];
     
     LJSScraper *scraper = [[LJSScraper alloc] initWithHTMLString:htmlString];
     NSDictionary *json = [scraper scrapeDepatureData];
@@ -31,20 +32,8 @@ static BOOL const LoadHTMLFromBundle = YES;
     }
 }
 
-
 - (NSURL *)urlForStopNumber:(NSString *)stopNumber {
     return [NSURL URLWithString:[NSString stringWithFormat:@"http://tsy.acislive.com/pip/stop.asp?naptan=%@&textonly=1&pda=1", stopNumber]];
-}
-
-- (NSString *)htmlStringFromURLString:(NSURL *)url error:(NSError **)error {
-    if (LoadHTMLFromBundle) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"tram" ofType: @"html"];
-        return [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
-    }
-    
-    return [[NSString alloc] initWithContentsOfURL:url
-                                          encoding:NSStringEncodingConversionAllowLossy
-                                             error:error];
 }
 
 @end
