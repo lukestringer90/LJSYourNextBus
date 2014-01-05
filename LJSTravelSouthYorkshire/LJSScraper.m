@@ -15,26 +15,12 @@ NSString * const LJSDepaturesKey = @"departures";
 NSString * const LJSDestinationKey = @"destination";
 NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
 
-@interface LJSScraper ()
-@property (nonatomic, strong) OGNode *rootNode;
-@end
 
 @implementation LJSScraper
 
-- (instancetype)initWithHTMLString:(NSString *)htmlString {
-    if (!htmlString) {
-        return nil;
-    }
-    
-    self = [super init];
-    if (self) {
-        self.rootNode = [ObjectiveGumbo parseDocumentWithString:htmlString];
-    }
-    return self;
-}
-
-- (NSDictionary *)scrapeDepatureData {
-    NSArray *tds = [self.rootNode elementsWithTag:GUMBO_TAG_TD];
+- (NSDictionary *)scrapeDepatureDataFromHTML:(NSString *)html {
+    OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];
+    NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
     
     NSString *stopCode = @"";
     NSString *stopName = @"";
@@ -93,7 +79,7 @@ NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
 
 }
 
-- (NSURL *)scrapeNextPageURL {
+- (NSURL *)scrapeNextPageURLFromHTML:(NSString *)html {
     return nil;
 }
 

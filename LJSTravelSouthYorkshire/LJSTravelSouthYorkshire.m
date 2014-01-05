@@ -12,9 +12,18 @@
 
 @interface LJSTravelSouthYorkshire ()
 @property (nonatomic, copy, readwrite) void (^completion)(NSDictionary *data, NSURL *nextPageURL, NSError *error);
+@property (nonatomic, strong) LJSScraper *scraper;
 @end
 
 @implementation LJSTravelSouthYorkshire
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.scraper = [[LJSScraper alloc] init];
+    }
+    return self;
+}
 
 - (void)requestDepatureDataForStopNumber:(NSString *)stopNumber completion:(void (^)(NSDictionary *data, NSURL *nextPageURL, NSError *error))completion {
     NSURL *url = [self urlForStopNumber:stopNumber];
@@ -40,9 +49,8 @@
 }
 
 - (void)scrapeHTML:(NSString *)htmlString {
-    LJSScraper *scraper = [[LJSScraper alloc] initWithHTMLString:htmlString];
-    NSDictionary *depatureData = [scraper scrapeDepatureData];
-    NSURL *nextPageURL = [scraper scrapeNextPageURL];
+    NSDictionary *depatureData = [self.scraper scrapeDepatureDataFromHTML:htmlString];
+    NSURL *nextPageURL = [self.scraper scrapeNextPageURLFromHTML:htmlString];
     
     [self safeCallCompletionBlockWithDepatureData:depatureData nextPageURL:nextPageURL error:nil];
 }

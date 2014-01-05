@@ -18,10 +18,8 @@ extern NSString * const LJSExpectedDepatureTime;
 
 @interface LJSScraper : NSObject
 
-- (instancetype)initWithHTMLString:(NSString *)htmlString;
+- (NSDictionary *)scrapeDepatureDataFromHTML:(NSString *)html;
 
-- (NSDictionary *)scrapeDepatureData;
-
-- (NSURL *)scrapeNextPageURL;
+- (NSURL *)scrapeNextPageURLFromHTML:(NSString *)html;
 
 @end
