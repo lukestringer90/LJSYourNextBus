@@ -10,6 +10,10 @@
 
 @interface LJSTravelSouthYorkshire : NSObject
 
-- (void)depatureDataForStopNumber:(NSString *)stopNumber completion:(void (^)(id json, NSError *error))completion;
+- (void)requestDepatureDataForStopNumber:(NSString *)stopNumber completion:(void (^)(id json, NSURL *nextPageURL, NSError *error))completion;
+
+- (void)requestDepatureDataAtURL:(NSURL *)url completion:(void (^)(id json, NSURL *nextPageURL, NSError *))completion;
+
+- (NSURL *)urlForStopNumber:(NSString *)stopNumber;
 
 @end
