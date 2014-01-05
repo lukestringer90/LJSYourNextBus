@@ -23,7 +23,7 @@ static BOOL const LoadHTMLFromBundle = YES;
     NSString *htmlString = [self htmlStringFromURLString:url error:&error];
     
     LJSScraper *scraper = [[LJSScraper alloc] initWithHTMLString:htmlString];
-    NSDictionary *json = [scraper scrapeDepatreData];
+    NSDictionary *json = [scraper scrapeDepatureData];
     NSURL *nextPageURL = [scraper scrapeNextPageURL];
     
     if (completion) {

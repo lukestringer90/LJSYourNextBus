@@ -9,6 +9,12 @@
 #import "LJSScraper.h"
 #import <ObjectiveGumbo/ObjectiveGumbo.h>
 
+NSString * const LJSStopCodeKey = @"stop_code";
+NSString * const LJSSopNameKey = @"stop_name";
+NSString * const LJSDepaturesKey = @"departures";
+NSString * const LJSDestinationKey = @"destination";
+NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
+
 @interface LJSScraper ()
 @property (nonatomic, strong) OGNode *rootNode;
 @end
@@ -23,50 +29,64 @@
     return self;
 }
 
-- (NSDictionary *)scrapeDepatreData {
+- (NSDictionary *)scrapeDepatureData {
     NSArray *tds = [self.rootNode elementsWithTag:GUMBO_TAG_TD];
     
-    NSString *stopName = @"stop_name";
-    NSString *serviceKey = @"service";
-    NSString *depaturesKey = @"depatures";
-    NSString *destinationKey = @"destination";
-    NSString *timeKey = @"time";
+    NSString *stopCode = @"";
+    NSString *stopName = @"";
     
-    NSMutableDictionary *json = [NSMutableDictionary dictionary];
+    NSDictionary *scrapedData = @{
+                                  LJSStopCodeKey : stopCode,
+                                  LJSSopNameKey : stopName
+                                  };
     
     for (NSInteger serviceRowIndex = 0; serviceRowIndex < tds.count; serviceRowIndex+=4) {
         OGElement *serviceElement = tds[serviceRowIndex];
         OGElement *destinationElement = tds[serviceRowIndex+1];
         OGElement *depatureElement = tds[serviceRowIndex+2];
         
-        NSLog(@"%@ - %@ - %@", serviceElement.text, destinationElement.text, depatureElement.text);
-        
-        NSMutableDictionary *allDepatures = [[json valueForKey:depaturesKey] mutableCopy];
-        
-        if (!allDepatures) {
-            allDepatures = [NSMutableDictionary dictionaryWithObject:@[] forKey:serviceElement.text];
-        }
-        
-        NSDictionary *depatureDictionary = @{
-                                             destinationKey : destinationElement.text,
-                                             timeKey : depatureElement.text
-                                             };
-        
-        NSArray *sericeDepatures = allDepatures[serviceElement.text];
-        NSArray *updateDServiceDepatures;
-        if (sericeDepatures) {
-            updateDServiceDepatures = [sericeDepatures arrayByAddingObject:depatureDictionary];
-        }
-        else {
-            updateDServiceDepatures = @[depatureDictionary];
-        }
-        
-        allDepatures[serviceElement.text] = updateDServiceDepatures;
-        
-        json[depaturesKey] = allDepatures;
+        scrapedData = [self processServiceValue:[self removeLastCharacterFromString:serviceElement.text]
+                               destinationValue:[self removeLastCharacterFromString:destinationElement.text]
+                                  depatureValue:[self removeLastCharacterFromString:depatureElement.text]
+                                intoScrapedData:scrapedData];
         
     }
-    return json;
+    return scrapedData;
+}
+
+- (NSString *)removeLastCharacterFromString:(NSString *)string {
+    return [string substringToIndex:[string length]-1];;
+}
+
+- (NSDictionary *)processServiceValue:(NSString *)serviceValue destinationValue:(NSString *)destinationTimeValue depatureValue:(NSString *)depatureValue intoScrapedData:(NSDictionary *)scrapedData {
+    NSMutableDictionary *allDepatures = [[scrapedData valueForKey:LJSDepaturesKey] mutableCopy];
+    
+    if (!allDepatures) {
+        allDepatures = [NSMutableDictionary dictionaryWithObject:@[] forKey:serviceValue];
+    }
+    
+    NSDictionary *depatureDictionary = @{
+                                         LJSDestinationKey : destinationTimeValue,
+                                         LJSExpectedDepatureTime : depatureValue
+                                         };
+    
+    NSArray *depatureForThisService = allDepatures[serviceValue];
+    NSArray *updatedDepatureForThisService;
+    if (depatureForThisService) {
+        updatedDepatureForThisService = [depatureForThisService arrayByAddingObject:depatureDictionary];
+    }
+    else {
+        updatedDepatureForThisService = @[depatureDictionary];
+    }
+    
+    allDepatures[serviceValue] = updatedDepatureForThisService;
+    
+    
+    NSMutableDictionary *newScrapedData = [scrapedData mutableCopy];
+    [newScrapedData setValue:allDepatures forKey:LJSDepaturesKey];
+    
+    return newScrapedData;
+
 }
 
 - (NSURL *)scrapeNextPageURL {
