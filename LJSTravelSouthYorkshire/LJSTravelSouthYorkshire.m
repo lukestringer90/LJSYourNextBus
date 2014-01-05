@@ -10,6 +10,9 @@
 #import "LJSWebContentDownloader.h"
 #import "LJSScraper.h"
 
+@interface LJSTravelSouthYorkshire ()
+@property (nonatomic, copy, readwrite) void (^completion)(NSDictionary *data, NSURL *nextPageURL, NSError *error);
+@end
 
 @implementation LJSTravelSouthYorkshire
 
@@ -19,28 +22,34 @@
 }
 
 - (void)requestDepatureDataAtURL:(NSURL *)url completion:(void (^)(id json, NSURL *nextPageURL, NSError *))completion {
+    self.completion = completion;
+    
     LJSWebContentDownloader *contentDownloader = [[LJSWebContentDownloader alloc] initWithURL:url];
     NSError *error = nil;
     NSString *htmlString = [contentDownloader downloadHTML:&error];
     
     if (error) {
-        [self safeCallCompletionBlock:completion depatureData:nil nextPageURL:nil error:error];
+        [self safeCallCompletionBlockWithDepatureData:nil nextPageURL:nil error:error];
     }
     
-    LJSScraper *scraper = [[LJSScraper alloc] initWithHTMLString:htmlString];
-    NSDictionary *depatureData = [scraper scrapeDepatureData];
-    NSURL *nextPageURL = [scraper scrapeNextPageURL];
-    
-    [self safeCallCompletionBlock:completion depatureData:depatureData nextPageURL:nextPageURL error:nil];
+    [self scrapeHTML:htmlString];
 }
 
 - (NSURL *)urlForStopNumber:(NSString *)stopNumber {
     return [NSURL URLWithString:[NSString stringWithFormat:@"http://tsy.acislive.com/pip/stop.asp?naptan=%@&textonly=1&pda=1", stopNumber]];
 }
 
-- (void)safeCallCompletionBlock:(void (^)(NSDictionary *data, NSURL *nextPageURL, NSError *error))completion depatureData:(NSDictionary *)depatureData nextPageURL:(NSURL *)nextPageURL error:(NSError *)error {
-    if (completion) {
-        completion(depatureData, nextPageURL, error);
+- (void)scrapeHTML:(NSString *)htmlString {
+    LJSScraper *scraper = [[LJSScraper alloc] initWithHTMLString:htmlString];
+    NSDictionary *depatureData = [scraper scrapeDepatureData];
+    NSURL *nextPageURL = [scraper scrapeNextPageURL];
+    
+    [self safeCallCompletionBlockWithDepatureData:depatureData nextPageURL:nextPageURL error:nil];
+}
+
+- (void)safeCallCompletionBlockWithDepatureData:(NSDictionary *)depatureData nextPageURL:(NSURL *)nextPageURL error:(NSError *)error {
+    if (self.completion) {
+        self.completion(depatureData, nextPageURL, error);
     }
 }
 

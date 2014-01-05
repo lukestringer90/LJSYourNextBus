@@ -8,7 +8,7 @@
 
 #import "LJSWebContentDownloader.h"
 
-static BOOL const LoadHTMLFromBundle = YES;
+static BOOL const LoadHTMLFromBundle = NO;
 
 @interface LJSWebContentDownloader ()
 @property (nonatomic, strong, readwrite) NSURL *url;
