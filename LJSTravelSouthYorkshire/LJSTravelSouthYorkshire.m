@@ -41,8 +41,9 @@
     if (error) {
         [self safeCallCompletionBlockWithDepatureData:nil nextPageURL:nil error:error];
     }
-    
-    [self scrapeHTML:htmlString];
+    else {
+        [self scrapeHTML:htmlString];
+    }
 }
 
 - (NSURL *)urlForStopNumber:(NSString *)stopNumber {
