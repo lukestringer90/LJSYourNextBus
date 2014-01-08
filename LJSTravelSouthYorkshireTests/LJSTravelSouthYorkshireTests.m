@@ -14,20 +14,26 @@
 
 @implementation LJSTravelSouthYorkshireTests
 
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+- (void)testReturnsDataAfterSucessfulScrape {
+    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
+- (void)testReturnsNextURLAfterSucessfulScrape {
+    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
-- (void)testExample
-{
+- (void)testReturnsNoDataAfterUnsucessfulScape {
+    // TODO: No depature table in HTML
+    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+}
+
+- (void)testReturnsErrorAfterUnsucessfulScrape {
+    // TODO: Error from LJSSCraper
+    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+}
+
+- (void)testReturnsErrorForUnsucessfulWebContentDownload {
+    // TODO: Error from LJSWebContentDownloader
     XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
