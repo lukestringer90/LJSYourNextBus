@@ -9,10 +9,22 @@
 #import "LJSAppDelegate.h"
 #import "LJSTravelSouthYorkshire.h"
 
+// Helper function to see if we are running the production target or the test target
+static BOOL isRunningTests(void) __attribute__((const));
+static BOOL isRunningTests(void) {
+    NSDictionary* environment = [[NSProcessInfo processInfo] environment];
+    NSString* injectBundle = environment[@"XCInjectBundle"];
+    return [[injectBundle pathExtension] isEqualToString:@"xctest"];
+}
+
 @implementation LJSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if (isRunningTests()) {
+        return YES;
+    }
+    
     [self main];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
