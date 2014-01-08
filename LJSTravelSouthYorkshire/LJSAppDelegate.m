@@ -24,7 +24,7 @@
 
 - (void)main {
     LJSTravelSouthYorkshire *client = [[LJSTravelSouthYorkshire alloc] init];
-    [client requestDepatureDataForStopNumber:@"37090168" completion:^(id json, NSURL *nextPageURL, NSError *error) {
+    [client depatureDataForStopNumber:@"37090168" completion:^(id json, NSURL *nextPageURL, NSError *error) {
        NSLog(@"%@", json);
         NSLog(@"%@", error);
     }];

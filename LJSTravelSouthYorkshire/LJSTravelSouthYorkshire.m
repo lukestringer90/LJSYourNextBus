@@ -27,12 +27,12 @@
     return self;
 }
 
-- (void)requestDepatureDataForStopNumber:(NSString *)stopNumber completion:(void (^)(NSDictionary *data, NSURL *nextPageURL, NSError *error))completion {
+- (void)depatureDataForStopNumber:(NSString *)stopNumber completion:(void (^)(NSDictionary *data, NSURL *nextPageURL, NSError *error))completion {
     NSURL *url = [self urlForStopNumber:stopNumber];
-    [self requestDepatureDataAtURL:url completion:completion];
+    [self depatureDataAtURL:url completion:completion];
 }
 
-- (void)requestDepatureDataAtURL:(NSURL *)url completion:(void (^)(id json, NSURL *nextPageURL, NSError *))completion {
+- (void)depatureDataAtURL:(NSURL *)url completion:(void (^)(id json, NSURL *nextPageURL, NSError *))completion {
     self.completion = completion;
     
     NSError *error = nil;
