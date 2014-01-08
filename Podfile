@@ -5,6 +5,6 @@ target "LJSTravelSouthYorkshire" do
 end
 
 target "LJSTravelSouthYorkshireTests" do
-
+    pod 'OCMock', '~> 2.2.2'
 end
 

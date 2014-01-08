@@ -7,6 +7,16 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
+
+#import "LJSTravelSouthYorkshire.h"
+#import "LJSScraper.h"
+#import "LJSWebContentDownloader.h"
+
+@interface LJSTravelSouthYorkshire (TestVisibility)
+@property (nonatomic, strong) LJSScraper *scraper;
+@property (nonatomic, strong) LJSWebContentDownloader *contentDownloader;
+@end
 
 @interface LJSTravelSouthYorkshireTests : XCTestCase
 
@@ -14,27 +24,61 @@
 
 @implementation LJSTravelSouthYorkshireTests
 
+#pragma mark - Helpers
+
+- (NSDictionary *)loadJSONFileNamed:(NSString *)fileName {
+    NSString* filepath = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:filepath];
+    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+}
+
+- (id)mockScraperReturning:(NSDictionary *)data {
+    id scraperMock = [OCMockObject niceMockForClass:[LJSScraper class]];
+    [[[scraperMock stub] andReturn:data] scrapeDepatureDataFromHTML:[OCMArg any]];
+    return scraperMock;
+}
+
+- (id)mockContentDownloadReturn:(NSString *)htmlString {
+    id contentDownloaderMock = [OCMockObject niceMockForClass:[LJSWebContentDownloader class]];
+    [[[contentDownloaderMock stub] andReturn:htmlString] downloadHTMLFromURL:[OCMArg any] error:[OCMArg setTo:nil]];
+    return contentDownloaderMock;
+}
+
+#pragma mark - Tests
+
 - (void)testReturnsDataAfterSucessfulScrape {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    NSDictionary *correctData = [self loadJSONFileNamed:@"tram"];
+    
+    LJSTravelSouthYorkshire *client = [[LJSTravelSouthYorkshire alloc] init];
+    client.scraper = [self mockScraperReturning:correctData];
+    client.contentDownloader = [self mockContentDownloadReturn:@"some html"];
+    
+    __block NSDictionary *capturedData = nil;
+    [client depatureDataForStopNumber:@"1234" completion:^(NSDictionary *data, NSURL *nextPageURL, NSError *error) {
+        capturedData = data;
+    }];
+    
+    XCTAssertEqualObjects(capturedData, correctData, @"");
+    
 }
 
 - (void)testReturnsNextURLAfterSucessfulScrape {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+
 }
 
 - (void)testReturnsNoDataAfterUnsucessfulScape {
     // TODO: No depature table in HTML
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+
 }
 
 - (void)testReturnsErrorAfterUnsucessfulScrape {
     // TODO: Error from LJSSCraper
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+
 }
 
 - (void)testReturnsErrorForUnsucessfulWebContentDownload {
     // TODO: Error from LJSWebContentDownloader
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+
 }
 
 @end

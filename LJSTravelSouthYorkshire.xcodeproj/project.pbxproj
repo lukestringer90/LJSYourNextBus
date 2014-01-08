@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		874C763343B04AB8B0CDB41D /* libPods-LJSTravelSouthYorkshire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8EE5F3142B94472B28F0A04 /* libPods-LJSTravelSouthYorkshire.a */; };
+		96487C9B747B4A7FAE8E872C /* libPods-LJSTravelSouthYorkshireTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21501080AF254BF5B388BB77 /* libPods-LJSTravelSouthYorkshireTests.a */; };
+		A32C448E187DDCE70034F26B /* tram.json in Resources */ = {isa = PBXBuildFile; fileRef = A32C448C187DDCE70034F26B /* tram.json */; };
+		A32C448F187DDCE70034F26B /* tram.html in Resources */ = {isa = PBXBuildFile; fileRef = A32C448D187DDCE70034F26B /* tram.html */; };
 		A386ECF11878A064008372CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A386ECF01878A064008372CD /* Foundation.framework */; };
 		A386ECF31878A064008372CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A386ECF21878A064008372CD /* CoreGraphics.framework */; };
 		A386ECF51878A064008372CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A386ECF41878A064008372CD /* UIKit.framework */; };
@@ -21,7 +24,6 @@
 		A386ED141878A065008372CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A386ED121878A065008372CD /* InfoPlist.strings */; };
 		A386ED161878A065008372CD /* LJSTravelSouthYorkshireTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED151878A065008372CD /* LJSTravelSouthYorkshireTests.m */; };
 		A386ED221878A612008372CD /* LJSTravelSouthYorkshire.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED211878A612008372CD /* LJSTravelSouthYorkshire.m */; };
-		A386ED241878DFCB008372CD /* tram.html in Resources */ = {isa = PBXBuildFile; fileRef = A386ED231878DFCB008372CD /* tram.html */; };
 		A386ED271878E243008372CD /* LJSScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED261878E243008372CD /* LJSScraper.m */; };
 		A386ED2A1878EE89008372CD /* LJSWebContentDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED291878EE89008372CD /* LJSWebContentDownloader.m */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,9 @@
 
 /* Begin PBXFileReference section */
 		012A59133CA345FD953375AB /* Pods-LJSTravelSouthYorkshire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshire.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshire.xcconfig"; sourceTree = "<group>"; };
+		21501080AF254BF5B388BB77 /* libPods-LJSTravelSouthYorkshireTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshireTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A32C448C187DDCE70034F26B /* tram.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tram.json; sourceTree = "<group>"; };
+		A32C448D187DDCE70034F26B /* tram.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tram.html; sourceTree = "<group>"; };
 		A386ECED1878A064008372CD /* LJSTravelSouthYorkshire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJSTravelSouthYorkshire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A386ECF01878A064008372CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A386ECF21878A064008372CD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,12 +61,12 @@
 		A386ED151878A065008372CD /* LJSTravelSouthYorkshireTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSTravelSouthYorkshireTests.m; sourceTree = "<group>"; };
 		A386ED201878A612008372CD /* LJSTravelSouthYorkshire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSTravelSouthYorkshire.h; sourceTree = "<group>"; };
 		A386ED211878A612008372CD /* LJSTravelSouthYorkshire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSTravelSouthYorkshire.m; sourceTree = "<group>"; };
-		A386ED231878DFCB008372CD /* tram.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tram.html; sourceTree = "<group>"; };
 		A386ED251878E243008372CD /* LJSScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSScraper.h; sourceTree = "<group>"; };
 		A386ED261878E243008372CD /* LJSScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSScraper.m; sourceTree = "<group>"; };
 		A386ED281878EE89008372CD /* LJSWebContentDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSWebContentDownloader.h; sourceTree = "<group>"; };
 		A386ED291878EE89008372CD /* LJSWebContentDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSWebContentDownloader.m; sourceTree = "<group>"; };
 		A8EE5F3142B94472B28F0A04 /* libPods-LJSTravelSouthYorkshire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8F9D6E3FADB44879405E297 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshireTests.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshireTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +88,7 @@
 				A386ED0A1878A064008372CD /* XCTest.framework in Frameworks */,
 				A386ED0C1878A065008372CD /* UIKit.framework in Frameworks */,
 				A386ED0B1878A065008372CD /* Foundation.framework in Frameworks */,
+				96487C9B747B4A7FAE8E872C /* libPods-LJSTravelSouthYorkshireTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +103,7 @@
 				A386ECEF1878A064008372CD /* Frameworks */,
 				A386ECEE1878A064008372CD /* Products */,
 				012A59133CA345FD953375AB /* Pods-LJSTravelSouthYorkshire.xcconfig */,
+				D8F9D6E3FADB44879405E297 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +124,7 @@
 				A386ECF41878A064008372CD /* UIKit.framework */,
 				A386ED091878A064008372CD /* XCTest.framework */,
 				A8EE5F3142B94472B28F0A04 /* libPods-LJSTravelSouthYorkshire.a */,
+				21501080AF254BF5B388BB77 /* libPods-LJSTravelSouthYorkshireTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,7 +138,6 @@
 				A386ED291878EE89008372CD /* LJSWebContentDownloader.m */,
 				A386ED251878E243008372CD /* LJSScraper.h */,
 				A386ED261878E243008372CD /* LJSScraper.m */,
-				A386ED231878DFCB008372CD /* tram.html */,
 				A386ED1F1878A5E9008372CD /* App */,
 				A386ECF71878A064008372CD /* Supporting Files */,
 			);
@@ -152,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				A386ED151878A065008372CD /* LJSTravelSouthYorkshireTests.m */,
+				A32C448C187DDCE70034F26B /* tram.json */,
+				A32C448D187DDCE70034F26B /* tram.html */,
 				A386ED101878A065008372CD /* Supporting Files */,
 			);
 			path = LJSTravelSouthYorkshireTests;
@@ -202,9 +211,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A386ED1C1878A065008372CD /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshireTests" */;
 			buildPhases = (
+				01FD071A28F340F3BC85B066 /* Check Pods Manifest.lock */,
 				A386ED041878A064008372CD /* Sources */,
 				A386ED051878A064008372CD /* Frameworks */,
 				A386ED061878A064008372CD /* Resources */,
+				ED099AD093024E079851956D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,7 +267,6 @@
 			files = (
 				A386ECFB1878A064008372CD /* InfoPlist.strings in Resources */,
 				A386ED031878A064008372CD /* Images.xcassets in Resources */,
-				A386ED241878DFCB008372CD /* tram.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,12 +275,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				A386ED141878A065008372CD /* InfoPlist.strings in Resources */,
+				A32C448E187DDCE70034F26B /* tram.json in Resources */,
+				A32C448F187DDCE70034F26B /* tram.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		01FD071A28F340F3BC85B066 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		61C8CCF4FC5440498474BB7B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,6 +311,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ED099AD093024E079851956D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-LJSTravelSouthYorkshireTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC436C106EF34BCCAEE86AD1 /* Copy Pods Resources */ = {
@@ -458,6 +500,7 @@
 		};
 		A386ED1D1878A065008372CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8F9D6E3FADB44879405E297 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSTravelSouthYorkshire.app/LJSTravelSouthYorkshire";
@@ -481,6 +524,7 @@
 		};
 		A386ED1E1878A065008372CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8F9D6E3FADB44879405E297 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSTravelSouthYorkshire.app/LJSTravelSouthYorkshire";

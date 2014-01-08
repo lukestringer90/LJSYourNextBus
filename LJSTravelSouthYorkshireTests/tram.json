@@ -1,0 +1,34 @@
+{
+    "departures" :     {
+        "BLUE" :         [
+                        {
+                "destination" : "Malin Bridge",
+                "expected_departure_time" : "11:49"
+            },
+                        {
+                "destination" : "Malin Bridge",
+                "expected_departure_time" : "12:09"
+            },
+                        {
+                "destination" : "Malin Bridge",
+                "expected_departure_time" : "12:29"
+            }
+        ],
+        "YELL" :         [
+                        {
+                "destination" : "Middlewood",
+                "expected_departure_time" : "11:38"
+            },
+                        {
+                "destination" : "Middlewood",
+                "expected_departure_time" : "11:58"
+            },
+                        {
+                "destination" : "Middlewood",
+                "expected_departure_time" : "12:18"
+            }
+        ]
+    },
+    "stop_code" : "37090168",
+    "stop_name" : "Hillsborough"
+}

@@ -8,7 +8,7 @@
 
 #import "LJSWebContentDownloader.h"
 
-static BOOL const LoadHTMLFromBundle = NO;
+static BOOL const LoadHTMLFromBundle = YES;
 
 @implementation LJSWebContentDownloader
 
