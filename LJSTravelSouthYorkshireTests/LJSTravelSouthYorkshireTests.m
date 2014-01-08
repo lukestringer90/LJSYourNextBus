@@ -18,13 +18,19 @@
 @property (nonatomic, strong) LJSWebContentDownloader *contentDownloader;
 @end
 
-@interface LJSTravelSouthYorkshireTests : XCTestCase
-
+@interface LJSTravelSouthYorkshireTests : XCTestCase {
+     LJSTravelSouthYorkshire *_sut;
+}
 @end
 
 @implementation LJSTravelSouthYorkshireTests
 
 #pragma mark - Helpers
+
+- (void)setUp {
+    [super setUp];
+    _sut = [[LJSTravelSouthYorkshire alloc] init];
+}
 
 - (NSDictionary *)loadJSONFileNamed:(NSString *)fileName {
     NSString* filepath = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:@"json"];
@@ -32,13 +38,19 @@
     return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
 }
 
-- (id)mockScraperReturning:(NSDictionary *)data {
+- (id)mockScraperReturningDepatureData:(NSDictionary *)data {
     id scraperMock = [OCMockObject niceMockForClass:[LJSScraper class]];
     [[[scraperMock stub] andReturn:data] scrapeDepatureDataFromHTML:[OCMArg any]];
     return scraperMock;
 }
 
-- (id)mockContentDownloadReturn:(NSString *)htmlString {
+- (id)mockScraperReturningNextURL:(NSURL *)url {
+    id scraperMock = [OCMockObject niceMockForClass:[LJSScraper class]];
+    [[[scraperMock stub] andReturn:url] scrapeNextPageURLFromHTML:[OCMArg any]];
+    return scraperMock;
+}
+
+- (id)mockContentDownloadReturningHTML:(NSString *)htmlString {
     id contentDownloaderMock = [OCMockObject niceMockForClass:[LJSWebContentDownloader class]];
     [[[contentDownloaderMock stub] andReturn:htmlString] downloadHTMLFromURL:[OCMArg any] error:[OCMArg setTo:nil]];
     return contentDownloaderMock;
@@ -49,12 +61,11 @@
 - (void)testReturnsDataAfterSucessfulScrape {
     NSDictionary *correctData = [self loadJSONFileNamed:@"tram"];
     
-    LJSTravelSouthYorkshire *client = [[LJSTravelSouthYorkshire alloc] init];
-    client.scraper = [self mockScraperReturning:correctData];
-    client.contentDownloader = [self mockContentDownloadReturn:@"some html"];
+    _sut.scraper = [self mockScraperReturningDepatureData:correctData];
+    _sut.contentDownloader = [self mockContentDownloadReturningHTML:@"some html"];
     
     __block NSDictionary *capturedData = nil;
-    [client depatureDataForStopNumber:@"1234" completion:^(NSDictionary *data, NSURL *nextPageURL, NSError *error) {
+    [_sut depatureDataForStopNumber:@"1234" completion:^(NSDictionary *data, NSURL *nextPageURL, NSError *error) {
         capturedData = data;
     }];
     
@@ -63,6 +74,17 @@
 }
 
 - (void)testReturnsNextURLAfterSucessfulScrape {
+    NSURL *correctNextPageURL = [NSURL URLWithString:@"pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
+    
+    _sut.scraper = [self mockScraperReturningNextURL:correctNextPageURL];
+    _sut.contentDownloader = [self mockContentDownloadReturningHTML:@"some html"];
+    
+    __block NSURL *capturedURL = nil;
+    [_sut depatureDataForStopNumber:@"1234" completion:^(NSDictionary *data, NSURL *nextPageURL, NSError *error) {
+        capturedURL = nextPageURL;
+    }];
+    
+    XCTAssertEqualObjects(capturedURL, correctNextPageURL, @"");
 
 }
 
