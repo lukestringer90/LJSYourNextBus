@@ -23,7 +23,7 @@ NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
     NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
     
     NSString *stopCode = [self scrapeStopCodeFromHTML:html];
-    NSString *stopName = @"";
+    NSString *stopName = [self scrapeStopNameFromHTML:html];
     
     NSDictionary *scrapedData = @{
                                   LJSStopCodeKey : stopCode,
@@ -46,7 +46,15 @@ NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
 
 - (NSString *)scrapeStopCodeFromHTML:(NSString *)html {
     NSString *pattern = @".*<p>Stop Number: <b>(.*)</b></p>.*";
-    
+    return [self scrapeHTML:html usingRegexPattern:pattern];
+}
+
+- (NSString *)scrapeStopNameFromHTML:(NSString *)html {
+    NSString *pattern = @".*<p>Departure information for <b>(.*)</b> at.*";
+    return [self scrapeHTML:html usingRegexPattern:pattern];
+}
+
+- (NSString *)scrapeHTML:(NSString *)html usingRegexPattern:(NSString *)pattern {
     NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
                                                                            options:NSRegularExpressionCaseInsensitive
