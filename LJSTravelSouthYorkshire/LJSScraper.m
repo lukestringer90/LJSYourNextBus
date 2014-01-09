@@ -13,7 +13,8 @@ NSString * const LJSStopCodeKey = @"stop_code";
 NSString * const LJSStopNameKey = @"stop_name";
 NSString * const LJSDepaturesKey = @"departures";
 NSString * const LJSDestinationKey = @"destination";
-NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
+NSString * const LJSExpectedDepatureTimeKey = @"expected_departure_time";
+NSString * const LJSLiveDateKey = @"live_information";
 
 
 @implementation LJSScraper
@@ -24,10 +25,12 @@ NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
     
     NSString *stopCode = [self scrapeStopCodeFromHTML:html];
     NSString *stopName = [self scrapeStopNameFromHTML:html];
+    NSString *scrapeDate = [self scapeLiveDateFromHTML:html];
     
     NSDictionary *scrapedData = @{
                                   LJSStopCodeKey : stopCode,
-                                  LJSStopNameKey : stopName
+                                  LJSStopNameKey : stopName,
+                                  LJSLiveDateKey : scrapeDate
                                   };
     
     for (NSInteger serviceRowIndex = 0; serviceRowIndex < tds.count; serviceRowIndex+=4) {
@@ -54,6 +57,11 @@ NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
     return [self scrapeHTML:html usingRegexPattern:pattern];
 }
 
+- (NSString *)scapeLiveDateFromHTML:(NSString *)html {
+    NSString *pattern = @".*at <b>(.*)</b>.*";
+    return [self scrapeHTML:html usingRegexPattern:pattern];
+}
+
 - (NSString *)scrapeHTML:(NSString *)html usingRegexPattern:(NSString *)pattern {
     NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
@@ -73,6 +81,7 @@ NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
     }
     
     return stopCode;
+
 }
 
 - (NSString *)removeLastCharacterFromString:(NSString *)string {
@@ -88,7 +97,7 @@ NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
     
     NSDictionary *depatureDictionary = @{
                                          LJSDestinationKey : destinationTimeValue,
-                                         LJSExpectedDepatureTime : depatureValue
+                                         LJSExpectedDepatureTimeKey : depatureValue
                                          };
     
     NSArray *depatureForThisService = allDepatures[serviceValue];

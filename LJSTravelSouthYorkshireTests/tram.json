@@ -30,5 +30,6 @@
         ]
     },
     "stop_code" : "37090168",
-    "stop_name" : "Hillsborough"
+    "stop_name" : "Hillsborough",
+    "live_information" : "00:31"
 }

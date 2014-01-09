@@ -67,4 +67,15 @@
     XCTAssertEqualObjects(scrapedStopName, correctStopName, @"");
 }
 
+- (void)testScrapesLiveInformationDate {
+    
+    NSString *correctLiveDate = _correctData[LJSLiveDateKey];
+    NSString *html = [self loadHTMLFileNamed:@"tram"];
+    
+    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:html];
+    NSString *scrapedLiveDate = scrapedData[LJSLiveDateKey  ];
+    
+    XCTAssertEqualObjects(scrapedLiveDate, correctLiveDate, @"");
+}
+
 @end

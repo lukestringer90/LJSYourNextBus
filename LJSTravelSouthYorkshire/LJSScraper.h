@@ -12,7 +12,8 @@ extern NSString * const LJSStopCodeKey;
 extern NSString * const LJSStopNameKey;
 extern NSString * const LJSDepaturesKey;
 extern NSString * const LJSDestinationKey;
-extern NSString * const LJSExpectedDepatureTime;
+extern NSString * const LJSExpectedDepatureTimeKey;
+extern NSString * const LJSLiveDateKey;
 
 @interface LJSScraper : NSObject
 
