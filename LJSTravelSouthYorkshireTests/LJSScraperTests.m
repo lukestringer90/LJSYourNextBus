@@ -17,11 +17,15 @@
 
 @implementation LJSScraperTests
 
+#pragma mark - setUp / tearDown
+
 - (void)setUp {
     [super setUp];
     _sut = [[LJSScraper alloc] init];
     _correctData = [self loadJSONFileNamed:@"tram"];
 }
+
+#pragma mark - Helpers
 
 - (NSDictionary *)loadJSONFileNamed:(NSString *)fileName {
     NSString* filepath = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:@"json"];
@@ -33,6 +37,8 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType: @"html"];
     return [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
 }
+
+#pragma mark - Tests
 
 - (void)testScapesDepatures {
     
@@ -76,6 +82,22 @@
     NSString *scrapedLiveDate = scrapedData[LJSLiveDateKey  ];
     
     XCTAssertEqualObjects(scrapedLiveDate, correctLiveDate, @"");
+}
+
+- (void)testReturnsNoDepatureData {
+    // TODO: No depature table in HTML
+}
+
+- (void)testInstantiatesError {
+    // TODO: Malformed HTML
+}
+
+- (void)testScrpaesNextPageURL {
+    // TODO: Valid nextPageURL in HTML
+}
+
+- (void)testReturnsNoNextPageURL {
+    // TODO: No nextPageURL in HTML
 }
 
 @end

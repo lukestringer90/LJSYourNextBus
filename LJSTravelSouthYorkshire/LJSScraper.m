@@ -19,6 +19,55 @@ NSString * const LJSLiveDateKey = @"live_information";
 
 @implementation LJSScraper
 
+#pragma mark - Public
+#pragma mark -
+
+- (NSURL *)scrapeNextPageURLFromHTML:(NSString *)html {
+    return nil;
+}
+
+/*
+ 
+ Scraping into this form:
+ 
+ {
+    "departures" :     {
+        "BLUE" :         [
+                        {
+                "destination" : "Malin Bridge",
+                "expected_departure_time" : "11:49"
+            },
+                        {
+                "destination" : "Malin Bridge",
+                "expected_departure_time" : "12:09"
+            },
+                        {
+                "destination" : "Malin Bridge",
+                "expected_departure_time" : "12:29"
+            }
+        ],
+        "YELL" :         [
+                        {
+                "destination" : "Middlewood",
+                "expected_departure_time" : "11:38"
+            },
+                        {
+                "destination" : "Middlewood",
+                "expected_departure_time" : "11:58"
+            },
+                        {
+                "destination" : "Middlewood",
+                "expected_departure_time" : "12:18"
+            }
+        ]
+    },
+    "stop_code" : "37090168",
+    "stop_name" : "Hillsborough",
+    "live_information" : "00:31"
+}
+ 
+ */
+
 - (NSDictionary *)scrapeDepatureDataFromHTML:(NSString *)html {
     OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];
     NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
@@ -47,6 +96,10 @@ NSString * const LJSLiveDateKey = @"live_information";
     return scrapedData;
 }
 
+#pragma mark - Private
+
+#pragma mark - Regex scraping
+
 - (NSString *)scrapeStopCodeFromHTML:(NSString *)html {
     NSString *pattern = @".*<p>Stop Number: <b>(.*)</b></p>.*";
     return [self scrapeHTML:html usingRegexPattern:pattern];
@@ -74,9 +127,10 @@ NSString * const LJSLiveDateKey = @"live_information";
     NSTextCheckingResult *match = [regex firstMatchInString:html
                                                     options:0
                                                       range:NSMakeRange(0, [html length])];
-    
+
     NSString *stopCode = nil;
     if (match) {
+        // Assume group of interest is at index 1
         stopCode = [html substringWithRange:[match rangeAtIndex:1]];
     }
     
@@ -84,13 +138,11 @@ NSString * const LJSLiveDateKey = @"live_information";
 
 }
 
-- (NSString *)removeLastCharacterFromString:(NSString *)string {
-    return [string substringToIndex:[string length]-1];;
-}
+#pragma mark - ObjectiveGumbo scraping
 
 - (NSDictionary *)processServiceValue:(NSString *)serviceValue destinationValue:(NSString *)destinationTimeValue depatureValue:(NSString *)depatureValue intoScrapedData:(NSDictionary *)scrapedData {
-    NSMutableDictionary *allDepatures = [[scrapedData valueForKey:LJSDepaturesKey] mutableCopy];
     
+    NSMutableDictionary *allDepatures = [[scrapedData valueForKey:LJSDepaturesKey] mutableCopy];
     if (!allDepatures) {
         allDepatures = [NSMutableDictionary dictionaryWithObject:@[] forKey:serviceValue];
     }
@@ -116,11 +168,13 @@ NSString * const LJSLiveDateKey = @"live_information";
     [newScrapedData setValue:allDepatures forKey:LJSDepaturesKey];
     
     return newScrapedData;
-
 }
 
-- (NSURL *)scrapeNextPageURLFromHTML:(NSString *)html {
-    return nil;
+#pragma mark - Other
+
+- (NSString *)removeLastCharacterFromString:(NSString *)string {
+    // HTML contains a "&nbsp;" character after each value, so remove it
+    return [string substringToIndex:[string length]-1];;
 }
 
 @end

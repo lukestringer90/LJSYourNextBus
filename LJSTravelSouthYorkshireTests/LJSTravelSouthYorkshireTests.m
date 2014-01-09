@@ -25,12 +25,14 @@
 
 @implementation LJSTravelSouthYorkshireTests
 
-#pragma mark - Helpers
+#pragma mark - setUp / tearDown
 
 - (void)setUp {
     [super setUp];
     _sut = [[LJSTravelSouthYorkshire alloc] init];
 }
+
+#pragma mark - Helpers
 
 - (NSDictionary *)loadJSONFileNamed:(NSString *)fileName {
     NSString* filepath = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:@"json"];
