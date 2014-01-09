@@ -44,7 +44,7 @@
 		21501080AF254BF5B388BB77 /* libPods-LJSTravelSouthYorkshireTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshireTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32C448C187DDCE70034F26B /* tram.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tram.json; sourceTree = "<group>"; };
 		A32C448D187DDCE70034F26B /* tram.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tram.html; sourceTree = "<group>"; };
-		A32C4490187DEEF60034F26B /* LJSScraperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSScraperTests.m; sourceTree = "<group>"; };
+		A32C4490187DEEF60034F26B /* LJSScraperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSScraperTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A386ECED1878A064008372CD /* LJSTravelSouthYorkshire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJSTravelSouthYorkshire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A386ECF01878A064008372CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A386ECF21878A064008372CD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,8 +63,8 @@
 		A386ED151878A065008372CD /* LJSTravelSouthYorkshireTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSTravelSouthYorkshireTests.m; sourceTree = "<group>"; };
 		A386ED201878A612008372CD /* LJSTravelSouthYorkshire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSTravelSouthYorkshire.h; sourceTree = "<group>"; };
 		A386ED211878A612008372CD /* LJSTravelSouthYorkshire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSTravelSouthYorkshire.m; sourceTree = "<group>"; };
-		A386ED251878E243008372CD /* LJSScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSScraper.h; sourceTree = "<group>"; };
-		A386ED261878E243008372CD /* LJSScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSScraper.m; sourceTree = "<group>"; };
+		A386ED251878E243008372CD /* LJSScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LJSScraper.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		A386ED261878E243008372CD /* LJSScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSScraper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A386ED281878EE89008372CD /* LJSWebContentDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSWebContentDownloader.h; sourceTree = "<group>"; };
 		A386ED291878EE89008372CD /* LJSWebContentDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSWebContentDownloader.m; sourceTree = "<group>"; };
 		A8EE5F3142B94472B28F0A04 /* libPods-LJSTravelSouthYorkshire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshire.a"; sourceTree = BUILT_PRODUCTS_DIR; };

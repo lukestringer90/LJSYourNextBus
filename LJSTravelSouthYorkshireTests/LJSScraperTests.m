@@ -58,11 +58,11 @@
 
 - (void)testScrapesStopName {
     
-    NSString *correctStopName = _correctData[LJSSopNameKey];
+    NSString *correctStopName = _correctData[LJSStopNameKey];
     NSString *html = [self loadHTMLFileNamed:@"tram"];
     
     NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:html];
-    NSString *scrapedStopName = scrapedData[LJSSopNameKey];
+    NSString *scrapedStopName = scrapedData[LJSStopNameKey  ];
     
     XCTAssertEqualObjects(scrapedStopName, correctStopName, @"");
 }

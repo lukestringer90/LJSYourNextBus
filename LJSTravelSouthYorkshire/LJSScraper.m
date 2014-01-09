@@ -10,7 +10,7 @@
 #import <ObjectiveGumbo/ObjectiveGumbo.h>
 
 NSString * const LJSStopCodeKey = @"stop_code";
-NSString * const LJSSopNameKey = @"stop_name";
+NSString * const LJSStopNameKey = @"stop_name";
 NSString * const LJSDepaturesKey = @"departures";
 NSString * const LJSDestinationKey = @"destination";
 NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
@@ -22,12 +22,12 @@ NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
     OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];
     NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
     
-    NSString *stopCode = @"";
+    NSString *stopCode = [self scrapeStopCodeFromHTML:html];
     NSString *stopName = @"";
     
     NSDictionary *scrapedData = @{
                                   LJSStopCodeKey : stopCode,
-                                  LJSSopNameKey : stopName
+                                  LJSStopNameKey : stopName
                                   };
     
     for (NSInteger serviceRowIndex = 0; serviceRowIndex < tds.count; serviceRowIndex+=4) {
@@ -42,6 +42,29 @@ NSString * const LJSExpectedDepatureTime = @"expected_departure_time";
         
     }
     return scrapedData;
+}
+
+- (NSString *)scrapeStopCodeFromHTML:(NSString *)html {
+    NSString *pattern = @".*<p>Stop Number: <b>(.*)</b></p>.*";
+    
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    if (error) {
+        return nil;
+    }
+    
+    NSTextCheckingResult *match = [regex firstMatchInString:html
+                                                    options:0
+                                                      range:NSMakeRange(0, [html length])];
+    
+    NSString *stopCode = nil;
+    if (match) {
+        stopCode = [html substringWithRange:[match rangeAtIndex:1]];
+    }
+    
+    return stopCode;
 }
 
 - (NSString *)removeLastCharacterFromString:(NSString *)string {
