@@ -22,8 +22,10 @@ NSString * const LJSLiveDateKey = @"live_information";
 #pragma mark - Public
 #pragma mark -
 
-- (NSURL *)scrapeNextPageURLFromHTML:(NSString *)html {
-    return nil;
+- (NSURL *)scrapeLaterDepaturesURL:(NSString *)html {
+    NSString *pattern = @".*<a href=\"(.*)\">Later.*";
+    NSString *path = [self scrapeHTML:html usingRegexPattern:pattern];
+    return [NSURL URLWithString:path];
 }
 
 /*
@@ -101,24 +103,24 @@ NSString * const LJSLiveDateKey = @"live_information";
 #pragma mark - Regex scraping
 
 - (NSString *)scrapeNaPTANCodeFromHTML:(NSString *)html {
-    NSString *pattern = @".*<p>Stop Number: <b>(.*)</b></p>.*";
+    NSString *pattern = @".*<p>Stop Number: <b>(.*?)</b></p>.*";
     return [self scrapeHTML:html usingRegexPattern:pattern];
 }
 
 - (NSString *)scrapeStopNameFromHTML:(NSString *)html {
-    NSString *pattern = @".*<p>Departure information for <b>(.*)</b> at.*";
+    NSString *pattern = @".*<p>Departure information for <b>(.*?)</b> at.*";
     return [self scrapeHTML:html usingRegexPattern:pattern];
 }
 
 - (NSString *)scapeLiveDateFromHTML:(NSString *)html {
-    NSString *pattern = @".*at <b>(.*)</b>.*";
+    NSString *pattern = @".*at <b>(.*?)</b>.*";
     return [self scrapeHTML:html usingRegexPattern:pattern];
 }
 
 - (NSString *)scrapeHTML:(NSString *)html usingRegexPattern:(NSString *)pattern {
     NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
-                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                           options:NSRegularExpressionDotMatchesLineSeparators
                                                                              error:&error];
     if (error) {
         return nil;

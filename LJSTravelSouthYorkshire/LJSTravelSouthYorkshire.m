@@ -11,7 +11,7 @@
 #import "LJSScraper.h"
 
 @interface LJSTravelSouthYorkshire ()
-@property (nonatomic, copy, readwrite) void (^completion)(NSDictionary *data, NSURL *nextPageURL, NSError *error);
+@property (nonatomic, copy, readwrite) void (^completion)(NSDictionary *data, NSURL *laterDepaturesURL, NSError *error);
 @property (nonatomic, strong) LJSScraper *scraper;
 @property (nonatomic, strong) LJSWebContentDownloader *contentDownloader;
 @end
@@ -39,7 +39,7 @@
     NSString *htmlString = [self.contentDownloader downloadHTMLFromURL:url error:&error];
     
     if (error) {
-        [self safeCallCompletionBlockWithDepatureData:nil nextPageURL:nil error:error];
+        [self safeCallCompletionBlockWithDepatureData:nil laterDepaturesURL:nil error:error];
     }
     else {
         [self scrapeHTML:htmlString];
@@ -52,14 +52,14 @@
 
 - (void)scrapeHTML:(NSString *)htmlString {
     NSDictionary *depatureData = [self.scraper scrapeDepatureDataFromHTML:htmlString];
-    NSURL *nextPageURL = [self.scraper scrapeNextPageURLFromHTML:htmlString];
+    NSURL *laterDepaturesURL = [self.scraper scrapeLaterDepaturesURL:htmlString];
     
-    [self safeCallCompletionBlockWithDepatureData:depatureData nextPageURL:nextPageURL error:nil];
+    [self safeCallCompletionBlockWithDepatureData:depatureData laterDepaturesURL:laterDepaturesURL error:nil];
 }
 
-- (void)safeCallCompletionBlockWithDepatureData:(NSDictionary *)depatureData nextPageURL:(NSURL *)nextPageURL error:(NSError *)error {
+- (void)safeCallCompletionBlockWithDepatureData:(NSDictionary *)depatureData laterDepaturesURL:(NSURL *)laterDepaturesURL error:(NSError *)error {
     if (self.completion) {
-        self.completion(depatureData, nextPageURL, error);
+        self.completion(depatureData, laterDepaturesURL, error);
         self.completion = nil;
     }
 }

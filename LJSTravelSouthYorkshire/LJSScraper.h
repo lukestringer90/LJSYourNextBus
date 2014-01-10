@@ -19,6 +19,6 @@ extern NSString * const LJSLiveDateKey;
 
 - (NSDictionary *)scrapeDepatureDataFromHTML:(NSString *)html;
 
-- (NSURL *)scrapeNextPageURLFromHTML:(NSString *)html;
+- (NSURL *)scrapeLaterDepaturesURL:(NSString *)html;
 
 @end

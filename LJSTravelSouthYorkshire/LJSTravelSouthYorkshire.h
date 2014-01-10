@@ -11,7 +11,7 @@
 @interface LJSTravelSouthYorkshire : NSObject
 
 - (void)depatureDataForNaPTANCode:(NSString *)NaPTANCode completion:(void (^)(NSDictionary *data, NSURL *nextPageURL, NSError *error))completion;
-- (void)depatureDataAtURL:(NSURL *)url completion:(void (^)(id json, NSURL *nextPageURL, NSError *))completion;
+- (void)depatureDataAtURL:(NSURL *)url completion:(void (^)(id json, NSURL *laterDepaturesURL, NSError *))completion;
 
 - (NSURL *)urlForStopNumber:(NSString *)stopNumber;
 

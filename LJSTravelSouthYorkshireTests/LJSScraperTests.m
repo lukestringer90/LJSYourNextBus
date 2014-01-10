@@ -41,7 +41,6 @@
 #pragma mark - Tests
 
 - (void)testScapesDepatures {
-    
     NSDictionary *correctDepatures = _correctData[LJSDepaturesKey];
     NSString *html = [self loadHTMLFileNamed:@"tram"];
     
@@ -52,7 +51,6 @@
 }
 
 - (void)testScrapesNaPTANCode {
-    
     NSString *correctNaPTANCode = _correctData[LJSNaPTANCodeKey];
     NSString *html = [self loadHTMLFileNamed:@"tram"];
     
@@ -63,7 +61,6 @@
 }
 
 - (void)testScrapesStopName {
-    
     NSString *correctStopName = _correctData[LJSStopNameKey];
     NSString *html = [self loadHTMLFileNamed:@"tram"];
     
@@ -74,14 +71,23 @@
 }
 
 - (void)testScrapesLiveInformationDate {
-    
     NSString *correctLiveDate = _correctData[LJSLiveDateKey];
     NSString *html = [self loadHTMLFileNamed:@"tram"];
     
     NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:html];
-    NSString *scrapedLiveDate = scrapedData[LJSLiveDateKey  ];
+    NSString *scrapedLiveDate = scrapedData[LJSLiveDateKey];
     
     XCTAssertEqualObjects(scrapedLiveDate, correctLiveDate, @"");
+}
+
+- (void)testScrpaesLaterDepaturesURL {
+    NSURL *corectURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
+    NSString *html = [self loadHTMLFileNamed:@"tram"];
+    
+    NSURL *scrapedURL = [_sut scrapeLaterDepaturesURL:html];
+    
+    XCTAssertEqualObjects(scrapedURL, corectURL, @"");
+
 }
 
 - (void)testReturnsNoDepatureData {
@@ -90,10 +96,6 @@
 
 - (void)testInstantiatesError {
     // TODO: Malformed HTML
-}
-
-- (void)testScrpaesNextPageURL {
-    // TODO: Valid nextPageURL in HTML
 }
 
 - (void)testReturnsNoNextPageURL {

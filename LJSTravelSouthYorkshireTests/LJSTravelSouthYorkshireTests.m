@@ -46,9 +46,9 @@
     return scraperMock;
 }
 
-- (id)mockScraperReturningNextURL:(NSURL *)url {
+- (id)mockScraperReturninglaterDepaturesURL:(NSURL *)url {
     id scraperMock = [OCMockObject niceMockForClass:[LJSScraper class]];
-    [[[scraperMock stub] andReturn:url] scrapeNextPageURLFromHTML:[OCMArg any]];
+    [[[scraperMock stub] andReturn:url] scrapeLaterDepaturesURL:[OCMArg any]];
     return scraperMock;
 }
 
@@ -78,7 +78,7 @@
 - (void)testReturnsNextURLAfterSucessfulScrape {
     NSURL *correctNextPageURL = [NSURL URLWithString:@"pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
     
-    _sut.scraper = [self mockScraperReturningNextURL:correctNextPageURL];
+    _sut.scraper = [self mockScraperReturninglaterDepaturesURL:correctNextPageURL];
     _sut.contentDownloader = [self mockContentDownloadReturningHTML:@"some html"];
     
     __block NSURL *capturedURL = nil;
