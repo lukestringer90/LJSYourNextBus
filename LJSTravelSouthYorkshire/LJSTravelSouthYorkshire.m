@@ -27,8 +27,8 @@
     return self;
 }
 
-- (void)depatureDataForStopNumber:(NSString *)stopNumber completion:(void (^)(NSDictionary *data, NSURL *nextPageURL, NSError *error))completion {
-    NSURL *url = [self urlForStopNumber:stopNumber];
+- (void)depatureDataForNaPTANCode:(NSString *)NaPTANCode completion:(void (^)(NSDictionary *data, NSURL *nextPageURL, NSError *error))completion {
+    NSURL *url = [self urlForStopNumber:NaPTANCode];
     [self depatureDataAtURL:url completion:completion];
 }
 

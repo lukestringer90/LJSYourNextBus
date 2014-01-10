@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const LJSStopCodeKey;
+extern NSString * const LJSNaPTANCodeKey;
 extern NSString * const LJSStopNameKey;
 extern NSString * const LJSDepaturesKey;
 extern NSString * const LJSDestinationKey;

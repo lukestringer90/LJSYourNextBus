@@ -51,15 +51,15 @@
     XCTAssertEqualObjects(scrapedDepatures, correctDepatures, @"");
 }
 
-- (void)testScrapesStopCode {
+- (void)testScrapesNaPTANCode {
     
-    NSString *correctStopCode = _correctData[LJSStopCodeKey];
+    NSString *correctNaPTANCode = _correctData[LJSNaPTANCodeKey];
     NSString *html = [self loadHTMLFileNamed:@"tram"];
     
     NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:html];
-    NSString *scrapedStopCode = scrapedData[LJSStopCodeKey];
+    NSString *scrapedNaPTANCode = scrapedData[LJSNaPTANCodeKey];
     
-    XCTAssertEqualObjects(scrapedStopCode, correctStopCode, @"");
+    XCTAssertEqualObjects(scrapedNaPTANCode, correctNaPTANCode, @"");
 }
 
 - (void)testScrapesStopName {

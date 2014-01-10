@@ -67,7 +67,7 @@
     _sut.contentDownloader = [self mockContentDownloadReturningHTML:@"some html"];
     
     __block NSDictionary *capturedData = nil;
-    [_sut depatureDataForStopNumber:@"1234" completion:^(NSDictionary *data, NSURL *nextPageURL, NSError *error) {
+    [_sut depatureDataForNaPTANCode:@"1234" completion:^(NSDictionary *data, NSURL *nextPageURL, NSError *error) {
         capturedData = data;
     }];
     
@@ -82,7 +82,7 @@
     _sut.contentDownloader = [self mockContentDownloadReturningHTML:@"some html"];
     
     __block NSURL *capturedURL = nil;
-    [_sut depatureDataForStopNumber:@"1234" completion:^(NSDictionary *data, NSURL *nextPageURL, NSError *error) {
+    [_sut depatureDataForNaPTANCode:@"1234" completion:^(NSDictionary *data, NSURL *nextPageURL, NSError *error) {
         capturedURL = nextPageURL;
     }];
     

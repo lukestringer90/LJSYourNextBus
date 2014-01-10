@@ -9,7 +9,7 @@
 #import "LJSScraper.h"
 #import <ObjectiveGumbo/ObjectiveGumbo.h>
 
-NSString * const LJSStopCodeKey = @"stop_code";
+NSString * const LJSNaPTANCodeKey = @"NaPTAN_code";
 NSString * const LJSStopNameKey = @"stop_name";
 NSString * const LJSDepaturesKey = @"departures";
 NSString * const LJSDestinationKey = @"destination";
@@ -72,12 +72,12 @@ NSString * const LJSLiveDateKey = @"live_information";
     OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];
     NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
     
-    NSString *stopCode = [self scrapeStopCodeFromHTML:html];
+    NSString *naptanCode = [self scrapeNaPTANCodeFromHTML:html];
     NSString *stopName = [self scrapeStopNameFromHTML:html];
     NSString *scrapeDate = [self scapeLiveDateFromHTML:html];
     
     NSDictionary *scrapedData = @{
-                                  LJSStopCodeKey : stopCode,
+                                  LJSNaPTANCodeKey : naptanCode,
                                   LJSStopNameKey : stopName,
                                   LJSLiveDateKey : scrapeDate
                                   };
@@ -100,7 +100,7 @@ NSString * const LJSLiveDateKey = @"live_information";
 
 #pragma mark - Regex scraping
 
-- (NSString *)scrapeStopCodeFromHTML:(NSString *)html {
+- (NSString *)scrapeNaPTANCodeFromHTML:(NSString *)html {
     NSString *pattern = @".*<p>Stop Number: <b>(.*)</b></p>.*";
     return [self scrapeHTML:html usingRegexPattern:pattern];
 }
@@ -128,13 +128,13 @@ NSString * const LJSLiveDateKey = @"live_information";
                                                     options:0
                                                       range:NSMakeRange(0, [html length])];
 
-    NSString *stopCode = nil;
+    NSString *NaPTANCode = nil;
     if (match) {
         // Assume group of interest is at index 1
-        stopCode = [html substringWithRange:[match rangeAtIndex:1]];
+        NaPTANCode = [html substringWithRange:[match rangeAtIndex:1]];
     }
     
-    return stopCode;
+    return NaPTANCode;
 
 }
 

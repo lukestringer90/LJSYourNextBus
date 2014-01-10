@@ -36,7 +36,7 @@ static BOOL isRunningTests(void) {
 
 - (void)main {
     LJSTravelSouthYorkshire *client = [[LJSTravelSouthYorkshire alloc] init];
-    [client depatureDataForStopNumber:@"37090168" completion:^(id json, NSURL *nextPageURL, NSError *error) {
+    [client depatureDataForNaPTANCode:@"37090168" completion:^(id json, NSURL *nextPageURL, NSError *error) {
        NSLog(@"%@", json);
         NSLog(@"%@", error);
     }];
