@@ -31,6 +31,8 @@
 		A39396DE18819BA200309D1C /* standwood_avenue_bus.json in Resources */ = {isa = PBXBuildFile; fileRef = A39396DD18819BA200309D1C /* standwood_avenue_bus.json */; };
 		A39396E01882095800309D1C /* standwoord_avenue_bus_no_depatures.html in Resources */ = {isa = PBXBuildFile; fileRef = A39396DF1882095800309D1C /* standwoord_avenue_bus_no_depatures.html */; };
 		A39396E21882096900309D1C /* standwoord_avenue_bus_no_depatures.json in Resources */ = {isa = PBXBuildFile; fileRef = A39396E11882096900309D1C /* standwoord_avenue_bus_no_depatures.json */; };
+		A39396E418820A9800309D1C /* standwoord_avenue_bus_no_earlier.html in Resources */ = {isa = PBXBuildFile; fileRef = A39396E318820A9800309D1C /* standwoord_avenue_bus_no_earlier.html */; };
+		A39396E618820BFA00309D1C /* standwoord_avenue_bus_no_later.html in Resources */ = {isa = PBXBuildFile; fileRef = A39396E518820BFA00309D1C /* standwoord_avenue_bus_no_later.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		A39396DD18819BA200309D1C /* standwood_avenue_bus.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = standwood_avenue_bus.json; sourceTree = "<group>"; };
 		A39396DF1882095800309D1C /* standwoord_avenue_bus_no_depatures.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = standwoord_avenue_bus_no_depatures.html; sourceTree = "<group>"; };
 		A39396E11882096900309D1C /* standwoord_avenue_bus_no_depatures.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = standwoord_avenue_bus_no_depatures.json; sourceTree = "<group>"; };
+		A39396E318820A9800309D1C /* standwoord_avenue_bus_no_earlier.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = standwoord_avenue_bus_no_earlier.html; sourceTree = "<group>"; };
+		A39396E518820BFA00309D1C /* standwoord_avenue_bus_no_later.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = standwoord_avenue_bus_no_later.html; sourceTree = "<group>"; };
 		A8EE5F3142B94472B28F0A04 /* libPods-LJSTravelSouthYorkshire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F9D6E3FADB44879405E297 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshireTests.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshireTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,6 +216,8 @@
 				A39396DD18819BA200309D1C /* standwood_avenue_bus.json */,
 				A39396DF1882095800309D1C /* standwoord_avenue_bus_no_depatures.html */,
 				A39396E11882096900309D1C /* standwoord_avenue_bus_no_depatures.json */,
+				A39396E318820A9800309D1C /* standwoord_avenue_bus_no_earlier.html */,
+				A39396E518820BFA00309D1C /* standwoord_avenue_bus_no_later.html */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -305,6 +311,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A39396E418820A9800309D1C /* standwoord_avenue_bus_no_earlier.html in Resources */,
+				A39396E618820BFA00309D1C /* standwoord_avenue_bus_no_later.html in Resources */,
 				A386ED141878A065008372CD /* InfoPlist.strings in Resources */,
 				A39396E01882095800309D1C /* standwoord_avenue_bus_no_depatures.html in Resources */,
 				A32C448E187DDCE70034F26B /* malin_bridge_tram.json in Resources */,

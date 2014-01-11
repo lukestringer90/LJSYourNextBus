@@ -99,10 +99,17 @@
 }
 
 - (void)testScrpaesLaterDepaturesURL {
-    NSURL *corectURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
+    NSURL *correctURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
     NSURL *scrapedURL = [_sut scrapeLaterDepaturesURL:_html];
     
-    XCTAssertEqualObjects(scrapedURL, corectURL, @"");
+    XCTAssertEqualObjects(scrapedURL, correctURL, @"");
+}
+
+- (void)testEarlierDepaturesURL {
+    NSURL *correctURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=10&textonly=1"];
+    NSURL *scrapedURL = [_sut scrapeEarlierDepaturesURL:_html];
+    
+    XCTAssertEqualObjects(scrapedURL, correctURL, @"");
 }
 
 - (void)testReturnsNoDepatureData {
@@ -114,16 +121,26 @@
     XCTAssertNil(scrapedDepatures, @"");
 }
 
-- (void)testInstantiatesError {
-    // TODO: Malformed HTML
+
+- (void)testReturnsNoEarlierURL {
+    _html = [self loadHTMLFileNamed:@"standwoord_avenue_bus_no_earlier"];
+    
+    NSURL *scrapedURL = [_sut scrapeEarlierDepaturesURL:_html];
+    
+    XCTAssertNil(scrapedURL, @"");
 }
 
 - (void)testReturnsNoLaterURL {
-    // TODO: No later depatures URL in HTML
+    _html = [self loadHTMLFileNamed:@"standwoord_avenue_bus_no_later"];
+    
+    NSURL *scrapedURL = [_sut scrapeLaterDepaturesURL:_html];
+    
+    XCTAssertNil(scrapedURL, @"");
+
 }
 
-- (void)testReturnsNoEarlierURL {
-    // TODO: No earlier depatures URL in HTML
+- (void)testInstantiatesError {
+    // TODO: Malformed HTML
 }
 
 @end
