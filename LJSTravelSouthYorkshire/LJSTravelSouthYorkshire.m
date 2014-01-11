@@ -38,7 +38,7 @@
     NSError *error = nil;
     NSString *htmlString = [self.contentDownloader downloadHTMLFromURL:url error:&error];
     
-    if (error) {
+    if (error || !htmlString) {
         [self safeCallCompletionBlockWithDepatureData:nil laterURL:nil earilierURL:nil error:error];
     }
     else {
