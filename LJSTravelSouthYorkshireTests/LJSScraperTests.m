@@ -47,6 +47,8 @@
 
 #pragma mark - Tests
 
+#pragma mark - Depature data
+
 - (void)testScapesDepaturesWithoutLowFloorAccess {
     _correctData = [self loadJSONFileNamed:@"malin_bridge_tram"];
     _html = [self loadHTMLFileNamed:@"malin_bridge_tram"];
@@ -71,46 +73,6 @@
     XCTAssertEqualObjects(scrapedDepatures, correctDepatures, @"");
 }
 
-- (void)testScrapesNaPTANCode {
-    NSString *correctNaPTANCode = _correctData[LJSNaPTANCodeKey];
-    
-    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
-    NSString *scrapedNaPTANCode = scrapedData[LJSNaPTANCodeKey];
-    
-    XCTAssertEqualObjects(scrapedNaPTANCode, correctNaPTANCode, @"");
-}
-
-- (void)testScrapesStopName {
-    NSString *correctStopName = _correctData[LJSStopNameKey];
-    
-    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
-    NSString *scrapedStopName = scrapedData[LJSStopNameKey  ];
-    
-    XCTAssertEqualObjects(scrapedStopName, correctStopName, @"");
-}
-
-- (void)testScrapesLiveInformationDate {
-    NSString *correctLiveDate = _correctData[LJSLiveTimeKey];
-    
-    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
-    NSString *scrapedLiveDate = scrapedData[LJSLiveTimeKey];
-    
-    XCTAssertEqualObjects(scrapedLiveDate, correctLiveDate, @"");
-}
-
-- (void)testScrpaesLaterDepaturesURL {
-    NSURL *correctURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
-    NSURL *scrapedURL = [_sut scrapeLaterDepaturesURL:_html];
-    
-    XCTAssertEqualObjects(scrapedURL, correctURL, @"");
-}
-
-- (void)testEarlierDepaturesURL {
-    NSURL *correctURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=10&textonly=1"];
-    NSURL *scrapedURL = [_sut scrapeEarlierDepaturesURL:_html];
-    
-    XCTAssertEqualObjects(scrapedURL, correctURL, @"");
-}
 
 - (void)testReturnsNoDepatureData {
     _html = [self loadHTMLFileNamed:@"standwoord_avenue_bus_no_depatures"];
@@ -121,6 +83,64 @@
     XCTAssertNil(scrapedDepatures, @"");
 }
 
+#pragma mark - NaPTAN code
+
+- (void)testScrapesNaPTANCode {
+    NSString *correctNaPTANCode = _correctData[LJSNaPTANCodeKey];
+    
+    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
+    NSString *scrapedNaPTANCode = scrapedData[LJSNaPTANCodeKey];
+    
+    XCTAssertEqualObjects(scrapedNaPTANCode, correctNaPTANCode, @"");
+}
+
+#pragma mark - Stop name
+
+- (void)testScrapesStopName {
+    NSString *correctStopName = _correctData[LJSStopNameKey];
+    
+    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
+    NSString *scrapedStopName = scrapedData[LJSStopNameKey  ];
+    
+    XCTAssertEqualObjects(scrapedStopName, correctStopName, @"");
+}
+
+#pragma mark - Live information date
+
+- (void)testScrapesLiveInformationDate {
+    NSString *correctLiveDate = _correctData[LJSLiveTimeKey];
+    
+    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
+    NSString *scrapedLiveDate = scrapedData[LJSLiveTimeKey];
+    
+    XCTAssertEqualObjects(scrapedLiveDate, correctLiveDate, @"");
+}
+
+#pragma mark - Later URL
+
+- (void)testScrpaesLaterDepaturesURL {
+    NSURL *correctURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
+    NSURL *scrapedURL = [_sut scrapeLaterDepaturesURL:_html];
+    
+    XCTAssertEqualObjects(scrapedURL, correctURL, @"");
+}
+
+- (void)testReturnsNoLaterURL {
+    _html = [self loadHTMLFileNamed:@"standwoord_avenue_bus_no_later"];
+    
+    NSURL *scrapedURL = [_sut scrapeLaterDepaturesURL:_html];
+    
+    XCTAssertNil(scrapedURL, @"");
+}
+
+#pragma mark - Earlier URL
+
+- (void)testEarlierDepaturesURL {
+    NSURL *correctURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=10&textonly=1"];
+    NSURL *scrapedURL = [_sut scrapeEarlierDepaturesURL:_html];
+    
+    XCTAssertEqualObjects(scrapedURL, correctURL, @"");
+}
 
 - (void)testReturnsNoEarlierURL {
     _html = [self loadHTMLFileNamed:@"standwoord_avenue_bus_no_earlier"];
@@ -130,14 +150,7 @@
     XCTAssertNil(scrapedURL, @"");
 }
 
-- (void)testReturnsNoLaterURL {
-    _html = [self loadHTMLFileNamed:@"standwoord_avenue_bus_no_later"];
-    
-    NSURL *scrapedURL = [_sut scrapeLaterDepaturesURL:_html];
-    
-    XCTAssertNil(scrapedURL, @"");
-
-}
+#pragma mark - Other
 
 - (void)testInstantiatesError {
     // TODO: Malformed HTML
