@@ -16,6 +16,6 @@ typedef void (^LJSDepatureDataCompletion)(NSDictionary *depatureData, NSURL *lat
 
 - (void)depatureDataAtURL:(NSURL *)url completion:(LJSDepatureDataCompletion)completion;
 
-- (NSURL *)urlForStopNumber:(NSString *)stopNumber;
+- (NSURL *)urlForNaPTANCode:(NSString *)stopNumber;
 
 @end

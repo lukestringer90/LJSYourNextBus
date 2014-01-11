@@ -67,8 +67,15 @@
 
 #pragma mark - Tests
 
-- (void)testURLForStopNumber {
-    
+- (void)testURLForNaPTANCode {
+    NSURL *correctURL = [NSURL URLWithString:@"http://tsy.acislive.com/pip/stop.asp?naptan=123456&textonly=1&pda=1"];
+    NSURL *generatedURL = [_sut urlForNaPTANCode:@"123456"];
+    XCTAssertEqualObjects(generatedURL, correctURL, @"");
+}
+
+- (void)testNoURLForNilNaPTANCode {
+    NSURL *generatedURL = [_sut urlForNaPTANCode:nil];
+    XCTAssertNil(generatedURL, @"");
 }
 
 - (void)testReturnsDataAfterSucessfulScrape {
@@ -113,7 +120,7 @@
     XCTAssertEqualObjects(capturedURL, correctURL, @"");
 }
 
-- (void)testReturnsNoDataAfterUnsucessfulScape {
+- (void)testReturnsNoDataAfterUnsucessfulScrape {
     // TODO: No depature table in HTML
 
 }

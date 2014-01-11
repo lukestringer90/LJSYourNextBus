@@ -28,7 +28,7 @@
 }
 
 - (void)depatureDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSDepatureDataCompletion)completion {
-    NSURL *url = [self urlForStopNumber:NaPTANCode];
+    NSURL *url = [self urlForNaPTANCode:NaPTANCode];
     [self depatureDataAtURL:url completion:completion];
 }
 
@@ -46,9 +46,11 @@
     }
 }
 
-// TODO: Change name to NaPTAN code and write tests
-- (NSURL *)urlForStopNumber:(NSString *)stopNumber {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"http://tsy.acislive.com/pip/stop.asp?naptan=%@&textonly=1&pda=1", stopNumber]];
+- (NSURL *)urlForNaPTANCode:(NSString *)stopNumber {
+    if (stopNumber) {
+        return [NSURL URLWithString:[NSString stringWithFormat:@"http://tsy.acislive.com/pip/stop.asp?naptan=%@&textonly=1&pda=1", stopNumber]];
+    }
+    return nil;
 }
 
 - (void)scrapeHTML:(NSString *)html {
