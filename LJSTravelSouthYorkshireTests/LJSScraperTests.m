@@ -47,7 +47,22 @@
 
 #pragma mark - Tests
 
-- (void)testScapesDepatures {
+- (void)testScapesDepaturesWithoutLowFloorAccess {
+    _correctData = [self loadJSONFileNamed:@"malin_bridge_tram"];
+    _html = [self loadHTMLFileNamed:@"malin_bridge_tram"];
+    
+    NSDictionary *correctDepatures = _correctData[LJSDepaturesKey];
+    
+    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
+    NSDictionary *scrapedDepatures = scrapedData[LJSDepaturesKey];
+    
+    XCTAssertEqualObjects(scrapedDepatures, correctDepatures, @"");
+}
+
+- (void)testScapesDepaturesWithLowFloorAccess {
+    _correctData = [self loadJSONFileNamed:@"standwood_avenue_bus"];
+    _html = [self loadHTMLFileNamed:@"standwood_avenue_bus"];
+    
     NSDictionary *correctDepatures = _correctData[LJSDepaturesKey];
     
     NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
@@ -88,7 +103,6 @@
     NSURL *scrapedURL = [_sut scrapeLaterDepaturesURL:_html];
     
     XCTAssertEqualObjects(scrapedURL, corectURL, @"");
-
 }
 
 - (void)testReturnsNoDepatureData {

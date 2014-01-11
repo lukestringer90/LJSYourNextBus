@@ -15,6 +15,7 @@ NSString * const LJSDepaturesKey = @"departures";
 NSString * const LJSDestinationKey = @"destination";
 NSString * const LJSExpectedDepatureTimeKey = @"expected_departure_time";
 NSString * const LJSLiveTimeKey = @"live_information_time";
+NSString * const LJSLowFloorAccess = @"low_floor_access";
 
 
 @implementation LJSScraper
@@ -82,22 +83,26 @@ NSString * const LJSLiveTimeKey = @"live_information_time";
     
     NSString *naptanCode = [self scrapeNaPTANCodeFromHTML:html];
     NSString *stopName = [self scrapeStopNameFromHTML:html];
-    NSString *scrapeDate = [self scapeLiveDateFromHTML:html];
+    NSString *liveDate = [self scapeLiveDateFromHTML:html];
     
     NSDictionary *scrapedData = @{
                                   LJSNaPTANCodeKey : naptanCode,
                                   LJSStopNameKey : stopName,
-                                  LJSLiveTimeKey : scrapeDate
+                                  LJSLiveTimeKey : liveDate,
                                   };
     
     for (NSInteger serviceRowIndex = 0; serviceRowIndex < tds.count; serviceRowIndex+=4) {
         OGElement *serviceElement = tds[serviceRowIndex];
         OGElement *destinationElement = tds[serviceRowIndex+1];
         OGElement *depatureElement = tds[serviceRowIndex+2];
+        OGElement *lowFloorAccessElement = tds[serviceRowIndex+3];
+        
+        NSNumber *lowFloorAccessValue = [self lowFloorAccessFromString:lowFloorAccessElement.text];
         
         scrapedData = [self processServiceValue:[self removeLastCharacterFromString:serviceElement.text]
                                destinationValue:[self removeLastCharacterFromString:destinationElement.text]
                                   depatureValue:[self removeLastCharacterFromString:depatureElement.text]
+                            lowFloorAccessValue:lowFloorAccessValue
                                 intoScrapedData:scrapedData];
         
     }
@@ -143,12 +148,18 @@ NSString * const LJSLiveTimeKey = @"live_information_time";
     }
     
     return NaPTANCode;
+}
 
+- (NSNumber *)lowFloorAccessFromString:(NSString *)string {
+    if ([string rangeOfString:@"LF"].location == NSNotFound) {
+        return @0;
+    }
+    return @1;
 }
 
 #pragma mark - ObjectiveGumbo scraping
 
-- (NSDictionary *)processServiceValue:(NSString *)serviceValue destinationValue:(NSString *)destinationTimeValue depatureValue:(NSString *)depatureValue intoScrapedData:(NSDictionary *)scrapedData {
+- (NSDictionary *)processServiceValue:(NSString *)serviceValue destinationValue:(NSString *)destinationTimeValue depatureValue:(NSString *)depatureValue lowFloorAccessValue:(NSNumber *)lowFloorAccessValue intoScrapedData:(NSDictionary *)scrapedData {
     
     NSMutableDictionary *allDepatures = [[scrapedData valueForKey:LJSDepaturesKey] mutableCopy];
     if (!allDepatures) {
@@ -157,7 +168,8 @@ NSString * const LJSLiveTimeKey = @"live_information_time";
     
     NSDictionary *depatureDictionary = @{
                                          LJSDestinationKey : destinationTimeValue,
-                                         LJSExpectedDepatureTimeKey : depatureValue
+                                         LJSExpectedDepatureTimeKey : depatureValue,
+                                         LJSLowFloorAccess : lowFloorAccessValue
                                          };
     
     NSArray *depatureForThisService = allDepatures[serviceValue];

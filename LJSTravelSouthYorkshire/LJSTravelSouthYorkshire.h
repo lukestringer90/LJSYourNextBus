@@ -14,6 +14,7 @@ extern NSString * const LJSDepaturesKey;
 extern NSString * const LJSDestinationKey;
 extern NSString * const LJSExpectedDepatureTimeKey;
 extern NSString * const LJSLiveTimeKey;
+extern NSString * const LJSLowFloorAccess;
 
 @interface LJSTravelSouthYorkshire : NSObject
 

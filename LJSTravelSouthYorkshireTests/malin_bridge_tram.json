@@ -3,29 +3,35 @@
         "BLUE" :         [
                         {
                 "destination" : "Malin Bridge",
-                "expected_departure_time" : "11:49"
+                "expected_departure_time" : "11:49",
+                "low_floor_access" : 0
             },
                         {
                 "destination" : "Malin Bridge",
-                "expected_departure_time" : "12:09"
+                "expected_departure_time" : "12:09",
+                "low_floor_access" : 0
             },
                         {
                 "destination" : "Malin Bridge",
-                "expected_departure_time" : "12:29"
+                "expected_departure_time" : "12:29",
+                "low_floor_access" : 0
             }
         ],
         "YELL" :         [
                         {
                 "destination" : "Middlewood",
-                "expected_departure_time" : "11:38"
+                "expected_departure_time" : "11:38",
+                "low_floor_access" : 0
             },
                         {
                 "destination" : "Middlewood",
-                "expected_departure_time" : "11:58"
+                "expected_departure_time" : "11:58",
+                "low_floor_access" : 0
             },
                         {
                 "destination" : "Middlewood",
-                "expected_departure_time" : "12:18"
+                "expected_departure_time" : "12:18",
+                "low_floor_access" : 0
             }
         ]
     },

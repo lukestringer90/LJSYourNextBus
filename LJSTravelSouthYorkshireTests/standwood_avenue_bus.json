@@ -6,65 +6,79 @@
         "12" : [
                 {
                 "destination" : "Sheffield",
-                "expected_departure_time" : "Due"
+                "expected_departure_time" : "Due",
+                "low_floor_access" : 1
                 },
                 {
                 "destination" : "Sheffield",
-                "expected_departure_time" : "20 mins"
+                "expected_departure_time" : "20 mins",
+                "low_floor_access" : 1
                 },
                 {
                 "destination" : "Sheffield",
-                "expected_departure_time" : "40 mins"
+                "expected_departure_time" : "40 mins",
+                "low_floor_access" : 1
                 },
                 {
                 "destination" : "Sheffield",
-                "expected_departure_time" : "15:13"
+                "expected_departure_time" : "15:13",
+                "low_floor_access" : 0
                 }
                 ],
         "61" : [
                 {
                 "destination" : "Hillsborough",
-                "expected_departure_time" : "14:40"
+                "expected_departure_time" : "14:40",
+                "low_floor_access" : 0
                 }
                 ],
         "11" : [
                 {
                 "destination" : "Sheffield",
-                "expected_departure_time" : "16 mins"
+                "expected_departure_time" : "16 mins",
+                "low_floor_access" : 1
                 },
                 {
                 "destination" : "Sheffield",
-                "expected_departure_time" : "14:48"
+                "expected_departure_time" : "14:48",
+                "low_floor_access" : 0
                 },
                 {
                 "destination" : "Sheffield",
-                "expected_departure_time" : "15:08"
+                "expected_departure_time" : "15:08",
+                "low_floor_access" : 0
                 }
                 ],
         "SL2" : [
                  {
                  "destination" : "Malin Bridge",
-                 "expected_departure_time" : "2 mins"
+                 "expected_departure_time" : "2 mins",
+                "low_floor_access" : 1
                  },
                  {
                  "destination" : "Malin Bridge",
-                 "expected_departure_time" : "12 mins"
+                 "expected_departure_time" : "12 mins",
+                "low_floor_access" : 1
                  },
                  {
                  "destination" : "Malin Bridge",
-                 "expected_departure_time" : "21 mins"
+                 "expected_departure_time" : "21 mins",
+                "low_floor_access" : 1
                  },
                  {
                  "destination" : "Malin Bridge",
-                 "expected_departure_time" : "31 mins"
+                 "expected_departure_time" : "31 mins",
+                "low_floor_access" : 1
                  },
                  {
                  "destination" : "Malin Bridge",
-                 "expected_departure_time" : "41 mins"
+                 "expected_departure_time" : "41 mins",
+                "low_floor_access" : 1
                  },
                  {
                  "destination" : "Malin Bridge",
-                 "expected_departure_time" : "51 mins"
+                 "expected_departure_time" : "51 mins",
+                "low_floor_access" : 1
                  }
                  ]
     }
