@@ -106,7 +106,12 @@
 }
 
 - (void)testReturnsNoDepatureData {
-    // TODO: No depature table in HTML
+    _html = [self loadHTMLFileNamed:@"standwoord_avenue_bus_no_depatures"];
+    
+    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
+    NSDictionary *scrapedDepatures = scrapedData[LJSDepaturesKey];
+    
+    XCTAssertNil(scrapedDepatures, @"");
 }
 
 - (void)testInstantiatesError {
