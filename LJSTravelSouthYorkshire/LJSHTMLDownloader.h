@@ -1,5 +1,5 @@
 //
-//  LJSWebContentDownloader.h
+//  LJSHTMLDownloader.h
 //  LJSTravelSouthYorkshire
 //
 //  Created by Luke Stringer on 05/01/2014.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LJSWebContentDownloader : NSObject
+@interface LJSHTMLDownloader : NSObject
 
 - (NSString *)downloadHTMLFromURL:(NSURL *)url error:(NSError **)error;
 

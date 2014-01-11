@@ -7,13 +7,13 @@
 //
 
 #import "LJSTravelSouthYorkshire.h"
-#import "LJSWebContentDownloader.h"
+#import "LJSHTMLDownloader.h"
 #import "LJSScraper.h"
 
 @interface LJSTravelSouthYorkshire ()
 @property (nonatomic, copy) LJSDepatureDataCompletion completion;
 @property (nonatomic, strong) LJSScraper *scraper;
-@property (nonatomic, strong) LJSWebContentDownloader *contentDownloader;
+@property (nonatomic, strong) LJSHTMLDownloader *contentDownloader;
 @end
 
 @implementation LJSTravelSouthYorkshire
@@ -22,7 +22,7 @@
     self = [super init];
     if (self) {
         self.scraper = [[LJSScraper alloc] init];
-        self.contentDownloader = [[LJSWebContentDownloader alloc] init];
+        self.contentDownloader = [[LJSHTMLDownloader alloc] init];
     }
     return self;
 }

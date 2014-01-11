@@ -11,11 +11,11 @@
 
 #import "LJSTravelSouthYorkshire.h"
 #import "LJSScraper.h"
-#import "LJSWebContentDownloader.h"
+#import "LJSHTMLDownloader.h"
 
 @interface LJSTravelSouthYorkshire (TestVisibility)
 @property (nonatomic, strong) LJSScraper *scraper;
-@property (nonatomic, strong) LJSWebContentDownloader *contentDownloader;
+@property (nonatomic, strong) LJSHTMLDownloader *contentDownloader;
 @end
 
 @interface LJSTravelSouthYorkshireTests : XCTestCase {
@@ -60,7 +60,7 @@
 
 
 - (id)mockContentDownloadReturningHTML:(NSString *)htmlString {
-    id contentDownloaderMock = [OCMockObject niceMockForClass:[LJSWebContentDownloader class]];
+    id contentDownloaderMock = [OCMockObject niceMockForClass:[LJSHTMLDownloader class]];
     [[[contentDownloaderMock stub] andReturn:htmlString] downloadHTMLFromURL:[OCMArg any] error:[OCMArg setTo:nil]];
     return contentDownloaderMock;
 }
