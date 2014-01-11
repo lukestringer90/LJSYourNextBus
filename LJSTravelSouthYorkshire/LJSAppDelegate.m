@@ -35,11 +35,11 @@ static BOOL isRunningTests(void) {
 }
 
 - (void)main {
-//    LJSTravelSouthYorkshire *client = [[LJSTravelSouthYorkshire alloc] init];
-//    [client depatureDataForNaPTANCode:@"37090168" completion:^(id json, NSURL *nextPageURL, NSError *error) {
-//       NSLog(@"%@", json);
-//        NSLog(@"%@", error);
-//    }];
+    LJSTravelSouthYorkshire *client = [[LJSTravelSouthYorkshire alloc] init];
+    [client depatureDataForNaPTANCode:@"37021865" completion:^(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+        NSLog(@"%@", depatureData);
+        NSLog(@"%@", error);
+    }];
 }
 
 @end
