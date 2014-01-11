@@ -1,0 +1,71 @@
+{
+    "NaPTAN_code" : "37021865",
+    "stop_name" : "Stanwood Avenue",
+    "live_information_time" : "14:13",
+    "departures" : {
+        "12" : [
+                {
+                "destination" : "Sheffield",
+                "expected_departure_time" : "Due"
+                },
+                {
+                "destination" : "Sheffield",
+                "expected_departure_time" : "20 mins"
+                },
+                {
+                "destination" : "Sheffield",
+                "expected_departure_time" : "40 mins"
+                },
+                {
+                "destination" : "Sheffield",
+                "expected_departure_time" : "15:13"
+                }
+                ],
+        "61" : [
+                {
+                "destination" : "Hillsborough",
+                "expected_departure_time" : "14:40"
+                }
+                ],
+        "11" : [
+                {
+                "destination" : "Sheffield",
+                "expected_departure_time" : "16 mins"
+                },
+                {
+                "destination" : "Sheffield",
+                "expected_departure_time" : "14:48"
+                },
+                {
+                "destination" : "Sheffield",
+                "expected_departure_time" : "15:08"
+                }
+                ],
+        "SL2" : [
+                 {
+                 "destination" : "Malin Bridge",
+                 "expected_departure_time" : "2 mins"
+                 },
+                 {
+                 "destination" : "Malin Bridge",
+                 "expected_departure_time" : "12 mins"
+                 },
+                 {
+                 "destination" : "Malin Bridge",
+                 "expected_departure_time" : "21 mins"
+                 },
+                 {
+                 "destination" : "Malin Bridge",
+                 "expected_departure_time" : "31 mins"
+                 },
+                 {
+                 "destination" : "Malin Bridge",
+                 "expected_departure_time" : "41 mins"
+                 },
+                 {
+                 "destination" : "Malin Bridge",
+                 "expected_departure_time" : "51 mins"
+                 }
+                 ]
+    }
+}

@@ -27,6 +27,8 @@
 		A386ED221878A612008372CD /* LJSTravelSouthYorkshire.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED211878A612008372CD /* LJSTravelSouthYorkshire.m */; };
 		A386ED271878E243008372CD /* LJSScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED261878E243008372CD /* LJSScraper.m */; };
 		A386ED2A1878EE89008372CD /* LJSWebContentDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A386ED291878EE89008372CD /* LJSWebContentDownloader.m */; };
+		A39396DA1881893200309D1C /* standwood_avenue_bus.html in Resources */ = {isa = PBXBuildFile; fileRef = A39396D91881893200309D1C /* standwood_avenue_bus.html */; };
+		A39396DE18819BA200309D1C /* standwood_avenue_bus.json in Resources */ = {isa = PBXBuildFile; fileRef = A39396DD18819BA200309D1C /* standwood_avenue_bus.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		A386ED261878E243008372CD /* LJSScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSScraper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A386ED281878EE89008372CD /* LJSWebContentDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSWebContentDownloader.h; sourceTree = "<group>"; };
 		A386ED291878EE89008372CD /* LJSWebContentDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSWebContentDownloader.m; sourceTree = "<group>"; };
+		A39396D91881893200309D1C /* standwood_avenue_bus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = standwood_avenue_bus.html; sourceTree = "<group>"; };
+		A39396DD18819BA200309D1C /* standwood_avenue_bus.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = standwood_avenue_bus.json; sourceTree = "<group>"; };
 		A8EE5F3142B94472B28F0A04 /* libPods-LJSTravelSouthYorkshire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F9D6E3FADB44879405E297 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshireTests.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshireTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,10 +164,8 @@
 		A386ED0F1878A065008372CD /* LJSTravelSouthYorkshireTests */ = {
 			isa = PBXGroup;
 			children = (
-				A386ED151878A065008372CD /* LJSTravelSouthYorkshireTests.m */,
-				A32C4490187DEEF60034F26B /* LJSScraperTests.m */,
-				A32C448C187DDCE70034F26B /* malin_bridge_tram.json */,
-				A32C448D187DDCE70034F26B /* malin_bridge_tram.html */,
+				A39396D718817C0900309D1C /* Tests */,
+				A39396D818817C1300309D1C /* Data */,
 				A386ED101878A065008372CD /* Supporting Files */,
 			);
 			path = LJSTravelSouthYorkshireTests;
@@ -186,6 +188,26 @@
 				A386ED021878A064008372CD /* Images.xcassets */,
 			);
 			name = App;
+			sourceTree = "<group>";
+		};
+		A39396D718817C0900309D1C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A386ED151878A065008372CD /* LJSTravelSouthYorkshireTests.m */,
+				A32C4490187DEEF60034F26B /* LJSScraperTests.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		A39396D818817C1300309D1C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A32C448C187DDCE70034F26B /* malin_bridge_tram.json */,
+				A32C448D187DDCE70034F26B /* malin_bridge_tram.html */,
+				A39396D91881893200309D1C /* standwood_avenue_bus.html */,
+				A39396DD18819BA200309D1C /* standwood_avenue_bus.json */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +301,8 @@
 			files = (
 				A386ED141878A065008372CD /* InfoPlist.strings in Resources */,
 				A32C448E187DDCE70034F26B /* malin_bridge_tram.json in Resources */,
+				A39396DA1881893200309D1C /* standwood_avenue_bus.html in Resources */,
+				A39396DE18819BA200309D1C /* standwood_avenue_bus.json in Resources */,
 				A32C448F187DDCE70034F26B /* malin_bridge_tram.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
