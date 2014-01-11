@@ -28,6 +28,12 @@ NSString * const LJSLiveDateKey = @"live_information";
     return [NSURL URLWithString:path];
 }
 
+- (NSURL *)scrapeEarlierDepaturesURL:(NSString *)html {
+    NSString *pattern = @".*<a href=\"(.*)\">Earlier.*";
+    NSString *path = [self scrapeHTML:html usingRegexPattern:pattern];
+    return [NSURL URLWithString:path];
+}
+
 /*
  
  Scraping into this form:

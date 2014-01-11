@@ -51,12 +51,10 @@
     return [NSURL URLWithString:[NSString stringWithFormat:@"http://tsy.acislive.com/pip/stop.asp?naptan=%@&textonly=1&pda=1", stopNumber]];
 }
 
-- (void)scrapeHTML:(NSString *)htmlString {
-    NSDictionary *depatureData = [self.scraper scrapeDepatureDataFromHTML:htmlString];
-    NSURL *laterURL = [self.scraper scrapeLaterDepaturesURL:htmlString];
-    
-    // TODO: Scrape earlier URL
-    NSURL *earlierURL = nil;
+- (void)scrapeHTML:(NSString *)html {
+    NSDictionary *depatureData = [self.scraper scrapeDepatureDataFromHTML:html];
+    NSURL *laterURL = [self.scraper scrapeLaterDepaturesURL:html];
+    NSURL *earlierURL = [self.scraper scrapeEarlierDepaturesURL:html];
     
     [self safeCallCompletionBlockWithDepatureData:depatureData laterURL:laterURL earilierURL:earlierURL error:nil];
 }

@@ -18,7 +18,7 @@ extern NSString * const LJSLiveDateKey;
 @interface LJSScraper : NSObject
 
 - (NSDictionary *)scrapeDepatureDataFromHTML:(NSString *)html;
-
 - (NSURL *)scrapeLaterDepaturesURL:(NSString *)html;
+- (NSURL *)scrapeEarlierDepaturesURL:(NSString *)html;
 
 @end

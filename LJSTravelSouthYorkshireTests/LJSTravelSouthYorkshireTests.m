@@ -46,11 +46,18 @@
     return scraperMock;
 }
 
-- (id)mockScraperReturninglaterDepaturesURL:(NSURL *)url {
+- (id)mockScraperReturningLaterURL:(NSURL *)url {
     id scraperMock = [OCMockObject niceMockForClass:[LJSScraper class]];
     [[[scraperMock stub] andReturn:url] scrapeLaterDepaturesURL:[OCMArg any]];
     return scraperMock;
 }
+
+- (id)mockScraperReturningEarlierURL:(NSURL *)url {
+    id scraperMock = [OCMockObject niceMockForClass:[LJSScraper class]];
+    [[[scraperMock stub] andReturn:url] scrapeEarlierDepaturesURL:[OCMArg any]];
+    return scraperMock;
+}
+
 
 - (id)mockContentDownloadReturningHTML:(NSString *)htmlString {
     id contentDownloaderMock = [OCMockObject niceMockForClass:[LJSWebContentDownloader class]];
@@ -78,15 +85,29 @@
     XCTAssertEqualObjects(capturedData, correctData, @"");
 }
 
-- (void)testReturnsNextURLAfterSucessfulScrape {
+- (void)testReturnsLaterDepaturesURLAfterSucessfulScrape {
     NSURL *correctURL = [NSURL URLWithString:@"pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
     
-    _sut.scraper = [self mockScraperReturninglaterDepaturesURL:correctURL];
+    _sut.scraper = [self mockScraperReturningLaterURL:correctURL];
     _sut.contentDownloader = [self mockContentDownloadReturningHTML:@"some html"];
     
     __block NSURL *capturedURL = nil;
     [_sut depatureDataForNaPTANCode:@"1234" completion:^(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
         capturedURL = laterURL;
+    }];
+    
+    XCTAssertEqualObjects(capturedURL, correctURL, @"");
+}
+
+- (void)testReturnsEarlierDepaturesURLAfterSucessfulScrape {
+    NSURL *correctURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=10&textonly=1"];
+    
+    _sut.scraper = [self mockScraperReturningEarlierURL:correctURL];
+    _sut.contentDownloader = [self mockContentDownloadReturningHTML:@"some html"];
+    
+    __block NSURL *capturedURL = nil;
+    [_sut depatureDataForNaPTANCode:@"1234" completion:^(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error){
+        capturedURL = earlierURL;
     }];
     
     XCTAssertEqualObjects(capturedURL, correctURL, @"");
