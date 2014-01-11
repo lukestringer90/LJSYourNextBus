@@ -35,10 +35,25 @@ static BOOL isRunningTests(void) {
 }
 
 - (void)main {
+    NSString *NaPTANCode = @"37021865";
+    
     LJSTravelSouthYorkshire *client = [[LJSTravelSouthYorkshire alloc] init];
-    [client depatureDataForNaPTANCode:@"37021865" completion:^(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+    [client depatureDataForNaPTANCode:NaPTANCode completion:^(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
         NSLog(@"%@", depatureData);
         NSLog(@"%@", error);
+        
+        NSError *jsonError;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:depatureData
+                                                           options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                             error:&jsonError];
+        
+        if (! jsonData) {
+            NSLog(@"Got an error: %@", error);
+        } else {
+            NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            NSLog(@"%@", jsonString);
+        }
+        
     }];
 }
 
