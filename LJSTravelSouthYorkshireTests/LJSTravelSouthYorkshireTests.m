@@ -79,7 +79,7 @@
 }
 
 - (void)testReturnsDataAfterSucessfulScrape {
-    NSDictionary *correctData = [self loadJSONFileNamed:@"tram"];
+    NSDictionary *correctData = [self loadJSONFileNamed:@"malin_bridge_tram"];
     
     _sut.scraper = [self mockScraperReturningDepatureData:correctData];
     _sut.contentDownloader = [self mockContentDownloadReturningHTML:@"some html"];

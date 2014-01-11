@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		874C763343B04AB8B0CDB41D /* libPods-LJSTravelSouthYorkshire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8EE5F3142B94472B28F0A04 /* libPods-LJSTravelSouthYorkshire.a */; };
 		96487C9B747B4A7FAE8E872C /* libPods-LJSTravelSouthYorkshireTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21501080AF254BF5B388BB77 /* libPods-LJSTravelSouthYorkshireTests.a */; };
-		A32C448E187DDCE70034F26B /* tram.json in Resources */ = {isa = PBXBuildFile; fileRef = A32C448C187DDCE70034F26B /* tram.json */; };
-		A32C448F187DDCE70034F26B /* tram.html in Resources */ = {isa = PBXBuildFile; fileRef = A32C448D187DDCE70034F26B /* tram.html */; };
+		A32C448E187DDCE70034F26B /* malin_bridge_tram.json in Resources */ = {isa = PBXBuildFile; fileRef = A32C448C187DDCE70034F26B /* malin_bridge_tram.json */; };
+		A32C448F187DDCE70034F26B /* malin_bridge_tram.html in Resources */ = {isa = PBXBuildFile; fileRef = A32C448D187DDCE70034F26B /* malin_bridge_tram.html */; };
 		A32C4491187DEEF60034F26B /* LJSScraperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A32C4490187DEEF60034F26B /* LJSScraperTests.m */; };
 		A386ECF11878A064008372CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A386ECF01878A064008372CD /* Foundation.framework */; };
 		A386ECF31878A064008372CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A386ECF21878A064008372CD /* CoreGraphics.framework */; };
@@ -42,8 +42,8 @@
 /* Begin PBXFileReference section */
 		012A59133CA345FD953375AB /* Pods-LJSTravelSouthYorkshire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshire.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshire.xcconfig"; sourceTree = "<group>"; };
 		21501080AF254BF5B388BB77 /* libPods-LJSTravelSouthYorkshireTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshireTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A32C448C187DDCE70034F26B /* tram.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tram.json; sourceTree = "<group>"; };
-		A32C448D187DDCE70034F26B /* tram.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tram.html; sourceTree = "<group>"; };
+		A32C448C187DDCE70034F26B /* malin_bridge_tram.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = malin_bridge_tram.json; sourceTree = "<group>"; };
+		A32C448D187DDCE70034F26B /* malin_bridge_tram.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = malin_bridge_tram.html; sourceTree = "<group>"; };
 		A32C4490187DEEF60034F26B /* LJSScraperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSScraperTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A386ECED1878A064008372CD /* LJSTravelSouthYorkshire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJSTravelSouthYorkshire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A386ECF01878A064008372CD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -162,8 +162,8 @@
 			children = (
 				A386ED151878A065008372CD /* LJSTravelSouthYorkshireTests.m */,
 				A32C4490187DEEF60034F26B /* LJSScraperTests.m */,
-				A32C448C187DDCE70034F26B /* tram.json */,
-				A32C448D187DDCE70034F26B /* tram.html */,
+				A32C448C187DDCE70034F26B /* malin_bridge_tram.json */,
+				A32C448D187DDCE70034F26B /* malin_bridge_tram.html */,
 				A386ED101878A065008372CD /* Supporting Files */,
 			);
 			path = LJSTravelSouthYorkshireTests;
@@ -278,8 +278,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A386ED141878A065008372CD /* InfoPlist.strings in Resources */,
-				A32C448E187DDCE70034F26B /* tram.json in Resources */,
-				A32C448F187DDCE70034F26B /* tram.html in Resources */,
+				A32C448E187DDCE70034F26B /* malin_bridge_tram.json in Resources */,
+				A32C448F187DDCE70034F26B /* malin_bridge_tram.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
