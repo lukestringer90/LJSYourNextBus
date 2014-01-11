@@ -8,14 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const LJSNaPTANCodeKey;
+extern NSString * const LJSStopNameKey;
+extern NSString * const LJSDepaturesKey;
+extern NSString * const LJSDestinationKey;
+extern NSString * const LJSExpectedDepatureTimeKey;
+extern NSString * const LJSLiveTimeKey;
+
 @interface LJSTravelSouthYorkshire : NSObject
 
 typedef void (^LJSDepatureDataCompletion)(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error);
 
 - (void)depatureDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSDepatureDataCompletion)completion;
-
 - (void)depatureDataAtURL:(NSURL *)url completion:(LJSDepatureDataCompletion)completion;
-
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber;
 
 @end

@@ -8,13 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const LJSNaPTANCodeKey;
-extern NSString * const LJSStopNameKey;
-extern NSString * const LJSDepaturesKey;
-extern NSString * const LJSDestinationKey;
-extern NSString * const LJSExpectedDepatureTimeKey;
-extern NSString * const LJSLiveDateKey;
-
 @interface LJSScraper : NSObject
 
 - (NSDictionary *)scrapeDepatureDataFromHTML:(NSString *)html;

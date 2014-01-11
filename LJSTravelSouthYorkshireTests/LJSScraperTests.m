@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "LJSScraper.h"
+#import "LJSTravelSouthYorkshire.h"
 
 @interface LJSScraperTests : XCTestCase {
     LJSScraper *_sut;
@@ -74,10 +75,10 @@
 }
 
 - (void)testScrapesLiveInformationDate {
-    NSString *correctLiveDate = _correctData[LJSLiveDateKey];
+    NSString *correctLiveDate = _correctData[LJSLiveTimeKey];
     
     NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
-    NSString *scrapedLiveDate = scrapedData[LJSLiveDateKey];
+    NSString *scrapedLiveDate = scrapedData[LJSLiveTimeKey];
     
     XCTAssertEqualObjects(scrapedLiveDate, correctLiveDate, @"");
 }

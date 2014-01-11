@@ -14,7 +14,7 @@ NSString * const LJSStopNameKey = @"stop_name";
 NSString * const LJSDepaturesKey = @"departures";
 NSString * const LJSDestinationKey = @"destination";
 NSString * const LJSExpectedDepatureTimeKey = @"expected_departure_time";
-NSString * const LJSLiveDateKey = @"live_information";
+NSString * const LJSLiveTimeKey = @"live_information_time";
 
 
 @implementation LJSScraper
@@ -87,7 +87,7 @@ NSString * const LJSLiveDateKey = @"live_information";
     NSDictionary *scrapedData = @{
                                   LJSNaPTANCodeKey : naptanCode,
                                   LJSStopNameKey : stopName,
-                                  LJSLiveDateKey : scrapeDate
+                                  LJSLiveTimeKey : scrapeDate
                                   };
     
     for (NSInteger serviceRowIndex = 0; serviceRowIndex < tds.count; serviceRowIndex+=4) {
