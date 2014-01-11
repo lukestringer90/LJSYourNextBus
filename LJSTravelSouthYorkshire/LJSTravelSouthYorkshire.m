@@ -11,7 +11,7 @@
 #import "LJSScraper.h"
 
 @interface LJSTravelSouthYorkshire ()
-@property (nonatomic, copy, readwrite) void (^completion)(NSDictionary *data, NSURL *laterDepaturesURL, NSError *error);
+@property (nonatomic, copy) LJSDepatureDataCompletion completion;
 @property (nonatomic, strong) LJSScraper *scraper;
 @property (nonatomic, strong) LJSWebContentDownloader *contentDownloader;
 @end
@@ -27,41 +27,46 @@
     return self;
 }
 
-- (void)depatureDataForNaPTANCode:(NSString *)NaPTANCode completion:(void (^)(NSDictionary *data, NSURL *nextPageURL, NSError *error))completion {
+- (void)depatureDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSDepatureDataCompletion)completion {
     NSURL *url = [self urlForStopNumber:NaPTANCode];
     [self depatureDataAtURL:url completion:completion];
 }
 
-- (void)depatureDataAtURL:(NSURL *)url completion:(void (^)(id json, NSURL *nextPageURL, NSError *))completion {
+- (void)depatureDataAtURL:(NSURL *)url completion:(LJSDepatureDataCompletion)completion {
     self.completion = completion;
     
     NSError *error = nil;
     NSString *htmlString = [self.contentDownloader downloadHTMLFromURL:url error:&error];
     
     if (error) {
-        [self safeCallCompletionBlockWithDepatureData:nil laterDepaturesURL:nil error:error];
+        [self safeCallCompletionBlockWithDepatureData:nil laterURL:nil earilierURL:nil error:error];
     }
     else {
         [self scrapeHTML:htmlString];
     }
 }
 
+// TODO: Change name to NaPTAN code and write tests
 - (NSURL *)urlForStopNumber:(NSString *)stopNumber {
     return [NSURL URLWithString:[NSString stringWithFormat:@"http://tsy.acislive.com/pip/stop.asp?naptan=%@&textonly=1&pda=1", stopNumber]];
 }
 
 - (void)scrapeHTML:(NSString *)htmlString {
     NSDictionary *depatureData = [self.scraper scrapeDepatureDataFromHTML:htmlString];
-    NSURL *laterDepaturesURL = [self.scraper scrapeLaterDepaturesURL:htmlString];
+    NSURL *laterURL = [self.scraper scrapeLaterDepaturesURL:htmlString];
     
-    [self safeCallCompletionBlockWithDepatureData:depatureData laterDepaturesURL:laterDepaturesURL error:nil];
+    // TODO: Scrape earlier URL
+    NSURL *earlierURL = nil;
+    
+    [self safeCallCompletionBlockWithDepatureData:depatureData laterURL:laterURL earilierURL:earlierURL error:nil];
 }
 
-- (void)safeCallCompletionBlockWithDepatureData:(NSDictionary *)depatureData laterDepaturesURL:(NSURL *)laterDepaturesURL error:(NSError *)error {
+- (void)safeCallCompletionBlockWithDepatureData:(NSDictionary *)depatureData laterURL:(NSURL *)laterURL earilierURL:(NSURL *)earilierURL error:(NSError *)error {
     if (self.completion) {
-        self.completion(depatureData, laterDepaturesURL, error);
+        self.completion(depatureData, laterURL, earilierURL, error);
         self.completion = nil;
     }
 }
+
 
 @end

@@ -98,8 +98,12 @@
     // TODO: Malformed HTML
 }
 
-- (void)testReturnsNoNextPageURL {
-    // TODO: No nextPageURL in HTML
+- (void)testReturnsNoLaterURL {
+    // TODO: No later depatures URL in HTML
+}
+
+- (void)testReturnsNoEarlierURL {
+    // TODO: No earlier depatures URL in HTML
 }
 
 @end

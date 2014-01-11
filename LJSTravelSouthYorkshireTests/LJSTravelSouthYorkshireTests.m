@@ -60,6 +60,10 @@
 
 #pragma mark - Tests
 
+- (void)testURLForStopNumber {
+    
+}
+
 - (void)testReturnsDataAfterSucessfulScrape {
     NSDictionary *correctData = [self loadJSONFileNamed:@"tram"];
     
@@ -67,27 +71,25 @@
     _sut.contentDownloader = [self mockContentDownloadReturningHTML:@"some html"];
     
     __block NSDictionary *capturedData = nil;
-    [_sut depatureDataForNaPTANCode:@"1234" completion:^(NSDictionary *data, NSURL *nextPageURL, NSError *error) {
-        capturedData = data;
+    [_sut depatureDataForNaPTANCode:@"1234" completion:^(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+        capturedData = depatureData;
     }];
     
     XCTAssertEqualObjects(capturedData, correctData, @"");
-    
 }
 
 - (void)testReturnsNextURLAfterSucessfulScrape {
-    NSURL *correctNextPageURL = [NSURL URLWithString:@"pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
+    NSURL *correctURL = [NSURL URLWithString:@"pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
     
-    _sut.scraper = [self mockScraperReturninglaterDepaturesURL:correctNextPageURL];
+    _sut.scraper = [self mockScraperReturninglaterDepaturesURL:correctURL];
     _sut.contentDownloader = [self mockContentDownloadReturningHTML:@"some html"];
     
     __block NSURL *capturedURL = nil;
-    [_sut depatureDataForNaPTANCode:@"1234" completion:^(NSDictionary *data, NSURL *nextPageURL, NSError *error) {
-        capturedURL = nextPageURL;
+    [_sut depatureDataForNaPTANCode:@"1234" completion:^(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+        capturedURL = laterURL;
     }];
     
-    XCTAssertEqualObjects(capturedURL, correctNextPageURL, @"");
-
+    XCTAssertEqualObjects(capturedURL, correctURL, @"");
 }
 
 - (void)testReturnsNoDataAfterUnsucessfulScape {
