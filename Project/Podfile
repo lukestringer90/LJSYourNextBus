@@ -1,0 +1,9 @@
+
+target "LJSTravelSouthYorkshire" do
+	pod "LJSTravelSouthYorkshire", :path => "../LJSTravelSouthYorkshire.podspec"
+end
+
+target "LJSTravelSouthYorkshireTests" do
+	pod "LJSTravelSouthYorkshire", :path => "../LJSTravelSouthYorkshire.podspec"
+end
+
