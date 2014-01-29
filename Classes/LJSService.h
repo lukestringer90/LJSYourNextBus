@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class LJSStop;
 @interface LJSService : NSObject
+
+@property (nonatomic, readonly) LJSStop *stop;
+@property (nonatomic, readonly) NSArray *depatures;
 
 @end

@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class LJSService;
 @interface LJSDepature : NSObject
+
+@property (nonatomic, readonly) LJSService *service;
+@property (nonatomic, readonly) NSString *destination;
+@property (nonatomic, readonly) NSDate *expectedDepatureDate;
+@property (nonatomic, readonly) BOOL *hasLowFloorAccess;
 
 @end

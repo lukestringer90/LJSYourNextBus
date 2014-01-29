@@ -10,4 +10,10 @@
 
 @interface LJSStop : NSObject
 
+@property (nonatomic, readonly) NSString *NaPTANCode;
+@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSDate *scapeDate;
+
+@property (nonatomic, readonly) NSArray *services;
+
 @end
