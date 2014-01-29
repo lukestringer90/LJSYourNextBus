@@ -16,7 +16,7 @@ extern NSString * const LJSExpectedDepatureTimeKey;
 extern NSString * const LJSLiveTimeKey;
 extern NSString * const LJSLowFloorAccess;
 
-@interface LJSTravelSouthYorkshire : NSObject
+@interface LJSLiveDepatures : NSObject
 
 typedef void (^LJSDepatureDataCompletion)(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error);
 

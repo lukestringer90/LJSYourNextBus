@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 Luke Stringer. All rights reserved.
 //
 
-#import "LJSTravelSouthYorkshire.h"
+#import "LJSLiveDepatures.h"
 #import "LJSHTMLDownloader.h"
 #import "LJSScraper.h"
 
-@interface LJSTravelSouthYorkshire ()
+@interface LJSLiveDepatures ()
 @property (nonatomic, copy) LJSDepatureDataCompletion completion;
 @property (nonatomic, strong) LJSScraper *scraper;
 @property (nonatomic, strong) LJSHTMLDownloader *contentDownloader;
 @end
 
-@implementation LJSTravelSouthYorkshire
+@implementation LJSLiveDepatures
 
 - (instancetype)init {
     self = [super init];
