@@ -24,6 +24,7 @@
 		A31CBF8B189988D000747F46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF89189988D000747F46 /* InfoPlist.strings */; };
 		A34A1951189EB768002EEF2B /* LJSLiveDepaturesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */; };
 		A34A1953189EBC13002EEF2B /* LJSScraperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1952189EBC13002EEF2B /* LJSScraperTests.m */; };
+		A34A1957189EBF86002EEF2B /* 37010071.html in Resources */ = {isa = PBXBuildFile; fileRef = A34A1956189EBF86002EEF2B /* 37010071.html */; };
 		BE3FED4FB615437E84F4E6AB /* libPods-LJSTravelSouthYorkshire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		A31CBF8A189988D000747F46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSLiveDepaturesTests.m; sourceTree = "<group>"; };
 		A34A1952189EBC13002EEF2B /* LJSScraperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSScraperTests.m; sourceTree = "<group>"; };
+		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 37010071.html; sourceTree = "<group>"; };
 		A7BF1CF673A24EB390C630C3 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshireTests.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshireTests.xcconfig"; sourceTree = "<group>"; };
 		A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -154,9 +156,9 @@
 		A31CBF86189988D000747F46 /* LJSTravelSouthYorkshireTests */ = {
 			isa = PBXGroup;
 			children = (
+				A34A1954189EBF5D002EEF2B /* Tests */,
+				A34A1955189EBF62002EEF2B /* Data */,
 				A31CBF87189988D000747F46 /* Supporting Files */,
-				A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */,
-				A34A1952189EBC13002EEF2B /* LJSScraperTests.m */,
 			);
 			path = LJSTravelSouthYorkshireTests;
 			sourceTree = "<group>";
@@ -168,6 +170,23 @@
 				A31CBF89189988D000747F46 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A34A1954189EBF5D002EEF2B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */,
+				A34A1952189EBC13002EEF2B /* LJSScraperTests.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		A34A1955189EBF62002EEF2B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A34A1956189EBF86002EEF2B /* 37010071.html */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A31CBF8B189988D000747F46 /* InfoPlist.strings in Resources */,
+				A34A1957189EBF86002EEF2B /* 37010071.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
