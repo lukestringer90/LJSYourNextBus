@@ -1,10 +1,9 @@
 
 target "LJSTravelSouthYorkshire" do
-	pod "LJSTravelSouthYorkshire", :path => "../LJSTravelSouthYorkshire.podspec"
+	pod 'ObjectiveGumbo'
 end
 
 target "LJSTravelSouthYorkshireTests" do
-	pod "LJSTravelSouthYorkshire", :path => "../LJSTravelSouthYorkshire.podspec"
     pod 'OCMock', '~> 2.2.2'
 end
 

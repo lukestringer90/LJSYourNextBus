@@ -7,8 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <LJSTravelSouthYorkshire/LJSScraper.h>
-#import <LJSTravelSouthYorkshire/LJSLiveDepatures.h>
+#import "LJSScraper.h"
+#import "LJSLiveDepatures.h"
 
 @interface LJSScraperTests : XCTestCase {
     LJSScraper *_sut;

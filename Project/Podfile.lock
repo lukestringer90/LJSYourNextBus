@@ -1,19 +1,12 @@
 PODS:
-  - LJSTravelSouthYorkshire (0.1.0):
-    - ObjectiveGumbo
   - ObjectiveGumbo (0.1)
   - OCMock (2.2.2)
 
 DEPENDENCIES:
-  - LJSTravelSouthYorkshire (from `../LJSTravelSouthYorkshire.podspec`)
+  - ObjectiveGumbo
   - OCMock (~> 2.2.2)
 
-EXTERNAL SOURCES:
-  LJSTravelSouthYorkshire:
-    :path: ../LJSTravelSouthYorkshire.podspec
-
 SPEC CHECKSUMS:
-  LJSTravelSouthYorkshire: 84c39ba20cd0b33967097a49be79c63b9a7d74d0
   ObjectiveGumbo: 76576087e8b3d6e00f4fd4dee7b13e11b1da68e9
   OCMock: ffba68873fd32cfd35d885bddad23bfa816da4a3
 

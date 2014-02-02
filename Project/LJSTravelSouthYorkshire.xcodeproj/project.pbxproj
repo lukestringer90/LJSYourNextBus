@@ -25,6 +25,12 @@
 		A34A1951189EB768002EEF2B /* LJSLiveDepaturesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */; };
 		A34A1953189EBC13002EEF2B /* LJSScraperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1952189EBC13002EEF2B /* LJSScraperTests.m */; };
 		A34A1957189EBF86002EEF2B /* 37010071.html in Resources */ = {isa = PBXBuildFile; fileRef = A34A1956189EBF86002EEF2B /* 37010071.html */; };
+		A3BD275F189EF72200540C5F /* LJSDepature.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2754189EF72200540C5F /* LJSDepature.m */; };
+		A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */; };
+		A3BD2761189EF72200540C5F /* LJSLiveDepatures.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2758189EF72200540C5F /* LJSLiveDepatures.m */; };
+		A3BD2762189EF72200540C5F /* LJSScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275A189EF72200540C5F /* LJSScraper.m */; };
+		A3BD2763189EF72200540C5F /* LJSService.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275C189EF72200540C5F /* LJSService.m */; };
+		A3BD2764189EF72200540C5F /* LJSStop.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275E189EF72200540C5F /* LJSStop.m */; };
 		BE3FED4FB615437E84F4E6AB /* libPods-LJSTravelSouthYorkshire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +69,18 @@
 		A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSLiveDepaturesTests.m; sourceTree = "<group>"; };
 		A34A1952189EBC13002EEF2B /* LJSScraperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSScraperTests.m; sourceTree = "<group>"; };
 		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 37010071.html; sourceTree = "<group>"; };
+		A3BD2753189EF72200540C5F /* LJSDepature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepature.h; path = ../../Classes/LJSDepature.h; sourceTree = "<group>"; };
+		A3BD2754189EF72200540C5F /* LJSDepature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepature.m; path = ../../Classes/LJSDepature.m; sourceTree = "<group>"; };
+		A3BD2755189EF72200540C5F /* LJSHTMLDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSHTMLDownloader.h; path = ../../Classes/LJSHTMLDownloader.h; sourceTree = "<group>"; };
+		A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSHTMLDownloader.m; path = ../../Classes/LJSHTMLDownloader.m; sourceTree = "<group>"; };
+		A3BD2757189EF72200540C5F /* LJSLiveDepatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSLiveDepatures.h; path = ../../Classes/LJSLiveDepatures.h; sourceTree = "<group>"; };
+		A3BD2758189EF72200540C5F /* LJSLiveDepatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSLiveDepatures.m; path = ../../Classes/LJSLiveDepatures.m; sourceTree = "<group>"; };
+		A3BD2759189EF72200540C5F /* LJSScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSScraper.h; path = ../../Classes/LJSScraper.h; sourceTree = "<group>"; };
+		A3BD275A189EF72200540C5F /* LJSScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSScraper.m; path = ../../Classes/LJSScraper.m; sourceTree = "<group>"; };
+		A3BD275B189EF72200540C5F /* LJSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSService.h; path = ../../Classes/LJSService.h; sourceTree = "<group>"; };
+		A3BD275C189EF72200540C5F /* LJSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSService.m; path = ../../Classes/LJSService.m; sourceTree = "<group>"; };
+		A3BD275D189EF72200540C5F /* LJSStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSStop.h; path = ../../Classes/LJSStop.h; sourceTree = "<group>"; };
+		A3BD275E189EF72200540C5F /* LJSStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSStop.m; path = ../../Classes/LJSStop.m; sourceTree = "<group>"; };
 		A7BF1CF673A24EB390C630C3 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshireTests.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshireTests.xcconfig"; sourceTree = "<group>"; };
 		A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -130,13 +148,19 @@
 		A31CBF64189988D000747F46 /* LJSTravelSouthYorkshire */ = {
 			isa = PBXGroup;
 			children = (
-				A31CBF6D189988D000747F46 /* LJSAppDelegate.h */,
-				A31CBF6E189988D000747F46 /* LJSAppDelegate.m */,
-				A31CBF70189988D000747F46 /* Main_iPhone.storyboard */,
-				A31CBF73189988D000747F46 /* Main_iPad.storyboard */,
-				A31CBF76189988D000747F46 /* LJSViewController.h */,
-				A31CBF77189988D000747F46 /* LJSViewController.m */,
-				A31CBF79189988D000747F46 /* Images.xcassets */,
+				A3BD2753189EF72200540C5F /* LJSDepature.h */,
+				A3BD2754189EF72200540C5F /* LJSDepature.m */,
+				A3BD2755189EF72200540C5F /* LJSHTMLDownloader.h */,
+				A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */,
+				A3BD2757189EF72200540C5F /* LJSLiveDepatures.h */,
+				A3BD2758189EF72200540C5F /* LJSLiveDepatures.m */,
+				A3BD2759189EF72200540C5F /* LJSScraper.h */,
+				A3BD275A189EF72200540C5F /* LJSScraper.m */,
+				A3BD275B189EF72200540C5F /* LJSService.h */,
+				A3BD275C189EF72200540C5F /* LJSService.m */,
+				A3BD275D189EF72200540C5F /* LJSStop.h */,
+				A3BD275E189EF72200540C5F /* LJSStop.m */,
+				A3BD2752189EF71400540C5F /* App */,
 				A31CBF65189988D000747F46 /* Supporting Files */,
 			);
 			path = LJSTravelSouthYorkshire;
@@ -187,6 +211,20 @@
 				A34A1956189EBF86002EEF2B /* 37010071.html */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		A3BD2752189EF71400540C5F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A31CBF6D189988D000747F46 /* LJSAppDelegate.h */,
+				A31CBF6E189988D000747F46 /* LJSAppDelegate.m */,
+				A31CBF70189988D000747F46 /* Main_iPhone.storyboard */,
+				A31CBF73189988D000747F46 /* Main_iPad.storyboard */,
+				A31CBF76189988D000747F46 /* LJSViewController.h */,
+				A31CBF77189988D000747F46 /* LJSViewController.m */,
+				A31CBF79189988D000747F46 /* Images.xcassets */,
+			);
+			name = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,8 +395,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A31CBF6F189988D000747F46 /* LJSAppDelegate.m in Sources */,
+				A3BD2763189EF72200540C5F /* LJSService.m in Sources */,
 				A31CBF78189988D000747F46 /* LJSViewController.m in Sources */,
+				A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */,
+				A3BD2762189EF72200540C5F /* LJSScraper.m in Sources */,
 				A31CBF6B189988D000747F46 /* main.m in Sources */,
+				A3BD275F189EF72200540C5F /* LJSDepature.m in Sources */,
+				A3BD2764189EF72200540C5F /* LJSStop.m in Sources */,
+				A3BD2761189EF72200540C5F /* LJSLiveDepatures.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

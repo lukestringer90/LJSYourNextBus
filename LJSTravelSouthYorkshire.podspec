@@ -29,6 +29,5 @@ Pod::Spec.new do |s|
   s.resources = 'Assets'
 
   # s.public_header_files = 'Classes/**/*.h'
-  # s.frameworks = 'SomeFramework', 'AnotherFramework'
   s.dependency 'ObjectiveGumbo'
 end

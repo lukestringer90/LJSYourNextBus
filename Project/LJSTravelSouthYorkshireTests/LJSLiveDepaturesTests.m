@@ -9,9 +9,9 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 
-#import <LJSTravelSouthYorkshire/LJSLiveDepatures.h>
-#import <LJSTravelSouthYorkshire/LJSScraper.h>
-#import <LJSTravelSouthYorkshire/LJSHTMLDownloader.h>
+#import "LJSLiveDepatures.h"
+#import "LJSScraper.h"
+#import "LJSHTMLDownloader.h"
 
 @interface LJSLiveDepatures (TestVisibility)
 @property (nonatomic, strong) LJSScraper *scraper;
