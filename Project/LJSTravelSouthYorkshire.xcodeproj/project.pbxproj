@@ -1,1225 +1,579 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>10448B608C4D4A0888C3508A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-LJSTravelSouthYorkshire.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Pods-LJSTravelSouthYorkshire.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4C91541B546949119B3FC147</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>7AD089817A154613AE642D42</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-LJSTravelSouthYorkshireTests.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>A30AD3EABC5942E09B1422C9</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7AD089817A154613AE642D42</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF52189988D000747F46</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A31CBF64189988D000747F46</string>
-				<string>A31CBF86189988D000747F46</string>
-				<string>A31CBF5D189988D000747F46</string>
-				<string>A31CBF5C189988D000747F46</string>
-				<string>10448B608C4D4A0888C3508A</string>
-				<string>A7BF1CF673A24EB390C630C3</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF53189988D000747F46</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>CLASSPREFIX</key>
-				<string>LJS</string>
-				<key>LastUpgradeCheck</key>
-				<string>0500</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Luke Stringer</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>A31CBF7E189988D000747F46</key>
-					<dict>
-						<key>TestTargetID</key>
-						<string>A31CBF5A189988D000747F46</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>A31CBF56189988D000747F46</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>A31CBF52189988D000747F46</string>
-			<key>productRefGroup</key>
-			<string>A31CBF5C189988D000747F46</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>A31CBF5A189988D000747F46</string>
-				<string>A31CBF7E189988D000747F46</string>
-			</array>
-		</dict>
-		<key>A31CBF56189988D000747F46</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>A31CBF8E189988D000747F46</string>
-				<string>A31CBF8F189988D000747F46</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>A31CBF57189988D000747F46</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>A31CBF6F189988D000747F46</string>
-				<string>A31CBF78189988D000747F46</string>
-				<string>A31CBF6B189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>A31CBF58189988D000747F46</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>A31CBF61189988D000747F46</string>
-				<string>A31CBF63189988D000747F46</string>
-				<string>A31CBF5F189988D000747F46</string>
-				<string>BE3FED4FB615437E84F4E6AB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>A31CBF59189988D000747F46</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>A31CBF75189988D000747F46</string>
-				<string>A31CBF7A189988D000747F46</string>
-				<string>A31CBF72189988D000747F46</string>
-				<string>A31CBF69189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>A31CBF5A189988D000747F46</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>A31CBF90189988D000747F46</string>
-			<key>buildPhases</key>
-			<array>
-				<string>D1BBA40A561E4D2F8B83CCC4</string>
-				<string>A31CBF57189988D000747F46</string>
-				<string>A31CBF58189988D000747F46</string>
-				<string>A31CBF59189988D000747F46</string>
-				<string>BE29CCF033AB4082B4F14603</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>LJSTravelSouthYorkshire</string>
-			<key>productName</key>
-			<string>LJSTravelSouthYorkshire</string>
-			<key>productReference</key>
-			<string>A31CBF5B189988D000747F46</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>A31CBF5B189988D000747F46</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>LJSTravelSouthYorkshire.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>A31CBF5C189988D000747F46</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A31CBF5B189988D000747F46</string>
-				<string>A31CBF7F189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF5D189988D000747F46</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A31CBF5E189988D000747F46</string>
-				<string>A31CBF60189988D000747F46</string>
-				<string>A31CBF62189988D000747F46</string>
-				<string>A31CBF80189988D000747F46</string>
-				<string>A94C8F82A0764122ACB8AC81</string>
-				<string>7AD089817A154613AE642D42</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF5E189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>A31CBF5F189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF5E189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF60189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreGraphics.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreGraphics.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>A31CBF61189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF60189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF62189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>UIKit.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/UIKit.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>A31CBF63189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF62189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF64189988D000747F46</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A31CBF6D189988D000747F46</string>
-				<string>A31CBF6E189988D000747F46</string>
-				<string>A31CBF70189988D000747F46</string>
-				<string>A31CBF73189988D000747F46</string>
-				<string>A31CBF76189988D000747F46</string>
-				<string>A31CBF77189988D000747F46</string>
-				<string>A31CBF79189988D000747F46</string>
-				<string>A31CBF65189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>LJSTravelSouthYorkshire</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF65189988D000747F46</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A31CBF66189988D000747F46</string>
-				<string>A31CBF67189988D000747F46</string>
-				<string>A31CBF6A189988D000747F46</string>
-				<string>A31CBF6C189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF66189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>LJSTravelSouthYorkshire-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF67189988D000747F46</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A31CBF68189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF68189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF69189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF67189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF6A189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF6B189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF6A189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF6C189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>LJSTravelSouthYorkshire-Prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF6D189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>LJSAppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF6E189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>LJSAppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF6F189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF6E189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF70189988D000747F46</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A31CBF71189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Main_iPhone.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF71189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/Main_iPhone.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF72189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF70189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF73189988D000747F46</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A31CBF74189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Main_iPad.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF74189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/Main_iPad.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF75189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF73189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF76189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>LJSViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF77189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>LJSViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF78189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF77189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF79189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF7A189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF79189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF7B189988D000747F46</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>A31CBF8D189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>A31CBF7C189988D000747F46</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>A31CBF81189988D000747F46</string>
-				<string>A31CBF83189988D000747F46</string>
-				<string>A31CBF82189988D000747F46</string>
-				<string>A30AD3EABC5942E09B1422C9</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>A31CBF7D189988D000747F46</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>A31CBF8B189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>A31CBF7E189988D000747F46</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>A31CBF93189988D000747F46</string>
-			<key>buildPhases</key>
-			<array>
-				<string>4C91541B546949119B3FC147</string>
-				<string>A31CBF7B189988D000747F46</string>
-				<string>A31CBF7C189988D000747F46</string>
-				<string>A31CBF7D189988D000747F46</string>
-				<string>F461F5D1226A47F0A4B0DE8D</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>A31CBF85189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>LJSTravelSouthYorkshireTests</string>
-			<key>productName</key>
-			<string>LJSTravelSouthYorkshireTests</string>
-			<key>productReference</key>
-			<string>A31CBF7F189988D000747F46</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>A31CBF7F189988D000747F46</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>LJSTravelSouthYorkshireTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>A31CBF80189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>XCTest.framework</string>
-			<key>path</key>
-			<string>Library/Frameworks/XCTest.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>A31CBF81189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF80189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF82189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF5E189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF83189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF62189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF84189988D000747F46</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>A31CBF53189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>A31CBF5A189988D000747F46</string>
-			<key>remoteInfo</key>
-			<string>LJSTravelSouthYorkshire</string>
-		</dict>
-		<key>A31CBF85189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>A31CBF5A189988D000747F46</string>
-			<key>targetProxy</key>
-			<string>A31CBF84189988D000747F46</string>
-		</dict>
-		<key>A31CBF86189988D000747F46</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A31CBF8C189988D000747F46</string>
-				<string>A31CBF87189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>LJSTravelSouthYorkshireTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF87189988D000747F46</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A31CBF88189988D000747F46</string>
-				<string>A31CBF89189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF88189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>LJSTravelSouthYorkshireTests-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF89189988D000747F46</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>A31CBF8A189988D000747F46</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF8A189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF8B189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF89189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF8C189988D000747F46</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>LJSTravelSouthYorkshireTests.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A31CBF8D189988D000747F46</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A31CBF8C189988D000747F46</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A31CBF8E189988D000747F46</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>A31CBF8F189988D000747F46</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>A31CBF90189988D000747F46</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>A31CBF91189988D000747F46</string>
-				<string>A31CBF92189988D000747F46</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>A31CBF91189988D000747F46</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>10448B608C4D4A0888C3508A</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>A31CBF92189988D000747F46</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>10448B608C4D4A0888C3508A</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>A31CBF93189988D000747F46</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>A31CBF94189988D000747F46</string>
-				<string>A31CBF95189988D000747F46</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>A31CBF94189988D000747F46</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>A7BF1CF673A24EB390C630C3</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/LJSTravelSouthYorkshire.app/LJSTravelSouthYorkshire</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>LJSTravelSouthYorkshireTests/LJSTravelSouthYorkshireTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>A31CBF95189988D000747F46</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>A7BF1CF673A24EB390C630C3</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/LJSTravelSouthYorkshire.app/LJSTravelSouthYorkshire</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>LJSTravelSouthYorkshireTests/LJSTravelSouthYorkshireTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>A7BF1CF673A24EB390C630C3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-LJSTravelSouthYorkshireTests.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Pods-LJSTravelSouthYorkshireTests.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A94C8F82A0764122ACB8AC81</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-LJSTravelSouthYorkshire.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>BE29CCF033AB4082B4F14603</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Pods-LJSTravelSouthYorkshire-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>BE3FED4FB615437E84F4E6AB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A94C8F82A0764122ACB8AC81</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>D1BBA40A561E4D2F8B83CCC4</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>F461F5D1226A47F0A4B0DE8D</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Pods-LJSTravelSouthYorkshireTests-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>A31CBF53189988D000747F46</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A30AD3EABC5942E09B1422C9 /* libPods-LJSTravelSouthYorkshireTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD089817A154613AE642D42 /* libPods-LJSTravelSouthYorkshireTests.a */; };
+		A31CBF5F189988D000747F46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF5E189988D000747F46 /* Foundation.framework */; };
+		A31CBF61189988D000747F46 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF60189988D000747F46 /* CoreGraphics.framework */; };
+		A31CBF63189988D000747F46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF62189988D000747F46 /* UIKit.framework */; };
+		A31CBF69189988D000747F46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF67189988D000747F46 /* InfoPlist.strings */; };
+		A31CBF6B189988D000747F46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A31CBF6A189988D000747F46 /* main.m */; };
+		A31CBF6F189988D000747F46 /* LJSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A31CBF6E189988D000747F46 /* LJSAppDelegate.m */; };
+		A31CBF72189988D000747F46 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF70189988D000747F46 /* Main_iPhone.storyboard */; };
+		A31CBF75189988D000747F46 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF73189988D000747F46 /* Main_iPad.storyboard */; };
+		A31CBF78189988D000747F46 /* LJSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31CBF77189988D000747F46 /* LJSViewController.m */; };
+		A31CBF7A189988D000747F46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF79189988D000747F46 /* Images.xcassets */; };
+		A31CBF81189988D000747F46 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF80189988D000747F46 /* XCTest.framework */; };
+		A31CBF82189988D000747F46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF5E189988D000747F46 /* Foundation.framework */; };
+		A31CBF83189988D000747F46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF62189988D000747F46 /* UIKit.framework */; };
+		A31CBF8B189988D000747F46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF89189988D000747F46 /* InfoPlist.strings */; };
+		A34A1951189EB768002EEF2B /* LJSLiveDepaturesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */; };
+		A34A1953189EBC13002EEF2B /* LJSScraperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1952189EBC13002EEF2B /* LJSScraperTests.m */; };
+		BE3FED4FB615437E84F4E6AB /* libPods-LJSTravelSouthYorkshire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A31CBF84189988D000747F46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A31CBF53189988D000747F46 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A31CBF5A189988D000747F46;
+			remoteInfo = LJSTravelSouthYorkshire;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		10448B608C4D4A0888C3508A /* Pods-LJSTravelSouthYorkshire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshire.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshire.xcconfig"; sourceTree = "<group>"; };
+		7AD089817A154613AE642D42 /* libPods-LJSTravelSouthYorkshireTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshireTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A31CBF5B189988D000747F46 /* LJSTravelSouthYorkshire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJSTravelSouthYorkshire.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A31CBF5E189988D000747F46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A31CBF60189988D000747F46 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A31CBF62189988D000747F46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A31CBF66189988D000747F46 /* LJSTravelSouthYorkshire-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LJSTravelSouthYorkshire-Info.plist"; sourceTree = "<group>"; };
+		A31CBF68189988D000747F46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A31CBF6A189988D000747F46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A31CBF6C189988D000747F46 /* LJSTravelSouthYorkshire-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LJSTravelSouthYorkshire-Prefix.pch"; sourceTree = "<group>"; };
+		A31CBF6D189988D000747F46 /* LJSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJSAppDelegate.h; sourceTree = "<group>"; };
+		A31CBF6E189988D000747F46 /* LJSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSAppDelegate.m; sourceTree = "<group>"; };
+		A31CBF71189988D000747F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		A31CBF74189988D000747F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		A31CBF76189988D000747F46 /* LJSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJSViewController.h; sourceTree = "<group>"; };
+		A31CBF77189988D000747F46 /* LJSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSViewController.m; sourceTree = "<group>"; };
+		A31CBF79189988D000747F46 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A31CBF7F189988D000747F46 /* LJSTravelSouthYorkshireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LJSTravelSouthYorkshireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A31CBF80189988D000747F46 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A31CBF88189988D000747F46 /* LJSTravelSouthYorkshireTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LJSTravelSouthYorkshireTests-Info.plist"; sourceTree = "<group>"; };
+		A31CBF8A189988D000747F46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSLiveDepaturesTests.m; sourceTree = "<group>"; };
+		A34A1952189EBC13002EEF2B /* LJSScraperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSScraperTests.m; sourceTree = "<group>"; };
+		A7BF1CF673A24EB390C630C3 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshireTests.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshireTests.xcconfig"; sourceTree = "<group>"; };
+		A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A31CBF58189988D000747F46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A31CBF61189988D000747F46 /* CoreGraphics.framework in Frameworks */,
+				A31CBF63189988D000747F46 /* UIKit.framework in Frameworks */,
+				A31CBF5F189988D000747F46 /* Foundation.framework in Frameworks */,
+				BE3FED4FB615437E84F4E6AB /* libPods-LJSTravelSouthYorkshire.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A31CBF7C189988D000747F46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A31CBF81189988D000747F46 /* XCTest.framework in Frameworks */,
+				A31CBF83189988D000747F46 /* UIKit.framework in Frameworks */,
+				A31CBF82189988D000747F46 /* Foundation.framework in Frameworks */,
+				A30AD3EABC5942E09B1422C9 /* libPods-LJSTravelSouthYorkshireTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A31CBF52189988D000747F46 = {
+			isa = PBXGroup;
+			children = (
+				A31CBF64189988D000747F46 /* LJSTravelSouthYorkshire */,
+				A31CBF86189988D000747F46 /* LJSTravelSouthYorkshireTests */,
+				A31CBF5D189988D000747F46 /* Frameworks */,
+				A31CBF5C189988D000747F46 /* Products */,
+				10448B608C4D4A0888C3508A /* Pods-LJSTravelSouthYorkshire.xcconfig */,
+				A7BF1CF673A24EB390C630C3 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		A31CBF5C189988D000747F46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A31CBF5B189988D000747F46 /* LJSTravelSouthYorkshire.app */,
+				A31CBF7F189988D000747F46 /* LJSTravelSouthYorkshireTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A31CBF5D189988D000747F46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A31CBF5E189988D000747F46 /* Foundation.framework */,
+				A31CBF60189988D000747F46 /* CoreGraphics.framework */,
+				A31CBF62189988D000747F46 /* UIKit.framework */,
+				A31CBF80189988D000747F46 /* XCTest.framework */,
+				A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */,
+				7AD089817A154613AE642D42 /* libPods-LJSTravelSouthYorkshireTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A31CBF64189988D000747F46 /* LJSTravelSouthYorkshire */ = {
+			isa = PBXGroup;
+			children = (
+				A31CBF6D189988D000747F46 /* LJSAppDelegate.h */,
+				A31CBF6E189988D000747F46 /* LJSAppDelegate.m */,
+				A31CBF70189988D000747F46 /* Main_iPhone.storyboard */,
+				A31CBF73189988D000747F46 /* Main_iPad.storyboard */,
+				A31CBF76189988D000747F46 /* LJSViewController.h */,
+				A31CBF77189988D000747F46 /* LJSViewController.m */,
+				A31CBF79189988D000747F46 /* Images.xcassets */,
+				A31CBF65189988D000747F46 /* Supporting Files */,
+			);
+			path = LJSTravelSouthYorkshire;
+			sourceTree = "<group>";
+		};
+		A31CBF65189988D000747F46 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A31CBF66189988D000747F46 /* LJSTravelSouthYorkshire-Info.plist */,
+				A31CBF67189988D000747F46 /* InfoPlist.strings */,
+				A31CBF6A189988D000747F46 /* main.m */,
+				A31CBF6C189988D000747F46 /* LJSTravelSouthYorkshire-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A31CBF86189988D000747F46 /* LJSTravelSouthYorkshireTests */ = {
+			isa = PBXGroup;
+			children = (
+				A31CBF87189988D000747F46 /* Supporting Files */,
+				A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */,
+				A34A1952189EBC13002EEF2B /* LJSScraperTests.m */,
+			);
+			path = LJSTravelSouthYorkshireTests;
+			sourceTree = "<group>";
+		};
+		A31CBF87189988D000747F46 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A31CBF88189988D000747F46 /* LJSTravelSouthYorkshireTests-Info.plist */,
+				A31CBF89189988D000747F46 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A31CBF5A189988D000747F46 /* LJSTravelSouthYorkshire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A31CBF90189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshire" */;
+			buildPhases = (
+				D1BBA40A561E4D2F8B83CCC4 /* Check Pods Manifest.lock */,
+				A31CBF57189988D000747F46 /* Sources */,
+				A31CBF58189988D000747F46 /* Frameworks */,
+				A31CBF59189988D000747F46 /* Resources */,
+				BE29CCF033AB4082B4F14603 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LJSTravelSouthYorkshire;
+			productName = LJSTravelSouthYorkshire;
+			productReference = A31CBF5B189988D000747F46 /* LJSTravelSouthYorkshire.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A31CBF7E189988D000747F46 /* LJSTravelSouthYorkshireTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A31CBF93189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshireTests" */;
+			buildPhases = (
+				4C91541B546949119B3FC147 /* Check Pods Manifest.lock */,
+				A31CBF7B189988D000747F46 /* Sources */,
+				A31CBF7C189988D000747F46 /* Frameworks */,
+				A31CBF7D189988D000747F46 /* Resources */,
+				F461F5D1226A47F0A4B0DE8D /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A31CBF85189988D000747F46 /* PBXTargetDependency */,
+			);
+			name = LJSTravelSouthYorkshireTests;
+			productName = LJSTravelSouthYorkshireTests;
+			productReference = A31CBF7F189988D000747F46 /* LJSTravelSouthYorkshireTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A31CBF53189988D000747F46 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LJS;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Luke Stringer";
+				TargetAttributes = {
+					A31CBF7E189988D000747F46 = {
+						TestTargetID = A31CBF5A189988D000747F46;
+					};
+				};
+			};
+			buildConfigurationList = A31CBF56189988D000747F46 /* Build configuration list for PBXProject "LJSTravelSouthYorkshire" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A31CBF52189988D000747F46;
+			productRefGroup = A31CBF5C189988D000747F46 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A31CBF5A189988D000747F46 /* LJSTravelSouthYorkshire */,
+				A31CBF7E189988D000747F46 /* LJSTravelSouthYorkshireTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A31CBF59189988D000747F46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A31CBF75189988D000747F46 /* Main_iPad.storyboard in Resources */,
+				A31CBF7A189988D000747F46 /* Images.xcassets in Resources */,
+				A31CBF72189988D000747F46 /* Main_iPhone.storyboard in Resources */,
+				A31CBF69189988D000747F46 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A31CBF7D189988D000747F46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A31CBF8B189988D000747F46 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4C91541B546949119B3FC147 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BE29CCF033AB4082B4F14603 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-LJSTravelSouthYorkshire-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1BBA40A561E4D2F8B83CCC4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F461F5D1226A47F0A4B0DE8D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-LJSTravelSouthYorkshireTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A31CBF57189988D000747F46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A31CBF6F189988D000747F46 /* LJSAppDelegate.m in Sources */,
+				A31CBF78189988D000747F46 /* LJSViewController.m in Sources */,
+				A31CBF6B189988D000747F46 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A31CBF7B189988D000747F46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A34A1953189EBC13002EEF2B /* LJSScraperTests.m in Sources */,
+				A34A1951189EB768002EEF2B /* LJSLiveDepaturesTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A31CBF85189988D000747F46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A31CBF5A189988D000747F46 /* LJSTravelSouthYorkshire */;
+			targetProxy = A31CBF84189988D000747F46 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A31CBF67189988D000747F46 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A31CBF68189988D000747F46 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A31CBF70189988D000747F46 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A31CBF71189988D000747F46 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		A31CBF73189988D000747F46 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A31CBF74189988D000747F46 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		A31CBF89189988D000747F46 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A31CBF8A189988D000747F46 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A31CBF8E189988D000747F46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A31CBF8F189988D000747F46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A31CBF91189988D000747F46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10448B608C4D4A0888C3508A /* Pods-LJSTravelSouthYorkshire.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
+				INFOPLIST_FILE = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A31CBF92189988D000747F46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10448B608C4D4A0888C3508A /* Pods-LJSTravelSouthYorkshire.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
+				INFOPLIST_FILE = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A31CBF94189988D000747F46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7BF1CF673A24EB390C630C3 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSTravelSouthYorkshire.app/LJSTravelSouthYorkshire";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "LJSTravelSouthYorkshireTests/LJSTravelSouthYorkshireTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A31CBF95189988D000747F46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7BF1CF673A24EB390C630C3 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSTravelSouthYorkshire.app/LJSTravelSouthYorkshire";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
+				INFOPLIST_FILE = "LJSTravelSouthYorkshireTests/LJSTravelSouthYorkshireTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A31CBF56189988D000747F46 /* Build configuration list for PBXProject "LJSTravelSouthYorkshire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A31CBF8E189988D000747F46 /* Debug */,
+				A31CBF8F189988D000747F46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A31CBF90189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A31CBF91189988D000747F46 /* Debug */,
+				A31CBF92189988D000747F46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A31CBF93189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshireTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A31CBF94189988D000747F46 /* Debug */,
+				A31CBF95189988D000747F46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A31CBF53189988D000747F46 /* Project object */;
+}
