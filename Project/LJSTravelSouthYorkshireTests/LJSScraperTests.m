@@ -55,6 +55,15 @@
     XCTAssertEqualObjects(stop.title, @"Rotherham Intc", @"");
 }
 
+- (void)testServices {
+    LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+    NSArray *services = stop.services;
+    
+    XCTAssertEqual((NSInteger)services.count, (NSInteger)4, @"");
+    
+    
+}
+
 - (void)testScapesDepaturesWithoutLowFloorAccess {
 //    _correctData = [self loadJSONFileNamed:@"malin_bridge_tram"];
 //    _html = [self loadHTMLFileNamed:@"malin_bridge_tram"];

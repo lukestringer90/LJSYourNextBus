@@ -33,6 +33,7 @@
 		A3BD2764189EF72200540C5F /* LJSStop.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275E189EF72200540C5F /* LJSStop.m */; };
 		A3BD276E189F122D00540C5F /* LJSStopBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD276D189F122D00540C5F /* LJSStopBuilder.m */; };
 		A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD276F189FF46500540C5F /* LJSStopTests.m */; };
+		A3D883BA189FFCCC008F458D /* LJSServiceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D883B9189FFCCC008F458D /* LJSServiceBuilder.m */; };
 		BE3FED4FB615437E84F4E6AB /* libPods-LJSTravelSouthYorkshire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,8 @@
 		A3BD276C189F122D00540C5F /* LJSStopBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSStopBuilder.h; path = ../../Classes/LJSStopBuilder.h; sourceTree = "<group>"; };
 		A3BD276D189F122D00540C5F /* LJSStopBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSStopBuilder.m; path = ../../Classes/LJSStopBuilder.m; sourceTree = "<group>"; };
 		A3BD276F189FF46500540C5F /* LJSStopTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSStopTests.m; sourceTree = "<group>"; };
+		A3D883B8189FFCCC008F458D /* LJSServiceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSServiceBuilder.h; path = ../../Classes/LJSServiceBuilder.h; sourceTree = "<group>"; };
+		A3D883B9189FFCCC008F458D /* LJSServiceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSServiceBuilder.m; path = ../../Classes/LJSServiceBuilder.m; sourceTree = "<group>"; };
 		A7BF1CF673A24EB390C630C3 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshireTests.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshireTests.xcconfig"; sourceTree = "<group>"; };
 		A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -247,6 +250,8 @@
 			children = (
 				A3BD276C189F122D00540C5F /* LJSStopBuilder.h */,
 				A3BD276D189F122D00540C5F /* LJSStopBuilder.m */,
+				A3D883B8189FFCCC008F458D /* LJSServiceBuilder.h */,
+				A3D883B9189FFCCC008F458D /* LJSServiceBuilder.m */,
 			);
 			name = "Model Builders";
 			sourceTree = "<group>";
@@ -420,6 +425,7 @@
 			files = (
 				A31CBF6F189988D000747F46 /* LJSAppDelegate.m in Sources */,
 				A3BD2763189EF72200540C5F /* LJSService.m in Sources */,
+				A3D883BA189FFCCC008F458D /* LJSServiceBuilder.m in Sources */,
 				A31CBF78189988D000747F46 /* LJSViewController.m in Sources */,
 				A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */,
 				A3BD2762189EF72200540C5F /* LJSScraper.m in Sources */,

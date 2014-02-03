@@ -12,6 +12,7 @@
 @interface LJSService : NSObject
 
 @property (nonatomic, readonly) LJSStop *stop;
+@property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSArray *depatures;
 
 @end
