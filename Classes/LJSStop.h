@@ -15,4 +15,6 @@
 @property (nonatomic, readonly) NSDate *liveDate;
 @property (nonatomic, readonly) NSArray *services;
 
+- (BOOL)isEqualToStop:(LJSStop *)stop;
+
 @end
