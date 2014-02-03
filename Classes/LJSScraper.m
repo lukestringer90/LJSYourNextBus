@@ -9,6 +9,9 @@
 #import "LJSScraper.h"
 #import <ObjectiveGumbo/ObjectiveGumbo.h>
 
+#import "LJSStop.h"
+#import "LJSStopBuilder.h"
+
 NSString * const LJSNaPTANCodeKey = @"NaPTAN_code";
 NSString * const LJSStopNameKey = @"stop_name";
 NSString * const LJSDepaturesKey = @"departures";
@@ -17,11 +20,32 @@ NSString * const LJSExpectedDepatureTimeKey = @"expected_departure_time";
 NSString * const LJSLiveTimeKey = @"live_information_time";
 NSString * const LJSLowFloorAccess = @"low_floor_access";
 
+@interface LJSScraper ()
+@property (nonatomic, strong) LJSStopBuilder *stopBuilder;
+@end
 
 @implementation LJSScraper
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.stopBuilder = [[LJSStopBuilder alloc] init];
+    }
+    return self;
+}
+
 #pragma mark - Public
 #pragma mark -
+
+- (LJSStop *)scrapeStopDataFromHTML:(NSString *)html {
+    NSString *naptanCode = [self scrapeNaPTANCodeFromHTML:html];
+    NSString *title = [self scrapeTitleFromHTML:html];
+    NSString *liveDateString = [self scrapeLiveDateStringFromHTML:html];
+    
+    LJSStop *stop = [[[self.stopBuilder stop] withNaPTANCode:naptanCode] withTitle:title];
+    
+    return stop;
+}
 
 - (NSURL *)scrapeLaterDepaturesURL:(NSString *)html {
     NSString *pattern = @".*<a href=\"(.*)\">Later.*";
@@ -35,55 +59,14 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
     return [NSURL URLWithString:path];
 }
 
-/*
- 
- Scraping into this form:
- 
- {
-    "departures" :     {
-        "BLUE" :         [
-                        {
-                "destination" : "Malin Bridge",
-                "expected_departure_time" : "11:49"
-            },
-                        {
-                "destination" : "Malin Bridge",
-                "expected_departure_time" : "12:09"
-            },
-                        {
-                "destination" : "Malin Bridge",
-                "expected_departure_time" : "12:29"
-            }
-        ],
-        "YELL" :         [
-                        {
-                "destination" : "Middlewood",
-                "expected_departure_time" : "11:38"
-            },
-                        {
-                "destination" : "Middlewood",
-                "expected_departure_time" : "11:58"
-            },
-                        {
-                "destination" : "Middlewood",
-                "expected_departure_time" : "12:18"
-            }
-        ]
-    },
-    "stop_code" : "37090168",
-    "stop_name" : "Hillsborough",
-    "live_information" : "00:31"
-}
- 
- */
 
 - (NSDictionary *)scrapeDepatureDataFromHTML:(NSString *)html {
     OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];
     NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
     
     NSString *naptanCode = [self scrapeNaPTANCodeFromHTML:html];
-    NSString *stopName = [self scrapeStopNameFromHTML:html];
-    NSString *liveDate = [self scapeLiveDateFromHTML:html];
+    NSString *stopName = [self scrapeTitleFromHTML:html];
+    NSString *liveDate = [self scrapeLiveDateStringFromHTML:html];
     
     NSDictionary *scrapedData = @{
                                   LJSNaPTANCodeKey : naptanCode,
@@ -118,12 +101,12 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
     return [self scrapeHTML:html usingRegexPattern:pattern];
 }
 
-- (NSString *)scrapeStopNameFromHTML:(NSString *)html {
+- (NSString *)scrapeTitleFromHTML:(NSString *)html {
     NSString *pattern = @".*<p>Departure information for <b>(.*?)</b> at.*";
     return [self scrapeHTML:html usingRegexPattern:pattern];
 }
 
-- (NSString *)scapeLiveDateFromHTML:(NSString *)html {
+- (NSString *)scrapeLiveDateStringFromHTML:(NSString *)html {
     NSString *pattern = @".*at <b>(.*?)</b>.*";
     return [self scrapeHTML:html usingRegexPattern:pattern];
 }
