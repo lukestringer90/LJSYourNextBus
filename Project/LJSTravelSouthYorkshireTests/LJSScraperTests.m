@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "LJSScraper.h"
-#import "LJSLiveDepatures.h"
+#import "LJSStop.h"
 
 @interface LJSScraperTests : XCTestCase {
     LJSScraper *_sut;
@@ -23,9 +23,8 @@
 
 - (void)setUp {
     [super setUp];
-//    _sut = [[LJSScraper alloc] init];
-//    _correctData = [self loadJSONFileNamed:@"malin_bridge_tram"];
-//    _html = [self loadHTMLFileNamed:@"malin_bridge_tram"];
+    _sut = [[LJSScraper alloc] init];
+    _html = [self loadHTMLFileNamed:@"37010071"];
 }
 
 #pragma mark - Helpers
@@ -48,6 +47,13 @@
 #pragma mark - Tests
 
 #pragma mark - Depature data
+
+- (void)testStopData {
+    LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+    
+    XCTAssertEqualObjects(stop.NaPTANCode, @"37010071", @"");
+    XCTAssertEqualObjects(stop.title, @"Rotherham Intc", @"");
+}
 
 - (void)testScapesDepaturesWithoutLowFloorAccess {
 //    _correctData = [self loadJSONFileNamed:@"malin_bridge_tram"];

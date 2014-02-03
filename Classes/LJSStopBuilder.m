@@ -7,6 +7,7 @@
 //
 
 #import "LJSStopBuilder.h"
+#import "LJSStop.h"
 
 @implementation LJSStopBuilder
 
@@ -16,32 +17,34 @@
 
 @end
 
-@interface LJSStop ()
-@property (nonatomic, strong, readwrite) NSString *NaPTANCode;
-@property (nonatomic, strong, readwrite) NSString *title;
-@property (nonatomic, strong, readwrite) NSDate *liveDate;
-@property (nonatomic, strong, readwrite) NSArray *services;
+@interface LJSStop () {
+    NSString *_NaPTANCode;
+    NSString *_title;
+    NSDate *_liveDate;
+    NSArray *_services;
+    
+}
 @end
 
 @implementation LJSStop (LJSBuilderAdditions)
 
 - (LJSStop *)withNaPTANCode:(NSString *)NaPTANCode {
-    self.NaPTANCode = NaPTANCode;
+    _NaPTANCode = NaPTANCode;
     return self;
 }
 
 - (LJSStop *)withTitle:(NSString *)title {
-    self.title = title;
+    _title = title;
     return self;
 }
 
 - (LJSStop *)withLiveDate:(NSDate *)scrapeDate {
-    self.liveDate = scrapeDate;
+    _liveDate = scrapeDate;
     return self;
 }
 
 - (LJSStop *)withServices:(NSArray *)services {
-    self.services = services;
+    _services = services;
     return self;
 }
 
