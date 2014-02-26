@@ -77,8 +77,8 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
     
     NSArray *services = [NSArray array];
     
-    for (NSInteger serviceRowIndex = 0; serviceRowIndex < tds.count; serviceRowIndex+=4) {
-        OGElement *titleElement = tds[serviceRowIndex];
+    for (NSInteger titleRowIndex = 0; titleRowIndex < tds.count; titleRowIndex+=4) {
+        OGElement *titleElement = tds[titleRowIndex];
         NSString *title = [self removeLastCharacterFromString:titleElement.text];
         
         LJSService *service = [[services filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title == %@", title]] firstObject];
@@ -88,9 +88,9 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
         }
         
         
-        OGElement *destinationElement = tds[serviceRowIndex+1];
-        OGElement *depatureDateElement = tds[serviceRowIndex+2];
-        OGElement *lowFloorAccessElement = tds[serviceRowIndex+3];
+        OGElement *destinationElement = tds[titleRowIndex+1];
+        OGElement *depatureDateElement = tds[titleRowIndex+2];
+        OGElement *lowFloorAccessElement = tds[titleRowIndex+3];
         
 		NSString *destinationValue = [self removeLastCharacterFromString:destinationElement.text];
 		NSString *depatureDateValue = [self removeLastCharacterFromString:depatureDateElement.text];
@@ -99,26 +99,20 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
 		NSDate *expectedDepatureDate = nil;
 		BOOL hasLowFloorAccess = NO;
 		
-		LJSDepature *depature = [[service.depatures filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"destination == %@ AND expectedDepatureDate == %@ AND service == %@", destinationValue, expectedDepatureDate, service]] firstObject];
-		if (!depature) {
-			NSDate *expectedDepatureDate = nil;
-			BOOL hasLowFloorAccess = NO;
-			depature = [[[[[self.depatureBuilder depature]
-						  withDestination:destinationValue]
-						 withExpectedDepatureDate:expectedDepatureDate]
-						withHasLowFloorAccess:hasLowFloorAccess]
-						withService:service];
-			
-			if (!service.depatures) {
-				service = [service withDepautures:@[depature]];
-			}
-			else {
-				NSArray *newDepatures = [service.depatures arrayByAddingObject:depature];
-				service = [service withDepautures:newDepatures];
-			}
-			
-			
+		LJSDepature *depature = [[[[[self.depatureBuilder depature]
+									withDestination:destinationValue]
+								   withExpectedDepatureDate:expectedDepatureDate]
+								  withHasLowFloorAccess:hasLowFloorAccess]
+								 withService:service];
+		
+		if (!service.depatures) {
+			service = [service withDepautures:@[depature]];
 		}
+		else {
+			NSArray *newDepatures = [service.depatures arrayByAddingObject:depature];
+			service = [service withDepautures:newDepatures];
+		}
+
         
     }
     return services;

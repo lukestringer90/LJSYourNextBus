@@ -46,129 +46,26 @@
 
 #pragma mark - Tests
 
-#pragma mark - Depature data
-
-- (void)testStopData {
+- (void)testStopDetails {
     LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
     
     XCTAssertEqualObjects(stop.NaPTANCode, @"37010071", @"");
     XCTAssertEqualObjects(stop.title, @"Rotherham Intc", @"");
 }
 
-- (void)testServices {
+- (void)testServicesCount {
     LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
     NSArray *services = stop.services;
     
     XCTAssertEqual((NSInteger)services.count, (NSInteger)4, @"");
-    
-    
 }
 
-- (void)testScapesDepaturesWithoutLowFloorAccess {
-//    _correctData = [self loadJSONFileNamed:@"malin_bridge_tram"];
-//    _html = [self loadHTMLFileNamed:@"malin_bridge_tram"];
-//    
-//    NSDictionary *correctDepatures = _correctData[LJSDepaturesKey];
-//    
-//    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
-//    NSDictionary *scrapedDepatures = scrapedData[LJSDepaturesKey];
-//    
-//    XCTAssertEqualObjects(scrapedDepatures, correctDepatures, @"");
-}
-
-- (void)testScapesDepaturesWithLowFloorAccess {
-//    _correctData = [self loadJSONFileNamed:@"standwood_avenue_bus"];
-//    _html = [self loadHTMLFileNamed:@"standwood_avenue_bus"];
-//    
-//    NSDictionary *correctDepatures = _correctData[LJSDepaturesKey];
-//    
-//    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
-//    NSDictionary *scrapedDepatures = scrapedData[LJSDepaturesKey];
-//    
-//    XCTAssertEqualObjects(scrapedDepatures, correctDepatures, @"");
-}
-
-
-- (void)testReturnsNoDepatureData {
-//    _html = [self loadHTMLFileNamed:@"standwoord_avenue_bus_no_depatures"];
-//    
-//    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
-//    NSDictionary *scrapedDepatures = scrapedData[LJSDepaturesKey];
-//    
-//    XCTAssertNil(scrapedDepatures, @"");
-}
-
-#pragma mark - NaPTAN code
-
-- (void)testScrapesNaPTANCode {
-//    NSString *correctNaPTANCode = _correctData[LJSNaPTANCodeKey];
-//    
-//    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
-//    NSString *scrapedNaPTANCode = scrapedData[LJSNaPTANCodeKey];
-//    
-//    XCTAssertEqualObjects(scrapedNaPTANCode, correctNaPTANCode, @"");
-}
-
-#pragma mark - Stop name
-
-- (void)testScrapesStopName {
-//    NSString *correctStopName = _correctData[LJSStopNameKey];
-//    
-//    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
-//    NSString *scrapedStopName = scrapedData[LJSStopNameKey  ];
-//    
-//    XCTAssertEqualObjects(scrapedStopName, correctStopName, @"");
-}
-
-#pragma mark - Live information date
-
-- (void)testScrapesLiveInformationDate {
-//    NSString *correctLiveDate = _correctData[LJSLiveTimeKey];
-//    
-//    NSDictionary *scrapedData = [_sut scrapeDepatureDataFromHTML:_html];
-//    NSString *scrapedLiveDate = scrapedData[LJSLiveTimeKey];
-//    
-//    XCTAssertEqualObjects(scrapedLiveDate, correctLiveDate, @"");
-}
-
-#pragma mark - Later URL
-
-- (void)testScrpaesLaterDepaturesURL {
-//    NSURL *correctURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
-//    NSURL *scrapedURL = [_sut scrapeLaterDepaturesURL:_html];
-//    
-//    XCTAssertEqualObjects(scrapedURL, correctURL, @"");
-}
-
-- (void)testReturnsNoLaterURL {
-//    _html = [self loadHTMLFileNamed:@"standwoord_avenue_bus_no_later"];
-//    
-//    NSURL *scrapedURL = [_sut scrapeLaterDepaturesURL:_html];
-//    
-//    XCTAssertNil(scrapedURL, @"");
-}
-
-#pragma mark - Earlier URL
-
-- (void)testEarlierDepaturesURL {
-//    NSURL *correctURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=10&textonly=1"];
-//    NSURL *scrapedURL = [_sut scrapeEarlierDepaturesURL:_html];
-//    
-//    XCTAssertEqualObjects(scrapedURL, correctURL, @"");
-}
-
-- (void)testReturnsNoEarlierURL {
-//    _html = [self loadHTMLFileNamed:@"standwoord_avenue_bus_no_earlier"];
-//    
-//    NSURL *scrapedURL = [_sut scrapeEarlierDepaturesURL:_html];
-//    
-//    XCTAssertNil(scrapedURL, @"");
-}
-
-#pragma mark - Other
-
-- (void)testInstantiatesError {
-    // TODO: Malformed HTML
+- (void)testDepaturesCount {
+	LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+    NSArray *services = stop.services;
+	NSMutableArray *allDepatures = [[services valueForKeyPath:@"depatures"] valueForKeyPath:@"@unionOfArrays.self"];
+	
+	XCTAssertEqual((NSInteger)allDepatures.count, (NSInteger)16, @"");
 }
 
 
