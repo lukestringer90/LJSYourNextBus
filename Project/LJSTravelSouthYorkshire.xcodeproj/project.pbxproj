@@ -22,6 +22,7 @@
 		A31CBF82189988D000747F46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF5E189988D000747F46 /* Foundation.framework */; };
 		A31CBF83189988D000747F46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF62189988D000747F46 /* UIKit.framework */; };
 		A31CBF8B189988D000747F46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF89189988D000747F46 /* InfoPlist.strings */; };
+		A3411AB718BE85650083E9EF /* LJSDepatureBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */; };
 		A34A1951189EB768002EEF2B /* LJSLiveDepaturesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */; };
 		A34A1953189EBC13002EEF2B /* LJSScraperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1952189EBC13002EEF2B /* LJSScraperTests.m */; };
 		A34A1957189EBF86002EEF2B /* 37010071.html in Resources */ = {isa = PBXBuildFile; fileRef = A34A1956189EBF86002EEF2B /* 37010071.html */; };
@@ -69,6 +70,8 @@
 		A31CBF80189988D000747F46 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A31CBF88189988D000747F46 /* LJSTravelSouthYorkshireTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LJSTravelSouthYorkshireTests-Info.plist"; sourceTree = "<group>"; };
 		A31CBF8A189988D000747F46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A3411AB518BE85650083E9EF /* LJSDepatureBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepatureBuilder.h; path = ../../Classes/LJSDepatureBuilder.h; sourceTree = "<group>"; };
+		A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepatureBuilder.m; path = ../../Classes/LJSDepatureBuilder.m; sourceTree = "<group>"; };
 		A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSLiveDepaturesTests.m; sourceTree = "<group>"; };
 		A34A1952189EBC13002EEF2B /* LJSScraperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSScraperTests.m; sourceTree = "<group>"; };
 		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 37010071.html; sourceTree = "<group>"; };
@@ -252,6 +255,8 @@
 				A3BD276D189F122D00540C5F /* LJSStopBuilder.m */,
 				A3D883B8189FFCCC008F458D /* LJSServiceBuilder.h */,
 				A3D883B9189FFCCC008F458D /* LJSServiceBuilder.m */,
+				A3411AB518BE85650083E9EF /* LJSDepatureBuilder.h */,
+				A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */,
 			);
 			name = "Model Builders";
 			sourceTree = "<group>";
@@ -432,6 +437,7 @@
 				A3BD276E189F122D00540C5F /* LJSStopBuilder.m in Sources */,
 				A31CBF6B189988D000747F46 /* main.m in Sources */,
 				A3BD275F189EF72200540C5F /* LJSDepature.m in Sources */,
+				A3411AB718BE85650083E9EF /* LJSDepatureBuilder.m in Sources */,
 				A3BD2764189EF72200540C5F /* LJSStop.m in Sources */,
 				A3BD2761189EF72200540C5F /* LJSLiveDepatures.m in Sources */,
 			);

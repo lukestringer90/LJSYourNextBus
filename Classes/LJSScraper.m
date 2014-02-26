@@ -12,7 +12,9 @@
 #import "LJSStop.h"
 #import "LJSStopBuilder.h"
 #import "LJSService.h"
+#import "LJSDepature.h"
 #import "LJSServiceBuilder.h"
+#import "LJSDepatureBuilder.h"
 
 NSString * const LJSNaPTANCodeKey = @"NaPTAN_code";
 NSString * const LJSStopNameKey = @"stop_name";
@@ -25,6 +27,7 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
 @interface LJSScraper ()
 @property (nonatomic, strong) LJSStopBuilder *stopBuilder;
 @property (nonatomic, strong) LJSServiceBuilder *serviceBuilder;
+@property (nonatomic, strong) LJSDepatureBuilder *depatureBuilder;
 @end
 
 @implementation LJSScraper
@@ -34,6 +37,7 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
     if (self) {
         self.stopBuilder = [[LJSStopBuilder alloc] init];
         self.serviceBuilder = [[LJSServiceBuilder alloc] init];
+		self.depatureBuilder = [[LJSDepatureBuilder alloc] init];
     }
     return self;
 }
@@ -65,6 +69,8 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
 }
 
 
+#pragma mark - Scraping
+
 - (NSArray *)scrapeServicesFromHTML:(NSString *)html {
     OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];
     NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
@@ -83,24 +89,40 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
         
         
         OGElement *destinationElement = tds[serviceRowIndex+1];
-        OGElement *depatureElement = tds[serviceRowIndex+2];
+        OGElement *depatureDateElement = tds[serviceRowIndex+2];
         OGElement *lowFloorAccessElement = tds[serviceRowIndex+3];
         
+		NSString *destinationValue = [self removeLastCharacterFromString:destinationElement.text];
+		NSString *depatureDateValue = [self removeLastCharacterFromString:depatureDateElement.text];
         NSNumber *lowFloorAccessValue = [self lowFloorAccessFromString:lowFloorAccessElement.text];
-        
-//        services = [self processServiceValue:[self removeLastCharacterFromString:titleElement.text]
-//                               destinationValue:[self removeLastCharacterFromString:destinationElement.text]
-//                                  depatureValue:[self removeLastCharacterFromString:depatureElement.text]
-//                            lowFloorAccessValue:lowFloorAccessValue
-//                                currentServices:services];
+		
+		NSDate *expectedDepatureDate = nil;
+		BOOL hasLowFloorAccess = NO;
+		
+		LJSDepature *depature = [[service.depatures filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"destination == %@ AND expectedDepatureDate == %@ AND service == %@", destinationValue, expectedDepatureDate, service]] firstObject];
+		if (!depature) {
+			NSDate *expectedDepatureDate = nil;
+			BOOL hasLowFloorAccess = NO;
+			depature = [[[[[self.depatureBuilder depature]
+						  withDestination:destinationValue]
+						 withExpectedDepatureDate:expectedDepatureDate]
+						withHasLowFloorAccess:hasLowFloorAccess]
+						withService:service];
+			
+			if (!service.depatures) {
+				service = [service withDepautures:@[depature]];
+			}
+			else {
+				NSArray *newDepatures = [service.depatures arrayByAddingObject:depature];
+				service = [service withDepautures:newDepatures];
+			}
+			
+			
+		}
         
     }
     return services;
 }
-
-#pragma mark - Private
-
-#pragma mark - Regex scraping
 
 - (NSString *)scrapeNaPTANCodeFromHTML:(NSString *)html {
     NSString *pattern = @".*<p>Stop Number: <b>(.*?)</b></p>.*";

@@ -14,6 +14,6 @@
 @property (nonatomic, readonly) LJSService *service;
 @property (nonatomic, readonly) NSString *destination;
 @property (nonatomic, readonly) NSDate *expectedDepatureDate;
-@property (nonatomic, readonly) BOOL *hasLowFloorAccess;
+@property (nonatomic, readonly) BOOL hasLowFloorAccess;
 
 @end
