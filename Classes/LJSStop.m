@@ -31,4 +31,8 @@
     return [self.NaPTANCode hash];
 }
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"Title: %@ - NaPTAN Code: %@ - Live Date : %@ - Services: %ld", self.title, self.NaPTANCode, self.liveDate, (unsigned long)self.services.count];
+}
+
 @end

@@ -7,7 +7,12 @@
 //
 
 #import "LJSService.h"
+#import "LJSStop.h"
 
 @implementation LJSService
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"Title: %@ - Stop: %@ - Depatures: %ld", self.title, self.stop.title, self.depatures.count];
+}
 
 @end
