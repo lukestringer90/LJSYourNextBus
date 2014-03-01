@@ -7,6 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
+
 #import "LJSScraper.h"
 #import "LJSStop.h"
 
@@ -48,16 +52,16 @@
 
 - (void)testStopDetails {
     LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
-    
-    XCTAssertEqualObjects(stop.NaPTANCode, @"37010071", @"");
-    XCTAssertEqualObjects(stop.title, @"Rotherham Intc", @"");
+	
+	assertThat(stop.NaPTANCode, equalTo(@"37010071"));
+	assertThat(stop.title, equalTo(@"Rotherham Intc"));
 }
 
 - (void)testServicesCount {
     LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
     NSArray *services = stop.services;
-    
-    XCTAssertEqual((NSInteger)services.count, (NSInteger)4, @"");
+	
+	assertThat(services, hasCountOf(4));
 }
 
 - (void)testDepaturesCount {
@@ -65,8 +69,9 @@
     NSArray *services = stop.services;
 	NSMutableArray *allDepatures = [[services valueForKeyPath:@"depatures"] valueForKeyPath:@"@unionOfArrays.self"];
 	
-	XCTAssertEqual((NSInteger)allDepatures.count, (NSInteger)16, @"");
+	assertThat(allDepatures, hasCountOf(16));
 }
+
 
 
 @end

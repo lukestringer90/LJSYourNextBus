@@ -1,13 +1,16 @@
 PODS:
   - ObjectiveGumbo (0.1)
+  - OCHamcrest (3.0.1)
   - OCMock (2.2.2)
 
 DEPENDENCIES:
   - ObjectiveGumbo
+  - OCHamcrest (~> 3.0)
   - OCMock (~> 2.2.2)
 
 SPEC CHECKSUMS:
   ObjectiveGumbo: 76576087e8b3d6e00f4fd4dee7b13e11b1da68e9
+  OCHamcrest: 782c52ae8c673e5d6060a65005cfd26d20d519ba
   OCMock: ffba68873fd32cfd35d885bddad23bfa816da4a3
 
 COCOAPODS: 0.29.0
