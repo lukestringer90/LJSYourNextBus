@@ -14,6 +14,7 @@
 #import "LJSScraper.h"
 #import "LJSStop.h"
 #import "LJSService.h"
+#import "LJSDepature.h"
 
 @interface LJSScraperTests : XCTestCase {
     LJSScraper *_sut;
@@ -49,6 +50,24 @@
     return [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:extension];
 }
 
+- (NSArray *)sortedServicesForStop:(LJSStop *)stop {
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+	return [stop.services sortedArrayUsingDescriptors:@[sortDescriptor]];
+}
+
+- (NSArray *)depaturesForStop:(LJSStop *)stop {
+	return [[stop.services valueForKeyPath:@"depatures"] valueForKeyPath:@"@unionOfArrays.self"];
+}
+
+- (NSArray *)sortedDepaturesForService:(LJSService *)service {
+	NSArray *sortDescriptors = @[
+								 [NSSortDescriptor sortDescriptorWithKey:@"destination"
+															   ascending:YES],
+								 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepatureDate"
+															   ascending:YES]];
+	return [service.depatures sortedArrayUsingDescriptors:sortDescriptors];
+}
+
 #pragma mark - Tests
 
 - (void)testStopDetails {
@@ -67,7 +86,7 @@
 
 - (void)testServicesDetails {
 	LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
-    NSArray *services = [stop.services sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
+    NSArray *services = [self sortedServicesForStop:stop];
 	
 	LJSService *firstService = services[0];
 	assertThat(firstService.title, equalTo(@"217"));
@@ -92,10 +111,52 @@
 
 - (void)testDepaturesCount {
 	LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
-    NSArray *services = stop.services;
-	NSMutableArray *allDepatures = [[services valueForKeyPath:@"depatures"] valueForKeyPath:@"@unionOfArrays.self"];
+	NSArray *allDepatures = [self depaturesForStop:stop];
 	
 	assertThat(allDepatures, hasCountOf(16));
+}
+
+- (void)testDepatureDetails {
+    LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+    NSArray *services = [stop.services sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
+	
+	LJSService *firstService = services[0];
+	NSArray *firstServiceDepatures = [self sortedDepaturesForService:firstService];
+	
+	LJSDepature *firstDepatureOfFirstService = firstServiceDepatures[0];
+	assertThat(firstDepatureOfFirstService.destination, equalTo(@"Mexborough"));
+	assertThat(firstDepatureOfFirstService.service, equalTo(firstService));
+	// test depature date
+	// test has low floor access
+	
+	LJSDepature *secondDepatureOfFirstService = firstServiceDepatures[1];
+	assertThat(secondDepatureOfFirstService.service, equalTo(firstService));
+	assertThat(secondDepatureOfFirstService.destination, equalTo(@"Thurnscoe"));
+	// test depature date
+	// test has low floor access
+	
+	
+	LJSService *secondService = services[1];
+	NSArray *secondServiceDepatures = [self sortedDepaturesForService:secondService];
+	
+	LJSDepature *firstDepatureOfSecondService = secondServiceDepatures[0];
+	assertThat(firstDepatureOfSecondService.destination, equalTo(@"Barnsley"));
+	assertThat(firstDepatureOfSecondService.service, equalTo(secondService));
+	// test depature date
+	// test has low floor access
+	
+	LJSDepature *secondDepatureOfSecondService = secondServiceDepatures[1];
+	assertThat(secondDepatureOfSecondService.destination, equalTo(@"Barnsley"));
+	assertThat(secondDepatureOfSecondService.service, equalTo(secondService));
+	// test depature date
+	// test has low floor access
+	
+	LJSDepature *thirdDepatureOfSecondService = secondServiceDepatures[2];
+	assertThat(thirdDepatureOfSecondService.destination, equalTo(@"Barnsley"));
+	assertThat(thirdDepatureOfSecondService.service, equalTo(secondService));
+	// test depature date
+	// test has low floor access
+	
 }
 
 
