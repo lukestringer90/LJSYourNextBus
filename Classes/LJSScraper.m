@@ -49,9 +49,9 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
     NSString *naptanCode = [self scrapeNaPTANCodeFromHTML:html];
     NSString *title = [self scrapeTitleFromHTML:html];
     
-    NSArray *services = [self scrapeServicesFromHTML:html];
-    
-    LJSStop *stop = [[[[self.stopBuilder stop] withNaPTANCode:naptanCode] withTitle:title] withServices:services];
+    LJSStop *stop = [[[self.stopBuilder stop] withNaPTANCode:naptanCode] withTitle:title];
+	NSArray *services = [self scrapeServicesFromHTML:html stop:stop];
+	stop = [stop withServices:services];
     
     return stop;
 }
@@ -71,7 +71,7 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
 
 #pragma mark - Scraping
 
-- (NSArray *)scrapeServicesFromHTML:(NSString *)html {
+- (NSArray *)scrapeServicesFromHTML:(NSString *)html stop:(LJSStop *)stop {
     OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];
     NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
     
@@ -83,7 +83,7 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
         
         LJSService *service = [[services filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title == %@", title]] firstObject];
         if (!service) {
-            service = [[self.serviceBuilder service] withTitle:title];
+            service = [[[self.serviceBuilder service] withTitle:title] withStop:stop];
             services = [services arrayByAddingObject:service];
         }
         

@@ -13,6 +13,7 @@
 
 #import "LJSScraper.h"
 #import "LJSStop.h"
+#import "LJSService.h"
 
 @interface LJSScraperTests : XCTestCase {
     LJSScraper *_sut;
@@ -62,6 +63,31 @@
     NSArray *services = stop.services;
 	
 	assertThat(services, hasCountOf(4));
+}
+
+- (void)testServicesDetails {
+	LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+    NSArray *services = [stop.services sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
+	
+	LJSService *firstService = services[0];
+	assertThat(firstService.title, equalTo(@"217"));
+	assertThat(firstService.depatures, hasCountOf(2));
+	assertThat(firstService.stop, equalTo(stop));
+	
+	LJSService *secondService = services[1];
+	assertThat(secondService.title, equalTo(@"218"));
+	assertThat(secondService.depatures, hasCountOf(3));
+	assertThat(secondService.stop, equalTo(stop));
+	
+	LJSService *thirdService = services[2];
+	assertThat(thirdService.title, equalTo(@"22"));
+	assertThat(thirdService.depatures, hasCountOf(7));
+	assertThat(thirdService.stop, equalTo(stop));
+	
+	LJSService *fourthService = services[3];
+	assertThat(fourthService.title, equalTo(@"22X"));
+	assertThat(fourthService.depatures, hasCountOf(4));
+	assertThat(fourthService.stop, equalTo(stop));
 }
 
 - (void)testDepaturesCount {
