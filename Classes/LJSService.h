@@ -15,4 +15,6 @@
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSArray *depatures;
 
+- (BOOL)isEqualToService:(LJSService *)service;
+
 @end

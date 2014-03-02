@@ -11,6 +11,22 @@
 
 @implementation LJSService
 
+- (BOOL)isEqualToService:(LJSService *)service {
+	return [self.stop isEqualToStop:service.stop] && [self.title isEqualToString:service.title];
+}
+
+- (BOOL)isEqual:(id)object {
+	if (self == object) {
+		return YES;
+	}
+	
+	if (![object isKindOfClass:[LJSService class]]) {
+		return NO;
+	}
+	
+	return [self isEqualToService:object];
+}
+
 - (NSString *)description {
 	return [NSString stringWithFormat:@"Title: %@ - Stop: %@ - Depatures: %ld", self.title, self.stop.title, self.depatures.count];
 }
