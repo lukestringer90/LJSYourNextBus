@@ -25,6 +25,7 @@
 		A337FDA518C24F4B002FB29F /* LJSDepatureDateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDA418C24F4B002FB29F /* LJSDepatureDateParser.m */; };
 		A337FDA718C3A1BE002FB29F /* LJSDepatureDateParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDA618C3A1BE002FB29F /* LJSDepatureDateParserTests.m */; };
 		A337FDA918C3BD05002FB29F /* LJSServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDA818C3BD05002FB29F /* LJSServiceTests.m */; };
+		A337FDAB18C3C7C1002FB29F /* LJSDepatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDAA18C3C7C1002FB29F /* LJSDepatureTests.m */; };
 		A3411AB718BE85650083E9EF /* LJSDepatureBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */; };
 		A34A1951189EB768002EEF2B /* LJSLiveDepaturesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */; };
 		A34A1953189EBC13002EEF2B /* LJSScraperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1952189EBC13002EEF2B /* LJSScraperTests.m */; };
@@ -77,6 +78,7 @@
 		A337FDA418C24F4B002FB29F /* LJSDepatureDateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepatureDateParser.m; path = ../../Classes/LJSDepatureDateParser.m; sourceTree = "<group>"; };
 		A337FDA618C3A1BE002FB29F /* LJSDepatureDateParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSDepatureDateParserTests.m; sourceTree = "<group>"; };
 		A337FDA818C3BD05002FB29F /* LJSServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSServiceTests.m; sourceTree = "<group>"; };
+		A337FDAA18C3C7C1002FB29F /* LJSDepatureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSDepatureTests.m; sourceTree = "<group>"; };
 		A3411AB518BE85650083E9EF /* LJSDepatureBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepatureBuilder.h; path = ../../Classes/LJSDepatureBuilder.h; sourceTree = "<group>"; };
 		A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepatureBuilder.m; path = ../../Classes/LJSDepatureBuilder.m; sourceTree = "<group>"; };
 		A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSLiveDepaturesTests.m; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				A337FDA618C3A1BE002FB29F /* LJSDepatureDateParserTests.m */,
 				A3BD276F189FF46500540C5F /* LJSStopTests.m */,
 				A337FDA818C3BD05002FB29F /* LJSServiceTests.m */,
+				A337FDAA18C3C7C1002FB29F /* LJSDepatureTests.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				A337FDA718C3A1BE002FB29F /* LJSDepatureDateParserTests.m in Sources */,
 				A34A1953189EBC13002EEF2B /* LJSScraperTests.m in Sources */,
 				A337FDA918C3BD05002FB29F /* LJSServiceTests.m in Sources */,
+				A337FDAB18C3C7C1002FB29F /* LJSDepatureTests.m in Sources */,
 				A34A1951189EB768002EEF2B /* LJSLiveDepaturesTests.m in Sources */,
 				A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */,
 			);

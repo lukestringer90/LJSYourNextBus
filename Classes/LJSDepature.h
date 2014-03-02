@@ -16,4 +16,6 @@
 @property (nonatomic, readonly) NSDate *expectedDepatureDate;
 @property (nonatomic, readonly) BOOL hasLowFloorAccess;
 
+- (BOOL)isEqualToDepature:(LJSDepature *)depature;
+
 @end

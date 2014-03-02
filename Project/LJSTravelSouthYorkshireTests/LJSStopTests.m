@@ -28,11 +28,19 @@
     XCTAssertEqualObjects(stopA, stopB, @"");
 }
 
-- (void)testInequality {
+- (void)testInequalityForTitles {
     LJSStop *stopA = [[self.stopBuilder stop] withNaPTANCode:@"123"];
     LJSStop *stopB = [[self.stopBuilder stop] withNaPTANCode:@"456"];
     
     XCTAssertNotEqualObjects(stopA, stopB, @"");
+}
+
+- (void)testInequalityForServices {
+    // TODO: Pending
+}
+
+- (void)testInequalityForDepatures {
+    // TODO: Pending
 }
 
 @end
