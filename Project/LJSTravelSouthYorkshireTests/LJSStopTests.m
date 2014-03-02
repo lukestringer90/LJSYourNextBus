@@ -9,6 +9,8 @@
 #import <XCTest/XCTest.h>
 #import "LJSStop.h"
 #import "LJSStopBuilder.h"
+#import "LJSServiceBuilder.h"
+#import "LJSService.h"
 
 @interface LJSStopTests : XCTestCase
 @property (nonatomic, strong) LJSStopBuilder *stopBuilder;
@@ -36,11 +38,16 @@
 }
 
 - (void)testInequalityForServices {
-    // TODO: Pending
+	LJSServiceBuilder *serviceBuilder = [[LJSServiceBuilder alloc] init];
+	LJSService *serviceA = [[serviceBuilder service] withTitle:@"service-123"];
+	LJSService *serviceB = [[serviceBuilder service] withTitle:@"service-456"];
+	LJSService *serviceC = [[serviceBuilder service] withTitle:@"service-789"];
+	
+	LJSStop *stopA = [[[self.stopBuilder stop] withNaPTANCode:@"123"] withServices:@[serviceA, serviceB]];
+    LJSStop *stopB = [[[self.stopBuilder stop] withNaPTANCode:@"123"] withServices:@[serviceA, serviceC]];
+	
+	XCTAssertNotEqualObjects(stopA, stopB, @"");
 }
 
-- (void)testInequalityForDepatures {
-    // TODO: Pending
-}
 
 @end

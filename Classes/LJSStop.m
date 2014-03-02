@@ -11,7 +11,7 @@
 @implementation LJSStop
 
 - (BOOL)isEqualToStop:(LJSStop *)stop {
-    return [self.NaPTANCode isEqualToString:stop.NaPTANCode];
+    return [self.NaPTANCode isEqualToString:stop.NaPTANCode] && [self allServicesEqualWithStop:stop];
 }
 
 - (BOOL)isEqual:(id)object {
@@ -24,6 +24,12 @@
     }
     
     return [self isEqualToStop:(LJSStop *)object];
+}
+
+- (BOOL)allServicesEqualWithStop:(LJSStop *)stop {
+	NSSet *servicesA = [NSSet setWithArray:self.services];
+	NSSet *servicesB = [NSSet setWithArray:stop.services];
+	return [servicesA isEqualToSet:servicesB];
 }
 
 
