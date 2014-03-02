@@ -26,19 +26,16 @@
 }
 
 - (void)testEquality {
-    LJSStop *stop = [[self.stopBuilder stop] withNaPTANCode:@"stop-123"];
 	
-	LJSService *serviceA = [[[self.serviceBuilder service] withTitle:@"service-123"] withStop:stop];
-	LJSService *serviceB = [[[self.serviceBuilder service] withTitle:@"service-123"] withStop:stop];
+	LJSService *serviceA = [[self.serviceBuilder service] withTitle:@"service-123"];
+	LJSService *serviceB = [[self.serviceBuilder service] withTitle:@"service-123"];
 	
 	XCTAssertEqualObjects(serviceA, serviceB, @"");
 }
 
 - (void)testInequalityForTitle {
-    LJSStop *stop = [[self.stopBuilder stop] withNaPTANCode:@"stop-123"];
-	
-	LJSService *serviceA = [[[self.serviceBuilder service] withTitle:@"service-123"] withStop:stop];
-	LJSService *serviceB = [[[self.serviceBuilder service] withTitle:@"service-456"] withStop:stop];
+	LJSService *serviceA = [[self.serviceBuilder service] withTitle:@"service-123"] ;
+	LJSService *serviceB = [[self.serviceBuilder service] withTitle:@"service-456"];
 	
 	XCTAssertNotEqualObjects(serviceA, serviceB, @"");
 }

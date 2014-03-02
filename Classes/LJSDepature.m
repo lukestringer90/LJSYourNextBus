@@ -12,7 +12,7 @@
 @implementation LJSDepature
 
 - (BOOL)isEqualToDepature:(LJSDepature *)depature {
-	BOOL servicesEqual = [self.service isEqualToService:depature.service];
+	BOOL servicesEqual = [self.service isEqualToService:depature.service] || (self.service == nil && depature.service == nil);
 	BOOL datesEqual = [self.expectedDepatureDate isEqualToDate:depature.expectedDepatureDate];
 	BOOL destinationsEqual = [self.destination isEqualToString:depature.destination];
 	BOOL lowFloorAccessEqual = self.hasLowFloorAccess == depature.hasLowFloorAccess;
