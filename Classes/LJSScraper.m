@@ -15,6 +15,7 @@
 #import "LJSDepature.h"
 #import "LJSServiceBuilder.h"
 #import "LJSDepatureBuilder.h"
+#import "LJSDepatureDateParser.h"
 
 NSString * const LJSNaPTANCodeKey = @"NaPTAN_code";
 NSString * const LJSStopNameKey = @"stop_name";
@@ -28,6 +29,7 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
 @property (nonatomic, strong) LJSStopBuilder *stopBuilder;
 @property (nonatomic, strong) LJSServiceBuilder *serviceBuilder;
 @property (nonatomic, strong) LJSDepatureBuilder *depatureBuilder;
+@property (nonatomic, strong) LJSDepatureDateParser *dateParser;
 @end
 
 @implementation LJSScraper
@@ -38,6 +40,7 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
         self.stopBuilder = [[LJSStopBuilder alloc] init];
         self.serviceBuilder = [[LJSServiceBuilder alloc] init];
 		self.depatureBuilder = [[LJSDepatureBuilder alloc] init];
+		self.dateParser = [[LJSDepatureDateParser alloc] init];
     }
     return self;
 }
@@ -48,8 +51,11 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html {
     NSString *naptanCode = [self scrapeNaPTANCodeFromHTML:html];
     NSString *title = [self scrapeTitleFromHTML:html];
+	
+	NSString *liveDateString = [self scrapeLiveDateStringFromHTML:html];
+	NSDate *liveDate = [self.dateParser dateFromString:liveDateString baseDate:[NSDate date]];
     
-    LJSStop *stop = [[[self.stopBuilder stop] withNaPTANCode:naptanCode] withTitle:title];
+    LJSStop *stop = [[[[self.stopBuilder stop] withNaPTANCode:naptanCode] withTitle:title] withLiveDate:liveDate];
 	NSArray *services = [self scrapeServicesFromHTML:html stop:stop];
 	stop = [stop withServices:services];
     

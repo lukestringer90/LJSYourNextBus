@@ -42,10 +42,11 @@
 	NSString *hoursString = [dateString substringWithRange:hoursRange];
 	NSString *minutesString = [dateString substringWithRange:minutesRange];
 	
-	NSDateComponents *dateComponents = [self.calendar components:NSCalendarUnitMinute | NSCalendarUnitHour
+	NSDateComponents *dateComponents = [self.calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
 														fromDate:baseDate];
 	dateComponents.hour = [hoursString integerValue];
 	dateComponents.minute = [minutesString integerValue];
+	dateComponents.second = 0;
 	
 	return [self.calendar dateFromComponents:dateComponents];
 }

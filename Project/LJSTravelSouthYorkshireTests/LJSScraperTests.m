@@ -18,7 +18,6 @@
 
 @interface LJSScraperTests : XCTestCase {
     LJSScraper *_sut;
-    NSDictionary *_correctData;
     NSString *_html;
 }
 @end
@@ -75,6 +74,21 @@
 	
 	assertThat(stop.NaPTANCode, equalTo(@"37010071"));
 	assertThat(stop.title, equalTo(@"Rotherham Intc"));
+}
+
+- (void)testStopLiveDate {
+	LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+	
+	NSDate *today = [NSDate date];
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+	NSDateComponents *dateComponents = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+														fromDate:today];
+	dateComponents.hour = 10;
+	dateComponents.minute = 46;
+	dateComponents.second = 0;
+	NSDate *liveDate = [calendar dateFromComponents:dateComponents];
+	
+	assertThatInteger([stop.liveDate timeIntervalSince1970], equalToInteger([liveDate timeIntervalSince1970]));
 }
 
 - (void)testServicesCount {
