@@ -22,6 +22,8 @@
 		A31CBF82189988D000747F46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF5E189988D000747F46 /* Foundation.framework */; };
 		A31CBF83189988D000747F46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF62189988D000747F46 /* UIKit.framework */; };
 		A31CBF8B189988D000747F46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF89189988D000747F46 /* InfoPlist.strings */; };
+		A337FDA518C24F4B002FB29F /* LJSDepatureDateParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDA418C24F4B002FB29F /* LJSDepatureDateParser.m */; };
+		A337FDA718C3A1BE002FB29F /* LJSDepatureDateParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDA618C3A1BE002FB29F /* LJSDepatureDateParserTests.m */; };
 		A3411AB718BE85650083E9EF /* LJSDepatureBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */; };
 		A34A1951189EB768002EEF2B /* LJSLiveDepaturesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */; };
 		A34A1953189EBC13002EEF2B /* LJSScraperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1952189EBC13002EEF2B /* LJSScraperTests.m */; };
@@ -70,6 +72,9 @@
 		A31CBF80189988D000747F46 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A31CBF88189988D000747F46 /* LJSTravelSouthYorkshireTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LJSTravelSouthYorkshireTests-Info.plist"; sourceTree = "<group>"; };
 		A31CBF8A189988D000747F46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A337FDA318C24F4B002FB29F /* LJSDepatureDateParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepatureDateParser.h; path = ../../Classes/LJSDepatureDateParser.h; sourceTree = "<group>"; };
+		A337FDA418C24F4B002FB29F /* LJSDepatureDateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepatureDateParser.m; path = ../../Classes/LJSDepatureDateParser.m; sourceTree = "<group>"; };
+		A337FDA618C3A1BE002FB29F /* LJSDepatureDateParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSDepatureDateParserTests.m; sourceTree = "<group>"; };
 		A3411AB518BE85650083E9EF /* LJSDepatureBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepatureBuilder.h; path = ../../Classes/LJSDepatureBuilder.h; sourceTree = "<group>"; };
 		A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepatureBuilder.m; path = ../../Classes/LJSDepatureBuilder.m; sourceTree = "<group>"; };
 		A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSLiveDepaturesTests.m; sourceTree = "<group>"; };
@@ -167,6 +172,8 @@
 				A3BD2758189EF72200540C5F /* LJSLiveDepatures.m */,
 				A3BD2759189EF72200540C5F /* LJSScraper.h */,
 				A3BD275A189EF72200540C5F /* LJSScraper.m */,
+				A337FDA318C24F4B002FB29F /* LJSDepatureDateParser.h */,
+				A337FDA418C24F4B002FB29F /* LJSDepatureDateParser.m */,
 				A3BD2752189EF71400540C5F /* App */,
 				A31CBF65189988D000747F46 /* Supporting Files */,
 			);
@@ -209,6 +216,7 @@
 				A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */,
 				A34A1952189EBC13002EEF2B /* LJSScraperTests.m */,
 				A3BD276F189FF46500540C5F /* LJSStopTests.m */,
+				A337FDA618C3A1BE002FB29F /* LJSDepatureDateParserTests.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -435,6 +443,7 @@
 				A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */,
 				A3BD2762189EF72200540C5F /* LJSScraper.m in Sources */,
 				A3BD276E189F122D00540C5F /* LJSStopBuilder.m in Sources */,
+				A337FDA518C24F4B002FB29F /* LJSDepatureDateParser.m in Sources */,
 				A31CBF6B189988D000747F46 /* main.m in Sources */,
 				A3BD275F189EF72200540C5F /* LJSDepature.m in Sources */,
 				A3411AB718BE85650083E9EF /* LJSDepatureBuilder.m in Sources */,
@@ -447,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A337FDA718C3A1BE002FB29F /* LJSDepatureDateParserTests.m in Sources */,
 				A34A1953189EBC13002EEF2B /* LJSScraperTests.m in Sources */,
 				A34A1951189EB768002EEF2B /* LJSLiveDepaturesTests.m in Sources */,
 				A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */,
