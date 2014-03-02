@@ -90,6 +90,8 @@
 
 #pragma mark - Tests
 
+#pragma mark - LJSStop
+
 - (void)testStopDetails {
     LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
 	
@@ -111,6 +113,8 @@
 	
 	assertThat(services, hasCountOf(4));
 }
+
+#pragma mark - LJSService
 
 - (void)testServicesDetails {
 	LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
@@ -144,6 +148,8 @@
 	assertThat(allDepatures, hasCountOf(16));
 }
 
+#pragma mark - LJSDepature
+
 - (void)testDepatureDetails {
     LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
     NSArray *services = [self sortedServicesForStop:stop];
@@ -161,7 +167,7 @@
 	assertThat(firstDepatureOfFirstService.service, equalTo(firstService));
 	assertThatInteger([firstDepatureOfFirstService.expectedDepatureDate timeIntervalSince1970],
 					  equalToInteger([[self todayAtHours:11 minutes:11] timeIntervalSince1970]));
-	// test has low floor access
+	assertThatBool(firstDepatureOfFirstService.hasLowFloorAccess, equalToBool(NO));
 	
 	
 	/**
@@ -172,7 +178,7 @@
 	assertThat(secondDepatureOfFirstService.destination, equalTo(@"Thurnscoe"));
 	assertThatInteger([secondDepatureOfFirstService.expectedDepatureDate timeIntervalSince1970],
 					  equalToInteger([[self todayAtHours:11 minutes:41] timeIntervalSince1970]));
-	// test has low floor access
+	assertThatBool(secondDepatureOfFirstService.hasLowFloorAccess, equalToBool(NO));
 	
 	
 	/**
@@ -183,7 +189,7 @@
 	assertThat(firstDepatureOfSecondService.service, equalTo(secondService));
 	assertThatInteger([firstDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
 					  equalToInteger([[self todayAtHours:10 minutes:56] timeIntervalSince1970]));
-	// test has low floor access
+	assertThatBool(firstDepatureOfSecondService.hasLowFloorAccess, equalToBool(NO));
 	
 	
 	/**
@@ -194,7 +200,7 @@
 	assertThat(secondDepatureOfSecondService.service, equalTo(secondService));
 	assertThatInteger([secondDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
 					  equalToInteger([[self date:stop.liveDate plusMinutes:40] timeIntervalSince1970]));
-	// test has low floor access
+	assertThatBool(secondDepatureOfSecondService.hasLowFloorAccess, equalToBool(YES));
 	
 	
 	/**
@@ -205,7 +211,7 @@
 	assertThat(thirdDepatureOfSecondService.service, equalTo(secondService));
 	assertThatInteger([thirdDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
 					  equalToInteger([[self date:stop.liveDate plusMinutes:70] timeIntervalSince1970]));
-	// test has low floor access
+	assertThatBool(thirdDepatureOfSecondService.hasLowFloorAccess, equalToBool(YES));
 }
 
 

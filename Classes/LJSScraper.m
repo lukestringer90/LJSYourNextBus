@@ -100,10 +100,9 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
         
 		NSString *destinationValue = [self removeLastCharacterFromString:destinationElement.text];
 		NSString *depatureDateValue = [self removeLastCharacterFromString:depatureDateElement.text];
-        NSNumber *lowFloorAccessValue = [self lowFloorAccessFromString:lowFloorAccessElement.text];
 		
 		NSDate *expectedDepatureDate = [self.dateParser dateFromString:depatureDateValue baseDate:liveDate];
-		BOOL hasLowFloorAccess = NO;
+        BOOL hasLowFloorAccess = [self lowFloorAccessFromString:lowFloorAccessElement.text];
 		
 		LJSDepature *depature = [[[[[self.depatureBuilder depature]
 									withDestination:destinationValue]
@@ -161,11 +160,8 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
     return NaPTANCode;
 }
 
-- (NSNumber *)lowFloorAccessFromString:(NSString *)string {
-    if ([string rangeOfString:@"LF"].location == NSNotFound) {
-        return @0;
-    }
-    return @1;
+- (BOOL)lowFloorAccessFromString:(NSString *)string {
+    return [string hasPrefix:@"LF"];
 }
 
 #pragma mark - ObjectiveGumbo scraping
