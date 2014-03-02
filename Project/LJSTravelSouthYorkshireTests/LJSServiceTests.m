@@ -11,6 +11,8 @@
 #import "LJSServiceBuilder.h"
 #import "LJSStop.h"
 #import "LJSStopBuilder.h"
+#import "LJSDepature.h"
+#import "LJSDepatureBuilder.h"
 
 @interface LJSServiceTests : XCTestCase
 @property (nonatomic, strong) LJSServiceBuilder *serviceBuilder;
@@ -51,7 +53,27 @@
 }
 
 - (void)testInequalityForDepatures {
-	// TODO: Pending
+	LJSDepatureBuilder *depatureBuilder = [[LJSDepatureBuilder alloc] init];
+	NSDate *depatureDateA = [NSDate dateWithTimeIntervalSince1970:100000];
+	NSDate *depatureDateB = [NSDate dateWithTimeIntervalSince1970:100001];
+	NSDate *depatureDateC = [NSDate dateWithTimeIntervalSince1970:100002];
+	LJSDepature *depatureA = [[[[depatureBuilder depature]
+								withExpectedDepatureDate:depatureDateA]
+							   withDestination:@"Sheffield"]
+							  withHasLowFloorAccess:YES];
+	LJSDepature *depatureB = [[[[depatureBuilder depature]
+								withExpectedDepatureDate:depatureDateB]
+							   withDestination:@"Rotherham"]
+							  withHasLowFloorAccess:NO];
+	LJSDepature *depatureC = [[[[depatureBuilder depature]
+								withExpectedDepatureDate:depatureDateC]
+							   withDestination:@"Barnsley"]
+							  withHasLowFloorAccess:YES];
+		
+	LJSService *serviceA = [[[self.serviceBuilder service] withTitle:@"service-123"] withDepautures:@[depatureA, depatureB]];
+	LJSService *serviceB = [[[self.serviceBuilder service] withTitle:@"service-123"] withDepautures:@[depatureA, depatureC]];
+	
+	XCTAssertNotEqualObjects(serviceA, serviceB, @"");
 }
 
 @end

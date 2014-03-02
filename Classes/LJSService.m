@@ -8,13 +8,14 @@
 
 #import "LJSService.h"
 #import "LJSStop.h"
+#import "LJSDepature.h"
 
 @implementation LJSService
 
 - (BOOL)isEqualToService:(LJSService *)service {
 	BOOL stopsEqual = [self.stop isEqualToStop:service.stop] || (self.stop == nil && service.stop == nil);
 	BOOL titlesEqual = [self.title isEqualToString:service.title];
-	return stopsEqual && titlesEqual;
+	return stopsEqual && titlesEqual && [self allDepaturesEqualWithService:service];
 }
 
 - (BOOL)isEqual:(id)object {
@@ -27,6 +28,12 @@
 	}
 	
 	return [self isEqualToService:object];
+}
+
+- (BOOL)allDepaturesEqualWithService:(LJSService *)service {
+	NSSet *depaturesA = [NSSet setWithArray:self.depatures];
+	NSSet *depaturesB = [NSSet setWithArray:service.depatures];
+	return [depaturesA isEqualToSet:depaturesB];
 }
 
 - (NSString *)description {
