@@ -16,11 +16,11 @@
 #import "LJSService.h"
 #import "LJSDepature.h"
 
-@interface LJSScraperTests : XCTestCase {
-    LJSScraper *_sut;
-    NSString *_html;
-	NSCalendar *_calendar;
-}
+@interface LJSScraperTests : XCTestCase
+@property (nonatomic, strong) LJSScraper *scraper;
+@property (nonatomic, strong) NSString *html;
+@property (nonatomic, strong) NSCalendar *calendar;
+
 @end
 
 @implementation LJSScraperTests
@@ -29,9 +29,9 @@
 
 - (void)setUp {
     [super setUp];
-    _sut = [[LJSScraper alloc] init];
-    _html = [self loadHTMLFileNamed:@"37010071"];
-	_calendar = [NSCalendar currentCalendar];
+    self.scraper = [[LJSScraper alloc] init];
+    self.html = [self loadHTMLFileNamed:@"37010071"];
+	self.calendar = [NSCalendar currentCalendar];
 }
 
 #pragma mark - Helpers
@@ -71,19 +71,19 @@
 
 - (NSDate *)todayAtHours:(NSInteger)hours minutes:(NSInteger)minutes {
 	NSDate *today = [NSDate date];
-	NSDateComponents *dateComponents = [_calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+	NSDateComponents *dateComponents = [self.calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
 												   fromDate:today];
 	dateComponents.hour = hours;
 	dateComponents.minute = minutes;
 	dateComponents.second = 0;
-	return [_calendar dateFromComponents:dateComponents];
+	return [self.calendar dateFromComponents:dateComponents];
 }
 
 - (NSDate *)date:(NSDate *)baseDate plusMinutes:(NSInteger)minutes {
 	NSDateComponents *minutesComponent = [[NSDateComponents alloc] init];
 	minutesComponent.minute = minutes;
 	
-	return [_calendar dateByAddingComponents:minutesComponent
+	return [self.calendar dateByAddingComponents:minutesComponent
 									 toDate:baseDate
 									options:0];;
 }
@@ -93,14 +93,14 @@
 #pragma mark - LJSStop
 
 - (void)testStopDetails {
-    LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+    LJSStop *stop = [self.scraper scrapeStopDataFromHTML:self.html];
 	
 	assertThat(stop.NaPTANCode, equalTo(@"37010071"));
 	assertThat(stop.title, equalTo(@"Rotherham Intc"));
 }
 
 - (void)testStopLiveDate {
-	LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+	LJSStop *stop = [self.scraper scrapeStopDataFromHTML:self.html];
 	
 	NSDate *correctLiveDate = [self todayAtHours:10 minutes:46];
 	
@@ -108,7 +108,7 @@
 }
 
 - (void)testServicesCount {
-    LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+    LJSStop *stop = [self.scraper scrapeStopDataFromHTML:self.html];
     NSArray *services = stop.services;
 	
 	assertThat(services, hasCountOf(4));
@@ -117,7 +117,7 @@
 #pragma mark - LJSService
 
 - (void)testServicesDetails {
-	LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+	LJSStop *stop = [self.scraper scrapeStopDataFromHTML:self.html];
     NSArray *services = [self sortedServicesForStop:stop];
 	
 	LJSService *firstService = services[0];
@@ -142,7 +142,7 @@
 }
 
 - (void)testDepaturesCount {
-	LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+	LJSStop *stop = [self.scraper scrapeStopDataFromHTML:self.html];
 	NSArray *allDepatures = [self depaturesForStop:stop];
 	
 	assertThat(allDepatures, hasCountOf(16));
@@ -151,7 +151,7 @@
 #pragma mark - LJSDepature
 
 - (void)testDepatureDetails {
-    LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
+    LJSStop *stop = [self.scraper scrapeStopDataFromHTML:self.html];
     NSArray *services = [self sortedServicesForStop:stop];
 	
 	LJSService *firstService = services[0];
