@@ -19,6 +19,7 @@
 @interface LJSScraperTests : XCTestCase {
     LJSScraper *_sut;
     NSString *_html;
+	NSCalendar *_calendar;
 }
 @end
 
@@ -30,6 +31,7 @@
     [super setUp];
     _sut = [[LJSScraper alloc] init];
     _html = [self loadHTMLFileNamed:@"37010071"];
+	_calendar = [NSCalendar currentCalendar];
 }
 
 #pragma mark - Helpers
@@ -67,6 +69,25 @@
 	return [service.depatures sortedArrayUsingDescriptors:sortDescriptors];
 }
 
+- (NSDate *)todayAtHours:(NSInteger)hours minutes:(NSInteger)minutes {
+	NSDate *today = [NSDate date];
+	NSDateComponents *dateComponents = [_calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+												   fromDate:today];
+	dateComponents.hour = hours;
+	dateComponents.minute = minutes;
+	dateComponents.second = 0;
+	return [_calendar dateFromComponents:dateComponents];
+}
+
+- (NSDate *)date:(NSDate *)baseDate plusMinutes:(NSInteger)minutes {
+	NSDateComponents *minutesComponent = [[NSDateComponents alloc] init];
+	minutesComponent.minute = minutes;
+	
+	return [_calendar dateByAddingComponents:minutesComponent
+									 toDate:baseDate
+									options:0];;
+}
+
 #pragma mark - Tests
 
 - (void)testStopDetails {
@@ -79,16 +100,9 @@
 - (void)testStopLiveDate {
 	LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
 	
-	NSDate *today = [NSDate date];
-	NSCalendar *calendar = [NSCalendar currentCalendar];
-	NSDateComponents *dateComponents = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
-														fromDate:today];
-	dateComponents.hour = 10;
-	dateComponents.minute = 46;
-	dateComponents.second = 0;
-	NSDate *liveDate = [calendar dateFromComponents:dateComponents];
+	NSDate *correctLiveDate = [self todayAtHours:10 minutes:46];
 	
-	assertThatInteger([stop.liveDate timeIntervalSince1970], equalToInteger([liveDate timeIntervalSince1970]));
+	assertThatInteger([stop.liveDate timeIntervalSince1970], equalToInteger([correctLiveDate timeIntervalSince1970]));
 }
 
 - (void)testServicesCount {
@@ -132,45 +146,66 @@
 
 - (void)testDepatureDetails {
     LJSStop *stop = [_sut scrapeStopDataFromHTML:_html];
-    NSArray *services = [stop.services sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
+    NSArray *services = [self sortedServicesForStop:stop];
 	
 	LJSService *firstService = services[0];
+	LJSService *secondService = services[1];
 	NSArray *firstServiceDepatures = [self sortedDepaturesForService:firstService];
+	NSArray *secondServiceDepatures = [self sortedDepaturesForService:secondService];
 	
+	/**
+	 *  217 	Mexborough 	11:11
+	 */
 	LJSDepature *firstDepatureOfFirstService = firstServiceDepatures[0];
 	assertThat(firstDepatureOfFirstService.destination, equalTo(@"Mexborough"));
 	assertThat(firstDepatureOfFirstService.service, equalTo(firstService));
-	// test depature date
+	assertThatInteger([firstDepatureOfFirstService.expectedDepatureDate timeIntervalSince1970],
+					  equalToInteger([[self todayAtHours:11 minutes:11] timeIntervalSince1970]));
 	// test has low floor access
 	
+	
+	/**
+	 *  217 	Thurnscoe 	11:41
+	 */
 	LJSDepature *secondDepatureOfFirstService = firstServiceDepatures[1];
 	assertThat(secondDepatureOfFirstService.service, equalTo(firstService));
 	assertThat(secondDepatureOfFirstService.destination, equalTo(@"Thurnscoe"));
-	// test depature date
+	assertThatInteger([secondDepatureOfFirstService.expectedDepatureDate timeIntervalSince1970],
+					  equalToInteger([[self todayAtHours:11 minutes:41] timeIntervalSince1970]));
 	// test has low floor access
 	
 	
-	LJSService *secondService = services[1];
-	NSArray *secondServiceDepatures = [self sortedDepaturesForService:secondService];
-	
+	/**
+	 *  218 	Barnsley 	10:56
+	 */
 	LJSDepature *firstDepatureOfSecondService = secondServiceDepatures[0];
 	assertThat(firstDepatureOfSecondService.destination, equalTo(@"Barnsley"));
 	assertThat(firstDepatureOfSecondService.service, equalTo(secondService));
-	// test depature date
+	assertThatInteger([firstDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
+					  equalToInteger([[self todayAtHours:10 minutes:56] timeIntervalSince1970]));
 	// test has low floor access
 	
+	
+	/**
+	 *  218 	Barnsley 	40 mins 	LF
+	 */
 	LJSDepature *secondDepatureOfSecondService = secondServiceDepatures[1];
 	assertThat(secondDepatureOfSecondService.destination, equalTo(@"Barnsley"));
 	assertThat(secondDepatureOfSecondService.service, equalTo(secondService));
-	// test depature date
+	assertThatInteger([secondDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
+					  equalToInteger([[self date:stop.liveDate plusMinutes:40] timeIntervalSince1970]));
 	// test has low floor access
 	
+	
+	/**
+	 *  218 	Barnsley 	70 mins 	LF
+	 */
 	LJSDepature *thirdDepatureOfSecondService = secondServiceDepatures[2];
 	assertThat(thirdDepatureOfSecondService.destination, equalTo(@"Barnsley"));
 	assertThat(thirdDepatureOfSecondService.service, equalTo(secondService));
-	// test depature date
+	assertThatInteger([thirdDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
+					  equalToInteger([[self date:stop.liveDate plusMinutes:70] timeIntervalSince1970]));
 	// test has low floor access
-	
 }
 
 

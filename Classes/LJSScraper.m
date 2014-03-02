@@ -56,7 +56,7 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
 	NSDate *liveDate = [self.dateParser dateFromString:liveDateString baseDate:[NSDate date]];
     
     LJSStop *stop = [[[[self.stopBuilder stop] withNaPTANCode:naptanCode] withTitle:title] withLiveDate:liveDate];
-	NSArray *services = [self scrapeServicesFromHTML:html stop:stop];
+	NSArray *services = [self scrapeServicesFromHTML:html stop:stop liveDate:liveDate];
 	stop = [stop withServices:services];
     
     return stop;
@@ -77,7 +77,7 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
 
 #pragma mark - Scraping
 
-- (NSArray *)scrapeServicesFromHTML:(NSString *)html stop:(LJSStop *)stop {
+- (NSArray *)scrapeServicesFromHTML:(NSString *)html stop:(LJSStop *)stop liveDate:(NSDate *)liveDate {
     OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];
     NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
     
@@ -102,7 +102,7 @@ NSString * const LJSLowFloorAccess = @"low_floor_access";
 		NSString *depatureDateValue = [self removeLastCharacterFromString:depatureDateElement.text];
         NSNumber *lowFloorAccessValue = [self lowFloorAccessFromString:lowFloorAccessElement.text];
 		
-		NSDate *expectedDepatureDate = nil;
+		NSDate *expectedDepatureDate = [self.dateParser dateFromString:depatureDateValue baseDate:liveDate];
 		BOOL hasLowFloorAccess = NO;
 		
 		LJSDepature *depature = [[[[[self.depatureBuilder depature]
