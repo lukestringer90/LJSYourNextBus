@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A30AD3EABC5942E09B1422C9 /* libPods-LJSTravelSouthYorkshireTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD089817A154613AE642D42 /* libPods-LJSTravelSouthYorkshireTests.a */; };
+		0CDEA90459E7449CB8338392 /* libPods-LJSYourNextBusTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FD060CB0EF341FBA8373B81 /* libPods-LJSYourNextBusTests.a */; };
+		7F40B5EFFAFF41E7BF60A60B /* libPods-LJSYourNextBus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD8126FA3B54D25AE88E27F /* libPods-LJSYourNextBus.a */; };
 		A31CBF5F189988D000747F46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF5E189988D000747F46 /* Foundation.framework */; };
 		A31CBF61189988D000747F46 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF60189988D000747F46 /* CoreGraphics.framework */; };
 		A31CBF63189988D000747F46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF62189988D000747F46 /* UIKit.framework */; };
@@ -39,7 +40,6 @@
 		A3BD276E189F122D00540C5F /* LJSStopBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD276D189F122D00540C5F /* LJSStopBuilder.m */; };
 		A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD276F189FF46500540C5F /* LJSStopTests.m */; };
 		A3D883BA189FFCCC008F458D /* LJSServiceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D883B9189FFCCC008F458D /* LJSServiceBuilder.m */; };
-		BE3FED4FB615437E84F4E6AB /* libPods-LJSTravelSouthYorkshire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,21 +48,21 @@
 			containerPortal = A31CBF53189988D000747F46 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A31CBF5A189988D000747F46;
-			remoteInfo = LJSTravelSouthYorkshire;
+			remoteInfo = LJSYourNextBus;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		10448B608C4D4A0888C3508A /* Pods-LJSTravelSouthYorkshire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshire.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshire.xcconfig"; sourceTree = "<group>"; };
-		7AD089817A154613AE642D42 /* libPods-LJSTravelSouthYorkshireTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshireTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A31CBF5B189988D000747F46 /* LJSTravelSouthYorkshire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJSTravelSouthYorkshire.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FD060CB0EF341FBA8373B81 /* libPods-LJSYourNextBusTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSYourNextBusTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DD8126FA3B54D25AE88E27F /* libPods-LJSYourNextBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSYourNextBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D3C9105FFD54543B20B4913 /* Pods-LJSYourNextBus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBus.xcconfig"; path = "Pods/Pods-LJSYourNextBus.xcconfig"; sourceTree = "<group>"; };
+		A31CBF5B189988D000747F46 /* LJSYourNextBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJSYourNextBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31CBF5E189988D000747F46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A31CBF60189988D000747F46 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A31CBF62189988D000747F46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		A31CBF66189988D000747F46 /* LJSTravelSouthYorkshire-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LJSTravelSouthYorkshire-Info.plist"; sourceTree = "<group>"; };
+		A31CBF66189988D000747F46 /* LJSYourNextBus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LJSYourNextBus-Info.plist"; sourceTree = "<group>"; };
 		A31CBF68189988D000747F46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A31CBF6A189988D000747F46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A31CBF6C189988D000747F46 /* LJSTravelSouthYorkshire-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LJSTravelSouthYorkshire-Prefix.pch"; sourceTree = "<group>"; };
 		A31CBF6D189988D000747F46 /* LJSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJSAppDelegate.h; sourceTree = "<group>"; };
 		A31CBF6E189988D000747F46 /* LJSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSAppDelegate.m; sourceTree = "<group>"; };
 		A31CBF71189988D000747F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -70,9 +70,9 @@
 		A31CBF76189988D000747F46 /* LJSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJSViewController.h; sourceTree = "<group>"; };
 		A31CBF77189988D000747F46 /* LJSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSViewController.m; sourceTree = "<group>"; };
 		A31CBF79189988D000747F46 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A31CBF7F189988D000747F46 /* LJSTravelSouthYorkshireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LJSTravelSouthYorkshireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A31CBF7F189988D000747F46 /* LJSYourNextBusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LJSYourNextBusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31CBF80189988D000747F46 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		A31CBF88189988D000747F46 /* LJSTravelSouthYorkshireTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LJSTravelSouthYorkshireTests-Info.plist"; sourceTree = "<group>"; };
+		A31CBF88189988D000747F46 /* LJSYourNextBusTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LJSYourNextBusTests-Info.plist"; sourceTree = "<group>"; };
 		A31CBF8A189988D000747F46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A337FDA318C24F4B002FB29F /* LJSDepatureDateParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepatureDateParser.h; path = ../../Classes/LJSDepatureDateParser.h; sourceTree = "<group>"; };
 		A337FDA418C24F4B002FB29F /* LJSDepatureDateParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepatureDateParser.m; path = ../../Classes/LJSDepatureDateParser.m; sourceTree = "<group>"; };
@@ -81,6 +81,7 @@
 		A337FDAA18C3C7C1002FB29F /* LJSDepatureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSDepatureTests.m; sourceTree = "<group>"; };
 		A3411AB518BE85650083E9EF /* LJSDepatureBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepatureBuilder.h; path = ../../Classes/LJSDepatureBuilder.h; sourceTree = "<group>"; };
 		A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepatureBuilder.m; path = ../../Classes/LJSDepatureBuilder.m; sourceTree = "<group>"; };
+		A3435FEC18C92747004296CB /* LJSYourNextBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSYourNextBus-Prefix.pch"; sourceTree = "<group>"; };
 		A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSLiveDepaturesTests.m; sourceTree = "<group>"; };
 		A34A1952189EBC13002EEF2B /* LJSScraperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSScraperTests.m; sourceTree = "<group>"; };
 		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 37010071.html; sourceTree = "<group>"; };
@@ -101,8 +102,7 @@
 		A3BD276F189FF46500540C5F /* LJSStopTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSStopTests.m; sourceTree = "<group>"; };
 		A3D883B8189FFCCC008F458D /* LJSServiceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSServiceBuilder.h; path = ../../Classes/LJSServiceBuilder.h; sourceTree = "<group>"; };
 		A3D883B9189FFCCC008F458D /* LJSServiceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSServiceBuilder.m; path = ../../Classes/LJSServiceBuilder.m; sourceTree = "<group>"; };
-		A7BF1CF673A24EB390C630C3 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSTravelSouthYorkshireTests.xcconfig"; path = "Pods/Pods-LJSTravelSouthYorkshireTests.xcconfig"; sourceTree = "<group>"; };
-		A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSTravelSouthYorkshire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBusTests.xcconfig"; path = "Pods/Pods-LJSYourNextBusTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,7 @@
 				A31CBF61189988D000747F46 /* CoreGraphics.framework in Frameworks */,
 				A31CBF63189988D000747F46 /* UIKit.framework in Frameworks */,
 				A31CBF5F189988D000747F46 /* Foundation.framework in Frameworks */,
-				BE3FED4FB615437E84F4E6AB /* libPods-LJSTravelSouthYorkshire.a in Frameworks */,
+				7F40B5EFFAFF41E7BF60A60B /* libPods-LJSYourNextBus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +124,7 @@
 				A31CBF81189988D000747F46 /* XCTest.framework in Frameworks */,
 				A31CBF83189988D000747F46 /* UIKit.framework in Frameworks */,
 				A31CBF82189988D000747F46 /* Foundation.framework in Frameworks */,
-				A30AD3EABC5942E09B1422C9 /* libPods-LJSTravelSouthYorkshireTests.a in Frameworks */,
+				0CDEA90459E7449CB8338392 /* libPods-LJSYourNextBusTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,20 +134,20 @@
 		A31CBF52189988D000747F46 = {
 			isa = PBXGroup;
 			children = (
-				A31CBF64189988D000747F46 /* LJSTravelSouthYorkshire */,
-				A31CBF86189988D000747F46 /* LJSTravelSouthYorkshireTests */,
+				A31CBF64189988D000747F46 /* LJSYourNextBus */,
+				A31CBF86189988D000747F46 /* LJSYourNextBusTests */,
 				A31CBF5D189988D000747F46 /* Frameworks */,
 				A31CBF5C189988D000747F46 /* Products */,
-				10448B608C4D4A0888C3508A /* Pods-LJSTravelSouthYorkshire.xcconfig */,
-				A7BF1CF673A24EB390C630C3 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */,
+				9D3C9105FFD54543B20B4913 /* Pods-LJSYourNextBus.xcconfig */,
+				D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
 		A31CBF5C189988D000747F46 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A31CBF5B189988D000747F46 /* LJSTravelSouthYorkshire.app */,
-				A31CBF7F189988D000747F46 /* LJSTravelSouthYorkshireTests.xctest */,
+				A31CBF5B189988D000747F46 /* LJSYourNextBus.app */,
+				A31CBF7F189988D000747F46 /* LJSYourNextBusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,13 +159,13 @@
 				A31CBF60189988D000747F46 /* CoreGraphics.framework */,
 				A31CBF62189988D000747F46 /* UIKit.framework */,
 				A31CBF80189988D000747F46 /* XCTest.framework */,
-				A94C8F82A0764122ACB8AC81 /* libPods-LJSTravelSouthYorkshire.a */,
-				7AD089817A154613AE642D42 /* libPods-LJSTravelSouthYorkshireTests.a */,
+				8DD8126FA3B54D25AE88E27F /* libPods-LJSYourNextBus.a */,
+				7FD060CB0EF341FBA8373B81 /* libPods-LJSYourNextBusTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A31CBF64189988D000747F46 /* LJSTravelSouthYorkshire */ = {
+		A31CBF64189988D000747F46 /* LJSYourNextBus */ = {
 			isa = PBXGroup;
 			children = (
 				A3BD276B189F107200540C5F /* Model Builders */,
@@ -181,34 +181,36 @@
 				A3BD2752189EF71400540C5F /* App */,
 				A31CBF65189988D000747F46 /* Supporting Files */,
 			);
-			path = LJSTravelSouthYorkshire;
+			name = LJSYourNextBus;
+			path = LJSYourNextBus;
 			sourceTree = "<group>";
 		};
 		A31CBF65189988D000747F46 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A31CBF66189988D000747F46 /* LJSTravelSouthYorkshire-Info.plist */,
+				A31CBF66189988D000747F46 /* LJSYourNextBus-Info.plist */,
 				A31CBF67189988D000747F46 /* InfoPlist.strings */,
 				A31CBF6A189988D000747F46 /* main.m */,
-				A31CBF6C189988D000747F46 /* LJSTravelSouthYorkshire-Prefix.pch */,
+				A3435FEC18C92747004296CB /* LJSYourNextBus-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A31CBF86189988D000747F46 /* LJSTravelSouthYorkshireTests */ = {
+		A31CBF86189988D000747F46 /* LJSYourNextBusTests */ = {
 			isa = PBXGroup;
 			children = (
 				A34A1954189EBF5D002EEF2B /* Tests */,
 				A34A1955189EBF62002EEF2B /* Data */,
 				A31CBF87189988D000747F46 /* Supporting Files */,
 			);
-			path = LJSTravelSouthYorkshireTests;
+			name = LJSYourNextBusTests;
+			path = LJSYourNextBusTests;
 			sourceTree = "<group>";
 		};
 		A31CBF87189988D000747F46 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A31CBF88189988D000747F46 /* LJSTravelSouthYorkshireTests-Info.plist */,
+				A31CBF88189988D000747F46 /* LJSYourNextBusTests-Info.plist */,
 				A31CBF89189988D000747F46 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -278,9 +280,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A31CBF5A189988D000747F46 /* LJSTravelSouthYorkshire */ = {
+		A31CBF5A189988D000747F46 /* LJSYourNextBus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A31CBF90189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshire" */;
+			buildConfigurationList = A31CBF90189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSYourNextBus" */;
 			buildPhases = (
 				D1BBA40A561E4D2F8B83CCC4 /* Check Pods Manifest.lock */,
 				A31CBF57189988D000747F46 /* Sources */,
@@ -292,14 +294,14 @@
 			);
 			dependencies = (
 			);
-			name = LJSTravelSouthYorkshire;
-			productName = LJSTravelSouthYorkshire;
-			productReference = A31CBF5B189988D000747F46 /* LJSTravelSouthYorkshire.app */;
+			name = LJSYourNextBus;
+			productName = LJSYourNextBus;
+			productReference = A31CBF5B189988D000747F46 /* LJSYourNextBus.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A31CBF7E189988D000747F46 /* LJSTravelSouthYorkshireTests */ = {
+		A31CBF7E189988D000747F46 /* LJSYourNextBusTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A31CBF93189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshireTests" */;
+			buildConfigurationList = A31CBF93189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSYourNextBusTests" */;
 			buildPhases = (
 				4C91541B546949119B3FC147 /* Check Pods Manifest.lock */,
 				A31CBF7B189988D000747F46 /* Sources */,
@@ -312,9 +314,9 @@
 			dependencies = (
 				A31CBF85189988D000747F46 /* PBXTargetDependency */,
 			);
-			name = LJSTravelSouthYorkshireTests;
-			productName = LJSTravelSouthYorkshireTests;
-			productReference = A31CBF7F189988D000747F46 /* LJSTravelSouthYorkshireTests.xctest */;
+			name = LJSYourNextBusTests;
+			productName = LJSYourNextBusTests;
+			productReference = A31CBF7F189988D000747F46 /* LJSYourNextBusTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -332,7 +334,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A31CBF56189988D000747F46 /* Build configuration list for PBXProject "LJSTravelSouthYorkshire" */;
+			buildConfigurationList = A31CBF56189988D000747F46 /* Build configuration list for PBXProject "LJSYourNextBus" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -345,8 +347,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A31CBF5A189988D000747F46 /* LJSTravelSouthYorkshire */,
-				A31CBF7E189988D000747F46 /* LJSTravelSouthYorkshireTests */,
+				A31CBF5A189988D000747F46 /* LJSYourNextBus */,
+				A31CBF7E189988D000747F46 /* LJSYourNextBusTests */,
 			);
 		};
 /* End PBXProject section */
@@ -402,7 +404,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-LJSTravelSouthYorkshire-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-LJSYourNextBus-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D1BBA40A561E4D2F8B83CCC4 /* Check Pods Manifest.lock */ = {
@@ -432,7 +434,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-LJSTravelSouthYorkshireTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-LJSYourNextBusTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -476,7 +478,7 @@
 /* Begin PBXTargetDependency section */
 		A31CBF85189988D000747F46 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A31CBF5A189988D000747F46 /* LJSTravelSouthYorkshire */;
+			target = A31CBF5A189988D000747F46 /* LJSYourNextBus */;
 			targetProxy = A31CBF84189988D000747F46 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -593,51 +595,51 @@
 		};
 		A31CBF91189988D000747F46 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 10448B608C4D4A0888C3508A /* Pods-LJSTravelSouthYorkshire.xcconfig */;
+			baseConfigurationReference = 9D3C9105FFD54543B20B4913 /* Pods-LJSYourNextBus.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
-				INFOPLIST_FILE = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "LJSYourNextBus/LJSYourNextBus-Prefix.pch";
+				INFOPLIST_FILE = "LJSYourNextBus/LJSYourNextBus-Info.plist";
+				PRODUCT_NAME = LJSYourNextBus;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		A31CBF92189988D000747F46 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 10448B608C4D4A0888C3508A /* Pods-LJSTravelSouthYorkshire.xcconfig */;
+			baseConfigurationReference = 9D3C9105FFD54543B20B4913 /* Pods-LJSYourNextBus.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
-				INFOPLIST_FILE = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "LJSYourNextBus/LJSYourNextBus-Prefix.pch";
+				INFOPLIST_FILE = "LJSYourNextBus/LJSYourNextBus-Info.plist";
+				PRODUCT_NAME = LJSYourNextBus;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		A31CBF94189988D000747F46 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7BF1CF673A24EB390C630C3 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */;
+			baseConfigurationReference = D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSTravelSouthYorkshire.app/LJSTravelSouthYorkshire";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSYourNextBus.app/LJSYourNextBus";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
+				GCC_PREFIX_HEADER = "LJSYourNextBus/LJSYourNextBus-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "LJSTravelSouthYorkshireTests/LJSTravelSouthYorkshireTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "LJSYourNextBusTests/LJSYourNextBusTests-Info.plist";
+				PRODUCT_NAME = LJSYourNextBusTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -645,19 +647,19 @@
 		};
 		A31CBF95189988D000747F46 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7BF1CF673A24EB390C630C3 /* Pods-LJSTravelSouthYorkshireTests.xcconfig */;
+			baseConfigurationReference = D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSTravelSouthYorkshire.app/LJSTravelSouthYorkshire";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSYourNextBus.app/LJSYourNextBus";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LJSTravelSouthYorkshire/LJSTravelSouthYorkshire-Prefix.pch";
-				INFOPLIST_FILE = "LJSTravelSouthYorkshireTests/LJSTravelSouthYorkshireTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "LJSYourNextBus/LJSYourNextBus-Prefix.pch";
+				INFOPLIST_FILE = "LJSYourNextBusTests/LJSYourNextBusTests-Info.plist";
+				PRODUCT_NAME = LJSYourNextBusTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -666,7 +668,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A31CBF56189988D000747F46 /* Build configuration list for PBXProject "LJSTravelSouthYorkshire" */ = {
+		A31CBF56189988D000747F46 /* Build configuration list for PBXProject "LJSYourNextBus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A31CBF8E189988D000747F46 /* Debug */,
@@ -675,7 +677,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A31CBF90189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshire" */ = {
+		A31CBF90189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSYourNextBus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A31CBF91189988D000747F46 /* Debug */,
@@ -684,7 +686,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A31CBF93189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSTravelSouthYorkshireTests" */ = {
+		A31CBF93189988D000747F46 /* Build configuration list for PBXNativeTarget "LJSYourNextBusTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A31CBF94189988D000747F46 /* Debug */,

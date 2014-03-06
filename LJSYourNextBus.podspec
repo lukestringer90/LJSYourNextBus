@@ -5,11 +5,11 @@
 # To learn more about the attributes see http://docs.cocoapods.org/specification.html
 #
 Pod::Spec.new do |s|
-  s.name         = "LJSTravelSouthYorkshire"
+  s.name         = "LJSYourNextBus"
   s.version      = "0.1.0"
-  s.summary      = "A short description of LJSTravelSouthYorkshire."
+  s.summary      = "A short description of LJSYourNextBus."
   s.description  = <<-DESC
-                    An optional longer description of LJSTravelSouthYorkshire
+                    An optional longer description of LJSYourNextBus
 
                     * Markdown format.
                     * Don't worry about the indent, we strip it!
