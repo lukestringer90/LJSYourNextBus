@@ -30,6 +30,7 @@
 		A3411AB718BE85650083E9EF /* LJSDepatureBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */; };
 		A34A1951189EB768002EEF2B /* LJSYourNextBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */; };
 		A34A1957189EBF86002EEF2B /* 37010071.html in Resources */ = {isa = PBXBuildFile; fileRef = A34A1956189EBF86002EEF2B /* 37010071.html */; };
+		A34B1C1918CE49F800184A12 /* 37010115.html in Resources */ = {isa = PBXBuildFile; fileRef = A34B1C1818CE49F800184A12 /* 37010115.html */; };
 		A3BD275F189EF72200540C5F /* LJSDepature.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2754189EF72200540C5F /* LJSDepature.m */; };
 		A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */; };
 		A3BD2761189EF72200540C5F /* LJSYourNextBusClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2758189EF72200540C5F /* LJSYourNextBusClient.m */; };
@@ -83,6 +84,7 @@
 		A3435FEC18C92747004296CB /* LJSYourNextBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSYourNextBus-Prefix.pch"; sourceTree = "<group>"; };
 		A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSYourNextBusTests.m; sourceTree = "<group>"; };
 		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 37010071.html; sourceTree = "<group>"; };
+		A34B1C1818CE49F800184A12 /* 37010115.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 37010115.html; sourceTree = "<group>"; };
 		A3BD2753189EF72200540C5F /* LJSDepature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepature.h; path = ../../Classes/LJSDepature.h; sourceTree = "<group>"; };
 		A3BD2754189EF72200540C5F /* LJSDepature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepature.m; path = ../../Classes/LJSDepature.m; sourceTree = "<group>"; };
 		A3BD2755189EF72200540C5F /* LJSHTMLDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSHTMLDownloader.h; path = ../../Classes/LJSHTMLDownloader.h; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		A34A1955189EBF62002EEF2B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A34B1C1818CE49F800184A12 /* 37010115.html */,
 				A34A1956189EBF86002EEF2B /* 37010071.html */,
 			);
 			name = Data;
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A31CBF8B189988D000747F46 /* InfoPlist.strings in Resources */,
+				A34B1C1918CE49F800184A12 /* 37010115.html in Resources */,
 				A34A1957189EBF86002EEF2B /* 37010071.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

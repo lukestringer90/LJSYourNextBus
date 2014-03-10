@@ -230,4 +230,27 @@
 	}];
 }
 
+#pragma mark - Later URL
+
+- (void)testLaterURL {
+    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+		assertThat(laterURL.absoluteString, equalTo(@"/pip/stop.asp?naptan=37010071&pscode=218&dest=&offset=1&textonly=1"));
+	}];
+}
+
+- (void)testEarlierURL {
+	NSString *html = [self loadHTMLFileNamed:@"37010115"];
+	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:html];
+
+    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+		assertThat(earlierURL.absoluteString, equalTo(@"/pip/stop.asp?naptan=37010115&pscode=120&dest=&offset=0&textonly=1"));
+	}];
+}
+
+- (void)testNilEarlierURL {
+    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+		assertThat(earlierURL, equalTo(nil));
+	}];
+}
+
 @end
