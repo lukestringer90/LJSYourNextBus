@@ -17,14 +17,6 @@
 #import "LJSDepatureBuilder.h"
 #import "LJSDepatureDateParser.h"
 
-NSString * const LJSNaPTANCodeKey = @"NaPTAN_code";
-NSString * const LJSStopNameKey = @"stop_name";
-NSString * const LJSDepaturesKey = @"departures";
-NSString * const LJSDestinationKey = @"destination";
-NSString * const LJSExpectedDepatureTimeKey = @"expected_departure_time";
-NSString * const LJSLiveTimeKey = @"live_information_time";
-NSString * const LJSLowFloorAccess = @"low_floor_access";
-
 @interface LJSScraper ()
 @property (nonatomic, strong) LJSStopBuilder *stopBuilder;
 @property (nonatomic, strong) LJSServiceBuilder *serviceBuilder;

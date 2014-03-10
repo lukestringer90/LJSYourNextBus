@@ -9,19 +9,27 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
+
 #import "LJSYourNextBusClient.h"
 #import "LJSScraper.h"
 #import "LJSHTMLDownloader.h"
 
+#import "LJSStop.h"
+#import "LJSService.h"
+#import "LJSDepature.h"
+
 @interface LJSYourNextBusClient (TestVisibility)
-@property (nonatomic, strong) LJSScraper *scraper;
 @property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
 @end
 
-@interface LJSYourNextBusTests : XCTestCase {
-    LJSYourNextBusClient *_sut;
-}
+@interface LJSYourNextBusTests : XCTestCase
+@property (nonatomic, strong) LJSYourNextBusClient *yourNextBusClient;
+@property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic, strong) NSString *NaPTANCode;
 @end
+
 
 @implementation LJSYourNextBusTests
 
@@ -29,111 +37,197 @@
 
 - (void)setUp {
     [super setUp];
-    _sut = [[LJSYourNextBusClient alloc] init];
+	self.calendar = [NSCalendar currentCalendar];
+	
+	self.yourNextBusClient = [[LJSYourNextBusClient alloc] init];
+	NSString *html = [self loadHTMLFileNamed:@"37010071"];
+	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:html];
+	
+	// Irrelevant what this is as static HTML is loaded anyway
+	self.NaPTANCode = @"37010071";
 }
 
 #pragma mark - Helpers
 
-- (NSDictionary *)loadJSONFileNamed:(NSString *)fileName {
-    NSString* filepath = [[NSBundle bundleForClass:[self class]] pathForResource:fileName ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:filepath];
-    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+- (NSString *)loadHTMLFileNamed:(NSString *)fileName {
+    NSString *path = [self pathInTestBundleForResource:fileName ofType:@"html"];
+    return [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:nil];
 }
 
-- (id)mockScraperReturningDepatureData:(NSDictionary *)data {
-    id scraperMock = [OCMockObject niceMockForClass:[LJSScraper class]];
-    [[[scraperMock stub] andReturn:data] scrapeDepatureDataFromHTML:[OCMArg any]];
-    return scraperMock;
+- (NSString *)pathInTestBundleForResource:(NSString *)name ofType:(NSString *)extension {
+    return [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:extension];
 }
 
-- (id)mockScraperReturningLaterURL:(NSURL *)url {
-    id scraperMock = [OCMockObject niceMockForClass:[LJSScraper class]];
-    [[[scraperMock stub] andReturn:url] scrapeLaterDepaturesURL:[OCMArg any]];
-    return scraperMock;
+- (id)mockHTMLDownloadReturningHTML:(NSString *)htmlString {
+    id htmlDownloaderMock = [OCMockObject niceMockForClass:[LJSHTMLDownloader class]];
+    [[[htmlDownloaderMock stub] andReturn:htmlString] downloadHTMLFromURL:[OCMArg any] error:[OCMArg setTo:nil]];
+    return htmlDownloaderMock;
 }
 
-- (id)mockScraperReturningEarlierURL:(NSURL *)url {
-    id scraperMock = [OCMockObject niceMockForClass:[LJSScraper class]];
-    [[[scraperMock stub] andReturn:url] scrapeEarlierDepaturesURL:[OCMArg any]];
-    return scraperMock;
+- (NSArray *)sortedServicesForStop:(LJSStop *)stop {
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+	return [stop.services sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
 
+- (NSArray *)depaturesForStop:(LJSStop *)stop {
+	return [[stop.services valueForKeyPath:@"depatures"] valueForKeyPath:@"@unionOfArrays.self"];
+}
 
-- (id)mockContentDownloadReturningHTML:(NSString *)htmlString {
-    id contentDownloaderMock = [OCMockObject niceMockForClass:[LJSHTMLDownloader class]];
-    [[[contentDownloaderMock stub] andReturn:htmlString] downloadHTMLFromURL:[OCMArg any] error:[OCMArg setTo:nil]];
-    return contentDownloaderMock;
+- (NSArray *)sortedDepaturesForService:(LJSService *)service {
+	NSArray *sortDescriptors = @[
+								 [NSSortDescriptor sortDescriptorWithKey:@"destination"
+															   ascending:YES],
+								 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepatureDate"
+															   ascending:YES]];
+	return [service.depatures sortedArrayUsingDescriptors:sortDescriptors];
+}
+
+- (NSDate *)todayAtHours:(NSInteger)hours minutes:(NSInteger)minutes {
+	NSDate *today = [NSDate date];
+	NSDateComponents *dateComponents = [self.calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
+														fromDate:today];
+	dateComponents.hour = hours;
+	dateComponents.minute = minutes;
+	dateComponents.second = 0;
+	return [self.calendar dateFromComponents:dateComponents];
+}
+
+- (NSDate *)date:(NSDate *)baseDate plusMinutes:(NSInteger)minutes {
+	NSDateComponents *minutesComponent = [[NSDateComponents alloc] init];
+	minutesComponent.minute = minutes;
+	
+	return [self.calendar dateByAddingComponents:minutesComponent
+										  toDate:baseDate
+										 options:0];;
 }
 
 #pragma mark - Tests
 
-- (void)testURLForNaPTANCode {
-//    NSURL *correctURL = [NSURL URLWithString:@"http://tsy.acislive.com/pip/stop.asp?naptan=123456&textonly=1&pda=1"];
-//    NSURL *generatedURL = [_sut urlForNaPTANCode:@"123456"];
-//    XCTAssertEqualObjects(generatedURL, correctURL, @"");
+#pragma mark - LJSStop
+
+- (void)testStopDetails {
+    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+		assertThat(stop.NaPTANCode, equalTo(@"37010071"));
+		assertThat(stop.title, equalTo(@"Rotherham Intc"));
+	}];
+	
 }
 
-- (void)testNoURLForNilNaPTANCode {
-//    NSURL *generatedURL = [_sut urlForNaPTANCode:nil];
-//    XCTAssertNil(generatedURL, @"");
+- (void)testStopLiveDate {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+		NSDate *correctLiveDate = [self todayAtHours:10 minutes:46];
+		assertThatInteger([stop.liveDate timeIntervalSince1970], equalToInteger([correctLiveDate timeIntervalSince1970]));
+	}];
 }
 
-- (void)testReturnsDataAfterSucessfulScrape {
-//    NSDictionary *correctData = [self loadJSONFileNamed:@"malin_bridge_tram"];
-//    
-//    _sut.scraper = [self mockScraperReturningDepatureData:correctData];
-//    _sut.htmlDownloader = [self mockContentDownloadReturningHTML:@"some html"];
-//    
-//    __block NSDictionary *capturedData = nil;
-//    [_sut depatureDataForNaPTANCode:@"1234" completion:^(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
-//        capturedData = depatureData;
-//    }];
-//    
-//    XCTAssertEqualObjects(capturedData, correctData, @"");
+- (void)testServicesCount {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+		NSArray *services = stop.services;
+		assertThat(services, hasCountOf(4));
+	}];
 }
 
-- (void)testReturnsLaterDepaturesURLAfterSucessfulScrape {
-//    NSURL *correctURL = [NSURL URLWithString:@"pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=12&textonly=1"];
-//    
-//    _sut.scraper = [self mockScraperReturningLaterURL:correctURL];
-//    _sut.htmlDownloader = [self mockContentDownloadReturningHTML:@"some html"];
-//    
-//    __block NSURL *capturedURL = nil;
-//    [_sut depatureDataForNaPTANCode:@"1234" completion:^(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
-//        capturedURL = laterURL;
-//    }];
-//    
-//    XCTAssertEqualObjects(capturedURL, correctURL, @"");
+#pragma mark - LJSService
+
+- (void)testServicesDetails {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+		NSArray *services = [self sortedServicesForStop:stop];
+		
+		LJSService *firstService = services[0];
+		assertThat(firstService.title, equalTo(@"217"));
+		assertThat(firstService.depatures, hasCountOf(2));
+		assertThat(firstService.stop, equalTo(stop));
+		
+		LJSService *secondService = services[1];
+		assertThat(secondService.title, equalTo(@"218"));
+		assertThat(secondService.depatures, hasCountOf(3));
+		assertThat(secondService.stop, equalTo(stop));
+		
+		LJSService *thirdService = services[2];
+		assertThat(thirdService.title, equalTo(@"22"));
+		assertThat(thirdService.depatures, hasCountOf(7));
+		assertThat(thirdService.stop, equalTo(stop));
+		
+		LJSService *fourthService = services[3];
+		assertThat(fourthService.title, equalTo(@"22X"));
+		assertThat(fourthService.depatures, hasCountOf(4));
+		assertThat(fourthService.stop, equalTo(stop));
+	}];
 }
 
-- (void)testReturnsEarlierDepaturesURLAfterSucessfulScrape {
-//    NSURL *correctURL = [NSURL URLWithString:@"/pip/stop.asp?naptan=37090168&pscode=BLUE&dest=&offset=10&textonly=1"];
-//    
-//    _sut.scraper = [self mockScraperReturningEarlierURL:correctURL];
-//    _sut.htmlDownloader = [self mockContentDownloadReturningHTML:@"some html"];
-//    
-//    __block NSURL *capturedURL = nil;
-//    [_sut depatureDataForNaPTANCode:@"1234" completion:^(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error){
-//        capturedURL = earlierURL;
-//    }];
-//    
-//    XCTAssertEqualObjects(capturedURL, correctURL, @"");
+- (void)testDepaturesCount {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+		NSArray *allDepatures = [self depaturesForStop:stop];
+		assertThat(allDepatures, hasCountOf(16));
+	}];
+	
 }
 
-- (void)testReturnsNoDataAfterUnsucessfulScrape {
-    // TODO: No depature table in HTML
-    
-}
+#pragma mark - LJSDepature
 
-- (void)testReturnsErrorAfterUnsucessfulScrape {
-    // TODO: Error from LJSSCraper
-    
+- (void)testDepatureDetails {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+		NSArray *services = [self sortedServicesForStop:stop];
+		
+		LJSService *firstService = services[0];
+		LJSService *secondService = services[1];
+		NSArray *firstServiceDepatures = [self sortedDepaturesForService:firstService];
+		NSArray *secondServiceDepatures = [self sortedDepaturesForService:secondService];
+		
+		/**
+		 *  217 	Mexborough 	11:11
+		 */
+		LJSDepature *firstDepatureOfFirstService = firstServiceDepatures[0];
+		assertThat(firstDepatureOfFirstService.destination, equalTo(@"Mexborough"));
+		assertThat(firstDepatureOfFirstService.service, equalTo(firstService));
+		assertThatInteger([firstDepatureOfFirstService.expectedDepatureDate timeIntervalSince1970],
+						  equalToInteger([[self todayAtHours:11 minutes:11] timeIntervalSince1970]));
+		assertThatBool(firstDepatureOfFirstService.hasLowFloorAccess, equalToBool(NO));
+		
+		
+		/**
+		 *  217 	Thurnscoe 	11:41
+		 */
+		LJSDepature *secondDepatureOfFirstService = firstServiceDepatures[1];
+		assertThat(secondDepatureOfFirstService.service, equalTo(firstService));
+		assertThat(secondDepatureOfFirstService.destination, equalTo(@"Thurnscoe"));
+		assertThatInteger([secondDepatureOfFirstService.expectedDepatureDate timeIntervalSince1970],
+						  equalToInteger([[self todayAtHours:11 minutes:41] timeIntervalSince1970]));
+		assertThatBool(secondDepatureOfFirstService.hasLowFloorAccess, equalToBool(NO));
+		
+		
+		/**
+		 *  218 	Barnsley 	10:56
+		 */
+		LJSDepature *firstDepatureOfSecondService = secondServiceDepatures[0];
+		assertThat(firstDepatureOfSecondService.destination, equalTo(@"Barnsley"));
+		assertThat(firstDepatureOfSecondService.service, equalTo(secondService));
+		assertThatInteger([firstDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
+						  equalToInteger([[self todayAtHours:10 minutes:56] timeIntervalSince1970]));
+		assertThatBool(firstDepatureOfSecondService.hasLowFloorAccess, equalToBool(NO));
+		
+		
+		/**
+		 *  218 	Barnsley 	40 mins 	LF
+		 */
+		LJSDepature *secondDepatureOfSecondService = secondServiceDepatures[1];
+		assertThat(secondDepatureOfSecondService.destination, equalTo(@"Barnsley"));
+		assertThat(secondDepatureOfSecondService.service, equalTo(secondService));
+		assertThatInteger([secondDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
+						  equalToInteger([[self date:stop.liveDate plusMinutes:40] timeIntervalSince1970]));
+		assertThatBool(secondDepatureOfSecondService.hasLowFloorAccess, equalToBool(YES));
+		
+		
+		/**
+		 *  218 	Barnsley 	70 mins 	LF
+		 */
+		LJSDepature *thirdDepatureOfSecondService = secondServiceDepatures[2];
+		assertThat(thirdDepatureOfSecondService.destination, equalTo(@"Barnsley"));
+		assertThat(thirdDepatureOfSecondService.service, equalTo(secondService));
+		assertThatInteger([thirdDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
+						  equalToInteger([[self date:stop.liveDate plusMinutes:70] timeIntervalSince1970]));
+		assertThatBool(thirdDepatureOfSecondService.hasLowFloorAccess, equalToBool(YES));
+	}];
 }
-
-- (void)testReturnsErrorForUnsucessfulWebContentDownload {
-    // TODO: Error from LJSWebContentDownloader
-    
-}
-
 
 @end

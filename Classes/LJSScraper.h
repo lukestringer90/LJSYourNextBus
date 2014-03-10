@@ -12,8 +12,6 @@
 @interface LJSScraper : NSObject
 
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html;
-
-- (NSDictionary *)scrapeDepatureDataFromHTML:(NSString *)html;
 - (NSURL *)scrapeLaterDepaturesURL:(NSString *)html;
 - (NSURL *)scrapeEarlierDepaturesURL:(NSString *)html;
 

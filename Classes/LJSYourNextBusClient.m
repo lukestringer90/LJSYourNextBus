@@ -13,7 +13,7 @@
 @interface LJSYourNextBusClient ()
 @property (nonatomic, copy) LJSLiveDataCompletion completion;
 @property (nonatomic, strong) LJSScraper *scraper;
-@property (nonatomic, strong) LJSHTMLDownloader *contentDownloader;
+@property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
 @end
 
 @implementation LJSYourNextBusClient
@@ -22,7 +22,7 @@
     self = [super init];
     if (self) {
         self.scraper = [[LJSScraper alloc] init];
-        self.contentDownloader = [[LJSHTMLDownloader alloc] init];
+        self.htmlDownloader = [[LJSHTMLDownloader alloc] init];
     }
     return self;
 }
@@ -36,10 +36,10 @@
     self.completion = completion;
     
     NSError *error = nil;
-    NSString *htmlString = [self.contentDownloader downloadHTMLFromURL:url error:&error];
+    NSString *htmlString = [self.htmlDownloader downloadHTMLFromURL:url error:&error];
     
     if (error || !htmlString) {
-        [self safeCallCompletionBlockWithDepatureData:nil laterURL:nil earilierURL:nil error:error];
+		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil error:error];
     }
     else {
         [self scrapeHTML:htmlString];
@@ -54,16 +54,16 @@
 }
 
 - (void)scrapeHTML:(NSString *)html {
-    NSDictionary *depatureData = [self.scraper scrapeDepatureDataFromHTML:html];
+    LJSStop *stop = [self.scraper scrapeStopDataFromHTML:html];
     NSURL *laterURL = [self.scraper scrapeLaterDepaturesURL:html];
     NSURL *earlierURL = [self.scraper scrapeEarlierDepaturesURL:html];
     
-    [self safeCallCompletionBlockWithDepatureData:depatureData laterURL:laterURL earilierURL:earlierURL error:nil];
+    [self safeCallCompletionBlockWithStop:stop laterURL:laterURL earilierURL:earlierURL error:nil];
 }
 
-- (void)safeCallCompletionBlockWithDepatureData:(NSDictionary *)depatureData laterURL:(NSURL *)laterURL earilierURL:(NSURL *)earilierURL error:(NSError *)error {
+- (void)safeCallCompletionBlockWithStop:(LJSStop *)stop laterURL:(NSURL *)laterURL earilierURL:(NSURL *)earilierURL error:(NSError *)error {
     if (self.completion) {
-        self.completion(depatureData, laterURL, earilierURL, error);
+        self.completion(stop, laterURL, earilierURL, error);
         self.completion = nil;
     }
 }
