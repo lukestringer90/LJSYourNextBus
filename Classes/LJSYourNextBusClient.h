@@ -1,6 +1,6 @@
 //
-//  LJSTravelSouthYorkshire.h
-//  LJSTravelSouthYorkshire
+//  LJSYourNextBusClient.h
+//  LJSYourNextBus
 //
 //  Created by Luke Stringer on 04/01/2014.
 //  Copyright (c) 2014 Luke Stringer. All rights reserved.
@@ -16,12 +16,12 @@ extern NSString * const LJSExpectedDepatureTimeKey;
 extern NSString * const LJSLiveTimeKey;
 extern NSString * const LJSLowFloorAccess;
 
-@interface LJSLiveDepatures : NSObject
+@interface LJSYourNextBusClient : NSObject
 
-typedef void (^LJSDepatureDataCompletion)(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error);
+typedef void (^LJSLiveDataCompletion)(NSDictionary *depatureData, NSURL *laterURL, NSURL *earlierURL, NSError *error);
 
-- (void)depatureDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSDepatureDataCompletion)completion;
-- (void)depatureDataAtURL:(NSURL *)url completion:(LJSDepatureDataCompletion)completion;
+- (void)liveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion;
+- (void)liveDataAtURL:(NSURL *)url completion:(LJSLiveDataCompletion)completion;
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber;
 
 @end

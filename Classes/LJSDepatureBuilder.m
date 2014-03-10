@@ -1,6 +1,6 @@
 //
 //  LJSDepatureBuilder.m
-//  LJSTravelSouthYorkshire
+//  LJSYourNextBus
 //
 //  Created by Luke Stringer on 26/02/2014.
 //  Copyright (c) 2014 Luke Stringer. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  LJSLiveDepaturesTests.m
-//  LJSTravelSouthYorkshire
+//  LJSYourNextBus
 //
 //  Created by Luke Stringer on 02/02/2014.
 //  Copyright (c) 2014 Luke Stringer. All rights reserved.
@@ -9,27 +9,27 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 
-#import "LJSLiveDepatures.h"
+#import "LJSYourNextBusClient.h"
 #import "LJSScraper.h"
 #import "LJSHTMLDownloader.h"
 
-@interface LJSLiveDepatures (TestVisibility)
+@interface LJSYourNextBusClient (TestVisibility)
 @property (nonatomic, strong) LJSScraper *scraper;
 @property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
 @end
 
-@interface LJSLiveDepaturesTests : XCTestCase {
-    LJSLiveDepatures *_sut;
+@interface LJSYourNextBusTests : XCTestCase {
+    LJSYourNextBusClient *_sut;
 }
 @end
 
-@implementation LJSLiveDepaturesTests
+@implementation LJSYourNextBusTests
 
 #pragma mark - setUp / tearDown
 
 - (void)setUp {
     [super setUp];
-    _sut = [[LJSLiveDepatures alloc] init];
+    _sut = [[LJSYourNextBusClient alloc] init];
 }
 
 #pragma mark - Helpers

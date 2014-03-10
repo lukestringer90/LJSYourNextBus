@@ -28,12 +28,12 @@
 		A337FDA918C3BD05002FB29F /* LJSServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDA818C3BD05002FB29F /* LJSServiceTests.m */; };
 		A337FDAB18C3C7C1002FB29F /* LJSDepatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDAA18C3C7C1002FB29F /* LJSDepatureTests.m */; };
 		A3411AB718BE85650083E9EF /* LJSDepatureBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */; };
-		A34A1951189EB768002EEF2B /* LJSLiveDepaturesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */; };
+		A34A1951189EB768002EEF2B /* LJSYourNextBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */; };
 		A34A1953189EBC13002EEF2B /* LJSScraperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1952189EBC13002EEF2B /* LJSScraperTests.m */; };
 		A34A1957189EBF86002EEF2B /* 37010071.html in Resources */ = {isa = PBXBuildFile; fileRef = A34A1956189EBF86002EEF2B /* 37010071.html */; };
 		A3BD275F189EF72200540C5F /* LJSDepature.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2754189EF72200540C5F /* LJSDepature.m */; };
 		A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */; };
-		A3BD2761189EF72200540C5F /* LJSLiveDepatures.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2758189EF72200540C5F /* LJSLiveDepatures.m */; };
+		A3BD2761189EF72200540C5F /* LJSYourNextBusClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2758189EF72200540C5F /* LJSYourNextBusClient.m */; };
 		A3BD2762189EF72200540C5F /* LJSScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275A189EF72200540C5F /* LJSScraper.m */; };
 		A3BD2763189EF72200540C5F /* LJSService.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275C189EF72200540C5F /* LJSService.m */; };
 		A3BD2764189EF72200540C5F /* LJSStop.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275E189EF72200540C5F /* LJSStop.m */; };
@@ -82,15 +82,15 @@
 		A3411AB518BE85650083E9EF /* LJSDepatureBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepatureBuilder.h; path = ../../Classes/LJSDepatureBuilder.h; sourceTree = "<group>"; };
 		A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepatureBuilder.m; path = ../../Classes/LJSDepatureBuilder.m; sourceTree = "<group>"; };
 		A3435FEC18C92747004296CB /* LJSYourNextBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSYourNextBus-Prefix.pch"; sourceTree = "<group>"; };
-		A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSLiveDepaturesTests.m; sourceTree = "<group>"; };
+		A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSYourNextBusTests.m; sourceTree = "<group>"; };
 		A34A1952189EBC13002EEF2B /* LJSScraperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSScraperTests.m; sourceTree = "<group>"; };
 		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 37010071.html; sourceTree = "<group>"; };
 		A3BD2753189EF72200540C5F /* LJSDepature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepature.h; path = ../../Classes/LJSDepature.h; sourceTree = "<group>"; };
 		A3BD2754189EF72200540C5F /* LJSDepature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepature.m; path = ../../Classes/LJSDepature.m; sourceTree = "<group>"; };
 		A3BD2755189EF72200540C5F /* LJSHTMLDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSHTMLDownloader.h; path = ../../Classes/LJSHTMLDownloader.h; sourceTree = "<group>"; };
 		A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSHTMLDownloader.m; path = ../../Classes/LJSHTMLDownloader.m; sourceTree = "<group>"; };
-		A3BD2757189EF72200540C5F /* LJSLiveDepatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSLiveDepatures.h; path = ../../Classes/LJSLiveDepatures.h; sourceTree = "<group>"; };
-		A3BD2758189EF72200540C5F /* LJSLiveDepatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSLiveDepatures.m; path = ../../Classes/LJSLiveDepatures.m; sourceTree = "<group>"; };
+		A3BD2757189EF72200540C5F /* LJSYourNextBusClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSYourNextBusClient.h; path = ../../Classes/LJSYourNextBusClient.h; sourceTree = "<group>"; };
+		A3BD2758189EF72200540C5F /* LJSYourNextBusClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSYourNextBusClient.m; path = ../../Classes/LJSYourNextBusClient.m; sourceTree = "<group>"; };
 		A3BD2759189EF72200540C5F /* LJSScraper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSScraper.h; path = ../../Classes/LJSScraper.h; sourceTree = "<group>"; };
 		A3BD275A189EF72200540C5F /* LJSScraper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSScraper.m; path = ../../Classes/LJSScraper.m; sourceTree = "<group>"; };
 		A3BD275B189EF72200540C5F /* LJSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSService.h; path = ../../Classes/LJSService.h; sourceTree = "<group>"; };
@@ -172,8 +172,8 @@
 				A3BD2765189EFA3C00540C5F /* Model */,
 				A3BD2755189EF72200540C5F /* LJSHTMLDownloader.h */,
 				A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */,
-				A3BD2757189EF72200540C5F /* LJSLiveDepatures.h */,
-				A3BD2758189EF72200540C5F /* LJSLiveDepatures.m */,
+				A3BD2757189EF72200540C5F /* LJSYourNextBusClient.h */,
+				A3BD2758189EF72200540C5F /* LJSYourNextBusClient.m */,
 				A3BD2759189EF72200540C5F /* LJSScraper.h */,
 				A3BD275A189EF72200540C5F /* LJSScraper.m */,
 				A337FDA318C24F4B002FB29F /* LJSDepatureDateParser.h */,
@@ -181,7 +181,6 @@
 				A3BD2752189EF71400540C5F /* App */,
 				A31CBF65189988D000747F46 /* Supporting Files */,
 			);
-			name = LJSYourNextBus;
 			path = LJSYourNextBus;
 			sourceTree = "<group>";
 		};
@@ -203,7 +202,6 @@
 				A34A1955189EBF62002EEF2B /* Data */,
 				A31CBF87189988D000747F46 /* Supporting Files */,
 			);
-			name = LJSYourNextBusTests;
 			path = LJSYourNextBusTests;
 			sourceTree = "<group>";
 		};
@@ -219,7 +217,7 @@
 		A34A1954189EBF5D002EEF2B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A34A1950189EB768002EEF2B /* LJSLiveDepaturesTests.m */,
+				A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */,
 				A34A1952189EBC13002EEF2B /* LJSScraperTests.m */,
 				A337FDA618C3A1BE002FB29F /* LJSDepatureDateParserTests.m */,
 				A3BD276F189FF46500540C5F /* LJSStopTests.m */,
@@ -456,7 +454,7 @@
 				A3BD275F189EF72200540C5F /* LJSDepature.m in Sources */,
 				A3411AB718BE85650083E9EF /* LJSDepatureBuilder.m in Sources */,
 				A3BD2764189EF72200540C5F /* LJSStop.m in Sources */,
-				A3BD2761189EF72200540C5F /* LJSLiveDepatures.m in Sources */,
+				A3BD2761189EF72200540C5F /* LJSYourNextBusClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,7 +466,7 @@
 				A34A1953189EBC13002EEF2B /* LJSScraperTests.m in Sources */,
 				A337FDA918C3BD05002FB29F /* LJSServiceTests.m in Sources */,
 				A337FDAB18C3C7C1002FB29F /* LJSDepatureTests.m in Sources */,
-				A34A1951189EB768002EEF2B /* LJSLiveDepaturesTests.m in Sources */,
+				A34A1951189EB768002EEF2B /* LJSYourNextBusTests.m in Sources */,
 				A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

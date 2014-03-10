@@ -1,22 +1,22 @@
 //
-//  LJSTravelSouthYorkshire.m
-//  LJSTravelSouthYorkshire
+//  LJSYourNextBusClient.m
+//  LJSYourNextBus
 //
 //  Created by Luke Stringer on 04/01/2014.
 //  Copyright (c) 2014 Luke Stringer. All rights reserved.
 //
 
-#import "LJSLiveDepatures.h"
+#import "LJSYourNextBusClient.h"
 #import "LJSHTMLDownloader.h"
 #import "LJSScraper.h"
 
-@interface LJSLiveDepatures ()
-@property (nonatomic, copy) LJSDepatureDataCompletion completion;
+@interface LJSYourNextBusClient ()
+@property (nonatomic, copy) LJSLiveDataCompletion completion;
 @property (nonatomic, strong) LJSScraper *scraper;
 @property (nonatomic, strong) LJSHTMLDownloader *contentDownloader;
 @end
 
-@implementation LJSLiveDepatures
+@implementation LJSYourNextBusClient
 
 - (instancetype)init {
     self = [super init];
@@ -27,12 +27,12 @@
     return self;
 }
 
-- (void)depatureDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSDepatureDataCompletion)completion {
+- (void)liveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion {
     NSURL *url = [self urlForNaPTANCode:NaPTANCode];
-    [self depatureDataAtURL:url completion:completion];
+    [self liveDataAtURL:url completion:completion];
 }
 
-- (void)depatureDataAtURL:(NSURL *)url completion:(LJSDepatureDataCompletion)completion {
+- (void)liveDataAtURL:(NSURL *)url completion:(LJSLiveDataCompletion)completion {
     self.completion = completion;
     
     NSError *error = nil;
