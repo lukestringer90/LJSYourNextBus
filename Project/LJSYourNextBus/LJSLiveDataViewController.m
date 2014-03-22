@@ -46,6 +46,15 @@
 			self.sortedDepartures = [allDepartures sortedArrayUsingDescriptors:sortDescriptors];;
 			[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 		}
+		else {
+			UIAlertView *alert = [[UIAlertView alloc]
+								  initWithTitle:@"Error"
+								  message:[error localizedDescription]
+								  delegate:nil
+								  cancelButtonTitle:@"Okay"
+								  otherButtonTitles: nil];
+			[alert show];
+		}
 	}];
 }
 
