@@ -51,7 +51,7 @@
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"Title: %@ - Stop: %@ - Departures: %ld", self.title, self.stop.title, self.Departures.count];
+	return [NSString stringWithFormat:@"Title: %@ - Stop: %@ - Departures: %ld", self.title, self.stop.title, (unsigned long)self.Departures.count];
 }
 
 
