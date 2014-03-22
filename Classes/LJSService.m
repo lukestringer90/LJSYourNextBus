@@ -18,6 +18,14 @@
 
 @implementation LJSService
 
+- (instancetype)copyWithZone:(NSZone *)zone {
+	LJSService *copy = [[LJSService allocWithZone:zone] init];
+	copy.stop = self.stop;
+	copy.title = self.title;
+	copy.depatures = self.depatures;
+	return copy;
+}
+
 - (BOOL)isEqualToService:(LJSService *)service {
 	BOOL stopsEqual = [self.stop isEqualToStop:service.stop] || (self.stop == nil && service.stop == nil);
 	BOOL titlesEqual = [self.title isEqualToString:service.title];
@@ -45,5 +53,6 @@
 - (NSString *)description {
 	return [NSString stringWithFormat:@"Title: %@ - Stop: %@ - Depatures: %ld", self.title, self.stop.title, self.depatures.count];
 }
+
 
 @end

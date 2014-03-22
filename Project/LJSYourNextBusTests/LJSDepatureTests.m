@@ -100,5 +100,16 @@
 	XCTAssertNotEqualObjects(self.depatureA, self.depatureB, @"");
 }
 
+- (void)testCopies {
+	NSDate *depatureDate = [NSDate date];
+	self.depatureA.expectedDepatureDate = depatureDate;
+	self.depatureA.destination = @"Sheffield";
+	self.depatureA.hasLowFloorAccess = YES;
+
+    LJSDepature *copy = [self.depatureA copy];
+	
+	XCTAssertEqualObjects(copy, self.depatureA, @"");
+}
+
 
 @end

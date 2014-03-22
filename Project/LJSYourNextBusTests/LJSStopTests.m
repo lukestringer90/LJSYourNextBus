@@ -56,5 +56,16 @@
 	XCTAssertNotEqualObjects(self.stopA, self.stopB, @"");
 }
 
+- (void)testCopies {
+	LJSService *serviceA = [LJSService new];
+	serviceA.title = @"service-123";
+	self.stopA.NaPTANCode = @"123";
+	self.stopA.services = @[serviceA];
+	
+    LJSStop *copy = [self.stopA copy];
+	
+	XCTAssertEqualObjects(copy, self.stopA, @"");
+}
+
 
 @end

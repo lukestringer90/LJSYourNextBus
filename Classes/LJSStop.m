@@ -17,6 +17,15 @@
 
 @implementation LJSStop
 
+- (instancetype)copyWithZone:(NSZone *)zone {
+	LJSStop *copy = [[LJSStop allocWithZone:zone] init];
+	copy.NaPTANCode = self.NaPTANCode;
+	copy.title = self.title;
+	copy.liveDate = self.liveDate;
+	copy.services = self.services;
+	return copy;
+}
+
 - (BOOL)isEqualToStop:(LJSStop *)stop {
     return [self.NaPTANCode isEqualToString:stop.NaPTANCode] && [self allServicesEqualWithStop:stop];
 }
@@ -40,9 +49,6 @@
 }
 
 
-- (NSUInteger)hash {
-    return [self.NaPTANCode hash];
-}
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"Title: %@ - NaPTAN Code: %@ - Live Date : %@ - Services: %ld", self.title, self.NaPTANCode, self.liveDate, (unsigned long)self.services.count];

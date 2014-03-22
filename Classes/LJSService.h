@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class LJSStop;
-@interface LJSService : NSObject
+@interface LJSService : NSObject <NSCopying>
 
 @property (nonatomic, strong, readonly) LJSStop *stop;
 @property (nonatomic, copy, readonly) NSString *title;

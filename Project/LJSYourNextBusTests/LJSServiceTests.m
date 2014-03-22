@@ -83,4 +83,17 @@
 	XCTAssertNotEqualObjects(self.serviceA, self.serviceB, @"");
 }
 
+- (void)testCopies {
+	LJSDepature *depature = [LJSDepature new];
+	depature.expectedDepatureDate = [NSDate date];
+	depature.destination = @"Sheffield";
+	depature.hasLowFloorAccess = YES;
+	
+	self.serviceA.title = @"service-123";
+	self.serviceA.depatures = @[depature];
+
+    LJSService *copiedService = [self.serviceA copy];
+	XCTAssertEqualObjects(copiedService, self.serviceA, @"");
+}
+
 @end

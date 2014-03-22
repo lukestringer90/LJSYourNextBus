@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LJSStop : NSObject
+@interface LJSStop : NSObject <NSCopying>
 
 @property (nonatomic, copy, readonly) NSString *NaPTANCode;
 @property (nonatomic, copy, readonly) NSString *title;

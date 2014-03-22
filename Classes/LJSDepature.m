@@ -18,6 +18,15 @@
 
 @implementation LJSDepature
 
+- (instancetype)copyWithZone:(NSZone *)zone {
+	LJSDepature *copy = [[LJSDepature allocWithZone:zone] init];
+	copy.service = self.service;
+	copy.destination = self.destination;
+	copy.expectedDepatureDate = self.expectedDepatureDate;
+	copy.hasLowFloorAccess = self.hasLowFloorAccess;
+	return copy;
+}
+
 - (BOOL)isEqualToDepature:(LJSDepature *)depature {
 	BOOL servicesEqual = [self.service isEqualToService:depature.service] || (self.service == nil && depature.service == nil);
 	BOOL datesEqual = [self.expectedDepatureDate isEqualToDate:depature.expectedDepatureDate];
