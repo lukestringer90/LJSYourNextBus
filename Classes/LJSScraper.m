@@ -140,7 +140,7 @@
     }
     
     NSTextCheckingResult *match = [regex firstMatchInString:html
-                                                    options:0
+                                                    options:NSMatchingAnchored
                                                       range:NSMakeRange(0, [html length])];
 
     NSString *NaPTANCode = nil;
