@@ -9,6 +9,13 @@
 #import "LJSDepature.h"
 #import "LJSService.h"
 
+@interface LJSDepature ()
+@property (nonatomic, strong, readwrite) LJSService *service;
+@property (nonatomic, copy, readwrite) NSString *destination;
+@property (nonatomic, strong, readwrite) NSDate *expectedDepatureDate;
+@property (nonatomic, assign, readwrite) BOOL hasLowFloorAccess;
+@end
+
 @implementation LJSDepature
 
 - (BOOL)isEqualToDepature:(LJSDepature *)depature {

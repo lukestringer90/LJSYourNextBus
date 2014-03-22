@@ -11,10 +11,10 @@
 @class LJSService;
 @interface LJSDepature : NSObject
 
-@property (nonatomic, readonly) LJSService *service;
-@property (nonatomic, readonly) NSString *destination;
-@property (nonatomic, readonly) NSDate *expectedDepatureDate;
-@property (nonatomic, readonly) BOOL hasLowFloorAccess;
+@property (nonatomic, strong, readonly) LJSService *service;
+@property (nonatomic, copy, readonly) NSString *destination;
+@property (nonatomic, strong, readonly) NSDate *expectedDepatureDate;
+@property (nonatomic, assign, readonly) BOOL hasLowFloorAccess;
 
 - (BOOL)isEqualToDepature:(LJSDepature *)depature;
 

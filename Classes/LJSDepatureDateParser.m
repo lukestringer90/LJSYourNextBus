@@ -12,7 +12,6 @@
 @property (nonatomic, strong) NSCalendar *calendar;
 @end
 
-
 @implementation LJSDepatureDateParser
 
 - (instancetype)init {
@@ -21,7 +20,6 @@
     }
     return self;
 }
-
 
 - (NSDate *)dateFromString:(NSString *)dateString baseDate:(NSDate *)baseDate {
 	NSTextCheckingResult *regexMatch = [self regularExpressionMatchInDateString:dateString];

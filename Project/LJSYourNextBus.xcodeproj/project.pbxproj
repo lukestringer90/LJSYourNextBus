@@ -27,7 +27,6 @@
 		A337FDA718C3A1BE002FB29F /* LJSDepatureDateParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDA618C3A1BE002FB29F /* LJSDepatureDateParserTests.m */; };
 		A337FDA918C3BD05002FB29F /* LJSServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDA818C3BD05002FB29F /* LJSServiceTests.m */; };
 		A337FDAB18C3C7C1002FB29F /* LJSDepatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDAA18C3C7C1002FB29F /* LJSDepatureTests.m */; };
-		A3411AB718BE85650083E9EF /* LJSDepatureBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */; };
 		A34A1951189EB768002EEF2B /* LJSYourNextBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */; };
 		A34A1957189EBF86002EEF2B /* 37010071.html in Resources */ = {isa = PBXBuildFile; fileRef = A34A1956189EBF86002EEF2B /* 37010071.html */; };
 		A34B1C1918CE49F800184A12 /* 37010115.html in Resources */ = {isa = PBXBuildFile; fileRef = A34B1C1818CE49F800184A12 /* 37010115.html */; };
@@ -37,9 +36,7 @@
 		A3BD2762189EF72200540C5F /* LJSScraper.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275A189EF72200540C5F /* LJSScraper.m */; };
 		A3BD2763189EF72200540C5F /* LJSService.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275C189EF72200540C5F /* LJSService.m */; };
 		A3BD2764189EF72200540C5F /* LJSStop.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275E189EF72200540C5F /* LJSStop.m */; };
-		A3BD276E189F122D00540C5F /* LJSStopBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD276D189F122D00540C5F /* LJSStopBuilder.m */; };
 		A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD276F189FF46500540C5F /* LJSStopTests.m */; };
-		A3D883BA189FFCCC008F458D /* LJSServiceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D883B9189FFCCC008F458D /* LJSServiceBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +76,6 @@
 		A337FDA618C3A1BE002FB29F /* LJSDepatureDateParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSDepatureDateParserTests.m; sourceTree = "<group>"; };
 		A337FDA818C3BD05002FB29F /* LJSServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSServiceTests.m; sourceTree = "<group>"; };
 		A337FDAA18C3C7C1002FB29F /* LJSDepatureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSDepatureTests.m; sourceTree = "<group>"; };
-		A3411AB518BE85650083E9EF /* LJSDepatureBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepatureBuilder.h; path = ../../Classes/LJSDepatureBuilder.h; sourceTree = "<group>"; };
-		A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepatureBuilder.m; path = ../../Classes/LJSDepatureBuilder.m; sourceTree = "<group>"; };
 		A3435FEC18C92747004296CB /* LJSYourNextBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSYourNextBus-Prefix.pch"; sourceTree = "<group>"; };
 		A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSYourNextBusTests.m; sourceTree = "<group>"; };
 		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = 37010071.html; sourceTree = "<group>"; };
@@ -97,11 +92,10 @@
 		A3BD275C189EF72200540C5F /* LJSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSService.m; path = ../../Classes/LJSService.m; sourceTree = "<group>"; };
 		A3BD275D189EF72200540C5F /* LJSStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSStop.h; path = ../../Classes/LJSStop.h; sourceTree = "<group>"; };
 		A3BD275E189EF72200540C5F /* LJSStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSStop.m; path = ../../Classes/LJSStop.m; sourceTree = "<group>"; };
-		A3BD276C189F122D00540C5F /* LJSStopBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSStopBuilder.h; path = ../../Classes/LJSStopBuilder.h; sourceTree = "<group>"; };
-		A3BD276D189F122D00540C5F /* LJSStopBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSStopBuilder.m; path = ../../Classes/LJSStopBuilder.m; sourceTree = "<group>"; };
 		A3BD276F189FF46500540C5F /* LJSStopTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSStopTests.m; sourceTree = "<group>"; };
-		A3D883B8189FFCCC008F458D /* LJSServiceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSServiceBuilder.h; path = ../../Classes/LJSServiceBuilder.h; sourceTree = "<group>"; };
-		A3D883B9189FFCCC008F458D /* LJSServiceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSServiceBuilder.m; path = ../../Classes/LJSServiceBuilder.m; sourceTree = "<group>"; };
+		A3FE172118DE106100B8E47E /* LJSStop+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSStop+LJSSetters.h"; sourceTree = SOURCE_ROOT; };
+		A3FE172418DE10AD00B8E47E /* LJSService+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSService+LJSSetters.h"; sourceTree = "<group>"; };
+		A3FE172718DE111C00B8E47E /* LJSDepature+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSDepature+LJSSetters.h"; sourceTree = "<group>"; };
 		D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBusTests.xcconfig"; path = "Pods/Pods-LJSYourNextBusTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,7 +162,7 @@
 		A31CBF64189988D000747F46 /* LJSYourNextBus */ = {
 			isa = PBXGroup;
 			children = (
-				A3BD276B189F107200540C5F /* Model Builders */,
+				A3BD276B189F107200540C5F /* Model Setters */,
 				A3BD2765189EFA3C00540C5F /* Model */,
 				A3BD2757189EF72200540C5F /* LJSYourNextBusClient.h */,
 				A3BD2758189EF72200540C5F /* LJSYourNextBusClient.m */,
@@ -262,17 +256,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		A3BD276B189F107200540C5F /* Model Builders */ = {
+		A3BD276B189F107200540C5F /* Model Setters */ = {
 			isa = PBXGroup;
 			children = (
-				A3BD276C189F122D00540C5F /* LJSStopBuilder.h */,
-				A3BD276D189F122D00540C5F /* LJSStopBuilder.m */,
-				A3D883B8189FFCCC008F458D /* LJSServiceBuilder.h */,
-				A3D883B9189FFCCC008F458D /* LJSServiceBuilder.m */,
-				A3411AB518BE85650083E9EF /* LJSDepatureBuilder.h */,
-				A3411AB618BE85650083E9EF /* LJSDepatureBuilder.m */,
+				A3FE172118DE106100B8E47E /* LJSStop+LJSSetters.h */,
+				A3FE172418DE10AD00B8E47E /* LJSService+LJSSetters.h */,
+				A3FE172718DE111C00B8E47E /* LJSDepature+LJSSetters.h */,
 			);
-			name = "Model Builders";
+			name = "Model Setters";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,15 +436,12 @@
 			files = (
 				A31CBF6F189988D000747F46 /* LJSAppDelegate.m in Sources */,
 				A3BD2763189EF72200540C5F /* LJSService.m in Sources */,
-				A3D883BA189FFCCC008F458D /* LJSServiceBuilder.m in Sources */,
 				A31CBF78189988D000747F46 /* LJSViewController.m in Sources */,
 				A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */,
 				A3BD2762189EF72200540C5F /* LJSScraper.m in Sources */,
-				A3BD276E189F122D00540C5F /* LJSStopBuilder.m in Sources */,
 				A337FDA518C24F4B002FB29F /* LJSDepatureDateParser.m in Sources */,
 				A31CBF6B189988D000747F46 /* main.m in Sources */,
 				A3BD275F189EF72200540C5F /* LJSDepature.m in Sources */,
-				A3411AB718BE85650083E9EF /* LJSDepatureBuilder.m in Sources */,
 				A3BD2764189EF72200540C5F /* LJSStop.m in Sources */,
 				A3BD2761189EF72200540C5F /* LJSYourNextBusClient.m in Sources */,
 			);

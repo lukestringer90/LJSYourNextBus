@@ -8,45 +8,52 @@
 
 #import <XCTest/XCTest.h>
 #import "LJSStop.h"
-#import "LJSStopBuilder.h"
-#import "LJSServiceBuilder.h"
+#import "LJSStop+LJSSetters.h"
 #import "LJSService.h"
+#import "LJSService+LJSSetters.h"
 
 @interface LJSStopTests : XCTestCase
-@property (nonatomic, strong) LJSStopBuilder *stopBuilder;
+@property (nonatomic, strong) LJSStop *stopA;
+@property (nonatomic, strong) LJSStop *stopB;
 @end
 
 @implementation LJSStopTests
 
 - (void)setUp {
     [super setUp];
-    self.stopBuilder = [[LJSStopBuilder alloc] init];
+	self.stopA = [LJSStop new];
+	self.stopB = [LJSStop new];
 }
 
 - (void)testEquality {
-    LJSStop *stopA = [[self.stopBuilder stop] withNaPTANCode:@"123"];
-    LJSStop *stopB = [[self.stopBuilder stop] withNaPTANCode:@"123"];
+	self.stopA.NaPTANCode = @"123";
+	self.stopB.NaPTANCode = @"123";
     
-    XCTAssertEqualObjects(stopA, stopB, @"");
+    XCTAssertEqualObjects(self.stopA, self.stopB, @"");
 }
 
 - (void)testInequalityForTitles {
-    LJSStop *stopA = [[self.stopBuilder stop] withNaPTANCode:@"123"];
-    LJSStop *stopB = [[self.stopBuilder stop] withNaPTANCode:@"456"];
+    self.stopA.NaPTANCode = @"123";
+	self.stopB.NaPTANCode = @"456";
     
-    XCTAssertNotEqualObjects(stopA, stopB, @"");
+    XCTAssertNotEqualObjects(self.stopA, self.stopB, @"");
 }
 
 - (void)testInequalityForServices {
-	LJSServiceBuilder *serviceBuilder = [[LJSServiceBuilder alloc] init];
-	LJSService *serviceA = [[serviceBuilder service] withTitle:@"service-123"];
-	LJSService *serviceB = [[serviceBuilder service] withTitle:@"service-456"];
-	LJSService *serviceC = [[serviceBuilder service] withTitle:@"service-789"];
+	LJSService *serviceA = [LJSService new];
+	LJSService *serviceB = [LJSService new];
+	LJSService *serviceC = [LJSService new];
 	
-	LJSStop *stopA = [[[self.stopBuilder stop] withNaPTANCode:@"123"] withServices:@[serviceA, serviceB]];
-    LJSStop *stopB = [[[self.stopBuilder stop] withNaPTANCode:@"123"] withServices:@[serviceA, serviceC]];
+	serviceA.title = @"service-123";
+	serviceB.title = @"service-456";
+	serviceC.title = @"service-789";
 	
-	XCTAssertNotEqualObjects(stopA, stopB, @"");
+	self.stopA.NaPTANCode = @"123";
+	self.stopA.services = @[serviceA, serviceB];
+	self.stopB.NaPTANCode = @"123";
+	self.stopA.services = @[serviceA, serviceC];
+	
+	XCTAssertNotEqualObjects(self.stopA, self.stopB, @"");
 }
 
 

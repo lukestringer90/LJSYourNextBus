@@ -10,17 +10,15 @@
 #import <ObjectiveGumbo/ObjectiveGumbo.h>
 
 #import "LJSStop.h"
-#import "LJSStopBuilder.h"
+#import "LJSStop+LJSSetters.h"
 #import "LJSService.h"
+#import "LJSService+LJSSetters.h"
 #import "LJSDepature.h"
-#import "LJSServiceBuilder.h"
-#import "LJSDepatureBuilder.h"
+#import "LJSDepature+LJSSetters.h"
 #import "LJSDepatureDateParser.h"
 
+
 @interface LJSScraper ()
-@property (nonatomic, strong) LJSStopBuilder *stopBuilder;
-@property (nonatomic, strong) LJSServiceBuilder *serviceBuilder;
-@property (nonatomic, strong) LJSDepatureBuilder *depatureBuilder;
 @property (nonatomic, strong) LJSDepatureDateParser *dateParser;
 @end
 
@@ -29,9 +27,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.stopBuilder = [[LJSStopBuilder alloc] init];
-        self.serviceBuilder = [[LJSServiceBuilder alloc] init];
-		self.depatureBuilder = [[LJSDepatureBuilder alloc] init];
 		self.dateParser = [[LJSDepatureDateParser alloc] init];
     }
     return self;
@@ -46,9 +41,13 @@
 	NSString *liveDateString = [self scrapeLiveDateStringFromHTML:html];
 	NSDate *liveDate = [self.dateParser dateFromString:liveDateString baseDate:[NSDate date]];
     
-    LJSStop *stop = [[[[self.stopBuilder stop] withNaPTANCode:naptanCode] withTitle:title] withLiveDate:liveDate];
+    LJSStop *stop = [LJSStop new];
+	stop.NaPTANCode = naptanCode;
+	stop.title = title;
+	stop.liveDate = liveDate;
+	
 	NSArray *services = [self scrapeServicesFromHTML:html stop:stop liveDate:liveDate];
-	stop = [stop withServices:services];
+	stop.services = services;
     
     return stop;
 }
@@ -79,7 +78,9 @@
         
         LJSService *service = [[services filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title == %@", title]] firstObject];
         if (!service) {
-            service = [[[self.serviceBuilder service] withTitle:title] withStop:stop];
+			service = [LJSService new];
+			service.title = title;
+			service.stop = stop;
             services = [services arrayByAddingObject:service];
         }
         
@@ -94,18 +95,18 @@
 		NSDate *expectedDepatureDate = [self.dateParser dateFromString:depatureDateValue baseDate:liveDate];
         BOOL hasLowFloorAccess = [self lowFloorAccessFromString:lowFloorAccessElement.text];
 		
-		LJSDepature *depature = [[[[[self.depatureBuilder depature]
-									withDestination:destinationValue]
-								   withExpectedDepatureDate:expectedDepatureDate]
-								  withHasLowFloorAccess:hasLowFloorAccess]
-								 withService:service];
+		LJSDepature *depature = [LJSDepature new];
+		depature.destination = destinationValue;
+		depature.expectedDepatureDate = expectedDepatureDate;
+		depature.hasLowFloorAccess = hasLowFloorAccess;
+		depature.service = service;
+
 		
 		if (!service.depatures) {
-			service = [service withDepautures:@[depature]];
+			service.depatures = @[depature];
 		}
 		else {
-			NSArray *newDepatures = [service.depatures arrayByAddingObject:depature];
-			service = [service withDepautures:newDepatures];
+			service.depatures = [service.depatures arrayByAddingObject:depature];
 		}
 
         

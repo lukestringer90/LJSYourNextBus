@@ -8,72 +8,79 @@
 
 #import <XCTest/XCTest.h>
 #import "LJSService.h"
-#import "LJSServiceBuilder.h"
+#import "LJSService+LJSSetters.h"
 #import "LJSStop.h"
-#import "LJSStopBuilder.h"
+#import "LJSStop+LJSSetters.h"
 #import "LJSDepature.h"
-#import "LJSDepatureBuilder.h"
+#import "LJSDepature+LJSSetters.h"
 
 @interface LJSServiceTests : XCTestCase
-@property (nonatomic, strong) LJSServiceBuilder *serviceBuilder;
-@property (nonatomic, strong) LJSStopBuilder *stopBuilder;
+@property (nonatomic, strong) LJSService *serviceA;
+@property (nonatomic, strong) LJSService *serviceB;
 @end
 
 @implementation LJSServiceTests
 
 - (void)setUp {
-    [super setUp];
-	self.serviceBuilder = [[LJSServiceBuilder alloc] init];
-    self.stopBuilder = [[LJSStopBuilder alloc] init];
+	[super setUp];
+	self.serviceA = [LJSService new];
+	self.serviceB = [LJSService new];
 }
 
 - (void)testEquality {
+	self.serviceA.title = @"service-123";
+	self.serviceB.title = @"service-123";
 	
-	LJSService *serviceA = [[self.serviceBuilder service] withTitle:@"service-123"];
-	LJSService *serviceB = [[self.serviceBuilder service] withTitle:@"service-123"];
-	
-	XCTAssertEqualObjects(serviceA, serviceB, @"");
+	XCTAssertEqualObjects(self.serviceA, self.serviceB, @"");
 }
 
 - (void)testInequalityForTitle {
-	LJSService *serviceA = [[self.serviceBuilder service] withTitle:@"service-123"] ;
-	LJSService *serviceB = [[self.serviceBuilder service] withTitle:@"service-456"];
+	self.serviceA.title = @"service-123";
+	self.serviceB.title = @"service-456";
 	
-	XCTAssertNotEqualObjects(serviceA, serviceB, @"");
+	XCTAssertNotEqualObjects(self.serviceA, self.serviceB, @"");
 }
 
 - (void)testInequalityForStop {
-	LJSStop *stopA = [[self.stopBuilder stop] withNaPTANCode:@"stop-123"];
-	LJSStop *stopB = [[self.stopBuilder stop] withNaPTANCode:@"stop-456"];
+	LJSStop *stopA = [LJSStop new];
+	stopA.NaPTANCode = @"stop-123";
+	LJSStop *stopB = [LJSStop new];
+	stopB.NaPTANCode = @"stop-456";
 	
-	LJSService *serviceA = [[[self.serviceBuilder service] withTitle:@"service-123"] withStop:stopA];
-	LJSService *serviceB = [[[self.serviceBuilder service] withTitle:@"service-123"] withStop:stopB];
+	self.serviceA.title = @"service-123";
+	self.serviceA.stop = stopA;
+	self.serviceB.title = @"service-123";
+	self.serviceB.stop = stopB;
 	
-	XCTAssertNotEqualObjects(serviceA, serviceB, @"");
+	XCTAssertNotEqualObjects(self.serviceA, self.serviceB, @"");
 }
 
 - (void)testInequalityForDepatures {
-	LJSDepatureBuilder *depatureBuilder = [[LJSDepatureBuilder alloc] init];
 	NSDate *depatureDateA = [NSDate dateWithTimeIntervalSince1970:100000];
 	NSDate *depatureDateB = [NSDate dateWithTimeIntervalSince1970:100001];
 	NSDate *depatureDateC = [NSDate dateWithTimeIntervalSince1970:100002];
-	LJSDepature *depatureA = [[[[depatureBuilder depature]
-								withExpectedDepatureDate:depatureDateA]
-							   withDestination:@"Sheffield"]
-							  withHasLowFloorAccess:YES];
-	LJSDepature *depatureB = [[[[depatureBuilder depature]
-								withExpectedDepatureDate:depatureDateB]
-							   withDestination:@"Rotherham"]
-							  withHasLowFloorAccess:NO];
-	LJSDepature *depatureC = [[[[depatureBuilder depature]
-								withExpectedDepatureDate:depatureDateC]
-							   withDestination:@"Barnsley"]
-							  withHasLowFloorAccess:YES];
-		
-	LJSService *serviceA = [[[self.serviceBuilder service] withTitle:@"service-123"] withDepautures:@[depatureA, depatureB]];
-	LJSService *serviceB = [[[self.serviceBuilder service] withTitle:@"service-123"] withDepautures:@[depatureA, depatureC]];
 	
-	XCTAssertNotEqualObjects(serviceA, serviceB, @"");
+	LJSDepature *depatureA = [LJSDepature new];
+	depatureA.expectedDepatureDate = depatureDateA;
+	depatureA.destination = @"Sheffield";
+	depatureA.hasLowFloorAccess = YES;
+	
+	LJSDepature *depatureB = [LJSDepature new];
+	depatureB.expectedDepatureDate = depatureDateB;
+	depatureB.destination = @"Rotherham";
+	depatureB.hasLowFloorAccess = NO;
+	
+	LJSDepature *depatureC = [LJSDepature new];
+	depatureC.expectedDepatureDate = depatureDateC;
+	depatureC.destination = @"Barnsley";
+	depatureC.hasLowFloorAccess = YES;
+	
+	self.serviceA.title = @"service-123";
+	self.serviceA.depatures = @[depatureA, depatureB];
+	self.serviceB.title = @"service-123";
+	self.serviceB.depatures = @[depatureA, depatureC];
+	
+	XCTAssertNotEqualObjects(self.serviceA, self.serviceB, @"");
 }
 
 @end

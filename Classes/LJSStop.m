@@ -8,6 +8,13 @@
 
 #import "LJSStop.h"
 
+@interface LJSStop ()
+@property (nonatomic, copy, readwrite) NSString *NaPTANCode;
+@property (nonatomic, copy, readwrite) NSString *title;
+@property (nonatomic, copy, readwrite) NSDate *liveDate;
+@property (nonatomic, copy, readwrite) NSArray *services;
+@end
+
 @implementation LJSStop
 
 - (BOOL)isEqualToStop:(LJSStop *)stop {

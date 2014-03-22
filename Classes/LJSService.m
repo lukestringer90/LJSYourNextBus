@@ -10,6 +10,12 @@
 #import "LJSStop.h"
 #import "LJSDepature.h"
 
+@interface LJSService ()
+@property (nonatomic, strong, readwrite) LJSStop *stop;
+@property (nonatomic, copy, readwrite) NSString *title;
+@property (nonatomic, copy, readwrite) NSArray *depatures;
+@end
+
 @implementation LJSService
 
 - (BOOL)isEqualToService:(LJSService *)service {
