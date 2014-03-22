@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface LJSViewController : UIViewController
+ 
+@interface LJSNaPTANEntryViewController : UIViewController
 
 @end

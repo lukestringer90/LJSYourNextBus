@@ -15,9 +15,7 @@
 		A31CBF69189988D000747F46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF67189988D000747F46 /* InfoPlist.strings */; };
 		A31CBF6B189988D000747F46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A31CBF6A189988D000747F46 /* main.m */; };
 		A31CBF6F189988D000747F46 /* LJSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A31CBF6E189988D000747F46 /* LJSAppDelegate.m */; };
-		A31CBF72189988D000747F46 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF70189988D000747F46 /* Main_iPhone.storyboard */; };
-		A31CBF75189988D000747F46 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF73189988D000747F46 /* Main_iPad.storyboard */; };
-		A31CBF78189988D000747F46 /* LJSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31CBF77189988D000747F46 /* LJSViewController.m */; };
+		A31CBF78189988D000747F46 /* LJSNaPTANEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A31CBF77189988D000747F46 /* LJSNaPTANEntryViewController.m */; };
 		A31CBF7A189988D000747F46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A31CBF79189988D000747F46 /* Images.xcassets */; };
 		A31CBF81189988D000747F46 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF80189988D000747F46 /* XCTest.framework */; };
 		A31CBF82189988D000747F46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31CBF5E189988D000747F46 /* Foundation.framework */; };
@@ -62,10 +60,8 @@
 		A31CBF6A189988D000747F46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A31CBF6D189988D000747F46 /* LJSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJSAppDelegate.h; sourceTree = "<group>"; };
 		A31CBF6E189988D000747F46 /* LJSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSAppDelegate.m; sourceTree = "<group>"; };
-		A31CBF71189988D000747F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		A31CBF74189988D000747F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		A31CBF76189988D000747F46 /* LJSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJSViewController.h; sourceTree = "<group>"; };
-		A31CBF77189988D000747F46 /* LJSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSViewController.m; sourceTree = "<group>"; };
+		A31CBF76189988D000747F46 /* LJSNaPTANEntryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJSNaPTANEntryViewController.h; sourceTree = "<group>"; };
+		A31CBF77189988D000747F46 /* LJSNaPTANEntryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSNaPTANEntryViewController.m; sourceTree = "<group>"; };
 		A31CBF79189988D000747F46 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A31CBF7F189988D000747F46 /* LJSYourNextBusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LJSYourNextBusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31CBF80189988D000747F46 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -234,10 +230,8 @@
 			children = (
 				A31CBF6D189988D000747F46 /* LJSAppDelegate.h */,
 				A31CBF6E189988D000747F46 /* LJSAppDelegate.m */,
-				A31CBF70189988D000747F46 /* Main_iPhone.storyboard */,
-				A31CBF73189988D000747F46 /* Main_iPad.storyboard */,
-				A31CBF76189988D000747F46 /* LJSViewController.h */,
-				A31CBF77189988D000747F46 /* LJSViewController.m */,
+				A31CBF76189988D000747F46 /* LJSNaPTANEntryViewController.h */,
+				A31CBF77189988D000747F46 /* LJSNaPTANEntryViewController.m */,
 				A31CBF79189988D000747F46 /* Images.xcassets */,
 			);
 			name = App;
@@ -347,9 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A31CBF75189988D000747F46 /* Main_iPad.storyboard in Resources */,
 				A31CBF7A189988D000747F46 /* Images.xcassets in Resources */,
-				A31CBF72189988D000747F46 /* Main_iPhone.storyboard in Resources */,
 				A31CBF69189988D000747F46 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,7 +428,7 @@
 			files = (
 				A31CBF6F189988D000747F46 /* LJSAppDelegate.m in Sources */,
 				A3BD2763189EF72200540C5F /* LJSService.m in Sources */,
-				A31CBF78189988D000747F46 /* LJSViewController.m in Sources */,
+				A31CBF78189988D000747F46 /* LJSNaPTANEntryViewController.m in Sources */,
 				A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */,
 				A3BD2762189EF72200540C5F /* LJSScraper.m in Sources */,
 				A337FDA518C24F4B002FB29F /* LJSDepatureDateParser.m in Sources */,
@@ -476,22 +468,6 @@
 				A31CBF68189988D000747F46 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		A31CBF70189988D000747F46 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A31CBF71189988D000747F46 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		A31CBF73189988D000747F46 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A31CBF74189988D000747F46 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		A31CBF89189988D000747F46 /* InfoPlist.strings */ = {
