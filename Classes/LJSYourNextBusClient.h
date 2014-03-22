@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @class LJSStop;
 @interface LJSYourNextBusClient : NSObject
 
