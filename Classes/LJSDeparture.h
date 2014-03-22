@@ -1,5 +1,5 @@
 //
-//  LJSDepature.h
+//  LJSDeparture.h
 //  LJSYourNextBus
 //
 //  Created by Luke Stringer on 29/01/2014.
@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class LJSService;
-@interface LJSDepature : NSObject
+@interface LJSDeparture : NSObject
 
 @property (nonatomic, strong, readonly) LJSService *service;
 @property (nonatomic, copy, readonly) NSString *destination;
-@property (nonatomic, strong, readonly) NSDate *expectedDepatureDate;
+@property (nonatomic, strong, readonly) NSDate *expectedDepartureDate;
 @property (nonatomic, assign, readonly) BOOL hasLowFloorAccess;
 
-- (BOOL)isEqualToDepature:(LJSDepature *)depature;
+- (BOOL)isEqualToDeparture:(LJSDeparture *)Departure;
 
 @end

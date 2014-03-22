@@ -12,7 +12,7 @@
 @interface LJSScraper : NSObject
 
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html;
-- (NSURL *)scrapeLaterDepaturesURL:(NSString *)html;
-- (NSURL *)scrapeEarlierDepaturesURL:(NSString *)html;
+- (NSURL *)scrapeLaterDeparturesURL:(NSString *)html;
+- (NSURL *)scrapeEarlierDeparturesURL:(NSString *)html;
 
 @end

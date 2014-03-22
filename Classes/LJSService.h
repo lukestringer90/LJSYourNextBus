@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong, readonly) LJSStop *stop;
 @property (nonatomic, copy, readonly) NSString *title;
-@property (nonatomic, copy, readonly) NSArray *depatures;
+@property (nonatomic, copy, readonly) NSArray *Departures;
 
 - (BOOL)isEqualToService:(LJSService *)service;
 

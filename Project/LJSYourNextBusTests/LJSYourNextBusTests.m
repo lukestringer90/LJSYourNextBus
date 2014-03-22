@@ -1,5 +1,5 @@
 //
-//  LJSLiveDepaturesTests.m
+//  LJSLiveDeparturesTests.m
 //  LJSYourNextBus
 //
 //  Created by Luke Stringer on 02/02/2014.
@@ -18,7 +18,7 @@
 
 #import "LJSStop.h"
 #import "LJSService.h"
-#import "LJSDepature.h"
+#import "LJSDeparture.h"
 
 @interface LJSYourNextBusClient (TestVisibility)
 @property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
@@ -69,17 +69,17 @@
 	return [stop.services sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
 
-- (NSArray *)depaturesForStop:(LJSStop *)stop {
-	return [[stop.services valueForKeyPath:@"depatures"] valueForKeyPath:@"@unionOfArrays.self"];
+- (NSArray *)DeparturesForStop:(LJSStop *)stop {
+	return [[stop.services valueForKeyPath:@"Departures"] valueForKeyPath:@"@unionOfArrays.self"];
 }
 
-- (NSArray *)sortedDepaturesForService:(LJSService *)service {
+- (NSArray *)sortedDeparturesForService:(LJSService *)service {
 	NSArray *sortDescriptors = @[
 								 [NSSortDescriptor sortDescriptorWithKey:@"destination"
 															   ascending:YES],
-								 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepatureDate"
+								 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
 															   ascending:YES]];
-	return [service.depatures sortedArrayUsingDescriptors:sortDescriptors];
+	return [service.Departures sortedArrayUsingDescriptors:sortDescriptors];
 }
 
 - (NSDate *)todayAtHours:(NSInteger)hours minutes:(NSInteger)minutes {
@@ -139,100 +139,100 @@
 										   
 										   LJSService *firstService = services[0];
 										   assertThat(firstService.title, equalTo(@"217"));
-										   assertThat(firstService.depatures, hasCountOf(2));
+										   assertThat(firstService.Departures, hasCountOf(2));
 										   assertThat(firstService.stop, equalTo(stop));
 										   
 										   LJSService *secondService = services[1];
 										   assertThat(secondService.title, equalTo(@"218"));
-										   assertThat(secondService.depatures, hasCountOf(3));
+										   assertThat(secondService.Departures, hasCountOf(3));
 										   assertThat(secondService.stop, equalTo(stop));
 										   
 										   LJSService *thirdService = services[2];
 										   assertThat(thirdService.title, equalTo(@"22"));
-										   assertThat(thirdService.depatures, hasCountOf(7));
+										   assertThat(thirdService.Departures, hasCountOf(7));
 										   assertThat(thirdService.stop, equalTo(stop));
 										   
 										   LJSService *fourthService = services[3];
 										   assertThat(fourthService.title, equalTo(@"22X"));
-										   assertThat(fourthService.depatures, hasCountOf(4));
+										   assertThat(fourthService.Departures, hasCountOf(4));
 										   assertThat(fourthService.stop, equalTo(stop));
 									   }];
 }
 
-- (void)testDepaturesCount {
+- (void)testDeparturesCount {
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode
 									   completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
-										   NSArray *allDepatures = [self depaturesForStop:stop];
-										   assertThat(allDepatures, hasCountOf(16));
+										   NSArray *allDepartures = [self DeparturesForStop:stop];
+										   assertThat(allDepartures, hasCountOf(16));
 									   }];
 	
 }
 
-#pragma mark - LJSDepature
+#pragma mark - LJSDeparture
 
-- (void)testDepatureDetails {
+- (void)testDepartureDetails {
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode
 									   completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
 										   NSArray *services = [self sortedServicesForStop:stop];
 										   
 										   LJSService *firstService = services[0];
 										   LJSService *secondService = services[1];
-										   NSArray *firstServiceDepatures = [self sortedDepaturesForService:firstService];
-										   NSArray *secondServiceDepatures = [self sortedDepaturesForService:secondService];
+										   NSArray *firstServiceDepartures = [self sortedDeparturesForService:firstService];
+										   NSArray *secondServiceDepartures = [self sortedDeparturesForService:secondService];
 										   
 										   /**
 											*  217 	Mexborough 	11:11
 											*/
-										   LJSDepature *firstDepatureOfFirstService = firstServiceDepatures[0];
-										   assertThat(firstDepatureOfFirstService.destination, equalTo(@"Mexborough"));
-										   assertThat(firstDepatureOfFirstService.service, equalTo(firstService));
-										   assertThatInteger([firstDepatureOfFirstService.expectedDepatureDate timeIntervalSince1970],
+										   LJSDeparture *firstDepartureOfFirstService = firstServiceDepartures[0];
+										   assertThat(firstDepartureOfFirstService.destination, equalTo(@"Mexborough"));
+										   assertThat(firstDepartureOfFirstService.service, equalTo(firstService));
+										   assertThatInteger([firstDepartureOfFirstService.expectedDepartureDate timeIntervalSince1970],
 															 equalToInteger([[self todayAtHours:11 minutes:11] timeIntervalSince1970]));
-										   assertThatBool(firstDepatureOfFirstService.hasLowFloorAccess, equalToBool(NO));
+										   assertThatBool(firstDepartureOfFirstService.hasLowFloorAccess, equalToBool(NO));
 										   
 										   
 										   /**
 											*  217 	Thurnscoe 	11:41
 											*/
-										   LJSDepature *secondDepatureOfFirstService = firstServiceDepatures[1];
-										   assertThat(secondDepatureOfFirstService.service, equalTo(firstService));
-										   assertThat(secondDepatureOfFirstService.destination, equalTo(@"Thurnscoe"));
-										   assertThatInteger([secondDepatureOfFirstService.expectedDepatureDate timeIntervalSince1970],
+										   LJSDeparture *secondDepartureOfFirstService = firstServiceDepartures[1];
+										   assertThat(secondDepartureOfFirstService.service, equalTo(firstService));
+										   assertThat(secondDepartureOfFirstService.destination, equalTo(@"Thurnscoe"));
+										   assertThatInteger([secondDepartureOfFirstService.expectedDepartureDate timeIntervalSince1970],
 															 equalToInteger([[self todayAtHours:11 minutes:41] timeIntervalSince1970]));
-										   assertThatBool(secondDepatureOfFirstService.hasLowFloorAccess, equalToBool(NO));
+										   assertThatBool(secondDepartureOfFirstService.hasLowFloorAccess, equalToBool(NO));
 										   
 										   
 										   /**
 											*  218 	Barnsley 	10:56
 											*/
-										   LJSDepature *firstDepatureOfSecondService = secondServiceDepatures[0];
-										   assertThat(firstDepatureOfSecondService.destination, equalTo(@"Barnsley"));
-										   assertThat(firstDepatureOfSecondService.service, equalTo(secondService));
-										   assertThatInteger([firstDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
+										   LJSDeparture *firstDepartureOfSecondService = secondServiceDepartures[0];
+										   assertThat(firstDepartureOfSecondService.destination, equalTo(@"Barnsley"));
+										   assertThat(firstDepartureOfSecondService.service, equalTo(secondService));
+										   assertThatInteger([firstDepartureOfSecondService.expectedDepartureDate timeIntervalSince1970],
 															 equalToInteger([[self todayAtHours:10 minutes:56] timeIntervalSince1970]));
-										   assertThatBool(firstDepatureOfSecondService.hasLowFloorAccess, equalToBool(NO));
+										   assertThatBool(firstDepartureOfSecondService.hasLowFloorAccess, equalToBool(NO));
 										   
 										   
 										   /**
 											*  218 	Barnsley 	40 mins 	LF
 											*/
-										   LJSDepature *secondDepatureOfSecondService = secondServiceDepatures[1];
-										   assertThat(secondDepatureOfSecondService.destination, equalTo(@"Barnsley"));
-										   assertThat(secondDepatureOfSecondService.service, equalTo(secondService));
-										   assertThatInteger([secondDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
+										   LJSDeparture *secondDepartureOfSecondService = secondServiceDepartures[1];
+										   assertThat(secondDepartureOfSecondService.destination, equalTo(@"Barnsley"));
+										   assertThat(secondDepartureOfSecondService.service, equalTo(secondService));
+										   assertThatInteger([secondDepartureOfSecondService.expectedDepartureDate timeIntervalSince1970],
 															 equalToInteger([[self date:stop.liveDate plusMinutes:40] timeIntervalSince1970]));
-										   assertThatBool(secondDepatureOfSecondService.hasLowFloorAccess, equalToBool(YES));
+										   assertThatBool(secondDepartureOfSecondService.hasLowFloorAccess, equalToBool(YES));
 										   
 										   
 										   /**
 											*  218 	Barnsley 	70 mins 	LF
 											*/
-										   LJSDepature *thirdDepatureOfSecondService = secondServiceDepatures[2];
-										   assertThat(thirdDepatureOfSecondService.destination, equalTo(@"Barnsley"));
-										   assertThat(thirdDepatureOfSecondService.service, equalTo(secondService));
-										   assertThatInteger([thirdDepatureOfSecondService.expectedDepatureDate timeIntervalSince1970],
+										   LJSDeparture *thirdDepartureOfSecondService = secondServiceDepartures[2];
+										   assertThat(thirdDepartureOfSecondService.destination, equalTo(@"Barnsley"));
+										   assertThat(thirdDepartureOfSecondService.service, equalTo(secondService));
+										   assertThatInteger([thirdDepartureOfSecondService.expectedDepartureDate timeIntervalSince1970],
 															 equalToInteger([[self date:stop.liveDate plusMinutes:70] timeIntervalSince1970]));
-										   assertThatBool(thirdDepatureOfSecondService.hasLowFloorAccess, equalToBool(YES));
+										   assertThatBool(thirdDepartureOfSecondService.hasLowFloorAccess, equalToBool(YES));
 									   }];
 }
 

@@ -8,12 +8,12 @@
 
 #import "LJSService.h"
 #import "LJSStop.h"
-#import "LJSDepature.h"
+#import "LJSDeparture.h"
 
 @interface LJSService ()
 @property (nonatomic, strong, readwrite) LJSStop *stop;
 @property (nonatomic, copy, readwrite) NSString *title;
-@property (nonatomic, copy, readwrite) NSArray *depatures;
+@property (nonatomic, copy, readwrite) NSArray *Departures;
 @end
 
 @implementation LJSService
@@ -22,14 +22,14 @@
 	LJSService *copy = [[LJSService allocWithZone:zone] init];
 	copy.stop = self.stop;
 	copy.title = self.title;
-	copy.depatures = self.depatures;
+	copy.Departures = self.Departures;
 	return copy;
 }
 
 - (BOOL)isEqualToService:(LJSService *)service {
 	BOOL stopsEqual = [self.stop isEqualToStop:service.stop] || (self.stop == nil && service.stop == nil);
 	BOOL titlesEqual = [self.title isEqualToString:service.title];
-	return stopsEqual && titlesEqual && [self allDepaturesEqualWithService:service];
+	return stopsEqual && titlesEqual && [self allDeparturesEqualWithService:service];
 }
 
 - (BOOL)isEqual:(id)object {
@@ -44,14 +44,14 @@
 	return [self isEqualToService:object];
 }
 
-- (BOOL)allDepaturesEqualWithService:(LJSService *)service {
-	NSSet *depaturesA = [NSSet setWithArray:self.depatures];
-	NSSet *depaturesB = [NSSet setWithArray:service.depatures];
-	return [depaturesA isEqualToSet:depaturesB];
+- (BOOL)allDeparturesEqualWithService:(LJSService *)service {
+	NSSet *DeparturesA = [NSSet setWithArray:self.Departures];
+	NSSet *DeparturesB = [NSSet setWithArray:service.Departures];
+	return [DeparturesA isEqualToSet:DeparturesB];
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"Title: %@ - Stop: %@ - Depatures: %ld", self.title, self.stop.title, self.depatures.count];
+	return [NSString stringWithFormat:@"Title: %@ - Stop: %@ - Departures: %ld", self.title, self.stop.title, self.Departures.count];
 }
 
 

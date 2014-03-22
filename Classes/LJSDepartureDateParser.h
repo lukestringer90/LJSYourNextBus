@@ -1,5 +1,5 @@
 //
-//  LJSDepatureDateParser.h
+//  LJSDepartureDateParser.h
 //  LJSYourNextBus
 //
 //  Created by Luke Stringer on 01/03/2014.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LJSDepatureDateParser : NSObject
+@interface LJSDepartureDateParser : NSObject
 
 - (NSDate *)dateFromString:(NSString *)dateString baseDate:(NSDate *)baseDate;
 

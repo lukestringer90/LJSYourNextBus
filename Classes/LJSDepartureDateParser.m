@@ -1,18 +1,18 @@
 //
-//  LJSDepatureDateParser.m
+//  LJSDepartureDateParser.m
 //  LJSYourNextBus
 //
 //  Created by Luke Stringer on 01/03/2014.
 //  Copyright (c) 2014 Luke Stringer. All rights reserved.
 //
 
-#import "LJSDepatureDateParser.h"
+#import "LJSDepartureDateParser.h"
 
-@interface LJSDepatureDateParser ()
+@interface LJSDepartureDateParser ()
 @property (nonatomic, strong) NSCalendar *calendar;
 @end
 
-@implementation LJSDepatureDateParser
+@implementation LJSDepartureDateParser
 
 - (instancetype)init {
     if (self = [super init]) {

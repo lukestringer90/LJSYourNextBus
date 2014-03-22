@@ -13,13 +13,13 @@
 #import "LJSStop+LJSSetters.h"
 #import "LJSService.h"
 #import "LJSService+LJSSetters.h"
-#import "LJSDepature.h"
-#import "LJSDepature+LJSSetters.h"
-#import "LJSDepatureDateParser.h"
+#import "LJSDeparture.h"
+#import "LJSDeparture+LJSSetters.h"
+#import "LJSDepartureDateParser.h"
 
 
 @interface LJSScraper ()
-@property (nonatomic, strong) LJSDepatureDateParser *dateParser;
+@property (nonatomic, strong) LJSDepartureDateParser *dateParser;
 @end
 
 @implementation LJSScraper
@@ -27,7 +27,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-		self.dateParser = [[LJSDepatureDateParser alloc] init];
+		self.dateParser = [[LJSDepartureDateParser alloc] init];
     }
     return self;
 }
@@ -52,13 +52,13 @@
     return stop;
 }
 
-- (NSURL *)scrapeLaterDepaturesURL:(NSString *)html {
+- (NSURL *)scrapeLaterDeparturesURL:(NSString *)html {
     NSString *pattern = @".*<a href=\"(.*)\">Later.*";
     NSString *path = [self scrapeHTML:html usingRegexPattern:pattern];
     return [NSURL URLWithString:path];
 }
 
-- (NSURL *)scrapeEarlierDepaturesURL:(NSString *)html {
+- (NSURL *)scrapeEarlierDeparturesURL:(NSString *)html {
     NSString *pattern = @".*<a href=\"(.*)\">Earlier.*";
     NSString *path = [self scrapeHTML:html usingRegexPattern:pattern];
     return [NSURL URLWithString:path];
@@ -86,27 +86,27 @@
         
         
         OGElement *destinationElement = tds[titleRowIndex+1];
-        OGElement *depatureDateElement = tds[titleRowIndex+2];
+        OGElement *DepartureDateElement = tds[titleRowIndex+2];
         OGElement *lowFloorAccessElement = tds[titleRowIndex+3];
         
 		NSString *destinationValue = [self removeLastCharacterFromString:destinationElement.text];
-		NSString *depatureDateValue = [self removeLastCharacterFromString:depatureDateElement.text];
+		NSString *DepartureDateValue = [self removeLastCharacterFromString:DepartureDateElement.text];
 		
-		NSDate *expectedDepatureDate = [self.dateParser dateFromString:depatureDateValue baseDate:liveDate];
+		NSDate *expectedDepartureDate = [self.dateParser dateFromString:DepartureDateValue baseDate:liveDate];
         BOOL hasLowFloorAccess = [self lowFloorAccessFromString:lowFloorAccessElement.text];
 		
-		LJSDepature *depature = [LJSDepature new];
-		depature.destination = destinationValue;
-		depature.expectedDepatureDate = expectedDepatureDate;
-		depature.hasLowFloorAccess = hasLowFloorAccess;
-		depature.service = service;
+		LJSDeparture *Departure = [LJSDeparture new];
+		Departure.destination = destinationValue;
+		Departure.expectedDepartureDate = expectedDepartureDate;
+		Departure.hasLowFloorAccess = hasLowFloorAccess;
+		Departure.service = service;
 
 		
-		if (!service.depatures) {
-			service.depatures = @[depature];
+		if (!service.Departures) {
+			service.Departures = @[Departure];
 		}
 		else {
-			service.depatures = [service.depatures arrayByAddingObject:depature];
+			service.Departures = [service.Departures arrayByAddingObject:Departure];
 		}
 
         

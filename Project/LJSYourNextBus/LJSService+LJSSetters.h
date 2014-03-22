@@ -13,6 +13,6 @@
 
 - (void)setStop:(LJSStop *)stop;
 - (void)setTitle:(NSString *)title;
-- (void)setDepatures:(NSArray *)depatures;
+- (void)setDepartures:(NSArray *)Departures;
 
 @end

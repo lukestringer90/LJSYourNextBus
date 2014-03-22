@@ -1,19 +1,19 @@
 //
-//  LJSDepature+LJSSetters.h
+//  LJSDeparture+LJSSetters.h
 //  LJSYourNextBus
 //
 //  Created by Luke Stringer on 22/03/2014.
 //  Copyright (c) 2014 Luke Stringer. All rights reserved.
 //
 
-#import "LJSDepature.h"
+#import "LJSDeparture.h"
 
 @class LJSService;
-@interface LJSDepature (LJSSetters)
+@interface LJSDeparture (LJSSetters)
 
 - (void)setService:(LJSService *)service;
 - (void)setDestination:(NSString *)destination;
-- (void)setExpectedDepatureDate:(NSDate *)expectedDepatureDate;
+- (void)setExpectedDepartureDate:(NSDate *)expectedDepartureDate;
 - (void)setHasLowFloorAccess:(BOOL) hasLowFloorAccess;
 
 @end

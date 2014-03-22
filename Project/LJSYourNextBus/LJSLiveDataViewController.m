@@ -10,12 +10,12 @@
 #import "LJSYourNextBusClient.h"
 #import "LJSStop.h"
 #import "LJSService.h"
-#import "LJSDepature.h"
+#import "LJSDeparture.h"
 
 @interface LJSLiveDataViewController ()
 @property (nonatomic, copy, readwrite) NSString *NaPTANCode;
 @property (nonatomic, strong) LJSStop *stop;
-@property (nonatomic, copy) NSArray *sortedDepatures;
+@property (nonatomic, copy) NSArray *sortedDepartures;
 @property (nonatomic, strong) LJSYourNextBusClient *yourNextBusClient;
 @end
 
@@ -37,13 +37,13 @@
 		if (!error) {
 			self.stop = stop;
 			self.title = self.stop.title;
-			NSArray *allDepatures = [[stop.services valueForKeyPath:@"depatures"] valueForKeyPath:@"@unionOfArrays.self"];
+			NSArray *allDepartures = [[stop.services valueForKeyPath:@"Departures"] valueForKeyPath:@"@unionOfArrays.self"];
 			NSArray *sortDescriptors = @[
 										 [NSSortDescriptor sortDescriptorWithKey:@"destination"
 																	   ascending:YES],
-										 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepatureDate"
+										 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
 																	   ascending:YES]];
-			self.sortedDepatures = [allDepatures sortedArrayUsingDescriptors:sortDescriptors];;
+			self.sortedDepartures = [allDepartures sortedArrayUsingDescriptors:sortDescriptors];;
 			[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 		}
 	}];
@@ -59,20 +59,20 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return self.sortedDepatures != nil ? self.sortedDepatures.count : 0;
+	return self.sortedDepartures != nil ? self.sortedDepartures.count : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class])];
 	
-	LJSDepature *depature = self.sortedDepatures[indexPath.row];
-	cell.textLabel.text = depature.destination;
+	LJSDeparture *Departure = self.sortedDepartures[indexPath.row];
+	cell.textLabel.text = Departure.destination;
 	
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return self.sortedDepatures != nil ? @"Depatures" : nil;
+	return self.sortedDepartures != nil ? @"Departures" : nil;
 }
 
 

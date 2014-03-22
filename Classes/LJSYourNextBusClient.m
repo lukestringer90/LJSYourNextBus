@@ -55,8 +55,8 @@
 
 - (void)scrapeHTML:(NSString *)html {
     LJSStop *stop = [self.scraper scrapeStopDataFromHTML:html];
-    NSURL *laterURL = [self.scraper scrapeLaterDepaturesURL:html];
-    NSURL *earlierURL = [self.scraper scrapeEarlierDepaturesURL:html];
+    NSURL *laterURL = [self.scraper scrapeLaterDeparturesURL:html];
+    NSURL *earlierURL = [self.scraper scrapeEarlierDeparturesURL:html];
     
     [self safeCallCompletionBlockWithStop:stop laterURL:laterURL earilierURL:earlierURL error:nil];
 }
