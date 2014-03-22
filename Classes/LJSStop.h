@@ -10,6 +10,9 @@
 
 @interface LJSStop : NSObject <NSCopying>
 
+/**
+ *  An 8 digit stop number starting with e.g. 450 for West Yorkshire or 370 for South Yorkshire
+ */
 @property (nonatomic, copy, readonly) NSString *NaPTANCode;
 @property (nonatomic, copy, readonly) NSString *title;
 @property (nonatomic, copy, readonly) NSDate *liveDate;
