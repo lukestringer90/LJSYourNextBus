@@ -35,6 +35,7 @@
 		A3BD2763189EF72200540C5F /* LJSService.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275C189EF72200540C5F /* LJSService.m */; };
 		A3BD2764189EF72200540C5F /* LJSStop.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275E189EF72200540C5F /* LJSStop.m */; };
 		A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD276F189FF46500540C5F /* LJSStopTests.m */; };
+		A3FE172C18DE44C900B8E47E /* LJSLiveDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		A3FE172118DE106100B8E47E /* LJSStop+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSStop+LJSSetters.h"; sourceTree = SOURCE_ROOT; };
 		A3FE172418DE10AD00B8E47E /* LJSService+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSService+LJSSetters.h"; sourceTree = "<group>"; };
 		A3FE172718DE111C00B8E47E /* LJSDepature+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSDepature+LJSSetters.h"; sourceTree = "<group>"; };
+		A3FE172A18DE44C900B8E47E /* LJSLiveDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSLiveDataViewController.h; sourceTree = "<group>"; };
+		A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSLiveDataViewController.m; sourceTree = "<group>"; };
 		D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBusTests.xcconfig"; path = "Pods/Pods-LJSYourNextBusTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +235,8 @@
 				A31CBF6E189988D000747F46 /* LJSAppDelegate.m */,
 				A31CBF76189988D000747F46 /* LJSNaPTANEntryViewController.h */,
 				A31CBF77189988D000747F46 /* LJSNaPTANEntryViewController.m */,
+				A3FE172A18DE44C900B8E47E /* LJSLiveDataViewController.h */,
+				A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */,
 				A31CBF79189988D000747F46 /* Images.xcassets */,
 			);
 			name = App;
@@ -433,6 +438,7 @@
 				A3BD2762189EF72200540C5F /* LJSScraper.m in Sources */,
 				A337FDA518C24F4B002FB29F /* LJSDepatureDateParser.m in Sources */,
 				A31CBF6B189988D000747F46 /* main.m in Sources */,
+				A3FE172C18DE44C900B8E47E /* LJSLiveDataViewController.m in Sources */,
 				A3BD275F189EF72200540C5F /* LJSDepature.m in Sources */,
 				A3BD2764189EF72200540C5F /* LJSStop.m in Sources */,
 				A3BD2761189EF72200540C5F /* LJSYourNextBusClient.m in Sources */,

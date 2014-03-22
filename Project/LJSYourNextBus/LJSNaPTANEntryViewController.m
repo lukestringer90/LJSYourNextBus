@@ -7,6 +7,7 @@
 //
 
 #import "LJSNaPTANEntryViewController.h"
+#import "LJSLiveDataViewController.h"
 
 typedef NS_ENUM(NSInteger, EntryTableViewSection) {
     EntryTableViewSectionNaPTAN,
@@ -29,6 +30,7 @@ static NSString * const SubmitCellID = @"SubmitCellID";
 	self = [super init];
 	if (self) {
 		self.title = @"YourNextBus API";
+		
 		self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
 		self.tableView.delegate = self;
 		self.tableView.dataSource = self;
@@ -37,6 +39,7 @@ static NSString * const SubmitCellID = @"SubmitCellID";
 		
 		self.textField = [[UITextField alloc] initWithFrame:CGRectZero];
 		self.textField.delegate = self;
+		self.textField.keyboardType = UIKeyboardTypeDecimalPad;
 		self.textField.returnKeyType = UIReturnKeyDone;
 	}
 	return self;
@@ -54,6 +57,10 @@ static NSString * const SubmitCellID = @"SubmitCellID";
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath.section == EntryTableViewSectionSubmit) {
+		[self NaPTANCodeWasEntryFinished];
+	}
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -111,14 +118,18 @@ static NSString * const SubmitCellID = @"SubmitCellID";
 
 #pragma mark - UITextFieldDelegate
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-	self.NaPTANCodeText = textField.text;
-	NSLog(@"%@", self.NaPTANCodeText);
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	[self.textField resignFirstResponder];
+	[self NaPTANCodeWasEntryFinished];
 	return YES;
+}
+
+- (void)NaPTANCodeWasEntryFinished {
+	if (self.textField.text.length > 0) {
+		LJSLiveDataViewController *liveDataViewController = [[LJSLiveDataViewController alloc] initWithNaPTANCode:self.textField.text];
+		[self.navigationController pushViewController:liveDataViewController animated:YES];
+	}
+
 }
 
 @end
