@@ -34,6 +34,11 @@
 
 #pragma mark - Public
 
+- (BOOL)htmlIsValid:(NSString *)html {
+	return [html rangeOfString:@"is invalid"].location == NSNotFound;
+	
+}
+
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html {
     NSString *naptanCode = [self scrapeNaPTANCodeFromHTML:html];
     NSString *title = [self scrapeTitleFromHTML:html];

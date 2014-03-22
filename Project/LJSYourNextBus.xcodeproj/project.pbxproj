@@ -36,6 +36,7 @@
 		A3BD2764189EF72200540C5F /* LJSStop.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275E189EF72200540C5F /* LJSStop.m */; };
 		A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD276F189FF46500540C5F /* LJSStopTests.m */; };
 		A3FE172C18DE44C900B8E47E /* LJSLiveDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */; };
+		A3FE172E18DE4EAC00B8E47E /* invalid.html in Resources */ = {isa = PBXBuildFile; fileRef = A3FE172D18DE4EAC00B8E47E /* invalid.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		A3FE172718DE111C00B8E47E /* LJSDeparture+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "LJSDeparture+LJSSetters.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		A3FE172A18DE44C900B8E47E /* LJSLiveDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSLiveDataViewController.h; sourceTree = "<group>"; };
 		A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSLiveDataViewController.m; sourceTree = "<group>"; };
+		A3FE172D18DE4EAC00B8E47E /* invalid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = invalid.html; sourceTree = "<group>"; };
 		D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBusTests.xcconfig"; path = "Pods/Pods-LJSYourNextBusTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,6 +226,7 @@
 			children = (
 				A34B1C1818CE49F800184A12 /* 37010115.html */,
 				A34A1956189EBF86002EEF2B /* 37010071.html */,
+				A3FE172D18DE4EAC00B8E47E /* invalid.html */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			files = (
 				A31CBF8B189988D000747F46 /* InfoPlist.strings in Resources */,
 				A34B1C1918CE49F800184A12 /* 37010115.html in Resources */,
+				A3FE172E18DE4EAC00B8E47E /* invalid.html in Resources */,
 				A34A1957189EBF86002EEF2B /* 37010071.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

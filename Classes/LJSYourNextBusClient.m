@@ -10,6 +10,8 @@
 #import "LJSHTMLDownloader.h"
 #import "LJSScraper.h"
 
+NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
+
 @interface LJSYourNextBusClient ()
 @property (nonatomic, copy) LJSLiveDataCompletion completion;
 @property (nonatomic, strong) LJSScraper *scraper;
@@ -41,9 +43,23 @@
     if (error || !htmlString) {
 		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil error:error];
     }
+	else if ([self.scraper htmlIsValid:htmlString]) {
+		[self scrapeHTML:htmlString];
+	}
     else {
-        [self scrapeHTML:htmlString];
-    }
+		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil error:[self invalidHTMLError]];
+	}
+}
+
+- (NSError *)invalidHTMLError {
+	NSDictionary *userInfo = @{
+							   NSLocalizedDescriptionKey: NSLocalizedString(@"Scraping the YourNextBus HTML failed.", nil),
+							   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"The HTML did not contain any live data. This could be due to a problems with the YourNextBus service, or an invalid NaPTAN code was supplied.", nil),
+							   NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Try again, making sure the NaPTAN code is valid; an 8 digit  number starting with 450 for West Yorkshire or 370 for South Yorkshire.", nil),
+							   };
+	return [NSError errorWithDomain:LJSYourNextBusErrorDomain
+										 code:LJSYourNextBusErrorScrapeFailure
+									 userInfo:userInfo];
 }
 
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber {

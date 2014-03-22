@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const LJSYourNextBusErrorDomain;
+
+typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
+    LJSYourNextBusErrorScrapeFailure
+};
+
 @class LJSStop;
 @interface LJSYourNextBusClient : NSObject
 
