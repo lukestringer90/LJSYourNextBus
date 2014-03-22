@@ -38,7 +38,6 @@
 }
 
 #pragma mark - Public
-#pragma mark -
 
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html {
     NSString *naptanCode = [self scrapeNaPTANCodeFromHTML:html];
@@ -65,7 +64,6 @@
     NSString *path = [self scrapeHTML:html usingRegexPattern:pattern];
     return [NSURL URLWithString:path];
 }
-
 
 #pragma mark - Scraping
 
@@ -135,9 +133,7 @@
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
                                                                            options:NSRegularExpressionDotMatchesLineSeparators
                                                                              error:&error];
-    if (error) {
-        return nil;
-    }
+    if (error) return nil;
     
     NSTextCheckingResult *match = [regex firstMatchInString:html
                                                     options:NSMatchingAnchored
@@ -145,7 +141,6 @@
 
     NSString *NaPTANCode = nil;
     if (match) {
-        // Assume group of interest is at index 1
         NaPTANCode = [html substringWithRange:[match rangeAtIndex:1]];
     }
     
@@ -155,36 +150,6 @@
 - (BOOL)lowFloorAccessFromString:(NSString *)string {
     return [string hasPrefix:@"LF"];
 }
-
-#pragma mark - ObjectiveGumbo scraping
-
-//- (NSArray *)processServiceValue:(NSString *)serviceValue destinationValue:(NSString *)destinationTimeValue depatureValue:(NSString *)depatureValue lowFloorAccessValue:(NSNumber *)lowFloorAccessValue currentServices:(NSArray *)currentServices {
-//    
-//    NSDictionary *depatureDictionary = @{
-//                                         LJSDestinationKey : destinationTimeValue,
-//                                         LJSExpectedDepatureTimeKey : depatureValue,
-//                                         LJSLowFloorAccess : lowFloorAccessValue
-//                                         };
-//    
-//    NSArray *depatureForThisService = allDepatures[serviceValue];
-//    NSArray *updatedDepatureForThisService;
-//    if (depatureForThisService) {
-//        updatedDepatureForThisService = [depatureForThisService arrayByAddingObject:depatureDictionary];
-//    }
-//    else {
-//        updatedDepatureForThisService = @[depatureDictionary];
-//    }
-//    
-//    allDepatures[serviceValue] = updatedDepatureForThisService;
-//    
-//    
-//    NSMutableDictionary *newScrapedData = [scrapedData mutableCopy];
-//    [newScrapedData setValue:allDepatures forKey:LJSDepaturesKey];
-//    
-//    return newScrapedData;
-//}
-
-#pragma mark - Other
 
 - (NSString *)removeLastCharacterFromString:(NSString *)string {
     // HTML contains a "&nbsp;" character after each value, so remove it
