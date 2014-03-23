@@ -13,6 +13,8 @@
 @property (nonatomic, copy, readwrite) NSString *title;
 @property (nonatomic, copy, readwrite) NSDate *liveDate;
 @property (nonatomic, copy, readwrite) NSArray *services;
+@property (nonatomic, strong, readwrite) NSURL *laterURL;
+@property (nonatomic, strong, readwrite) NSURL *earlierURL;
 @end
 
 @implementation LJSStop

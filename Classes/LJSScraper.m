@@ -17,7 +17,6 @@
 #import "LJSDeparture+LJSSetters.h"
 #import "LJSDepartureDateParser.h"
 
-
 @interface LJSScraper ()
 @property (nonatomic, strong) LJSDepartureDateParser *dateParser;
 @end
@@ -81,6 +80,9 @@
 	
 	NSArray *services = [self scrapeServicesFromHTML:html stop:stop liveDate:liveDate];
 	stop.services = services;
+	
+	stop.laterURL = [self scrapeLaterDeparturesURL:html];
+    stop.earlierURL = [self scrapeEarlierDeparturesURL:html];
     
     return stop;
 }

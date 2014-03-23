@@ -41,17 +41,17 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
     NSString *html = [self.htmlDownloader downloadHTMLFromURL:url error:&error];
     
     if (error || !html) {
-		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil messages:nil error:error];
+		[self safeCallCompletionBlockWithStop:nil messages:nil error:error];
     }
 	else if (![self.scraper htmlIsValid:html]) {
-		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil messages:nil error:[self invalidHTMLError]];
+		[self safeCallCompletionBlockWithStop:nil messages:nil error:[self invalidHTMLError]];
 	}
 	else {
 		// The present of a message is not dependent on there being any live data.
 		// So scrape it and use it in both cases.
 		NSArray *messages = [self.scraper scrapeMessagesFromHTML:html];
 		if (![self.scraper htmlContainsLiveData:html]) {
-			[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil messages:messages error:[self dataUnavailableError]];
+			[self safeCallCompletionBlockWithStop:nil messages:messages error:[self dataUnavailableError]];
 		}
 		else {
 			[self scrapeHTML:html messages:messages];
@@ -90,15 +90,13 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
 - (void)scrapeHTML:(NSString *)html messages:(NSArray *)messages{
     LJSStop *stop = [self.scraper scrapeStopDataFromHTML:html];
-    NSURL *laterURL = [self.scraper scrapeLaterDeparturesURL:html];
-    NSURL *earlierURL = [self.scraper scrapeEarlierDeparturesURL:html];
     
-    [self safeCallCompletionBlockWithStop:stop laterURL:laterURL earilierURL:earlierURL messages:messages error:nil];
+    [self safeCallCompletionBlockWithStop:stop messages:messages error:nil];
 }
 
-- (void)safeCallCompletionBlockWithStop:(LJSStop *)stop laterURL:(NSURL *)laterURL earilierURL:(NSURL *)earilierURL messages:(NSArray *)messages error:(NSError *)error {
+- (void)safeCallCompletionBlockWithStop:(LJSStop *)stop messages:(NSArray *)messages error:(NSError *)error {
     if (self.completion) {
-        self.completion(stop, laterURL, earilierURL, messages, error);
+        self.completion(stop, messages, error);
         self.completion = nil;
     }
 }

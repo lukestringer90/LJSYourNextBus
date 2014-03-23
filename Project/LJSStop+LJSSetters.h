@@ -14,6 +14,8 @@
 - (void)setTitle:(NSString *)title;
 - (void)setLiveDate:(NSDate *)liveDate;
 - (void)setServices:(NSArray *)services;
+- (void)setLaterURL:(NSURL *)laterURL;
+- (void)setEarlierURL:(NSURL *)earlier;
 
 @end
 

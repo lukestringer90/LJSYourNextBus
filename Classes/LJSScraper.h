@@ -14,8 +14,6 @@
 - (BOOL)htmlIsValid:(NSString *)html;
 - (BOOL)htmlContainsLiveData:(NSString *)html;
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html;
-- (NSURL *)scrapeLaterDeparturesURL:(NSString *)html;
-- (NSURL *)scrapeEarlierDeparturesURL:(NSString *)html;
 - (NSArray *)scrapeMessagesFromHTML:(NSString *)html;
 
 @end
