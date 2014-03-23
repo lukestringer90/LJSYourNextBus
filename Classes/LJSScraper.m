@@ -41,9 +41,30 @@
 	return [html rangeOfString:@"There are no departures in the next hour from this stop."].location == NSNotFound;
 }
 
-- (NSString *)scrapeMessageFromHTML:(NSString *)html {
-	NSString *pattern = @".*msgs\\[\\d+\\] = \"(.*?)\";.*";
-    return [self scrapeHTML:html usingRegexPattern:pattern];
+- (NSArray *)scrapeMessagesFromHTML:(NSString *)html {
+	NSString *pattern = @".*msgs\\[\\d+\\] = \\\"(.*?)\\\";.*";
+	
+	NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                           options:0
+                                                                             error:&error];
+	if (error) return nil;
+	
+	__block NSArray *matches = nil;
+	[regex enumerateMatchesInString:html
+							options:0
+							  range:NSMakeRange(0, [html length])
+						 usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+							 NSString *match = [html substringWithRange:[result rangeAtIndex:1]];
+							 if (match.length > 0) {
+								 if (!matches) {
+									 matches = [NSArray array];
+								 }
+								 matches = [matches arrayByAddingObject:match];
+							 }
+						 }];
+	
+    return matches;
 }
 
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html {
@@ -112,7 +133,7 @@
 		Departure.expectedDepartureDate = expectedDepartureDate;
 		Departure.hasLowFloorAccess = hasLowFloorAccess;
 		Departure.service = service;
-
+		
 		
 		if (!service.Departures) {
 			service.Departures = @[Departure];
@@ -120,7 +141,7 @@
 		else {
 			service.Departures = [service.Departures arrayByAddingObject:Departure];
 		}
-
+		
         
     }
     return services;
@@ -151,7 +172,7 @@
     NSTextCheckingResult *match = [regex firstMatchInString:html
                                                     options:NSMatchingAnchored
                                                       range:NSMakeRange(0, [html length])];
-
+	
     NSString *foundString = nil;
     if (match) {
         foundString = [html substringWithRange:[match rangeAtIndex:1]];

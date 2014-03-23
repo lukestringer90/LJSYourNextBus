@@ -108,7 +108,7 @@
 - (void)testInvalidHTML {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"invalid"];
 	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:invalidHTML];
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
 		assertThat(stop, equalTo(nil));
 		assertThat(laterURL, equalTo(nil));
 		assertThat(earlierURL, equalTo(nil));
@@ -123,7 +123,7 @@
 - (void)testNoDataAvaiable {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"no_depatures"];
 	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:invalidHTML];
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
 		assertThat(stop, equalTo(nil));
 		assertThat(laterURL, equalTo(nil));
 		assertThat(earlierURL, equalTo(nil));
@@ -137,20 +137,28 @@
 
 #pragma mark - Messages
 
-- (void)testMessage {
-    NSString *invalidHTML = [self loadHTMLFileNamed:@"message"];
+- (void)testMessages {
+    NSString *invalidHTML = [self loadHTMLFileNamed:@"messages"];
 	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:invalidHTML];
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
-		assertThat(message, equalTo(@"Rail Works on tram network supertram.com"));
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
+		assertThat(messages, hasCountOf(3));
+		assertThat(messages[0], equalTo(@"Message 1"));
+		assertThat(messages[1], equalTo(@"Message 2"));
+		assertThat(messages[2], equalTo(@"Message 3"));
 	}];
 	
 }
 
+- (void)testNoMessages {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
+		assertThat(messages, equalTo(nil));
+	}];
+}
 
 #pragma mark - LJSStop
 
 - (void)testStopDetails {
-    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
+    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
 		assertThat(stop.NaPTANCode, equalTo(@"37010071"));
 		assertThat(stop.title, equalTo(@"Rotherham Intc"));
 	}];
@@ -158,14 +166,14 @@
 }
 
 - (void)testStopLiveDate {
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
 		NSDate *correctLiveDate = [self todayAtHours:10 minutes:46];
 		assertThatInteger([stop.liveDate timeIntervalSince1970], equalToInteger([correctLiveDate timeIntervalSince1970]));
 	}];
 }
 
 - (void)testServicesCount {
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
 		NSArray *services = stop.services;
 		assertThat(services, hasCountOf(4));
 	}];
@@ -174,7 +182,7 @@
 #pragma mark - LJSService
 
 - (void)testServicesDetails {
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
 		NSArray *services = [self sortedServicesForStop:stop];
 		
 		LJSService *firstService = services[0];
@@ -200,7 +208,7 @@
 }
 
 - (void)testDeparturesCount {
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
 		NSArray *allDepartures = [self DeparturesForStop:stop];
 		assertThat(allDepartures, hasCountOf(16));
 	}];
@@ -210,7 +218,7 @@
 #pragma mark - LJSDeparture
 
 - (void)testDepartureDetails {
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
 		NSArray *services = [self sortedServicesForStop:stop];
 		
 		LJSService *firstService = services[0];
@@ -277,7 +285,7 @@
 #pragma mark - Later URL
 
 - (void)testLaterURL {
-    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
+    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
 		assertThat(laterURL.absoluteString, equalTo(@"/pip/stop.asp?naptan=37010071&pscode=218&dest=&offset=1&textonly=1"));
 	}];
 }
@@ -286,13 +294,13 @@
 	NSString *html = [self loadHTMLFileNamed:@"37010115"];
 	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:html];
 	
-    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
+    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
 		assertThat(earlierURL.absoluteString, equalTo(@"/pip/stop.asp?naptan=37010115&pscode=120&dest=&offset=0&textonly=1"));
 	}];
 }
 
 - (void)testNilEarlierURL {
-    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error) {
+    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSArray *messages, NSError *error) {
 		assertThat(earlierURL, equalTo(nil));
 	}];
 }

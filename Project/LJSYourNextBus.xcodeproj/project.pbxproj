@@ -36,7 +36,7 @@
 		A3BD2764189EF72200540C5F /* LJSStop.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275E189EF72200540C5F /* LJSStop.m */; };
 		A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD276F189FF46500540C5F /* LJSStopTests.m */; };
 		A3D5BEF418DE5B7600622915 /* no_depatures.html in Resources */ = {isa = PBXBuildFile; fileRef = A3D5BEF318DE5B7600622915 /* no_depatures.html */; };
-		A3D5BEF618DE6E3700622915 /* message.html in Resources */ = {isa = PBXBuildFile; fileRef = A3D5BEF518DE6E3700622915 /* message.html */; };
+		A3D5BEF618DE6E3700622915 /* messages.html in Resources */ = {isa = PBXBuildFile; fileRef = A3D5BEF518DE6E3700622915 /* messages.html */; };
 		A3FE172C18DE44C900B8E47E /* LJSLiveDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */; };
 		A3FE172E18DE4EAC00B8E47E /* invalid.html in Resources */ = {isa = PBXBuildFile; fileRef = A3FE172D18DE4EAC00B8E47E /* invalid.html */; };
 /* End PBXBuildFile section */
@@ -94,7 +94,7 @@
 		A3BD275E189EF72200540C5F /* LJSStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSStop.m; path = ../../Classes/LJSStop.m; sourceTree = "<group>"; };
 		A3BD276F189FF46500540C5F /* LJSStopTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSStopTests.m; sourceTree = "<group>"; };
 		A3D5BEF318DE5B7600622915 /* no_depatures.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = no_depatures.html; sourceTree = "<group>"; };
-		A3D5BEF518DE6E3700622915 /* message.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = message.html; sourceTree = "<group>"; };
+		A3D5BEF518DE6E3700622915 /* messages.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = messages.html; sourceTree = "<group>"; };
 		A3FE172118DE106100B8E47E /* LJSStop+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSStop+LJSSetters.h"; sourceTree = SOURCE_ROOT; };
 		A3FE172418DE10AD00B8E47E /* LJSService+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSService+LJSSetters.h"; sourceTree = "<group>"; };
 		A3FE172718DE111C00B8E47E /* LJSDeparture+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "LJSDeparture+LJSSetters.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -232,7 +232,7 @@
 				A34A1956189EBF86002EEF2B /* 37010071.html */,
 				A3FE172D18DE4EAC00B8E47E /* invalid.html */,
 				A3D5BEF318DE5B7600622915 /* no_depatures.html */,
-				A3D5BEF518DE6E3700622915 /* message.html */,
+				A3D5BEF518DE6E3700622915 /* messages.html */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -371,7 +371,7 @@
 				A34B1C1918CE49F800184A12 /* 37010115.html in Resources */,
 				A3FE172E18DE4EAC00B8E47E /* invalid.html in Resources */,
 				A3D5BEF418DE5B7600622915 /* no_depatures.html in Resources */,
-				A3D5BEF618DE6E3700622915 /* message.html in Resources */,
+				A3D5BEF618DE6E3700622915 /* messages.html in Resources */,
 				A34A1957189EBF86002EEF2B /* 37010071.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
