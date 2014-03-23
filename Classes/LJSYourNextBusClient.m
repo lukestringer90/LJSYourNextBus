@@ -43,23 +43,37 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
     if (error || !htmlString) {
 		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil error:error];
     }
-	else if ([self.scraper htmlIsValid:htmlString]) {
-		[self scrapeHTML:htmlString];
-	}
-    else {
+	else if (![self.scraper htmlIsValid:htmlString]) {
 		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil error:[self invalidHTMLError]];
+	}
+    else if (![self.scraper htmlContainsLiveData:htmlString]) {
+		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil error:[self dataUnavailableError]];
+	}
+	else {
+		[self scrapeHTML:htmlString];
 	}
 }
 
 - (NSError *)invalidHTMLError {
 	NSDictionary *userInfo = @{
 							   NSLocalizedDescriptionKey: NSLocalizedString(@"Scraping the YourNextBus HTML failed.", nil),
-							   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"The HTML did not contain any live data. This could be due to a problems with the YourNextBus service, or an invalid NaPTAN code was supplied.", nil),
-							   NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Try again, making sure the NaPTAN code is valid; an 8 digit  number starting with 450 for West Yorkshire or 370 for South Yorkshire.", nil),
+							   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"The HTML did not contain any live data. This could be due to a problems with the YourNextBus service, or an invalid NaPTAN code was specified.", nil),
+							   NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire.", nil),
 							   };
 	return [NSError errorWithDomain:LJSYourNextBusErrorDomain
 										 code:LJSYourNextBusErrorScrapeFailure
 									 userInfo:userInfo];
+}
+
+- (NSError *)dataUnavailableError {
+	NSDictionary *userInfo = @{
+							   NSLocalizedDescriptionKey: NSLocalizedString(@"No YourNextBus data avaiable for the next hour with the specified NaPTAN code.", nil),
+							   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"There are no depatures at the stop with the specified NaPTAN code in the next hour, or an invalid NaPTAN code was specified.", nil),
+							   NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire.", nil),
+							   };
+	return [NSError errorWithDomain:LJSYourNextBusErrorDomain
+							   code:LJSYourNextBusErrorDataUnavaiable
+						   userInfo:userInfo];
 }
 
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber {

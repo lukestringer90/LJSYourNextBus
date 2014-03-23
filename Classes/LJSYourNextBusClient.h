@@ -11,7 +11,8 @@
 extern NSString * const LJSYourNextBusErrorDomain;
 
 typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
-    LJSYourNextBusErrorScrapeFailure
+    LJSYourNextBusErrorScrapeFailure,
+	LJSYourNextBusErrorDataUnavaiable
 };
 
 @class LJSStop;

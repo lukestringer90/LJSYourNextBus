@@ -36,7 +36,10 @@
 
 - (BOOL)htmlIsValid:(NSString *)html {
 	return [html rangeOfString:@"is invalid"].location == NSNotFound;
-	
+}
+- (BOOL)htmlContainsLiveData:(NSString *)html {
+	return [html rangeOfString:@"There are no departures in the next hour from this stop."].location == NSNotFound;
+
 }
 
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html {

@@ -12,6 +12,7 @@
 @interface LJSScraper : NSObject
 
 - (BOOL)htmlIsValid:(NSString *)html;
+- (BOOL)htmlContainsLiveData:(NSString *)html;
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html;
 - (NSURL *)scrapeLaterDeparturesURL:(NSString *)html;
 - (NSURL *)scrapeEarlierDeparturesURL:(NSString *)html;

@@ -103,7 +103,7 @@
 
 #pragma mark - Tests
 
-#pragma mark - Invalid
+#pragma mark - Errors
 
 - (void)testInvalidHTML {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"invalid"];
@@ -115,12 +115,26 @@
 		assertThat(error.domain, equalTo(LJSYourNextBusErrorDomain));
 		assertThatInteger(error.code, equalToInteger(LJSYourNextBusErrorScrapeFailure));
 		assertThat(error.userInfo[NSLocalizedDescriptionKey], equalTo(@"Scraping the YourNextBus HTML failed."));
-		assertThat(error.userInfo[NSLocalizedFailureReasonErrorKey], equalTo(@"The HTML did not contain any live data. This could be due to a problems with the YourNextBus service, or an invalid NaPTAN code was supplied."));
-		assertThat(error.userInfo[NSLocalizedRecoverySuggestionErrorKey], equalTo(@"Try again, making sure the NaPTAN code is valid; an 8 digit  number starting with 450 for West Yorkshire or 370 for South Yorkshire."));
+		assertThat(error.userInfo[NSLocalizedFailureReasonErrorKey], equalTo(@"The HTML did not contain any live data. This could be due to a problems with the YourNextBus service, or an invalid NaPTAN code was specified."));
+		assertThat(error.userInfo[NSLocalizedRecoverySuggestionErrorKey], equalTo(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire."));
 	}];
-	
-	
 }
+
+- (void)testNoDataAvaiable {
+    NSString *invalidHTML = [self loadHTMLFileNamed:@"no_depatures"];
+	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:invalidHTML];
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+		assertThat(stop, equalTo(nil));
+		assertThat(laterURL, equalTo(nil));
+		assertThat(earlierURL, equalTo(nil));
+		assertThat(error.domain, equalTo(LJSYourNextBusErrorDomain));
+		assertThatInteger(error.code, equalToInteger(LJSYourNextBusErrorDataUnavaiable));
+		assertThat(error.userInfo[NSLocalizedDescriptionKey], equalTo(@"No YourNextBus data avaiable for the next hour with the specified NaPTAN code."));
+		assertThat(error.userInfo[NSLocalizedFailureReasonErrorKey], equalTo(@"There are no depatures at the stop with the specified NaPTAN code in the next hour, or an invalid NaPTAN code was specified."));
+		assertThat(error.userInfo[NSLocalizedRecoverySuggestionErrorKey], equalTo(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire."));
+	}];
+}
+
 
 #pragma mark - LJSStop
 
