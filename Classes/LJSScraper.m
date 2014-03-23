@@ -39,7 +39,11 @@
 }
 - (BOOL)htmlContainsLiveData:(NSString *)html {
 	return [html rangeOfString:@"There are no departures in the next hour from this stop."].location == NSNotFound;
+}
 
+- (NSString *)scrapeMessageFromHTML:(NSString *)html {
+	NSString *pattern = @".*msgs\\[\\d+\\] = \"(.*?)\";.*";
+    return [self scrapeHTML:html usingRegexPattern:pattern];
 }
 
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html {
@@ -148,12 +152,12 @@
                                                     options:NSMatchingAnchored
                                                       range:NSMakeRange(0, [html length])];
 
-    NSString *NaPTANCode = nil;
+    NSString *foundString = nil;
     if (match) {
-        NaPTANCode = [html substringWithRange:[match rangeAtIndex:1]];
+        foundString = [html substringWithRange:[match rangeAtIndex:1]];
     }
     
-    return NaPTANCode;
+    return foundString;
 }
 
 - (BOOL)lowFloorAccessFromString:(NSString *)string {

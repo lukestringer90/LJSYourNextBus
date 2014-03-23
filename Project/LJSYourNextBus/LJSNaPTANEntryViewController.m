@@ -41,6 +41,7 @@ static NSString * const SubmitCellID = @"SubmitCellID";
 		self.textField.delegate = self;
 		self.textField.keyboardType = UIKeyboardTypeDecimalPad;
 		self.textField.returnKeyType = UIReturnKeyDone;
+		self.textField.placeholder = @"8 digit code";
 	}
 	return self;
 }

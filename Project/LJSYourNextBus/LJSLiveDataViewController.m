@@ -33,7 +33,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:YES];
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error) {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL,  NSString *message, NSError *error) {
 		if (!error) {
 			self.stop = stop;
 			self.title = self.stop.title;

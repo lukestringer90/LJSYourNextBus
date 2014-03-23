@@ -18,7 +18,8 @@ typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
 @class LJSStop;
 @interface LJSYourNextBusClient : NSObject
 
-typedef void (^LJSLiveDataCompletion)(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSError *error);
+// TODO: Should return an array of messages. Need to find HTML with multiple messages.
+typedef void (^LJSLiveDataCompletion)(LJSStop *stop, NSURL *laterURL, NSURL *earlierURL, NSString *message, NSError *error);
 
 - (void)liveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion;
 - (void)liveDataAtURL:(NSURL *)url completion:(LJSLiveDataCompletion)completion;

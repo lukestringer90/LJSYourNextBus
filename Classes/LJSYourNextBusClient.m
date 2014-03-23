@@ -38,19 +38,24 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
     self.completion = completion;
     
     NSError *error = nil;
-    NSString *htmlString = [self.htmlDownloader downloadHTMLFromURL:url error:&error];
+    NSString *html = [self.htmlDownloader downloadHTMLFromURL:url error:&error];
     
-    if (error || !htmlString) {
-		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil error:error];
+    if (error || !html) {
+		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil message:nil error:error];
     }
-	else if (![self.scraper htmlIsValid:htmlString]) {
-		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil error:[self invalidHTMLError]];
-	}
-    else if (![self.scraper htmlContainsLiveData:htmlString]) {
-		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil error:[self dataUnavailableError]];
+	else if (![self.scraper htmlIsValid:html]) {
+		[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil message:nil error:[self invalidHTMLError]];
 	}
 	else {
-		[self scrapeHTML:htmlString];
+		// The present of a message is not dependent on there being any live data.
+		// So scrape it and use it in both cases.
+		NSString *message = [self.scraper scrapeMessageFromHTML:html];
+		if (![self.scraper htmlContainsLiveData:html]) {
+			[self safeCallCompletionBlockWithStop:nil laterURL:nil earilierURL:nil message:message error:[self dataUnavailableError]];
+		}
+		else {
+			[self scrapeHTML:html message:message];
+		}
 	}
 }
 
@@ -83,17 +88,17 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
     return nil;
 }
 
-- (void)scrapeHTML:(NSString *)html {
+- (void)scrapeHTML:(NSString *)html message:(NSString *)message {
     LJSStop *stop = [self.scraper scrapeStopDataFromHTML:html];
     NSURL *laterURL = [self.scraper scrapeLaterDeparturesURL:html];
     NSURL *earlierURL = [self.scraper scrapeEarlierDeparturesURL:html];
     
-    [self safeCallCompletionBlockWithStop:stop laterURL:laterURL earilierURL:earlierURL error:nil];
+    [self safeCallCompletionBlockWithStop:stop laterURL:laterURL earilierURL:earlierURL message:message error:nil];
 }
 
-- (void)safeCallCompletionBlockWithStop:(LJSStop *)stop laterURL:(NSURL *)laterURL earilierURL:(NSURL *)earilierURL error:(NSError *)error {
+- (void)safeCallCompletionBlockWithStop:(LJSStop *)stop laterURL:(NSURL *)laterURL earilierURL:(NSURL *)earilierURL message:(NSString *)message error:(NSError *)error {
     if (self.completion) {
-        self.completion(stop, laterURL, earilierURL, error);
+        self.completion(stop, laterURL, earilierURL, message, error);
         self.completion = nil;
     }
 }

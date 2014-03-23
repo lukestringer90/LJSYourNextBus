@@ -16,5 +16,6 @@
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html;
 - (NSURL *)scrapeLaterDeparturesURL:(NSString *)html;
 - (NSURL *)scrapeEarlierDeparturesURL:(NSString *)html;
+- (NSString *)scrapeMessageFromHTML:(NSString *)html;
 
 @end
