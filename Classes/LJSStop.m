@@ -25,6 +25,8 @@
 	copy.title = self.title;
 	copy.liveDate = self.liveDate;
 	copy.services = self.services;
+	copy.laterURL = self.laterURL;
+	copy.earlierURL = self.earlierURL;
 	return copy;
 }
 

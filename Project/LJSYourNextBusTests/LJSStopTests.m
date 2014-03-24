@@ -61,12 +61,18 @@
 	serviceA.title = @"service-123";
 	self.stopA.NaPTANCode = @"123";
 	self.stopA.services = @[serviceA];
+	self.stopA.liveDate = [NSDate date];
+	self.stopA.laterURL = [NSURL URLWithString:@"www.foo.com"];
+	self.stopA.earlierURL = [NSURL URLWithString:@"www.bar.com"];
 	
     LJSStop *copy = [self.stopA copy];
 	
-	XCTAssertEqualObjects(copy, self.stopA, @"");
-	
-	// TODO: Test equality for all properties
+	XCTAssertEqualObjects(copy.title, self.stopA.title, @"");
+	XCTAssertEqualObjects(copy.NaPTANCode, self.stopA.NaPTANCode, @"");
+	XCTAssertEqualObjects(copy.liveDate, self.stopA.liveDate, @"");
+	XCTAssertEqualObjects(copy.services, self.stopA.services, @"");
+	XCTAssertEqualObjects(copy.laterURL, self.stopA.laterURL, @"");
+	XCTAssertEqualObjects(copy.earlierURL, self.stopA.earlierURL, @"");
 }
 
 
