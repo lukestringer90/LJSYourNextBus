@@ -24,42 +24,61 @@
 @implementation LJSLiveDataViewController
 
 - (instancetype)initWithNaPTANCode:(NSString *)NaPTANCode {
-	self = [super initWithStyle:UITableViewStylePlain];
+	self = [super initWithStyle:UITableViewStyleGrouped];
 	if (self) {
 		self.NaPTANCode = NaPTANCode;
 		self.yourNextBusClient = [LJSYourNextBusClient new];
-		[self.tableView registerClass:[LJSDepatureCell class] forCellReuseIdentifier:NSStringFromClass([LJSDepatureCell class])];
 		self.dateFormatter = [[NSDateFormatter alloc] init];
 		self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
+		[self.tableView registerClass:[LJSDepatureCell class] forCellReuseIdentifier:NSStringFromClass([LJSDepatureCell class])];
+		
 	}
 	return self;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:YES];
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
-		if (!error) {
-			self.stop = stop;
-			self.title = self.stop.title;
-			NSArray *allDepartures = [[stop.services valueForKeyPath:@"Departures"] valueForKeyPath:@"@unionOfArrays.self"];
-			NSArray *sortDescriptors = @[
-										 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
-																	   ascending:YES],
-										 [NSSortDescriptor sortDescriptorWithKey:@"destination"
-																	   ascending:YES]];
-			self.sortedDepartures = [allDepartures sortedArrayUsingDescriptors:sortDescriptors];;
-			[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-		}
-		else {
-			UIAlertView *alert = [[UIAlertView alloc]
-								  initWithTitle:@"Error"
-								  message:[error localizedDescription]
-								  delegate:nil
-								  cancelButtonTitle:@"Okay"
-								  otherButtonTitles: nil];
-			[alert show];
-		}
-	}];
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	
+	[self getLiveData];
+}
+
+- (void)getLiveData {
+	
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
+											 (unsigned long)NULL), ^(void) {
+		
+		[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+			
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				
+				if (!error) {
+					self.stop = stop;
+					self.title = self.stop.title;
+					NSArray *allDepartures = [[stop.services valueForKeyPath:@"Departures"] valueForKeyPath:@"@unionOfArrays.self"];
+					NSArray *sortDescriptors = @[
+												 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
+																			   ascending:YES],
+												 [NSSortDescriptor sortDescriptorWithKey:@"destination"
+																			   ascending:YES]];
+					self.sortedDepartures = [allDepartures sortedArrayUsingDescriptors:sortDescriptors];;
+					[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+				}
+				else {
+					UIAlertView *alert = [[UIAlertView alloc]
+										  initWithTitle:@"Error"
+										  message:[error localizedDescription]
+										  delegate:nil
+										  cancelButtonTitle:@"Okay"
+										  otherButtonTitles: nil];
+					[alert show];
+				}
+				
+			});
+			
+		}];
+		
+	});
+	
 }
 
 #pragma mark - UITableViewDelegate
@@ -92,7 +111,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return self.sortedDepartures != nil ? @"Departures" : nil;
+	return self.sortedDepartures != nil ? [NSString stringWithFormat:@"Depatures For %@", [self.dateFormatter stringFromDate:self.stop.liveDate]] : nil;
 }
 
 

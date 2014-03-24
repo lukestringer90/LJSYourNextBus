@@ -42,7 +42,7 @@ static NSString * const SubmitCellID = @"SubmitCellID";
 		self.textField.keyboardType = UIKeyboardTypeDecimalPad;
 		self.textField.returnKeyType = UIReturnKeyDone;
 		self.textField.placeholder = @"8 digit code";
-		self.textField.text = @"37010134";
+		self.textField.text = @"37010200";
 	}
 	return self;
 }
@@ -110,7 +110,7 @@ static NSString * const SubmitCellID = @"SubmitCellID";
 	UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:SubmitCellID];
 	cell.textLabel.text = @"Get Live YourNextBus Data";
 	cell.textLabel.textAlignment = NSTextAlignmentCenter;
-	
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return cell;
 }
 
