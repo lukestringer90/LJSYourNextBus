@@ -32,7 +32,6 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 }
 
 - (void)liveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion {
-	
 	[self.backgroundQueue addOperationWithBlock:^{
 		NSURL *url = [self urlForNaPTANCode:NaPTANCode];
 		[self liveDataAtURL:url completion:completion];
@@ -45,7 +44,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
     NSError *error = nil;
     NSString *html = [self.htmlDownloader downloadHTMLFromURL:url error:&error];
     
-    if (error || !html) {
+    if (error) {
 		[self safeCallCompletionBlockWithStop:nil messages:nil error:error];
     }
 	else if (![self.scraper htmlIsValid:html]) {
@@ -95,7 +94,6 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
 - (void)scrapeHTML:(NSString *)html messages:(NSArray *)messages{
     LJSStop *stop = [self.scraper scrapeStopDataFromHTML:html];
-    
     [self safeCallCompletionBlockWithStop:stop messages:messages error:nil];
 }
 

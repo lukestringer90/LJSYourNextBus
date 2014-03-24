@@ -8,14 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  Domain for errors from LJSYourNextBusClient.
+ */
 extern NSString * const LJSYourNextBusErrorDomain;
 
+/**
+ *  LJSYourNextBusClient related error codes.
+ */
 typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
-    LJSYourNextBusErrorScrapeFailure,
+	/**
+	 *  Returned when the downloaded HTML is not of a form that can be scraped for live data.
+	 */
+	LJSYourNextBusErrorScrapeFailure,
+	/**
+	 *  Returned when the downloaded HTML is of the correct form but contains no live data.
+	 */
 	LJSYourNextBusErrorDataUnavaiable
 };
 
 @class LJSStop;
+
 @interface LJSYourNextBusClient : NSObject
 
 typedef void (^LJSLiveDataCompletion)(LJSStop *stop, NSArray *messages, NSError *error);

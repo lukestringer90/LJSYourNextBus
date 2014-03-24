@@ -170,17 +170,9 @@
 		A31CBF64189988D000747F46 /* LJSYourNextBus */ = {
 			isa = PBXGroup;
 			children = (
-				A3BD2757189EF72200540C5F /* LJSYourNextBusClient.h */,
-				A3BD2758189EF72200540C5F /* LJSYourNextBusClient.m */,
-				A3BD2755189EF72200540C5F /* LJSHTMLDownloader.h */,
-				A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */,
-				A3BD2759189EF72200540C5F /* LJSScraper.h */,
-				A3BD275A189EF72200540C5F /* LJSScraper.m */,
-				A337FDA318C24F4B002FB29F /* LJSDepartureDateParser.h */,
-				A337FDA418C24F4B002FB29F /* LJSDepartureDateParser.m */,
-				A3BD2765189EFA3C00540C5F /* Model */,
-				A3BD276B189F107200540C5F /* Model Setters */,
-				A3BD2752189EF71400540C5F /* App */,
+				A3B9F82C18E0D5E100CCACC1 /* Public */,
+				A3B9F82D18E0D5EA00CCACC1 /* Helpers */,
+				A3BD2752189EF71400540C5F /* Example App */,
 				A31CBF65189988D000747F46 /* Supporting Files */,
 			);
 			path = LJSYourNextBus;
@@ -240,7 +232,38 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
-		A3BD2752189EF71400540C5F /* App */ = {
+		A3B9F82C18E0D5E100CCACC1 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				A3BD2757189EF72200540C5F /* LJSYourNextBusClient.h */,
+				A3BD2758189EF72200540C5F /* LJSYourNextBusClient.m */,
+				A3BD275D189EF72200540C5F /* LJSStop.h */,
+				A3BD275E189EF72200540C5F /* LJSStop.m */,
+				A3BD275B189EF72200540C5F /* LJSService.h */,
+				A3BD275C189EF72200540C5F /* LJSService.m */,
+				A3BD2753189EF72200540C5F /* LJSDeparture.h */,
+				A3BD2754189EF72200540C5F /* LJSDeparture.m */,
+			);
+			name = Public;
+			sourceTree = "<group>";
+		};
+		A3B9F82D18E0D5EA00CCACC1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A3BD2755189EF72200540C5F /* LJSHTMLDownloader.h */,
+				A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */,
+				A3BD2759189EF72200540C5F /* LJSScraper.h */,
+				A3BD275A189EF72200540C5F /* LJSScraper.m */,
+				A337FDA318C24F4B002FB29F /* LJSDepartureDateParser.h */,
+				A337FDA418C24F4B002FB29F /* LJSDepartureDateParser.m */,
+				A3FE172118DE106100B8E47E /* LJSStop+LJSSetters.h */,
+				A3FE172418DE10AD00B8E47E /* LJSService+LJSSetters.h */,
+				A3FE172718DE111C00B8E47E /* LJSDeparture+LJSSetters.h */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		A3BD2752189EF71400540C5F /* Example App */ = {
 			isa = PBXGroup;
 			children = (
 				A31CBF6D189988D000747F46 /* LJSAppDelegate.h */,
@@ -253,30 +276,7 @@
 				A3D5BEF818E0A3AE00622915 /* LJSDepatureCell.m */,
 				A31CBF79189988D000747F46 /* Images.xcassets */,
 			);
-			name = App;
-			sourceTree = "<group>";
-		};
-		A3BD2765189EFA3C00540C5F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A3BD2753189EF72200540C5F /* LJSDeparture.h */,
-				A3BD2754189EF72200540C5F /* LJSDeparture.m */,
-				A3BD275B189EF72200540C5F /* LJSService.h */,
-				A3BD275C189EF72200540C5F /* LJSService.m */,
-				A3BD275D189EF72200540C5F /* LJSStop.h */,
-				A3BD275E189EF72200540C5F /* LJSStop.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		A3BD276B189F107200540C5F /* Model Setters */ = {
-			isa = PBXGroup;
-			children = (
-				A3FE172118DE106100B8E47E /* LJSStop+LJSSetters.h */,
-				A3FE172418DE10AD00B8E47E /* LJSService+LJSSetters.h */,
-				A3FE172718DE111C00B8E47E /* LJSDeparture+LJSSetters.h */,
-			);
-			name = "Model Setters";
+			name = "Example App";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
