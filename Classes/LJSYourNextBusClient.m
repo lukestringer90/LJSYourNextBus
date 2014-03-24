@@ -47,7 +47,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 		[self safeCallCompletionBlockWithStop:nil messages:nil error:[self invalidHTMLError]];
 	}
 	else {
-		// The present of a message is not dependent on there being any live data.
+		// The presence of a message is not dependent on there being any live data.
 		// So scrape it and use it in both cases.
 		NSArray *messages = [self.scraper scrapeMessagesFromHTML:html];
 		if (![self.scraper htmlContainsLiveData:html]) {
