@@ -11,10 +11,12 @@
 #import "LJSStop.h"
 #import "LJSService.h"
 #import "LJSDeparture.h"
+#import "LJSDepatureCell.h"
 
 @interface LJSLiveDataViewController ()
 @property (nonatomic, copy, readwrite) NSString *NaPTANCode;
 @property (nonatomic, strong) LJSStop *stop;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, copy) NSArray *sortedDepartures;
 @property (nonatomic, strong) LJSYourNextBusClient *yourNextBusClient;
 @end
@@ -26,7 +28,9 @@
 	if (self) {
 		self.NaPTANCode = NaPTANCode;
 		self.yourNextBusClient = [LJSYourNextBusClient new];
-		[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
+		[self.tableView registerClass:[LJSDepatureCell class] forCellReuseIdentifier:NSStringFromClass([LJSDepatureCell class])];
+		self.dateFormatter = [[NSDateFormatter alloc] init];
+		self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
 	}
 	return self;
 }
@@ -59,6 +63,10 @@
 }
 
 #pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 60; // Default height
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
@@ -72,10 +80,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class])];
+    LJSDepatureCell *cell = (LJSDepatureCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LJSDepatureCell class])];
 	
-	LJSDeparture *Departure = self.sortedDepartures[indexPath.row];
-	cell.textLabel.text = Departure.destination;
+	LJSDeparture *departure = self.sortedDepartures[indexPath.row];
+	cell.destinationLabel.text = departure.destination;
+	cell.expectedDepatureLabel.text = [self.dateFormatter stringFromDate:departure.expectedDepartureDate];
+	cell.serviceTitleLabel.text = departure.service.title;
+	cell.lowFloorAccessLabelVisible = departure.hasLowFloorAccess;
 	
     return cell;
 }

@@ -42,6 +42,7 @@ static NSString * const SubmitCellID = @"SubmitCellID";
 		self.textField.keyboardType = UIKeyboardTypeDecimalPad;
 		self.textField.returnKeyType = UIReturnKeyDone;
 		self.textField.placeholder = @"8 digit code";
+		self.textField.text = @"37010115";
 	}
 	return self;
 }
@@ -118,7 +119,6 @@ static NSString * const SubmitCellID = @"SubmitCellID";
 }
 
 #pragma mark - UITextFieldDelegate
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	[self.textField resignFirstResponder];
 	[self NaPTANCodeWasEntryFinished];
@@ -130,7 +130,6 @@ static NSString * const SubmitCellID = @"SubmitCellID";
 		LJSLiveDataViewController *liveDataViewController = [[LJSLiveDataViewController alloc] initWithNaPTANCode:self.textField.text];
 		[self.navigationController pushViewController:liveDataViewController animated:YES];
 	}
-
 }
 
 @end

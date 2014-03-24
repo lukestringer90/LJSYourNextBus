@@ -1,6 +1,7 @@
 
 target "LJSYourNextBus" do
-	pod 'ObjectiveGumbo'
+	pod 'ObjectiveGumbo', '~> 0.1'
+	pod 'Masonry', '~> 0.4'
 end
 
 target "LJSYourNextBusTests" do
