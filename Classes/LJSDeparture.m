@@ -24,6 +24,7 @@
 	copy.service = self.service;
 	copy.destination = self.destination;
 	copy.expectedDepartureDate = self.expectedDepartureDate;
+	copy.expectedDepartureString = self.expectedDepartureString;
 	copy.hasLowFloorAccess = self.hasLowFloorAccess;
 	return copy;
 }

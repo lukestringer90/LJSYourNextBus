@@ -108,9 +108,11 @@
 
     LJSDeparture *copy = [self.departureA copy];
 	
-	XCTAssertEqualObjects(copy, self.departureA, @"");
-	
-	// TODO: Test equality for all properties
+	XCTAssertEqualObjects(copy.service, self.departureA.service, @"");
+	XCTAssertEqualObjects(copy.destination, self.departureA.destination, @"");
+	XCTAssertEqualObjects(copy.expectedDepartureDate, self.departureA.expectedDepartureDate, @"");
+	XCTAssertEqualObjects(copy.expectedDepartureString, self.departureA.expectedDepartureString, @"");
+	XCTAssertEqual(copy.hasLowFloorAccess, self.departureA.hasLowFloorAccess, @"");
 }
 
 
