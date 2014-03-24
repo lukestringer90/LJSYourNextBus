@@ -43,9 +43,9 @@
 			self.title = self.stop.title;
 			NSArray *allDepartures = [[stop.services valueForKeyPath:@"Departures"] valueForKeyPath:@"@unionOfArrays.self"];
 			NSArray *sortDescriptors = @[
-										 [NSSortDescriptor sortDescriptorWithKey:@"destination"
-																	   ascending:YES],
 										 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
+																	   ascending:YES],
+										 [NSSortDescriptor sortDescriptorWithKey:@"destination"
 																	   ascending:YES]];
 			self.sortedDepartures = [allDepartures sortedArrayUsingDescriptors:sortDescriptors];;
 			[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
