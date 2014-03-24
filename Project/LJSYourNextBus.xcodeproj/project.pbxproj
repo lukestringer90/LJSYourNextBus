@@ -56,7 +56,7 @@
 		7FD060CB0EF341FBA8373B81 /* libPods-LJSYourNextBusTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSYourNextBusTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DD8126FA3B54D25AE88E27F /* libPods-LJSYourNextBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSYourNextBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3C9105FFD54543B20B4913 /* Pods-LJSYourNextBus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBus.xcconfig"; path = "Pods/Pods-LJSYourNextBus.xcconfig"; sourceTree = "<group>"; };
-		A31CBF5B189988D000747F46 /* LJSYourNextBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJSYourNextBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A31CBF5B189988D000747F46 /* YourNextBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourNextBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31CBF5E189988D000747F46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A31CBF60189988D000747F46 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A31CBF62189988D000747F46 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -68,7 +68,7 @@
 		A31CBF76189988D000747F46 /* LJSNaPTANEntryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJSNaPTANEntryViewController.h; sourceTree = "<group>"; };
 		A31CBF77189988D000747F46 /* LJSNaPTANEntryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJSNaPTANEntryViewController.m; sourceTree = "<group>"; };
 		A31CBF79189988D000747F46 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A31CBF7F189988D000747F46 /* LJSYourNextBusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LJSYourNextBusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A31CBF7F189988D000747F46 /* YourNextBus.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourNextBus.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31CBF80189988D000747F46 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A31CBF88189988D000747F46 /* LJSYourNextBusTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LJSYourNextBusTests-Info.plist"; sourceTree = "<group>"; };
 		A31CBF8A189988D000747F46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -148,8 +148,8 @@
 		A31CBF5C189988D000747F46 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A31CBF5B189988D000747F46 /* LJSYourNextBus.app */,
-				A31CBF7F189988D000747F46 /* LJSYourNextBusTests.xctest */,
+				A31CBF5B189988D000747F46 /* YourNextBus.app */,
+				A31CBF7F189988D000747F46 /* YourNextBus.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 			);
 			name = LJSYourNextBus;
 			productName = LJSYourNextBus;
-			productReference = A31CBF5B189988D000747F46 /* LJSYourNextBus.app */;
+			productReference = A31CBF5B189988D000747F46 /* YourNextBus.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A31CBF7E189988D000747F46 /* LJSYourNextBusTests */ = {
@@ -318,7 +318,7 @@
 			);
 			name = LJSYourNextBusTests;
 			productName = LJSYourNextBusTests;
-			productReference = A31CBF7F189988D000747F46 /* LJSYourNextBusTests.xctest */;
+			productReference = A31CBF7F189988D000747F46 /* YourNextBus.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -591,7 +591,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LJSYourNextBus/LJSYourNextBus-Prefix.pch";
 				INFOPLIST_FILE = "LJSYourNextBus/LJSYourNextBus-Info.plist";
-				PRODUCT_NAME = LJSYourNextBus;
+				PRODUCT_NAME = YourNextBus;
 				PROVISIONING_PROFILE = "B6959EC0-A5AE-419A-9403-D274B68A718D";
 				WRAPPER_EXTENSION = app;
 			};
@@ -608,7 +608,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LJSYourNextBus/LJSYourNextBus-Prefix.pch";
 				INFOPLIST_FILE = "LJSYourNextBus/LJSYourNextBus-Info.plist";
-				PRODUCT_NAME = LJSYourNextBus;
+				PRODUCT_NAME = YourNextBus;
 				PROVISIONING_PROFILE = "B6959EC0-A5AE-419A-9403-D274B68A718D";
 				WRAPPER_EXTENSION = app;
 			};
@@ -618,7 +618,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSYourNextBus.app/LJSYourNextBus";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/$(PRODUCT_NAME).app/$(PRODUCT_NAME)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -631,7 +631,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "LJSYourNextBusTests/LJSYourNextBusTests-Info.plist";
-				PRODUCT_NAME = LJSYourNextBusTests;
+				PRODUCT_NAME = YourNextBus;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -641,7 +641,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LJSYourNextBus.app/LJSYourNextBus";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/$(PRODUCT_NAME).app/$(PRODUCT_NAME)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -650,7 +650,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LJSYourNextBus/LJSYourNextBus-Prefix.pch";
 				INFOPLIST_FILE = "LJSYourNextBusTests/LJSYourNextBusTests-Info.plist";
-				PRODUCT_NAME = LJSYourNextBusTests;
+				PRODUCT_NAME = YourNextBus;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
