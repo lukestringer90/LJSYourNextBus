@@ -109,6 +109,8 @@
     LJSDeparture *copy = [self.DepartureA copy];
 	
 	XCTAssertEqualObjects(copy, self.DepartureA, @"");
+	
+	// TODO: Test equality for all properties
 }
 
 

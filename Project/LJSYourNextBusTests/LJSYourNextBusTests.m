@@ -269,6 +269,7 @@
 		assertThat(firstDepartureOfFirstService.service, equalTo(firstService));
 		assertThatInteger([firstDepartureOfFirstService.expectedDepartureDate timeIntervalSince1970],
 						  equalToInteger([[self todayAtHours:11 minutes:11] timeIntervalSince1970]));
+		assertThat(firstDepartureOfFirstService.expectedDepartureString, equalTo(@"11:11"));
 		assertThatBool(firstDepartureOfFirstService.hasLowFloorAccess, equalToBool(NO));
 		
 		
@@ -280,6 +281,7 @@
 		assertThat(secondDepartureOfFirstService.destination, equalTo(@"Thurnscoe"));
 		assertThatInteger([secondDepartureOfFirstService.expectedDepartureDate timeIntervalSince1970],
 						  equalToInteger([[self todayAtHours:11 minutes:41] timeIntervalSince1970]));
+		assertThat(secondDepartureOfFirstService.expectedDepartureString, equalTo(@"11:41"));
 		assertThatBool(secondDepartureOfFirstService.hasLowFloorAccess, equalToBool(NO));
 		
 		
@@ -291,6 +293,7 @@
 		assertThat(firstDepartureOfSecondService.service, equalTo(secondService));
 		assertThatInteger([firstDepartureOfSecondService.expectedDepartureDate timeIntervalSince1970],
 						  equalToInteger([[self todayAtHours:10 minutes:56] timeIntervalSince1970]));
+		assertThat(firstDepartureOfSecondService.expectedDepartureString, equalTo(@"10:56"));
 		assertThatBool(firstDepartureOfSecondService.hasLowFloorAccess, equalToBool(NO));
 		
 		
@@ -302,6 +305,7 @@
 		assertThat(secondDepartureOfSecondService.service, equalTo(secondService));
 		assertThatInteger([secondDepartureOfSecondService.expectedDepartureDate timeIntervalSince1970],
 						  equalToInteger([[self date:stop.liveDate plusMinutes:40] timeIntervalSince1970]));
+		assertThat(secondDepartureOfSecondService.expectedDepartureString, equalTo(@"40 Mins"));
 		assertThatBool(secondDepartureOfSecondService.hasLowFloorAccess, equalToBool(YES));
 		
 		
@@ -313,6 +317,7 @@
 		assertThat(thirdDepartureOfSecondService.service, equalTo(secondService));
 		assertThatInteger([thirdDepartureOfSecondService.expectedDepartureDate timeIntervalSince1970],
 						  equalToInteger([[self date:stop.liveDate plusMinutes:70] timeIntervalSince1970]));
+		assertThat(thirdDepartureOfSecondService.expectedDepartureString, equalTo(@"70 Mins"));
 		assertThatBool(thirdDepartureOfSecondService.hasLowFloorAccess, equalToBool(YES));
 	}];
 	

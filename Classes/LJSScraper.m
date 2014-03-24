@@ -125,23 +125,24 @@
         OGElement *lowFloorAccessElement = tds[titleRowIndex+3];
         
 		NSString *destinationValue = [self removeLastCharacterFromString:destinationElement.text];
-		NSString *DepartureDateValue = [self removeLastCharacterFromString:DepartureDateElement.text];
+		NSString *departureDateValue = [self removeLastCharacterFromString:DepartureDateElement.text];
 		
-		NSDate *expectedDepartureDate = [self.dateParser dateFromString:DepartureDateValue baseDate:liveDate];
+		NSDate *expectedDepartureDate = [self.dateParser dateFromString:departureDateValue baseDate:liveDate];
         BOOL hasLowFloorAccess = [self lowFloorAccessFromString:lowFloorAccessElement.text];
 		
-		LJSDeparture *Departure = [LJSDeparture new];
-		Departure.destination = destinationValue;
-		Departure.expectedDepartureDate = expectedDepartureDate;
-		Departure.hasLowFloorAccess = hasLowFloorAccess;
-		Departure.service = service;
+		LJSDeparture *departure = [LJSDeparture new];
+		departure.destination = destinationValue;
+		departure.expectedDepartureDate = expectedDepartureDate;
+		departure.expectedDepartureString = [departureDateValue capitalizedString];
+		departure.hasLowFloorAccess = hasLowFloorAccess;
+		departure.service = service;
 		
 		
 		if (!service.Departures) {
-			service.Departures = @[Departure];
+			service.Departures = @[departure];
 		}
 		else {
-			service.Departures = [service.Departures arrayByAddingObject:Departure];
+			service.Departures = [service.Departures arrayByAddingObject:departure];
 		}
 		
         

@@ -94,6 +94,9 @@
 
     LJSService *copiedService = [self.serviceA copy];
 	XCTAssertEqualObjects(copiedService, self.serviceA, @"");
+	
+	// TODO: Test equality for all properties
+	
 }
 
 @end

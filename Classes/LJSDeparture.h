@@ -14,6 +14,7 @@
 @property (nonatomic, strong, readonly) LJSService *service;
 @property (nonatomic, copy, readonly) NSString *destination;
 @property (nonatomic, strong, readonly) NSDate *expectedDepartureDate;
+@property (nonatomic, copy, readonly) NSDate *expectedDepartureString;
 @property (nonatomic, assign, readonly) BOOL hasLowFloorAccess;
 
 - (BOOL)isEqualToDeparture:(LJSDeparture *)Departure;

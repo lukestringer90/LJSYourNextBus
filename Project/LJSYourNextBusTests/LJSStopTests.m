@@ -65,6 +65,8 @@
     LJSStop *copy = [self.stopA copy];
 	
 	XCTAssertEqualObjects(copy, self.stopA, @"");
+	
+	// TODO: Test equality for all properties
 }
 
 
