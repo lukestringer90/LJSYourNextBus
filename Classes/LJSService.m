@@ -13,7 +13,7 @@
 @interface LJSService ()
 @property (nonatomic, strong, readwrite) LJSStop *stop;
 @property (nonatomic, copy, readwrite) NSString *title;
-@property (nonatomic, copy, readwrite) NSArray *Departures;
+@property (nonatomic, copy, readwrite) NSArray *departures;
 @end
 
 @implementation LJSService
@@ -22,7 +22,7 @@
 	LJSService *copy = [[LJSService allocWithZone:zone] init];
 	copy.stop = self.stop;
 	copy.title = self.title;
-	copy.Departures = self.Departures;
+	copy.departures = self.departures;
 	return copy;
 }
 
@@ -45,13 +45,13 @@
 }
 
 - (BOOL)allDeparturesEqualWithService:(LJSService *)service {
-	NSSet *DeparturesA = [NSSet setWithArray:self.Departures];
-	NSSet *DeparturesB = [NSSet setWithArray:service.Departures];
-	return [DeparturesA isEqualToSet:DeparturesB];
+	NSSet *departuresA = [NSSet setWithArray:self.departures];
+	NSSet *departuresB = [NSSet setWithArray:service.departures];
+	return [departuresA isEqualToSet:departuresB];
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"Title: %@ - Stop: %@ - Departures: %ld", self.title, self.stop.title, (unsigned long)self.Departures.count];
+	return [NSString stringWithFormat:@"Title: %@ - Stop: %@ - Departures: %ld", self.title, self.stop.title, (unsigned long)self.departures.count];
 }
 
 

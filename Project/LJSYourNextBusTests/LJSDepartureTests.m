@@ -13,29 +13,29 @@
 #import "LJSService+LJSSetters.h"
 
 @interface LJSDepartureTests : XCTestCase
-@property (nonatomic, strong) LJSDeparture *DepartureA;
-@property (nonatomic, strong) LJSDeparture *DepartureB;
+@property (nonatomic, strong) LJSDeparture *departureA;
+@property (nonatomic, strong) LJSDeparture *departureB;
 @end
 
 @implementation LJSDepartureTests
 
 - (void)setUp {
     [super setUp];
-    self.DepartureA = [LJSDeparture new];
-	self.DepartureB = [LJSDeparture new];
+    self.departureA = [LJSDeparture new];
+	self.departureB = [LJSDeparture new];
 }
 
 - (void)testEquality {
-	NSDate *DepartureDate = [NSDate date];
-	self.DepartureA.expectedDepartureDate = DepartureDate;
-	self.DepartureA.destination = @"Sheffield";
-	self.DepartureA.hasLowFloorAccess = YES;
+	NSDate *departureDate = [NSDate date];
+	self.departureA.expectedDepartureDate = departureDate;
+	self.departureA.destination = @"Sheffield";
+	self.departureA.hasLowFloorAccess = YES;
 	
-	self.DepartureB.expectedDepartureDate = DepartureDate;
-	self.DepartureB.destination = @"Sheffield";
-	self.DepartureB.hasLowFloorAccess = YES;
+	self.departureB.expectedDepartureDate = departureDate;
+	self.departureB.destination = @"Sheffield";
+	self.departureB.hasLowFloorAccess = YES;
 
-	XCTAssertEqualObjects(self.DepartureA,self.DepartureB, @"");
+	XCTAssertEqualObjects(self.departureA,self.departureB, @"");
 }
 
 - (void)testInequalityForServices {
@@ -45,70 +45,70 @@
 	serviceA.title = @"service-123";
 	serviceB.title = @"service-456";
 	
-	NSDate *DepartureDate = [NSDate date];
-	self.DepartureA.expectedDepartureDate = DepartureDate;
-	self.DepartureA.destination = @"Sheffield";
-	self.DepartureA.hasLowFloorAccess = YES;
-	self.DepartureA.service = serviceA;
+	NSDate *departureDate = [NSDate date];
+	self.departureA.expectedDepartureDate = departureDate;
+	self.departureA.destination = @"Sheffield";
+	self.departureA.hasLowFloorAccess = YES;
+	self.departureA.service = serviceA;
 	
-	self.DepartureB.expectedDepartureDate = DepartureDate;
-	self.DepartureB.destination = @"Sheffield";
-	self.DepartureB.hasLowFloorAccess = YES;
-	self.DepartureB.service = serviceB;
+	self.departureB.expectedDepartureDate = departureDate;
+	self.departureB.destination = @"Sheffield";
+	self.departureB.hasLowFloorAccess = YES;
+	self.departureB.service = serviceB;
 
-	XCTAssertNotEqualObjects(self.DepartureA, self.DepartureB, @"");
+	XCTAssertNotEqualObjects(self.departureA, self.departureB, @"");
 }
 
-- (void)testInequalityForDepartureDate {
-	NSDate *DepartureDateA = [NSDate dateWithTimeIntervalSince1970:100000];
-	NSDate *DepartureDateB = [NSDate dateWithTimeIntervalSince1970:100001];
+- (void)testInequalityFordepartureDate {
+	NSDate *departureDateA = [NSDate dateWithTimeIntervalSince1970:100000];
+	NSDate *departureDateB = [NSDate dateWithTimeIntervalSince1970:100001];
 	
-	self.DepartureA.expectedDepartureDate = DepartureDateA;
-	self.DepartureA.destination = @"Sheffield";
-	self.DepartureA.hasLowFloorAccess = YES;
+	self.departureA.expectedDepartureDate = departureDateA;
+	self.departureA.destination = @"Sheffield";
+	self.departureA.hasLowFloorAccess = YES;
 	
-	self.DepartureB.expectedDepartureDate = DepartureDateB;
-	self.DepartureB.destination = @"Sheffield";
-	self.DepartureB.hasLowFloorAccess = YES;
+	self.departureB.expectedDepartureDate = departureDateB;
+	self.departureB.destination = @"Sheffield";
+	self.departureB.hasLowFloorAccess = YES;
 
-	XCTAssertNotEqualObjects(self.DepartureA, self.DepartureB, @"");
+	XCTAssertNotEqualObjects(self.departureA, self.departureB, @"");
 }
 
 - (void)testInequalityForDestination {
-	NSDate *DepartureDate = [NSDate date];
-	self.DepartureA.expectedDepartureDate = DepartureDate;
-	self.DepartureA.destination = @"Sheffield";
-	self.DepartureA.hasLowFloorAccess = YES;
+	NSDate *departureDate = [NSDate date];
+	self.departureA.expectedDepartureDate = departureDate;
+	self.departureA.destination = @"Sheffield";
+	self.departureA.hasLowFloorAccess = YES;
 	
-	self.DepartureB.expectedDepartureDate = DepartureDate;
-	self.DepartureB.destination = @"Rotherham";
-	self.DepartureB.hasLowFloorAccess = YES;
+	self.departureB.expectedDepartureDate = departureDate;
+	self.departureB.destination = @"Rotherham";
+	self.departureB.hasLowFloorAccess = YES;
 	
-	XCTAssertNotEqualObjects(self.DepartureA, self.DepartureB, @"");
+	XCTAssertNotEqualObjects(self.departureA, self.departureB, @"");
 }
 
 - (void)testInequalityForLowFloorAccess {
-	NSDate *DepartureDate = [NSDate date];
-	self.DepartureA.expectedDepartureDate = DepartureDate;
-	self.DepartureA.destination = @"Sheffield";
-	self.DepartureA.hasLowFloorAccess = YES;
+	NSDate *departureDate = [NSDate date];
+	self.departureA.expectedDepartureDate = departureDate;
+	self.departureA.destination = @"Sheffield";
+	self.departureA.hasLowFloorAccess = YES;
 	
-	self.DepartureB.expectedDepartureDate = DepartureDate;
-	self.DepartureB.destination = @"Sheffield";
-	self.DepartureB.hasLowFloorAccess = NO;
+	self.departureB.expectedDepartureDate = departureDate;
+	self.departureB.destination = @"Sheffield";
+	self.departureB.hasLowFloorAccess = NO;
 	
-	XCTAssertNotEqualObjects(self.DepartureA, self.DepartureB, @"");
+	XCTAssertNotEqualObjects(self.departureA, self.departureB, @"");
 }
 
 - (void)testCopies {
-	NSDate *DepartureDate = [NSDate date];
-	self.DepartureA.expectedDepartureDate = DepartureDate;
-	self.DepartureA.destination = @"Sheffield";
-	self.DepartureA.hasLowFloorAccess = YES;
+	NSDate *departureDate = [NSDate date];
+	self.departureA.expectedDepartureDate = departureDate;
+	self.departureA.destination = @"Sheffield";
+	self.departureA.hasLowFloorAccess = YES;
 
-    LJSDeparture *copy = [self.DepartureA copy];
+    LJSDeparture *copy = [self.departureA copy];
 	
-	XCTAssertEqualObjects(copy, self.DepartureA, @"");
+	XCTAssertEqualObjects(copy, self.departureA, @"");
 	
 	// TODO: Test equality for all properties
 }

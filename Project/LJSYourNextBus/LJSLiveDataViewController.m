@@ -56,7 +56,7 @@
 		if (!error) {
 			self.stop = stop;
 			self.title = self.stop.title;
-			NSArray *allDepartures = [[stop.services valueForKeyPath:@"Departures"] valueForKeyPath:@"@unionOfArrays.self"];
+			NSArray *allDepartures = [[stop.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"];
 			NSArray *sortDescriptors = @[
 										 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
 																	   ascending:YES],
@@ -101,7 +101,7 @@
 	
 	LJSDeparture *departure = self.sortedDepartures[indexPath.row];
 	cell.destinationLabel.text = departure.destination;
-	cell.expectedDepatureLabel.text = [self.dateFormatter stringFromDate:departure.expectedDepartureDate];
+	cell.expectedDepatureLabel.text = departure.expectedDepartureString;
 	cell.serviceTitleLabel.text = departure.service.title;
 	cell.lowFloorAccessLabelVisible = departure.hasLowFloorAccess;
 	

@@ -121,11 +121,11 @@
         
         
         OGElement *destinationElement = tds[titleRowIndex+1];
-        OGElement *DepartureDateElement = tds[titleRowIndex+2];
+        OGElement *departureDateElement = tds[titleRowIndex+2];
         OGElement *lowFloorAccessElement = tds[titleRowIndex+3];
         
 		NSString *destinationValue = [self removeLastCharacterFromString:destinationElement.text];
-		NSString *departureDateValue = [self removeLastCharacterFromString:DepartureDateElement.text];
+		NSString *departureDateValue = [self removeLastCharacterFromString:departureDateElement.text];
 		
 		NSDate *expectedDepartureDate = [self.dateParser dateFromString:departureDateValue baseDate:liveDate];
         BOOL hasLowFloorAccess = [self lowFloorAccessFromString:lowFloorAccessElement.text];
@@ -138,11 +138,11 @@
 		departure.service = service;
 		
 		
-		if (!service.Departures) {
-			service.Departures = @[departure];
+		if (!service.departures) {
+			service.departures = @[departure];
 		}
 		else {
-			service.Departures = [service.Departures arrayByAddingObject:departure];
+			service.departures = [service.departures arrayByAddingObject:departure];
 		}
 		
         

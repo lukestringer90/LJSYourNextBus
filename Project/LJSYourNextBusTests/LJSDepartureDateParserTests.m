@@ -28,9 +28,9 @@
 - (void)testMinutesSingleDigit {
 	NSString *string = @"2 mins";
 	NSDate *baseDate = [NSDate date];
-	NSDate *DepartureDate = [self.dateParser dateFromString:string baseDate:baseDate];
+	NSDate *departureDate = [self.dateParser dateFromString:string baseDate:baseDate];
 	
-	NSInteger timeIntervalDifference = [DepartureDate timeIntervalSince1970] - [baseDate timeIntervalSince1970];
+	NSInteger timeIntervalDifference = [departureDate timeIntervalSince1970] - [baseDate timeIntervalSince1970];
 
 	assertThatInteger(timeIntervalDifference, equalToInteger(2 * 60));
 }
@@ -38,9 +38,9 @@
 - (void)testMinutesDoubleDigit {
 	NSString *string = @"61 mins";
 	NSDate *baseDate = [NSDate date];
-	NSDate *DepartureDate = [self.dateParser dateFromString:string baseDate:baseDate];
+	NSDate *departureDate = [self.dateParser dateFromString:string baseDate:baseDate];
 	
-	NSInteger timeIntervalDifference = [DepartureDate timeIntervalSince1970] - [baseDate timeIntervalSince1970];
+	NSInteger timeIntervalDifference = [departureDate timeIntervalSince1970] - [baseDate timeIntervalSince1970];
 	
 	assertThatInteger(timeIntervalDifference, equalToInteger(61 * 60));
 }
@@ -48,12 +48,12 @@
 - (void)testHoursMinutes {
     NSString *string = @"17:20";
 	NSDate *baseDate = [NSDate date];
-	NSDate *DepartureDate = [self.dateParser dateFromString:string baseDate:baseDate];
+	NSDate *departureDate = [self.dateParser dateFromString:string baseDate:baseDate];
 	
 	NSCalendar *calendar = [NSCalendar currentCalendar];
 	
 	NSDateComponents *dateComponents = [calendar components:NSCalendarUnitMinute | NSCalendarUnitHour
-												   fromDate:DepartureDate];
+												   fromDate:departureDate];
 	
 	
 	assertThatInteger(dateComponents.hour, equalToInteger(17));

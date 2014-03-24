@@ -75,7 +75,7 @@
 }
 
 - (NSArray *)DeparturesForStop:(LJSStop *)stop {
-	return [[stop.services valueForKeyPath:@"Departures"] valueForKeyPath:@"@unionOfArrays.self"];
+	return [[stop.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"];
 }
 
 - (NSArray *)sortedDeparturesForService:(LJSService *)service {
@@ -84,7 +84,7 @@
 															   ascending:YES],
 								 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
 															   ascending:YES]];
-	return [service.Departures sortedArrayUsingDescriptors:sortDescriptors];
+	return [service.departures sortedArrayUsingDescriptors:sortDescriptors];
 }
 
 - (NSDate *)todayAtHours:(NSInteger)hours minutes:(NSInteger)minutes {
@@ -216,22 +216,22 @@
 		
 		LJSService *firstService = services[0];
 		assertThat(firstService.title, equalTo(@"217"));
-		assertThat(firstService.Departures, hasCountOf(2));
+		assertThat(firstService.departures, hasCountOf(2));
 		assertThat(firstService.stop, equalTo(stop));
 		
 		LJSService *secondService = services[1];
 		assertThat(secondService.title, equalTo(@"218"));
-		assertThat(secondService.Departures, hasCountOf(3));
+		assertThat(secondService.departures, hasCountOf(3));
 		assertThat(secondService.stop, equalTo(stop));
 		
 		LJSService *thirdService = services[2];
 		assertThat(thirdService.title, equalTo(@"22"));
-		assertThat(thirdService.Departures, hasCountOf(7));
+		assertThat(thirdService.departures, hasCountOf(7));
 		assertThat(thirdService.stop, equalTo(stop));
 		
 		LJSService *fourthService = services[3];
 		assertThat(fourthService.title, equalTo(@"22X"));
-		assertThat(fourthService.Departures, hasCountOf(4));
+		assertThat(fourthService.departures, hasCountOf(4));
 		assertThat(fourthService.stop, equalTo(stop));
 	}];
 	

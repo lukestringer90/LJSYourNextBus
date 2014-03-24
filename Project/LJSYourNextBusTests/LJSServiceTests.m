@@ -56,41 +56,41 @@
 }
 
 - (void)testInequalityForDepartures {
-	NSDate *DepartureDateA = [NSDate dateWithTimeIntervalSince1970:100000];
-	NSDate *DepartureDateB = [NSDate dateWithTimeIntervalSince1970:100001];
-	NSDate *DepartureDateC = [NSDate dateWithTimeIntervalSince1970:100002];
+	NSDate *departureDateA = [NSDate dateWithTimeIntervalSince1970:100000];
+	NSDate *departureDateB = [NSDate dateWithTimeIntervalSince1970:100001];
+	NSDate *departureDateC = [NSDate dateWithTimeIntervalSince1970:100002];
 	
-	LJSDeparture *DepartureA = [LJSDeparture new];
-	DepartureA.expectedDepartureDate = DepartureDateA;
-	DepartureA.destination = @"Sheffield";
-	DepartureA.hasLowFloorAccess = YES;
+	LJSDeparture *departureA = [LJSDeparture new];
+	departureA.expectedDepartureDate = departureDateA;
+	departureA.destination = @"Sheffield";
+	departureA.hasLowFloorAccess = YES;
 	
-	LJSDeparture *DepartureB = [LJSDeparture new];
-	DepartureB.expectedDepartureDate = DepartureDateB;
-	DepartureB.destination = @"Rotherham";
-	DepartureB.hasLowFloorAccess = NO;
+	LJSDeparture *departureB = [LJSDeparture new];
+	departureB.expectedDepartureDate = departureDateB;
+	departureB.destination = @"Rotherham";
+	departureB.hasLowFloorAccess = NO;
 	
-	LJSDeparture *DepartureC = [LJSDeparture new];
-	DepartureC.expectedDepartureDate = DepartureDateC;
-	DepartureC.destination = @"Barnsley";
-	DepartureC.hasLowFloorAccess = YES;
+	LJSDeparture *departureC = [LJSDeparture new];
+	departureC.expectedDepartureDate = departureDateC;
+	departureC.destination = @"Barnsley";
+	departureC.hasLowFloorAccess = YES;
 	
 	self.serviceA.title = @"service-123";
-	self.serviceA.Departures = @[DepartureA, DepartureB];
+	self.serviceA.departures = @[departureA, departureB];
 	self.serviceB.title = @"service-123";
-	self.serviceB.Departures = @[DepartureA, DepartureC];
+	self.serviceB.departures = @[departureA, departureC];
 	
 	XCTAssertNotEqualObjects(self.serviceA, self.serviceB, @"");
 }
 
 - (void)testCopies {
-	LJSDeparture *Departure = [LJSDeparture new];
-	Departure.expectedDepartureDate = [NSDate date];
-	Departure.destination = @"Sheffield";
-	Departure.hasLowFloorAccess = YES;
+	LJSDeparture *departure = [LJSDeparture new];
+	departure.expectedDepartureDate = [NSDate date];
+	departure.destination = @"Sheffield";
+	departure.hasLowFloorAccess = YES;
 	
 	self.serviceA.title = @"service-123";
-	self.serviceA.Departures = @[Departure];
+	self.serviceA.departures = @[departure];
 
     LJSService *copiedService = [self.serviceA copy];
 	XCTAssertEqualObjects(copiedService, self.serviceA, @"");
