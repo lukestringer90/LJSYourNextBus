@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, copy) NSArray *sortedDepartures;
 @property (nonatomic, strong) LJSYourNextBusClient *yourNextBusClient;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation LJSLiveDataViewController
@@ -31,6 +32,10 @@
 		self.dateFormatter = [[NSDateFormatter alloc] init];
 		self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
 		[self.tableView registerClass:[LJSDepatureCell class] forCellReuseIdentifier:NSStringFromClass([LJSDepatureCell class])];
+		
+		self.refreshControl = [[UIRefreshControl alloc] init];
+		[self.refreshControl addTarget:self action:@selector(getLiveData) forControlEvents:UIControlEventValueChanged];
+		[self.tableView addSubview:self.refreshControl];
 		
 	}
 	return self;
@@ -50,6 +55,8 @@
 		[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 			
 			dispatch_sync(dispatch_get_main_queue(), ^{
+				
+				[self.refreshControl endRefreshing];
 				
 				if (!error) {
 					self.stop = stop;
