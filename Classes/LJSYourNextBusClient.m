@@ -16,6 +16,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 @property (nonatomic, copy) LJSLiveDataCompletion completion;
 @property (nonatomic, strong) LJSScraper *scraper;
 @property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
+@property (nonatomic, strong) NSOperationQueue *backgroundQueue;
 @end
 
 @implementation LJSYourNextBusClient
@@ -23,15 +24,19 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.scraper = [[LJSScraper alloc] init];
-        self.htmlDownloader = [[LJSHTMLDownloader alloc] init];
+        self.scraper = [LJSScraper new];
+        self.htmlDownloader = [LJSHTMLDownloader new];
+		self.backgroundQueue = [NSOperationQueue new];
     }
     return self;
 }
 
 - (void)liveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion {
-    NSURL *url = [self urlForNaPTANCode:NaPTANCode];
-    [self liveDataAtURL:url completion:completion];
+	
+	[self.backgroundQueue addOperationWithBlock:^{
+		NSURL *url = [self urlForNaPTANCode:NaPTANCode];
+		[self liveDataAtURL:url completion:completion];
+	}];
 }
 
 - (void)liveDataAtURL:(NSURL *)url completion:(LJSLiveDataCompletion)completion {
@@ -96,8 +101,11 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
 - (void)safeCallCompletionBlockWithStop:(LJSStop *)stop messages:(NSArray *)messages error:(NSError *)error {
     if (self.completion) {
-        self.completion(stop, messages, error);
-        self.completion = nil;
+		
+		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+			self.completion(stop, messages, error);
+			self.completion = nil;
+		}];
     }
 }
 

@@ -49,42 +49,33 @@
 
 - (void)getLiveData {
 	
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
-											 (unsigned long)NULL), ^(void) {
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		
-		[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
-			
-			dispatch_sync(dispatch_get_main_queue(), ^{
-				
-				[self.refreshControl endRefreshing];
-				
-				if (!error) {
-					self.stop = stop;
-					self.title = self.stop.title;
-					NSArray *allDepartures = [[stop.services valueForKeyPath:@"Departures"] valueForKeyPath:@"@unionOfArrays.self"];
-					NSArray *sortDescriptors = @[
-												 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
-																			   ascending:YES],
-												 [NSSortDescriptor sortDescriptorWithKey:@"destination"
-																			   ascending:YES]];
-					self.sortedDepartures = [allDepartures sortedArrayUsingDescriptors:sortDescriptors];;
-					[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-				}
-				else {
-					UIAlertView *alert = [[UIAlertView alloc]
-										  initWithTitle:@"Error"
-										  message:[error localizedDescription]
-										  delegate:nil
-										  cancelButtonTitle:@"Okay"
-										  otherButtonTitles: nil];
-					[alert show];
-				}
-				
-			});
-			
-		}];
+		[self.refreshControl endRefreshing];
 		
-	});
+		if (!error) {
+			self.stop = stop;
+			self.title = self.stop.title;
+			NSArray *allDepartures = [[stop.services valueForKeyPath:@"Departures"] valueForKeyPath:@"@unionOfArrays.self"];
+			NSArray *sortDescriptors = @[
+										 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
+																	   ascending:YES],
+										 [NSSortDescriptor sortDescriptorWithKey:@"destination"
+																	   ascending:YES]];
+			self.sortedDepartures = [allDepartures sortedArrayUsingDescriptors:sortDescriptors];;
+			[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+		}
+		else {
+			UIAlertView *alert = [[UIAlertView alloc]
+								  initWithTitle:@"Error"
+								  message:[error localizedDescription]
+								  delegate:nil
+								  cancelButtonTitle:@"Okay"
+								  otherButtonTitles: nil];
+			[alert show];
+		}
+	}];
+	
 	
 }
 

@@ -12,6 +12,8 @@
 #define HC_SHORTHAND
 #import <OCHamcrest/OCHamcrest.h>
 
+#import <AGAsyncTestHelper/AGAsyncTestHelper.h>
+
 #import "LJSYourNextBusClient.h"
 #import "LJSScraper.h"
 #import "LJSHTMLDownloader.h"
@@ -28,6 +30,7 @@
 @property (nonatomic, strong) LJSYourNextBusClient *yourNextBusClient;
 @property (nonatomic, strong) NSCalendar *calendar;
 @property (nonatomic, strong) NSString *NaPTANCode;
+@property (nonatomic, assign) BOOL done;
 @end
 
 
@@ -45,6 +48,8 @@
 	
 	// Irrelevant what this is as static HTML is loaded anyway
 	self.NaPTANCode = @"37010071";
+	
+	self.done = NO;
 }
 
 #pragma mark - Helpers
@@ -109,6 +114,8 @@
     NSString *invalidHTML = [self loadHTMLFileNamed:@"invalid"];
 	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:invalidHTML];
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		assertThat(stop, equalTo(nil));
 		assertThat(error.domain, equalTo(LJSYourNextBusErrorDomain));
 		assertThatInteger(error.code, equalToInteger(LJSYourNextBusErrorScrapeFailure));
@@ -116,12 +123,16 @@
 		assertThat(error.userInfo[NSLocalizedFailureReasonErrorKey], equalTo(@"The HTML did not contain any live data. This could be due to a problems with the YourNextBus service, or an invalid NaPTAN code was specified."));
 		assertThat(error.userInfo[NSLocalizedRecoverySuggestionErrorKey], equalTo(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire."));
 	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 - (void)testNoDataAvaiable {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"no_depatures"];
 	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:invalidHTML];
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		assertThat(stop, equalTo(nil));
 		assertThat(error.domain, equalTo(LJSYourNextBusErrorDomain));
 		assertThatInteger(error.code, equalToInteger(LJSYourNextBusErrorDataUnavaiable));
@@ -129,6 +140,8 @@
 		assertThat(error.userInfo[NSLocalizedFailureReasonErrorKey], equalTo(@"There are no depatures at the stop with the specified NaPTAN code in the next hour, or an invalid NaPTAN code was specified."));
 		assertThat(error.userInfo[NSLocalizedRecoverySuggestionErrorKey], equalTo(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire."));
 	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 #pragma mark - Messages
@@ -137,48 +150,68 @@
     NSString *invalidHTML = [self loadHTMLFileNamed:@"messages"];
 	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:invalidHTML];
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		assertThat(messages, hasCountOf(3));
 		assertThat(messages[0], equalTo(@"Message 1"));
 		assertThat(messages[1], equalTo(@"Message 2"));
 		assertThat(messages[2], equalTo(@"Message 3"));
 	}];
 	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 - (void)testNoMessages {
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		assertThat(messages, equalTo(nil));
 	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 #pragma mark - LJSStop
 
 - (void)testStopDetails {
     [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		assertThat(stop.NaPTANCode, equalTo(@"37010071"));
 		assertThat(stop.title, equalTo(@"Rotherham Intc"));
 	}];
 	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 - (void)testStopLiveDate {
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		NSDate *correctLiveDate = [self todayAtHours:10 minutes:46];
 		assertThatInteger([stop.liveDate timeIntervalSince1970], equalToInteger([correctLiveDate timeIntervalSince1970]));
 	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 - (void)testServicesCount {
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		NSArray *services = stop.services;
 		assertThat(services, hasCountOf(4));
 	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 #pragma mark - LJSService
 
 - (void)testServicesDetails {
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		NSArray *services = [self sortedServicesForStop:stop];
 		
 		LJSService *firstService = services[0];
@@ -201,10 +234,14 @@
 		assertThat(fourthService.Departures, hasCountOf(4));
 		assertThat(fourthService.stop, equalTo(stop));
 	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 - (void)testDeparturesCount {
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		NSArray *allDepartures = [self DeparturesForStop:stop];
 		assertThat(allDepartures, hasCountOf(16));
 	}];
@@ -215,6 +252,8 @@
 
 - (void)testDepartureDetails {
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		NSArray *services = [self sortedServicesForStop:stop];
 		
 		LJSService *firstService = services[0];
@@ -276,14 +315,20 @@
 						  equalToInteger([[self date:stop.liveDate plusMinutes:70] timeIntervalSince1970]));
 		assertThatBool(thirdDepartureOfSecondService.hasLowFloorAccess, equalToBool(YES));
 	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 #pragma mark - Later URL
 
 - (void)testLaterURL {
     [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		assertThat(stop.laterURL.absoluteString, equalTo(@"/pip/stop.asp?naptan=37010071&pscode=218&dest=&offset=1&textonly=1"));
 	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 - (void)testEarlierURL {
@@ -291,14 +336,22 @@
 	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:html];
 	
     [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		assertThat(stop.earlierURL.absoluteString, equalTo(@"/pip/stop.asp?naptan=37010115&pscode=120&dest=&offset=0&textonly=1"));
 	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 - (void)testNilEarlierURL {
     [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
 		assertThat(stop.earlierURL, equalTo(nil));
 	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 @end
