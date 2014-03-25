@@ -15,6 +15,7 @@
 - (void)setDestination:(NSString *)destination;
 - (void)setExpectedDepartureDate:(NSDate *)expectedDepartureDate;
 - (void)setCountdownString:(NSString *)countdownString;
+- (void)setMinutesUntilDeparture:(NSInteger)minutesUntilDeparture;
 - (void)setHasLowFloorAccess:(BOOL) hasLowFloorAccess;
 
 @end

@@ -101,9 +101,15 @@
 	
 	LJSDeparture *departure = self.sortedDepartures[indexPath.row];
 	cell.destinationLabel.text = departure.destination;
-	cell.expectedDepatureLabel.text = departure.countdownString;
 	cell.serviceTitleLabel.text = departure.service.title;
 	cell.lowFloorAccessLabelVisible = departure.hasLowFloorAccess;
+	
+	if (departure.minutesUntilDeparture <= 10) {
+		cell.expectedDepatureLabel.text = departure.countdownString;
+	}
+	else {
+		cell.expectedDepatureLabel.text = [self.dateFormatter stringFromDate:departure.expectedDepartureDate];
+	}
 	
     return cell;
 }

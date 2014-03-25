@@ -14,6 +14,7 @@
 @property (nonatomic, copy, readwrite) NSString *destination;
 @property (nonatomic, strong, readwrite) NSDate *expectedDepartureDate;
 @property (nonatomic, copy, readwrite) NSString *countdownString;
+@property (nonatomic, assign, readwrite) NSInteger minutesUntilDeparture;
 @property (nonatomic, assign, readwrite) BOOL hasLowFloorAccess;
 @end
 
@@ -26,6 +27,7 @@
 	copy.expectedDepartureDate = self.expectedDepartureDate;
 	copy.countdownString = self.countdownString;
 	copy.hasLowFloorAccess = self.hasLowFloorAccess;
+	copy.minutesUntilDeparture = self.minutesUntilDeparture;
 	return copy;
 }
 
@@ -35,8 +37,9 @@
 	BOOL dateStringsEqual = [self.countdownString isEqualToString:departure.countdownString];
 	BOOL destinationsEqual = [self.destination isEqualToString:departure.destination];
 	BOOL lowFloorAccessEqual = self.hasLowFloorAccess == departure.hasLowFloorAccess;
+	BOOL minutesEqual = self.minutesUntilDeparture == departure.minutesUntilDeparture;
 	
-	return servicesEqual && datesEqual && dateStringsEqual && destinationsEqual && lowFloorAccessEqual;
+	return servicesEqual && datesEqual && dateStringsEqual && destinationsEqual && lowFloorAccessEqual && minutesEqual;
 }
 
 - (BOOL)isEqual:(id)object {

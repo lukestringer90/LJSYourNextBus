@@ -21,6 +21,8 @@
     return self;
 }
 
+#pragma mark - Public
+
 - (NSDate *)dateFromString:(NSString *)dateString baseDate:(NSDate *)baseDate {
 	NSTextCheckingResult *regexMatch = [self regularExpressionMatchInDateString:dateString];
 	
@@ -30,8 +32,18 @@
 	else {
 		return [self dateFromMinutesString:dateString baseDate:baseDate];
 	}
-	
 }
+
+- (NSInteger)minutesUntilDate:(NSDate *)date departureDateString:(NSString *)departureDateString {
+	NSDate *departureDate = [self dateFromString:departureDateString baseDate:date];
+	NSDateComponents *dateComponents = [self.calendar components:NSMinuteCalendarUnit
+														fromDate:date
+														  toDate:departureDate
+														 options:0];
+	return dateComponents.minute;
+}
+
+#pragma mark - Private
 
 - (NSDate *)dateFromRegexMatch:(NSTextCheckingResult *)regexMatch dateString:(NSString *)dateString baseDate:(NSDate *)baseDate {
 	NSRange hoursRange = [regexMatch rangeAtIndex:1];

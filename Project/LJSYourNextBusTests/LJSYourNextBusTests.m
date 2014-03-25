@@ -331,7 +331,7 @@
 	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
-- (void)testDepartureCountdownStrings {
+- (void)testDepartureCountdown {
 	// Stub the live date to 24.03.2014 10:56:00
 	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395658560];
 	self.yourNextBusClient.scraper = [self stubLiveDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
@@ -351,6 +351,7 @@
 		 */
 		LJSDeparture *firstDepartureOfFirstService = firstServiceDepartures[0];
 		assertThat(firstDepartureOfFirstService.countdownString, equalTo(@"15 Mins"));
+		assertThatInteger(firstDepartureOfFirstService.minutesUntilDeparture, equalToInteger(15));
 		
 		
 		/**
@@ -358,6 +359,7 @@
 		 */
 		LJSDeparture *secondDepartureOfFirstService = firstServiceDepartures[1];
 		assertThat(secondDepartureOfFirstService.countdownString, equalTo(@"45 Mins"));
+		assertThatInteger(secondDepartureOfFirstService.minutesUntilDeparture, equalToInteger(45));
 		
 		
 		/**
@@ -366,6 +368,7 @@
 		LJSDeparture *firstDepartureOfSecondService = secondServiceDepartures[0];
 		assertThat(firstDepartureOfSecondService.destination, equalTo(@"Barnsley"));
 		assertThat(firstDepartureOfSecondService.countdownString, equalTo(@"Due"));
+		assertThatInteger(firstDepartureOfSecondService.minutesUntilDeparture, equalToInteger(0));
 		
 		
 		/**
@@ -373,6 +376,7 @@
 		 */
 		LJSDeparture *secondDepartureOfSecondService = secondServiceDepartures[1];
 		assertThat(secondDepartureOfSecondService.countdownString, equalTo(@"40 Mins"));
+		assertThatInteger(secondDepartureOfSecondService.minutesUntilDeparture, equalToInteger(40));
 		
 		
 		/**
@@ -380,6 +384,7 @@
 		 */
 		LJSDeparture *thirdDepartureOfSecondService = secondServiceDepartures[2];
 		assertThat(thirdDepartureOfSecondService.countdownString, equalTo(@"70 Mins"));
+		assertThatInteger(thirdDepartureOfSecondService.minutesUntilDeparture, equalToInteger(70));
 	}];
 	
 	AGWW_WAIT_WHILE(!self.done, 60.0);

@@ -14,5 +14,6 @@
 - (void)setStop:(LJSStop *)stop;
 - (void)setTitle:(NSString *)title;
 - (void)setDepartures:(NSArray *)departures;
+- (void)setMinutesUntilDeparture:(NSInteger)minutes;
 
 @end

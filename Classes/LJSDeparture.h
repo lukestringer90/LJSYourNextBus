@@ -15,6 +15,7 @@
 @property (nonatomic, copy, readonly) NSString *destination;
 @property (nonatomic, strong, readonly) NSDate *expectedDepartureDate;
 @property (nonatomic, copy, readonly) NSString *countdownString;
+@property (nonatomic, assign, readonly) NSInteger minutesUntilDeparture;
 @property (nonatomic, assign, readonly) BOOL hasLowFloorAccess;
 
 - (BOOL)isEqualToDeparture:(LJSDeparture *)Departure;

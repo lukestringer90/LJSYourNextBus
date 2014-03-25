@@ -128,20 +128,22 @@
         OGElement *departureDateElement = tds[titleRowIndex+2];
         OGElement *lowFloorAccessElement = tds[titleRowIndex+3];
         
-		NSString *destinationValue = [self removeLastCharacterFromString:destinationElement.text];
-		NSString *departureDateValue = [self removeLastCharacterFromString:departureDateElement.text];
+		NSString *destinationStringValue = [self removeLastCharacterFromString:destinationElement.text];
+		NSString *departureDateStringValue = [self removeLastCharacterFromString:departureDateElement.text];
 		
-		NSDate *expectedDepartureDate = [self.dateParser dateFromString:departureDateValue baseDate:liveDate];
-		NSString *expectedDepartureString = [expectedDepartureDate countdownStringTowardsDate:liveDate
-																					 calendar:self.calendar];
+		NSDate *expectedDepartureDate = [self.dateParser dateFromString:departureDateStringValue baseDate:liveDate];
+		NSString *countDownString = [expectedDepartureDate countdownStringTowardsDate:liveDate
+																			 calendar:self.calendar];
+		NSInteger minutesUntilDeparture = [self.dateParser minutesUntilDate:liveDate
+														departureDateString:departureDateStringValue];
 		
-		NSLog(@"%@ %@", departureDateValue, expectedDepartureString);
         BOOL hasLowFloorAccess = [self lowFloorAccessFromString:lowFloorAccessElement.text];
 		
 		LJSDeparture *departure = [LJSDeparture new];
-		departure.destination = destinationValue;
+		departure.destination = destinationStringValue;
 		departure.expectedDepartureDate = expectedDepartureDate;
-		departure.countdownString = expectedDepartureString;
+		departure.countdownString = countDownString;
+		departure.minutesUntilDeparture	= minutesUntilDeparture;
 		departure.hasLowFloorAccess = hasLowFloorAccess;
 		departure.service = service;
 		

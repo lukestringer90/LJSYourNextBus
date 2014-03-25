@@ -11,5 +11,6 @@
 @interface LJSDepartureDateParser : NSObject
 
 - (NSDate *)dateFromString:(NSString *)dateString baseDate:(NSDate *)baseDate;
+- (NSInteger)minutesUntilDate:(NSDate *)date departureDateString:(NSString *)departureDateString;
 
 @end
