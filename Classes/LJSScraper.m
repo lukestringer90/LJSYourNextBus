@@ -16,9 +16,11 @@
 #import "LJSDeparture.h"
 #import "LJSDeparture+LJSSetters.h"
 #import "LJSDepartureDateParser.h"
+#import "NSDate+LJSCountDownString.h"
 
 @interface LJSScraper ()
 @property (nonatomic, strong) LJSDepartureDateParser *dateParser;
+@property (nonatomic, strong) NSCalendar *calendar;
 @end
 
 @implementation LJSScraper
@@ -27,6 +29,7 @@
     self = [super init];
     if (self) {
 		self.dateParser = [[LJSDepartureDateParser alloc] init];
+		self.calendar = [NSCalendar currentCalendar];
     }
     return self;
 }
@@ -70,8 +73,9 @@
     NSString *naptanCode = [self scrapeNaPTANCodeFromHTML:html];
     NSString *title = [self scrapeTitleFromHTML:html];
 	
-	NSString *liveDateString = [self scrapeLiveDateStringFromHTML:html];
-	NSDate *liveDate = [self.dateParser dateFromString:liveDateString baseDate:[NSDate date]];
+	// The "live date" is the time as specified in the HTML on the current day
+	NSString *liveTimeString = [self scrapeLiveDateStringFromHTML:html];
+	NSDate *liveDate = [self liveDateFromString:liveTimeString];
     
     LJSStop *stop = [LJSStop new];
 	stop.NaPTANCode = naptanCode;
@@ -128,12 +132,16 @@
 		NSString *departureDateValue = [self removeLastCharacterFromString:departureDateElement.text];
 		
 		NSDate *expectedDepartureDate = [self.dateParser dateFromString:departureDateValue baseDate:liveDate];
+		NSString *expectedDepartureString = [expectedDepartureDate countdownStringTowardsDate:liveDate
+																					 calendar:self.calendar];
+		
+		NSLog(@"%@ %@", departureDateValue, expectedDepartureString);
         BOOL hasLowFloorAccess = [self lowFloorAccessFromString:lowFloorAccessElement.text];
 		
 		LJSDeparture *departure = [LJSDeparture new];
 		departure.destination = destinationValue;
 		departure.expectedDepartureDate = expectedDepartureDate;
-		departure.expectedDepartureString = [departureDateValue capitalizedString];
+		departure.countdownString = expectedDepartureString;
 		departure.hasLowFloorAccess = hasLowFloorAccess;
 		departure.service = service;
 		
@@ -191,6 +199,10 @@
 - (NSString *)removeLastCharacterFromString:(NSString *)string {
     // HTML contains a "&nbsp;" character after each value, so remove it
     return [string substringToIndex:[string length]-1];;
+}
+
+- (NSDate *)liveDateFromString:(NSString *)liveTimeString {
+	return [self.dateParser dateFromString:liveTimeString baseDate:[NSDate date]];
 }
 
 @end

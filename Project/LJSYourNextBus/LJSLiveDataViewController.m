@@ -101,7 +101,7 @@
 	
 	LJSDeparture *departure = self.sortedDepartures[indexPath.row];
 	cell.destinationLabel.text = departure.destination;
-	cell.expectedDepatureLabel.text = departure.expectedDepartureString;
+	cell.expectedDepatureLabel.text = departure.countdownString;
 	cell.serviceTitleLabel.text = departure.service.title;
 	cell.lowFloorAccessLabelVisible = departure.hasLowFloorAccess;
 	

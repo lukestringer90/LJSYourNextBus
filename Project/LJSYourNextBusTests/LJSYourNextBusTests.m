@@ -17,6 +17,7 @@
 #import "LJSYourNextBusClient.h"
 #import "LJSScraper.h"
 #import "LJSHTMLDownloader.h"
+#import "LJSDepartureDateParser.h"
 
 #import "LJSStop.h"
 #import "LJSService.h"
@@ -24,6 +25,11 @@
 
 @interface LJSYourNextBusClient (TestVisibility)
 @property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
+@property (nonatomic, strong) LJSScraper *scraper;
+@end
+
+@interface LJSScraper (TestVisibility)
+- (NSDate *)liveDateFromString:(NSString *)liveTimeString;
 @end
 
 @interface LJSYourNextBusTests : XCTestCase
@@ -69,12 +75,18 @@
     return htmlDownloaderMock;
 }
 
+- (id)stubLiveDate:(NSDate *)liveDate ofScraper:(LJSScraper *)scraper {
+	id scraperMock = [OCMockObject partialMockForObject:scraper];
+	[[[scraperMock stub] andReturn:liveDate] liveDateFromString:[OCMArg any]];
+	return scraperMock;
+}
+
 - (NSArray *)sortedServicesForStop:(LJSStop *)stop {
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
 	return [stop.services sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
 
-- (NSArray *)DeparturesForStop:(LJSStop *)stop {
+- (NSArray *)departuresForStop:(LJSStop *)stop {
 	return [[stop.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"];
 }
 
@@ -242,7 +254,7 @@
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
-		NSArray *allDepartures = [self DeparturesForStop:stop];
+		NSArray *allDepartures = [self departuresForStop:stop];
 		assertThat(allDepartures, hasCountOf(16));
 	}];
 	
@@ -269,7 +281,6 @@
 		assertThat(firstDepartureOfFirstService.service, equalTo(firstService));
 		assertThatInteger([firstDepartureOfFirstService.expectedDepartureDate timeIntervalSince1970],
 						  equalToInteger([[self todayAtHours:11 minutes:11] timeIntervalSince1970]));
-		assertThat(firstDepartureOfFirstService.expectedDepartureString, equalTo(@"11:11"));
 		assertThatBool(firstDepartureOfFirstService.hasLowFloorAccess, equalToBool(NO));
 		
 		
@@ -281,7 +292,6 @@
 		assertThat(secondDepartureOfFirstService.destination, equalTo(@"Thurnscoe"));
 		assertThatInteger([secondDepartureOfFirstService.expectedDepartureDate timeIntervalSince1970],
 						  equalToInteger([[self todayAtHours:11 minutes:41] timeIntervalSince1970]));
-		assertThat(secondDepartureOfFirstService.expectedDepartureString, equalTo(@"11:41"));
 		assertThatBool(secondDepartureOfFirstService.hasLowFloorAccess, equalToBool(NO));
 		
 		
@@ -293,7 +303,6 @@
 		assertThat(firstDepartureOfSecondService.service, equalTo(secondService));
 		assertThatInteger([firstDepartureOfSecondService.expectedDepartureDate timeIntervalSince1970],
 						  equalToInteger([[self todayAtHours:10 minutes:56] timeIntervalSince1970]));
-		assertThat(firstDepartureOfSecondService.expectedDepartureString, equalTo(@"10:56"));
 		assertThatBool(firstDepartureOfSecondService.hasLowFloorAccess, equalToBool(NO));
 		
 		
@@ -305,7 +314,6 @@
 		assertThat(secondDepartureOfSecondService.service, equalTo(secondService));
 		assertThatInteger([secondDepartureOfSecondService.expectedDepartureDate timeIntervalSince1970],
 						  equalToInteger([[self date:stop.liveDate plusMinutes:40] timeIntervalSince1970]));
-		assertThat(secondDepartureOfSecondService.expectedDepartureString, equalTo(@"40 Mins"));
 		assertThatBool(secondDepartureOfSecondService.hasLowFloorAccess, equalToBool(YES));
 		
 		
@@ -317,11 +325,64 @@
 		assertThat(thirdDepartureOfSecondService.service, equalTo(secondService));
 		assertThatInteger([thirdDepartureOfSecondService.expectedDepartureDate timeIntervalSince1970],
 						  equalToInteger([[self date:stop.liveDate plusMinutes:70] timeIntervalSince1970]));
-		assertThat(thirdDepartureOfSecondService.expectedDepartureString, equalTo(@"70 Mins"));
 		assertThatBool(thirdDepartureOfSecondService.hasLowFloorAccess, equalToBool(YES));
 	}];
 	
 	AGWW_WAIT_WHILE(!self.done, 0.5);
+}
+
+- (void)testDepartureCountdownStrings {
+	// Stub the live date to 24.03.2014 10:56:00
+	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395658560];
+	self.yourNextBusClient.scraper = [self stubLiveDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
+	
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
+		NSArray *services = [self sortedServicesForStop:stop];
+		
+		LJSService *firstService = services[0];
+		LJSService *secondService = services[1];
+		NSArray *firstServiceDepartures = [self sortedDeparturesForService:firstService];
+		NSArray *secondServiceDepartures = [self sortedDeparturesForService:secondService];
+		
+		/**
+		 *  217 	Mexborough 	11:11
+		 */
+		LJSDeparture *firstDepartureOfFirstService = firstServiceDepartures[0];
+		assertThat(firstDepartureOfFirstService.countdownString, equalTo(@"15 Mins"));
+		
+		
+		/**
+		 *  217 	Thurnscoe 	11:41
+		 */
+		LJSDeparture *secondDepartureOfFirstService = firstServiceDepartures[1];
+		assertThat(secondDepartureOfFirstService.countdownString, equalTo(@"45 Mins"));
+		
+		
+		/**
+		 *  218 	Barnsley 	10:56
+		 */
+		LJSDeparture *firstDepartureOfSecondService = secondServiceDepartures[0];
+		assertThat(firstDepartureOfSecondService.destination, equalTo(@"Barnsley"));
+		assertThat(firstDepartureOfSecondService.countdownString, equalTo(@"Due"));
+		
+		
+		/**
+		 *  218 	Barnsley 	40 mins 	LF
+		 */
+		LJSDeparture *secondDepartureOfSecondService = secondServiceDepartures[1];
+		assertThat(secondDepartureOfSecondService.countdownString, equalTo(@"40 Mins"));
+		
+		
+		/**
+		 *  218 	Barnsley 	70 mins 	LF
+		 */
+		LJSDeparture *thirdDepartureOfSecondService = secondServiceDepartures[2];
+		assertThat(thirdDepartureOfSecondService.countdownString, equalTo(@"70 Mins"));
+	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 60.0);
 }
 
 #pragma mark - Later URL

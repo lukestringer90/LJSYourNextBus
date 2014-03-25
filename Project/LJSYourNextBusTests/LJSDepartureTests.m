@@ -28,12 +28,12 @@
 - (void)testEquality {
 	NSDate *departureDate = [NSDate date];
 	self.departureA.expectedDepartureDate = departureDate;
-	self.departureA.expectedDepartureString = @"11:12";
+	self.departureA.countdownString = @"11:12";
 	self.departureA.destination = @"Sheffield";
 	self.departureA.hasLowFloorAccess = YES;
 	
 	self.departureB.expectedDepartureDate = departureDate;
-	self.departureB.expectedDepartureString = @"11:12";
+	self.departureB.countdownString = @"11:12";
 	self.departureB.destination = @"Sheffield";
 	self.departureB.hasLowFloorAccess = YES;
 
@@ -49,13 +49,13 @@
 	
 	NSDate *departureDate = [NSDate date];
 	self.departureA.expectedDepartureDate = departureDate;
-	self.departureA.expectedDepartureString = @"11:12";
+	self.departureA.countdownString = @"11:12";
 	self.departureA.destination = @"Sheffield";
 	self.departureA.hasLowFloorAccess = YES;
 	self.departureA.service = serviceA;
 	
 	self.departureB.expectedDepartureDate = departureDate;
-	self.departureB.expectedDepartureString = @"11:12";
+	self.departureB.countdownString = @"11:12";
 	self.departureB.destination = @"Sheffield";
 	self.departureB.hasLowFloorAccess = YES;
 	self.departureB.service = serviceB;
@@ -68,12 +68,12 @@
 	NSDate *departureDateB = [NSDate dateWithTimeIntervalSince1970:100001];
 	
 	self.departureA.expectedDepartureDate = departureDateA;
-	self.departureA.expectedDepartureString = @"11:12";
+	self.departureA.countdownString = @"11:12";
 	self.departureA.destination = @"Sheffield";
 	self.departureA.hasLowFloorAccess = YES;
 	
 	self.departureB.expectedDepartureDate = departureDateB;
-	self.departureB.expectedDepartureString = @"11:12";
+	self.departureB.countdownString = @"11:12";
 	self.departureB.destination = @"Sheffield";
 	self.departureB.hasLowFloorAccess = YES;
 
@@ -84,12 +84,12 @@
 	NSDate *departureDate = [NSDate date];
 	
 	self.departureA.expectedDepartureDate = departureDate;
-	self.departureA.expectedDepartureString = @"11:11";
+	self.departureA.countdownString = @"11:11";
 	self.departureA.destination = @"Sheffield";
 	self.departureA.hasLowFloorAccess = YES;
 	
 	self.departureB.expectedDepartureDate = departureDate;
-	self.departureB.expectedDepartureString = @"22:22";
+	self.departureB.countdownString = @"22:22";
 	self.departureB.destination = @"Sheffield";
 	self.departureB.hasLowFloorAccess = YES;
 	
@@ -99,12 +99,12 @@
 - (void)testInequalityForDestination {
 	NSDate *departureDate = [NSDate date];
 	self.departureA.expectedDepartureDate = departureDate;
-	self.departureA.expectedDepartureString = @"11:12";
+	self.departureA.countdownString = @"11:12";
 	self.departureA.destination = @"Sheffield";
 	self.departureA.hasLowFloorAccess = YES;
 	
 	self.departureB.expectedDepartureDate = departureDate;
-	self.departureB.expectedDepartureString = @"11:12";
+	self.departureB.countdownString = @"11:12";
 	self.departureB.destination = @"Rotherham";
 	self.departureB.hasLowFloorAccess = YES;
 	
@@ -114,12 +114,12 @@
 - (void)testInequalityForLowFloorAccess {
 	NSDate *departureDate = [NSDate date];
 	self.departureA.expectedDepartureDate = departureDate;
-	self.departureB.expectedDepartureString = @"11:12";
+	self.departureB.countdownString = @"11:12";
 	self.departureA.destination = @"Sheffield";
 	self.departureA.hasLowFloorAccess = YES;
 	
 	self.departureB.expectedDepartureDate = departureDate;
-	self.departureB.expectedDepartureString = @"11:12";
+	self.departureB.countdownString = @"11:12";
 	self.departureB.destination = @"Sheffield";
 	self.departureB.hasLowFloorAccess = NO;
 	
@@ -129,7 +129,7 @@
 - (void)testCopies {
 	NSDate *departureDate = [NSDate date];
 	self.departureA.expectedDepartureDate = departureDate;
-	self.departureA.expectedDepartureString = @"11:12";
+	self.departureA.countdownString = @"11:12";
 	self.departureA.destination = @"Sheffield";
 	self.departureA.hasLowFloorAccess = YES;
 
@@ -138,7 +138,7 @@
 	XCTAssertEqualObjects(copy.service, self.departureA.service, @"");
 	XCTAssertEqualObjects(copy.destination, self.departureA.destination, @"");
 	XCTAssertEqualObjects(copy.expectedDepartureDate, self.departureA.expectedDepartureDate, @"");
-	XCTAssertEqualObjects(copy.expectedDepartureString, self.departureA.expectedDepartureString, @"");
+	XCTAssertEqualObjects(copy.countdownString, self.departureA.countdownString, @"");
 	XCTAssertEqual(copy.hasLowFloorAccess, self.departureA.hasLowFloorAccess, @"");
 }
 

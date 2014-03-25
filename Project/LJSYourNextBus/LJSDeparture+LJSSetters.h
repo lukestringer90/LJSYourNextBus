@@ -14,7 +14,7 @@
 - (void)setService:(LJSService *)service;
 - (void)setDestination:(NSString *)destination;
 - (void)setExpectedDepartureDate:(NSDate *)expectedDepartureDate;
-- (void)setExpectedDepartureString:(NSString *)expectedDepartureString;
+- (void)setCountdownString:(NSString *)countdownString;
 - (void)setHasLowFloorAccess:(BOOL) hasLowFloorAccess;
 
 @end
