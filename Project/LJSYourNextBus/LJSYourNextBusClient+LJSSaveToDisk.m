@@ -26,7 +26,6 @@
                                                         error:nil];
 	}
 	
-
 	NSString *HTMLPath = [directoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@.html", stop.NaPTANCode]];
 	NSString *JSONPath = [directoryPath stringByAppendingString:[NSString stringWithFormat:@"/%@.json", stop.NaPTANCode]];
 	
@@ -45,7 +44,6 @@
 		dateFormatter = [[NSDateFormatter alloc] init];
 		dateFormatter.dateFormat = @"dd.MM.yyyy-HH.m.ss";
 	}
-	
 
 	return [dateFormatter stringFromDate:date];
 }

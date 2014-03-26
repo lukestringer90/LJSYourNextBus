@@ -52,15 +52,8 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 		[self safeCallCompletionBlockWithStop:nil messages:nil error:[self invalidHTMLError]];
 	}
 	else {
-		// The presence of a message is not dependent on there being any live data.
-		// So scrape it and use it in both cases.
 		NSArray *messages = [self.scraper scrapeMessagesFromHTML:html];
-		if (![self.scraper htmlContainsLiveData:html]) {
-			[self safeCallCompletionBlockWithStop:nil messages:messages error:[self dataUnavailableError]];
-		}
-		else {
-			[self scrapeHTML:html messages:messages];
-		}
+		[self scrapeHTML:html messages:messages];
 	}
 }
 
@@ -75,16 +68,6 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 									 userInfo:userInfo];
 }
 
-- (NSError *)dataUnavailableError {
-	NSDictionary *userInfo = @{
-							   NSLocalizedDescriptionKey: NSLocalizedString(@"No YourNextBus data avaiable for the next hour with the specified NaPTAN code.", nil),
-							   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"There are no depatures at the stop with the specified NaPTAN code in the next hour, or an invalid NaPTAN code was specified.", nil),
-							   NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire.", nil),
-							   };
-	return [NSError errorWithDomain:LJSYourNextBusErrorDomain
-							   code:LJSYourNextBusErrorDataUnavaiable
-						   userInfo:userInfo];
-}
 
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber {
     if (stopNumber) {

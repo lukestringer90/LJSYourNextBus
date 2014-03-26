@@ -122,7 +122,7 @@
 
 #pragma mark - Errors
 
-- (void)testInvalidHTML {
+- (void)testScrapeFailure {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"invalid"];
 	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:invalidHTML];
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
@@ -145,12 +145,8 @@
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
-		assertThat(stop, equalTo(nil));
-		assertThat(error.domain, equalTo(LJSYourNextBusErrorDomain));
-		assertThatInteger(error.code, equalToInteger(LJSYourNextBusErrorDataUnavaiable));
-		assertThat(error.userInfo[NSLocalizedDescriptionKey], equalTo(@"No YourNextBus data avaiable for the next hour with the specified NaPTAN code."));
-		assertThat(error.userInfo[NSLocalizedFailureReasonErrorKey], equalTo(@"There are no depatures at the stop with the specified NaPTAN code in the next hour, or an invalid NaPTAN code was specified."));
-		assertThat(error.userInfo[NSLocalizedRecoverySuggestionErrorKey], equalTo(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire."));
+		assertThat(error, equalTo(nil));
+		assertThat(stop.services, equalTo(nil));
 	}];
 	
 	AGWW_WAIT_WHILE(!self.done, 0.5);

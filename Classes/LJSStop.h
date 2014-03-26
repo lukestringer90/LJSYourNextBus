@@ -17,9 +17,13 @@
 
 @property (nonatomic, copy, readonly) NSString *title;
 @property (nonatomic, copy, readonly) NSDate *liveDate;
-@property (nonatomic, copy, readonly) NSArray *services;
 @property (nonatomic, strong, readonly) NSURL *laterURL;
 @property (nonatomic, strong, readonly) NSURL *earlierURL;
+
+/**
+ *  Nil if there are no departures for the stop in the next hour.
+ */
+@property (nonatomic, copy, readonly) NSArray *services;
 
 - (BOOL)isEqualToStop:(LJSStop *)stop;
 - (NSDictionary *)JSONRepresentation;

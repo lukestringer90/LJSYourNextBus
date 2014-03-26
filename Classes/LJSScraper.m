@@ -39,7 +39,7 @@
 - (BOOL)htmlIsValid:(NSString *)html {
 	return [html rangeOfString:@"is invalid"].location == NSNotFound;
 }
-- (BOOL)htmlContainsLiveData:(NSString *)html {
+- (BOOL)htmlContainServices:(NSString *)html {
 	return [html rangeOfString:@"There are no departures in the next hour from this stop."].location == NSNotFound;
 }
 
@@ -82,11 +82,13 @@
 	stop.title = title;
 	stop.liveDate = liveDate;
 	
-	NSArray *services = [self scrapeServicesFromHTML:html stop:stop liveDate:liveDate];
-	stop.services = services;
-	
-	stop.laterURL = [self scrapeLaterDeparturesURL:html];
-    stop.earlierURL = [self scrapeEarlierDeparturesURL:html];
+	if ([self htmlContainServices:html]) {
+		NSArray *services = [self scrapeServicesFromHTML:html stop:stop liveDate:liveDate];
+		stop.services = services;
+		
+		stop.laterURL = [self scrapeLaterDeparturesURL:html];
+		stop.earlierURL = [self scrapeEarlierDeparturesURL:html];
+	}
     
     return stop;
 }
