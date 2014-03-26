@@ -16,6 +16,8 @@
 @property (nonatomic, copy, readwrite) NSString *countdownString;
 @property (nonatomic, assign, readwrite) NSInteger minutesUntilDeparture;
 @property (nonatomic, assign, readwrite) BOOL hasLowFloorAccess;
+
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @end
 
 @implementation LJSDeparture
@@ -56,6 +58,27 @@
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"Destination: %@ - Service: %@ - Expected Departure Date: %@ - Has Low Floor Acces: %@", self.destination,self.service.title,  self.countdownString, self.hasLowFloorAccess ? @"YES" : @"NO"];
+}
+
+- (NSDictionary *)JSONRepresentation {
+	NSString *expectedDepartureDateString = [self.dateFormatter stringFromDate:self.expectedDepartureDate];
+	
+	return @{
+			 @"destination" : self.destination != nil ? self.destination : [NSNull null],
+			 @"countdownString" : self.countdownString != nil ? self.countdownString : [NSNull null],
+			 @"expectedDepartureDate" : expectedDepartureDateString != nil ? expectedDepartureDateString : [NSNull null],
+			 @"hasLowFloorAccess" : @(self.hasLowFloorAccess),
+			 @"minutesUntilDeparture" : @(self.minutesUntilDeparture)
+			 };
+}
+
+- (NSDateFormatter *)dateFormatter {
+	if (!_dateFormatter) {
+		_dateFormatter = [[NSDateFormatter alloc] init];
+		_dateFormatter.dateStyle = NSDateFormatterShortStyle;
+		_dateFormatter.timeStyle = NSDateFormatterShortStyle;
+	}
+	return _dateFormatter;
 }
 
 @end

@@ -54,5 +54,16 @@
 	return [NSString stringWithFormat:@"Title: %@ - Stop: %@ - Departures: %ld", self.title, self.stop.title, (unsigned long)self.departures.count];
 }
 
+- (NSDictionary *)JSONRepresentation {
+	NSArray *departuresJSON = [NSArray array];
+	for (LJSDeparture *departure in self.departures) {
+		departuresJSON = [departuresJSON arrayByAddingObject:[departure JSONRepresentation]];
+	}
+	
+	return @{
+			 @"title" : self.title != nil ? self.title : [NSNull null],
+			 @"departures" : departuresJSON
+			 };
+}
 
 @end

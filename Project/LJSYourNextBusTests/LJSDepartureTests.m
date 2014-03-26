@@ -27,7 +27,7 @@
 	
     self.departureA = [LJSDeparture new];
 	self.departureA.expectedDepartureDate = self.departureDate;
-	self.departureA.countdownString = @"11:12";
+	self.departureA.countdownString = @"2 Mins";
 	self.departureA.destination = @"Sheffield";
 	self.departureA.hasLowFloorAccess = YES;
 	self.departureA.minutesUntilDeparture = 10;
@@ -37,7 +37,7 @@
 
 - (void)testEquality {
 	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"11:12";
+	self.departureB.countdownString = @"2 Mins";
 	self.departureB.destination = @"Sheffield";
 	self.departureB.hasLowFloorAccess = YES;
 	self.departureB.minutesUntilDeparture = 10;
@@ -55,7 +55,7 @@
 	self.departureA.service = serviceA;
 	
 	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"11:12";
+	self.departureB.countdownString = @"2 Mins";
 	self.departureB.destination = @"Sheffield";
 	self.departureB.hasLowFloorAccess = YES;
 	self.departureB.minutesUntilDeparture = 10;
@@ -71,7 +71,7 @@
 	self.departureA.expectedDepartureDate = departureDateA;
 	
 	self.departureB.expectedDepartureDate = departureDateB;
-	self.departureB.countdownString = @"11:12";
+	self.departureB.countdownString = @"2 Mins";
 	self.departureB.destination = @"Sheffield";
 	self.departureB.hasLowFloorAccess = YES;
 	self.departureB.minutesUntilDeparture = 10;
@@ -79,9 +79,9 @@
 	XCTAssertNotEqualObjects(self.departureA, self.departureB, @"");
 }
 
-- (void)testInequalityForDepartureDateString {
+- (void)testInequalityForCountDownString {
 	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"22:22";
+	self.departureB.countdownString = @"10 Mins";
 	self.departureB.destination = @"Sheffield";
 	self.departureB.hasLowFloorAccess = YES;
 	self.departureB.minutesUntilDeparture = 10;
@@ -91,7 +91,7 @@
 
 - (void)testInequalityForDestination {
 	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"11:12";
+	self.departureB.countdownString = @"2 Mins";
 	self.departureB.destination = @"Rotherham";
 	self.departureB.hasLowFloorAccess = YES;
 	self.departureB.minutesUntilDeparture = 10;
@@ -101,7 +101,7 @@
 
 - (void)testInequalityForLowFloorAccess {
 	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"11:12";
+	self.departureB.countdownString = @"2 Mins";
 	self.departureB.destination = @"Sheffield";
 	self.departureB.hasLowFloorAccess = NO;
 	self.departureB.minutesUntilDeparture = 10;
@@ -111,7 +111,7 @@
 
 - (void)testInequalityForMinutesUntilDeparture {
 	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"11:12";
+	self.departureB.countdownString = @"2 Mins";
 	self.departureB.destination = @"Sheffield";
 	self.departureB.hasLowFloorAccess = YES;
 	self.departureB.minutesUntilDeparture = 20;
@@ -128,6 +128,22 @@
 	XCTAssertEqualObjects(copy.countdownString, self.departureA.countdownString, @"");
 	XCTAssertEqual((NSInteger)copy.minutesUntilDeparture, (NSInteger)self.departureA.minutesUntilDeparture, @"");
 	XCTAssertEqual(copy.hasLowFloorAccess, self.departureA.hasLowFloorAccess, @"");
+}
+
+- (void)testJSONRepresentation {
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	dateFormatter.dateStyle = NSDateFormatterShortStyle;
+	dateFormatter.timeStyle = NSDateFormatterShortStyle;
+	
+	NSDictionary *correctJSON = @{
+								  @"destination" : @"Sheffield",
+								  @"countdownString" : @"2 Mins",
+								  @"expectedDepartureDate" : [dateFormatter stringFromDate:self.departureDate],
+								  @"hasLowFloorAccess" : @(YES),
+								  @"minutesUntilDeparture" : @(10)
+								  };
+	
+	XCTAssertEqualObjects([self.departureA JSONRepresentation], correctJSON, @"");
 }
 
 

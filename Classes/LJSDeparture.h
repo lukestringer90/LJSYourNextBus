@@ -19,5 +19,6 @@
 @property (nonatomic, assign, readonly) BOOL hasLowFloorAccess;
 
 - (BOOL)isEqualToDeparture:(LJSDeparture *)Departure;
+- (NSDictionary *)JSONRepresentation;
 
 @end

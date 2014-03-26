@@ -99,4 +99,45 @@
 	XCTAssertEqualObjects(copiedService.departures, self.serviceA.departures, @"");
 }
 
+- (void)testJSONRepresentation {
+	NSDate *departureDateA = [NSDate dateWithTimeIntervalSince1970:100000];
+	NSDate *departureDateB = [NSDate dateWithTimeIntervalSince1970:100001];
+	NSDate *departureDateC = [NSDate dateWithTimeIntervalSince1970:100002];
+	
+	LJSDeparture *departureA = [LJSDeparture new];
+	departureA.expectedDepartureDate = departureDateA;
+	departureA.destination = @"Sheffield";
+	departureA.hasLowFloorAccess = YES;
+	departureA.countdownString = @"11:12";
+	departureA.minutesUntilDeparture = 1;
+	
+	LJSDeparture *departureB = [LJSDeparture new];
+	departureB.expectedDepartureDate = departureDateB;
+	departureB.destination = @"Rotherham";
+	departureB.hasLowFloorAccess = NO;
+	departureB.countdownString = @"12:12";
+	departureB.minutesUntilDeparture = 2;
+	
+	LJSDeparture *departureC = [LJSDeparture new];
+	departureC.expectedDepartureDate = departureDateC;
+	departureC.destination = @"Barnsley";
+	departureC.hasLowFloorAccess = YES;
+	departureC.countdownString = @"13:12";
+	departureC.minutesUntilDeparture = 3;
+	
+	self.serviceA.title = @"service-123";
+	self.serviceA.departures = @[departureA, departureB, departureC];
+	
+	NSDictionary *correctJSON = @{
+								  @"title" : @"service-123",
+								  @"departures" : @[
+										  [departureA JSONRepresentation],
+										  [departureB JSONRepresentation],
+										  [departureC JSONRepresentation]
+										  ]
+								  };
+	
+	XCTAssertEqualObjects([self.serviceA JSONRepresentation], correctJSON, @"");
+}
+
 @end

@@ -22,5 +22,6 @@
 @property (nonatomic, strong, readonly) NSURL *earlierURL;
 
 - (BOOL)isEqualToStop:(LJSStop *)stop;
+- (NSDictionary *)JSONRepresentation;
 
 @end

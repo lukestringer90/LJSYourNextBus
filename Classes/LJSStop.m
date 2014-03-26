@@ -7,6 +7,7 @@
 //
 
 #import "LJSStop.h"
+#import "LJSService.h"
 
 @interface LJSStop ()
 @property (nonatomic, copy, readwrite) NSString *NaPTANCode;
@@ -15,6 +16,8 @@
 @property (nonatomic, copy, readwrite) NSArray *services;
 @property (nonatomic, strong, readwrite) NSURL *laterURL;
 @property (nonatomic, strong, readwrite) NSURL *earlierURL;
+
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @end
 
 @implementation LJSStop
@@ -53,9 +56,33 @@
 }
 
 
-
 - (NSString *)description {
 	return [NSString stringWithFormat:@"Title: %@ - NaPTAN Code: %@ - Live Date : %@ - Services: %ld", self.title, self.NaPTANCode, self.liveDate, (unsigned long)self.services.count];
 }
+
+- (NSDictionary *)JSONRepresentation {
+	NSArray *servicesJSON = [NSArray array];
+	for (LJSService *service in self.services) {
+		servicesJSON = [servicesJSON arrayByAddingObject:[service JSONRepresentation]];
+	}
+	
+	return @{
+			 @"NaPTANCode" : self.NaPTANCode != nil ? self.NaPTANCode : [NSNull null],
+			 @"liveDate" : self.liveDate != nil ? [self.dateFormatter stringFromDate:self.liveDate] : [NSNull null],
+			 @"laterURL" : self.laterURL !=nil ? [self.laterURL absoluteString] : [NSNull null],
+			 @"earlierURL" : self.earlierURL != nil ? [self.earlierURL absoluteString] : [NSNull null],
+			 @"services" : servicesJSON
+			 };
+}
+
+- (NSDateFormatter *)dateFormatter {
+	if (!_dateFormatter) {
+		_dateFormatter = [[NSDateFormatter alloc] init];
+		_dateFormatter.dateStyle = NSDateFormatterShortStyle;
+		_dateFormatter.timeStyle = NSDateFormatterShortStyle;
+	}
+	return _dateFormatter;
+}
+
 
 @end

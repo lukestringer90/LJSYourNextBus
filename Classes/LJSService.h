@@ -16,5 +16,6 @@
 @property (nonatomic, copy, readonly) NSArray *departures;
 
 - (BOOL)isEqualToService:(LJSService *)service;
+- (NSDictionary *)JSONRepresentation;
 
 @end

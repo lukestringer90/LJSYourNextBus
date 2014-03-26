@@ -11,6 +11,7 @@
 #import "LJSStop+LJSSetters.h"
 #import "LJSService.h"
 #import "LJSService+LJSSetters.h"
+#import "LJSDeparture+LJSSetters.h"
 
 @interface LJSStopTests : XCTestCase
 @property (nonatomic, strong) LJSStop *stopA;
@@ -73,6 +74,49 @@
 	XCTAssertEqualObjects(copy.services, self.stopA.services, @"");
 	XCTAssertEqualObjects(copy.laterURL, self.stopA.laterURL, @"");
 	XCTAssertEqualObjects(copy.earlierURL, self.stopA.earlierURL, @"");
+}
+
+- (void)testJSONRepresentation {
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	dateFormatter.dateStyle = NSDateFormatterShortStyle;
+	dateFormatter.timeStyle = NSDateFormatterShortStyle;
+	
+	LJSDeparture *departureA = [LJSDeparture new];
+	departureA.expectedDepartureDate = [NSDate date];
+	departureA.destination = @"Sheffield";
+	departureA.hasLowFloorAccess = YES;
+	departureA.countdownString = @"11:12";
+	departureA.minutesUntilDeparture = 1;
+	
+	LJSDeparture *departureB = [LJSDeparture new];
+	departureB.expectedDepartureDate = [NSDate date];
+	departureB.destination = @"Rotherham";
+	departureB.hasLowFloorAccess = NO;
+	departureB.countdownString = @"12:12";
+	departureB.minutesUntilDeparture = 2;
+
+	LJSService *serviceA = [LJSService new];
+	serviceA.title = @"service-123";
+	serviceA.departures = @[departureA, departureB];
+	
+	NSDate *liveDate = [NSDate date];
+	self.stopA.NaPTANCode = @"123";
+	self.stopA.services = @[serviceA];
+	self.stopA.liveDate = liveDate;
+	self.stopA.laterURL = [NSURL URLWithString:@"www.foo.com"];
+	self.stopA.earlierURL = [NSURL URLWithString:@"www.bar.com"];
+	
+	NSDictionary *correctJSON = @{
+								  @"NaPTANCode" : @"123",
+								  @"liveDate" : [dateFormatter stringFromDate:liveDate],
+								  @"laterURL" : @"www.foo.com",
+								  @"earlierURL" : @"www.bar.com",
+								  @"services" : @[
+										  [serviceA JSONRepresentation]
+										  ]
+								  };
+	
+	XCTAssertEqualObjects([self.stopA JSONRepresentation], correctJSON, @"");
 }
 
 
