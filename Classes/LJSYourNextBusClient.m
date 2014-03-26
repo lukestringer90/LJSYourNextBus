@@ -15,6 +15,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
 @interface LJSYourNextBusClient ()
 @property (nonatomic, copy) LJSLiveDataCompletion completion;
+@property (nonatomic, copy) NSString *NaPTANCode;
 @property (nonatomic, strong) LJSScraper *scraper;
 @property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
 @property (nonatomic, strong) NSOperationQueue *backgroundQueue;
@@ -34,6 +35,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
 - (void)liveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion {
 	[self.backgroundQueue addOperationWithBlock:^{
+		self.NaPTANCode = NaPTANCode;
 		NSURL *url = [self urlForNaPTANCode:NaPTANCode];
 		[self liveDataAtURL:url completion:completion];
 	}];
@@ -59,7 +61,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
 - (NSError *)invalidHTMLError {
 	NSDictionary *userInfo = @{
-							   NSLocalizedDescriptionKey: NSLocalizedString(@"Scraping the YourNextBus HTML failed.", nil),
+							   NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedString(@"Scraping the YourNextBus HTML failed for the NaPTANCode %@.", nil), self.NaPTANCode],
 							   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"The HTML did not contain any live data. This could be due to a problems with the YourNextBus service, or an invalid NaPTAN code was specified.", nil),
 							   NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire.", nil),
 							   };

@@ -52,7 +52,6 @@
 	NSString *html = [self loadHTMLFileNamed:@"37010071"];
 	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:html];
 	
-	// Irrelevant what this is as static HTML is loaded anyway
 	self.NaPTANCode = @"37010071";
 	
 	self.done = NO;
@@ -131,7 +130,7 @@
 		assertThat(stop, equalTo(nil));
 		assertThat(error.domain, equalTo(LJSYourNextBusErrorDomain));
 		assertThatInteger(error.code, equalToInteger(LJSYourNextBusErrorScrapeFailure));
-		assertThat(error.userInfo[NSLocalizedDescriptionKey], equalTo(@"Scraping the YourNextBus HTML failed."));
+		assertThat(error.userInfo[NSLocalizedDescriptionKey], equalTo(@"Scraping the YourNextBus HTML failed for the NaPTANCode 37010071."));
 		assertThat(error.userInfo[NSLocalizedFailureReasonErrorKey], equalTo(@"The HTML did not contain any live data. This could be due to a problems with the YourNextBus service, or an invalid NaPTAN code was specified."));
 		assertThat(error.userInfo[NSLocalizedRecoverySuggestionErrorKey], equalTo(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire."));
 	}];
