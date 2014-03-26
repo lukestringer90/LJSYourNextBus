@@ -28,7 +28,10 @@
 	self = [super initWithStyle:UITableViewStyleGrouped];
 	if (self) {
 		self.NaPTANCode = NaPTANCode;
+		
 		self.yourNextBusClient = [LJSYourNextBusClient new];
+		self.yourNextBusClient.saveDataToDisk = YES;
+		
 		self.dateFormatter = [[NSDateFormatter alloc] init];
 		self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
 		[self.tableView registerClass:[LJSDepatureCell class] forCellReuseIdentifier:NSStringFromClass([LJSDepatureCell class])];
