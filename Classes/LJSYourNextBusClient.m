@@ -10,6 +10,7 @@
 #import "LJSHTMLDownloader.h"
 #import "LJSScraper.h"
 #import "LJSYourNextBusClient+LJSSaveToDisk.h"
+#import "LJSStop.h"
 
 NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
@@ -19,6 +20,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 @property (nonatomic, strong) LJSScraper *scraper;
 @property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
 @property (nonatomic, strong) NSOperationQueue *backgroundQueue;
+
 @end
 
 @implementation LJSYourNextBusClient
@@ -39,6 +41,10 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 		NSURL *url = [self urlForNaPTANCode:NaPTANCode];
 		[self liveDataAtURL:url completion:completion];
 	}];
+}
+
+- (void)refreshStop:(LJSStop *)stop completion:(LJSLiveDataCompletion)completion {
+	[self liveDataForNaPTANCode:stop.NaPTANCode completion:completion];
 }
 
 - (void)liveDataAtURL:(NSURL *)url completion:(LJSLiveDataCompletion)completion {
@@ -92,8 +98,20 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
     if (self.completion) {
 		
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+			/**
+			 *  Only nil out the completion block if it is the same block
+			 *  as the one that was set before it was called.
+			 *  If the completion block calls liveDataAtURL:completion:
+			 *  the another completion block will be set before we have 
+			 *  change to nil it out. If we nil out the completion block
+			 *  in this case then the second liveDataAtURL:completion: call
+			 *  will not get a completion block call back.
+			 */
+			LJSLiveDataCompletion thisCompletion = self.completion;
 			self.completion(stop, messages, error);
-			self.completion = nil;
+			if (self.completion == thisCompletion) {
+				self.completion = nil;
+			}
 		}];
     }
 }
