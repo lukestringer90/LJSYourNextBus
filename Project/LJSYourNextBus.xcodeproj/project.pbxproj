@@ -31,6 +31,10 @@
 		A388CE5D18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A388CE5C18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m */; };
 		A388CE6018E0EE6900B28A6C /* NSDate+LJSCountDownString.m in Sources */ = {isa = PBXBuildFile; fileRef = A388CE5F18E0EE6900B28A6C /* NSDate+LJSCountDownString.m */; };
 		A388CE6318E31BF700B28A6C /* LJSYourNextBusClient+LJSSaveToDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = A388CE6218E31BF700B28A6C /* LJSYourNextBusClient+LJSSaveToDisk.m */; };
+		A388CE6718E46C9000B28A6C /* 37010200-original.html in Resources */ = {isa = PBXBuildFile; fileRef = A388CE6418E46C9000B28A6C /* 37010200-original.html */; };
+		A388CE6818E46C9000B28A6C /* 37010200-time-changes.html in Resources */ = {isa = PBXBuildFile; fileRef = A388CE6518E46C9000B28A6C /* 37010200-time-changes.html */; };
+		A388CE6918E46C9000B28A6C /* 37010200-departure-changes.html in Resources */ = {isa = PBXBuildFile; fileRef = A388CE6618E46C9000B28A6C /* 37010200-departure-changes.html */; };
+		A3B37FBF18E4A16E00B6D445 /* LJSMockHTMLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B37FBE18E4A16E00B6D445 /* LJSMockHTMLDownloader.m */; };
 		A3BD275F189EF72200540C5F /* LJSDeparture.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2754189EF72200540C5F /* LJSDeparture.m */; };
 		A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */; };
 		A3BD2761189EF72200540C5F /* LJSYourNextBusClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2758189EF72200540C5F /* LJSYourNextBusClient.m */; };
@@ -89,6 +93,11 @@
 		A388CE5F18E0EE6900B28A6C /* NSDate+LJSCountDownString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LJSCountDownString.m"; sourceTree = "<group>"; };
 		A388CE6118E31BF700B28A6C /* LJSYourNextBusClient+LJSSaveToDisk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSYourNextBusClient+LJSSaveToDisk.h"; sourceTree = "<group>"; };
 		A388CE6218E31BF700B28A6C /* LJSYourNextBusClient+LJSSaveToDisk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LJSYourNextBusClient+LJSSaveToDisk.m"; sourceTree = "<group>"; };
+		A388CE6418E46C9000B28A6C /* 37010200-original.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "37010200-original.html"; sourceTree = "<group>"; };
+		A388CE6518E46C9000B28A6C /* 37010200-time-changes.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "37010200-time-changes.html"; sourceTree = "<group>"; };
+		A388CE6618E46C9000B28A6C /* 37010200-departure-changes.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "37010200-departure-changes.html"; sourceTree = "<group>"; };
+		A3B37FBD18E4A16E00B6D445 /* LJSMockHTMLDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSMockHTMLDownloader.h; sourceTree = "<group>"; };
+		A3B37FBE18E4A16E00B6D445 /* LJSMockHTMLDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSMockHTMLDownloader.m; sourceTree = "<group>"; };
 		A3BD2753189EF72200540C5F /* LJSDeparture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = LJSDeparture.h; path = ../../Classes/LJSDeparture.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		A3BD2754189EF72200540C5F /* LJSDeparture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = LJSDeparture.m; path = ../../Classes/LJSDeparture.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A3BD2755189EF72200540C5F /* LJSHTMLDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSHTMLDownloader.h; path = ../../Classes/LJSHTMLDownloader.h; sourceTree = "<group>"; };
@@ -225,6 +234,8 @@
 				A3BD276F189FF46500540C5F /* LJSStopTests.m */,
 				A337FDA818C3BD05002FB29F /* LJSServiceTests.m */,
 				A337FDAA18C3C7C1002FB29F /* LJSDepartureTests.m */,
+				A3B37FBD18E4A16E00B6D445 /* LJSMockHTMLDownloader.h */,
+				A3B37FBE18E4A16E00B6D445 /* LJSMockHTMLDownloader.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -232,6 +243,9 @@
 		A34A1955189EBF62002EEF2B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A388CE6418E46C9000B28A6C /* 37010200-original.html */,
+				A388CE6518E46C9000B28A6C /* 37010200-time-changes.html */,
+				A388CE6618E46C9000B28A6C /* 37010200-departure-changes.html */,
 				A34B1C1818CE49F800184A12 /* 37010115.html */,
 				A34A1956189EBF86002EEF2B /* 37010071.html */,
 				A3FE172D18DE4EAC00B8E47E /* invalid.html */,
@@ -387,7 +401,10 @@
 			files = (
 				A31CBF8B189988D000747F46 /* InfoPlist.strings in Resources */,
 				A34B1C1918CE49F800184A12 /* 37010115.html in Resources */,
+				A388CE6918E46C9000B28A6C /* 37010200-departure-changes.html in Resources */,
 				A3FE172E18DE4EAC00B8E47E /* invalid.html in Resources */,
+				A388CE6718E46C9000B28A6C /* 37010200-original.html in Resources */,
+				A388CE6818E46C9000B28A6C /* 37010200-time-changes.html in Resources */,
 				A3D5BEF418DE5B7600622915 /* no_depatures.html in Resources */,
 				A3D5BEF618DE6E3700622915 /* messages.html in Resources */,
 				A34A1957189EBF86002EEF2B /* 37010071.html in Resources */,
@@ -488,6 +505,7 @@
 				A337FDA718C3A1BE002FB29F /* LJSDepartureDateParserTests.m in Sources */,
 				A337FDA918C3BD05002FB29F /* LJSServiceTests.m in Sources */,
 				A337FDAB18C3C7C1002FB29F /* LJSDepartureTests.m in Sources */,
+				A3B37FBF18E4A16E00B6D445 /* LJSMockHTMLDownloader.m in Sources */,
 				A388CE5D18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m in Sources */,
 				A34A1951189EB768002EEF2B /* LJSYourNextBusTests.m in Sources */,
 				A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */,

@@ -36,7 +36,10 @@ typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
 typedef void (^LJSLiveDataCompletion)(LJSStop *stop, NSArray *messages, NSError *error);
 
 - (void)liveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion;
+
 - (void)liveDataAtURL:(NSURL *)url completion:(LJSLiveDataCompletion)completion;
+- (void)refreshStop:(LJSStop *)stop completion:(LJSLiveDataCompletion)completion;
+
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber;
 
 @end

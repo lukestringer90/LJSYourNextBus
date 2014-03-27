@@ -19,6 +19,8 @@
 #import "LJSHTMLDownloader.h"
 #import "LJSDepartureDateParser.h"
 
+#import "LJSMockHTMLDownloader.h"
+
 #import "LJSStop.h"
 #import "LJSService.h"
 #import "LJSDeparture.h"
@@ -50,8 +52,8 @@
 	self.calendar = [NSCalendar currentCalendar];
 	
 	self.yourNextBusClient = [[LJSYourNextBusClient alloc] init];
-	NSString *html = [self loadHTMLFileNamed:@"37010071"];
-	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:html];
+	NSString *HTML = [self loadHTMLFileNamed:@"37010071"];
+	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:HTML ID:@"37010071"];
 	
 	self.NaPTANCode = @"37010071";
 	
@@ -67,12 +69,6 @@
 
 - (NSString *)pathInTestBundleForResource:(NSString *)name ofType:(NSString *)extension {
     return [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:extension];
-}
-
-- (id)mockHTMLDownloadReturningHTML:(NSString *)htmlString {
-    id htmlDownloaderMock = [OCMockObject niceMockForClass:[LJSHTMLDownloader class]];
-    [[[htmlDownloaderMock stub] andReturn:htmlString] downloadHTMLFromURL:[OCMArg any] error:[OCMArg setTo:nil]];
-    return htmlDownloaderMock;
 }
 
 - (id)stubLiveDate:(NSDate *)liveDate ofScraper:(LJSScraper *)scraper {
@@ -93,14 +89,19 @@
 }
 
 - (NSArray *)departuresForStop:(LJSStop *)stop {
-	return [[stop.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"];
+	NSArray *sortDescriptors = @[
+								 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
+															   ascending:YES],
+								 [NSSortDescriptor sortDescriptorWithKey:@"destination"
+															   ascending:YES]];
+	return [[[stop.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"] sortedArrayUsingDescriptors:sortDescriptors];
 }
 
 - (NSArray *)sortedDeparturesForService:(LJSService *)service {
 	NSArray *sortDescriptors = @[
-								 [NSSortDescriptor sortDescriptorWithKey:@"destination"
-															   ascending:YES],
 								 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
+															   ascending:YES],
+								 [NSSortDescriptor sortDescriptorWithKey:@"destination"
 															   ascending:YES]];
 	return [service.departures sortedArrayUsingDescriptors:sortDescriptors];
 }
@@ -130,7 +131,7 @@
 
 - (void)testScrapeFailure {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"invalid"];
-	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:invalidHTML];
+	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"invalid"];
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
@@ -147,7 +148,7 @@
 
 - (void)testNoDataAvaiable {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"no_depatures"];
-	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:invalidHTML];
+	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"no_depatures"];
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
@@ -162,7 +163,7 @@
 
 - (void)testMessages {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"messages"];
-	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:invalidHTML];
+	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"messages"];
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
@@ -419,8 +420,8 @@
 }
 
 - (void)testEarlierURL {
-	NSString *html = [self loadHTMLFileNamed:@"37010115"];
-	self.yourNextBusClient.htmlDownloader = [self mockHTMLDownloadReturningHTML:html];
+	NSString *HTML = [self loadHTMLFileNamed:@"37010115"];
+	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:HTML ID:@"37010115"];
 	
     [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
@@ -439,6 +440,130 @@
 	}];
 	
 	AGWW_WAIT_WHILE(!self.done, 0.5);
+}
+
+#pragma mark - Refreshing
+
+- (void)testRefreshStopNoChanges {
+	NSString *HTML = [self loadHTMLFileNamed:@"37010200-original"];
+	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:HTML ID:@"37010200-original"];
+	
+	// Stub the current date to 24.03.2014 09:00:00
+	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395651600];
+	self.yourNextBusClient.scraper = [self stubCurrentDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
+	
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *originalStop, NSArray *messages, NSError *error) {
+		
+		[self.yourNextBusClient refreshStop:originalStop completion:^(LJSStop *refreshedStop, NSArray *messages, NSError *error) {
+			self.done = YES;
+			
+			assertThat(refreshedStop, notNilValue());
+			
+			assertThat(originalStop.title, equalTo(refreshedStop.title));
+			assertThat(originalStop.services, equalTo(refreshedStop.services));
+		}];
+		
+	}];
+
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
+}
+
+- (void)testRefreshStopWithTimeChanges {
+	
+	NSString *originalHTML = [self loadHTMLFileNamed:@"37010200-original"];
+	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:originalHTML ID:@"37010200-original"];
+	
+	// Stub the current date to 24.03.2014 09:00:00
+	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395651600];
+	self.yourNextBusClient.scraper = [self stubCurrentDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
+	
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *originalStop, NSArray *messages, NSError *error) {
+		
+		assertThat(originalStop, notNilValue());
+		
+		NSString *refreshedHtml = [self loadHTMLFileNamed:@"37010200-time-changes"];
+		self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:refreshedHtml ID:@"37010200-time-changes"];
+
+		[self.yourNextBusClient refreshStop:originalStop completion:^(LJSStop *refreshedStop, NSArray *messages, NSError *error) {
+			self.done = YES;
+			
+			assertThat(refreshedStop, notNilValue());
+			
+			assertThat(originalStop.liveDate, isNot(equalTo(refreshedStop.liveDate)));
+			assertThat(originalStop.title, equalTo(refreshedStop.title));
+			assertThat(originalStop.services, isNot(equalTo(refreshedStop.services))); // different services
+			assertThat(refreshedStop.liveDate, equalTo([self augmentDate:currentDateTime hours:14 minutes:23]));
+			
+			NSArray *allDepartures = [self departuresForStop:refreshedStop];
+			assertThat(allDepartures, hasCountOf(21)); // same number of departures
+			
+			/**
+			 *  Original:	X78		Sheffield Intc 	4 mins 	LF
+			 *	Refreshed:  X78 	Sheffield Intc 	2 mins 	LF
+			 */
+			LJSDeparture *firstDeparture = allDepartures[0];
+			assertThat(firstDeparture.service.title, equalTo(@"X78"));
+			assertThat(firstDeparture.destination, equalTo(@"Sheffield Intc"));
+			assertThat(firstDeparture.countdownString, equalTo(@"2 Mins"));
+			assertThatInteger(firstDeparture.minutesUntilDeparture, equalToInteger(2));
+			assertThatInteger([firstDeparture.expectedDepartureDate timeIntervalSince1970],
+							  equalToInteger([[self date:refreshedStop.liveDate plusMinutes:2] timeIntervalSince1970]));
+			
+		}];
+		
+	}];
+	
+	
+	AGWW_WAIT_WHILE(!self.done, 60.0);
+}
+
+- (void)testRefreshStopWithDepartureChanges {
+	
+	NSString *originalHTML = [self loadHTMLFileNamed:@"37010200-original"];
+	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:originalHTML ID:@"37010200-original"];
+	
+	// Stub the current date to 24.03.2014 09:00:00
+	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395651600];
+	self.yourNextBusClient.scraper = [self stubCurrentDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
+	
+	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *originalStop, NSArray *messages, NSError *error) {
+		
+		assertThat(originalStop, notNilValue());
+		
+		NSString *refreshedHtml = [self loadHTMLFileNamed:@"37010200-departure-changes"];
+		self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:refreshedHtml ID:@"37010200-time-changes"];
+		
+		[self.yourNextBusClient refreshStop:originalStop completion:^(LJSStop *refreshedStop, NSArray *messages, NSError *error) {
+			self.done = YES;
+			
+			assertThat(refreshedStop, notNilValue());
+			
+			assertThat(originalStop.liveDate, isNot(equalTo(refreshedStop.liveDate)));
+			assertThat(originalStop.title, equalTo(refreshedStop.title));
+			assertThat(originalStop.services, isNot(equalTo(refreshedStop.services))); // different services
+			assertThat(refreshedStop.liveDate, equalTo([self augmentDate:currentDateTime hours:14 minutes:25]));
+			
+			NSArray *allDepartures = [self departuresForStop:refreshedStop];
+			assertThat(allDepartures, hasCountOf(18)); // different number of departures
+			
+			/**
+			 *  Original:	X78		Sheffield Intc 	4 mins 	LF
+			 *	Refreshed:  76		Low Edges 	Due 	LF
+			 */
+			LJSDeparture *firstDeparture = allDepartures[0];
+			assertThat(firstDeparture.service.title, equalTo(@"76"));
+			assertThat(firstDeparture.destination, equalTo(@"Low Edges"));
+			assertThat(firstDeparture.countdownString, equalTo(@"Due"));
+			assertThatInteger(firstDeparture.minutesUntilDeparture, equalToInteger(0));
+			assertThatInteger([firstDeparture.expectedDepartureDate timeIntervalSince1970],
+							  equalToInteger([[self date:refreshedStop.liveDate plusMinutes:0] timeIntervalSince1970]));
+			
+		}];
+		
+	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 60.0);
 }
 
 @end
