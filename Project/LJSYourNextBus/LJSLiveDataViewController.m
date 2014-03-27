@@ -17,7 +17,7 @@
 @property (nonatomic, copy, readwrite) NSString *NaPTANCode;
 @property (nonatomic, strong) LJSStop *stop;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
-@property (nonatomic, copy) NSArray *sortedDepartures;
+@property (nonatomic, copy) NSArray *allDepartures;
 @property (nonatomic, strong) LJSYourNextBusClient *yourNextBusClient;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
@@ -59,13 +59,7 @@
 		if (!error) {
 			self.stop = stop;
 			self.title = self.stop.title;
-			NSArray *allDepartures = [[stop.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"];
-			NSArray *sortDescriptors = @[
-										 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
-																	   ascending:YES],
-										 [NSSortDescriptor sortDescriptorWithKey:@"destination"
-																	   ascending:YES]];
-			self.sortedDepartures = [allDepartures sortedArrayUsingDescriptors:sortDescriptors];;
+			self.allDepartures = [[stop.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"];
 			[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 		}
 		else {
@@ -96,13 +90,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return self.sortedDepartures != nil ? self.sortedDepartures.count : 0;
+	return self.allDepartures != nil ? self.allDepartures.count : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LJSDepatureCell *cell = (LJSDepatureCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass([LJSDepatureCell class])];
 	
-	LJSDeparture *departure = self.sortedDepartures[indexPath.row];
+	LJSDeparture *departure = self.allDepartures[indexPath.row];
 	cell.destinationLabel.text = departure.destination;
 	cell.serviceTitleLabel.text = departure.service.title;
 	cell.lowFloorAccessLabelVisible = departure.hasLowFloorAccess;
@@ -118,7 +112,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return self.sortedDepartures != nil ? [NSString stringWithFormat:@"Departures For %@", [self.dateFormatter stringFromDate:self.stop.liveDate]] : nil;
+	return self.allDepartures != nil ? [NSString stringWithFormat:@"Departures For %@", [self.dateFormatter stringFromDate:self.stop.liveDate]] : nil;
 }
 
 
