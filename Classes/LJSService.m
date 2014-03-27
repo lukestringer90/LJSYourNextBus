@@ -27,9 +27,7 @@
 }
 
 - (BOOL)isEqualToService:(LJSService *)service {
-	BOOL stopsEqual = [self.stop isEqualToStop:service.stop] || (self.stop == nil && service.stop == nil);
-	BOOL titlesEqual = [self.title isEqualToString:service.title];
-	return stopsEqual && titlesEqual && [self allDeparturesEqualWithService:service];
+	return [self.title isEqualToString:service.title] && [self allDeparturesEqualWithService:service];
 }
 
 - (BOOL)isEqual:(id)object {

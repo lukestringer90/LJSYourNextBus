@@ -9,8 +9,6 @@
 #import <XCTest/XCTest.h>
 #import "LJSService.h"
 #import "LJSService+LJSSetters.h"
-#import "LJSStop.h"
-#import "LJSStop+LJSSetters.h"
 #import "LJSDeparture.h"
 #import "LJSDeparture+LJSSetters.h"
 
@@ -37,20 +35,6 @@
 - (void)testInequalityForTitle {
 	self.serviceA.title = @"service-123";
 	self.serviceB.title = @"service-456";
-	
-	XCTAssertNotEqualObjects(self.serviceA, self.serviceB, @"");
-}
-
-- (void)testInequalityForStop {
-	LJSStop *stopA = [LJSStop new];
-	stopA.NaPTANCode = @"stop-123";
-	LJSStop *stopB = [LJSStop new];
-	stopB.NaPTANCode = @"stop-456";
-	
-	self.serviceA.title = @"service-123";
-	self.serviceA.stop = stopA;
-	self.serviceB.title = @"service-123";
-	self.serviceB.stop = stopB;
 	
 	XCTAssertNotEqualObjects(self.serviceA, self.serviceB, @"");
 }

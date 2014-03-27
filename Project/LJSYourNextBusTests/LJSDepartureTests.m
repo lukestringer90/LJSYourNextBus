@@ -9,8 +9,6 @@
 #import <XCTest/XCTest.h>
 #import "LJSDeparture.h"
 #import "LJSDeparture+LJSSetters.h"
-#import "LJSService.h"
-#import "LJSService+LJSSetters.h"
 
 @interface LJSDepartureTests : XCTestCase
 @property (nonatomic, strong) LJSDeparture *departureA;
@@ -43,25 +41,6 @@
 	self.departureB.minutesUntilDeparture = 10;
 
 	XCTAssertEqualObjects(self.departureA,self.departureB, @"");
-}
-
-- (void)testInequalityForServices {
-    LJSService *serviceA = [LJSService new];
-	LJSService *serviceB = [LJSService new];
-	
-	serviceA.title = @"service-123";
-	serviceB.title = @"service-456";
-	
-	self.departureA.service = serviceA;
-	
-	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"2 Mins";
-	self.departureB.destination = @"Sheffield";
-	self.departureB.hasLowFloorAccess = YES;
-	self.departureB.minutesUntilDeparture = 10;
-	self.departureB.service = serviceB;
-
-	XCTAssertNotEqualObjects(self.departureA, self.departureB, @"");
 }
 
 - (void)testInequalityForDepartureDate {
