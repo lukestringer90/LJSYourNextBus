@@ -27,9 +27,11 @@
 	NSTextCheckingResult *regexMatch = [self regularExpressionMatchInDateString:dateString];
 	
 	if (regexMatch != nil) {
+		// dateString is of the form "11:12"
 		return [self dateFromRegexMatch:regexMatch dateString:dateString baseDate:baseDate];
 	}
 	else {
+		// dateString is of the form "12 mins"
 		return [self dateFromMinutesString:dateString baseDate:baseDate];
 	}
 }
@@ -49,17 +51,35 @@
 	NSRange hoursRange = [regexMatch rangeAtIndex:1];
 	NSRange minutesRange = [regexMatch rangeAtIndex:2];
 	
-	NSString *hoursString = [dateString substringWithRange:hoursRange];
-	NSString *minutesString = [dateString substringWithRange:minutesRange];
+	NSInteger hours = [[dateString substringWithRange:hoursRange] integerValue];
+	NSInteger minutes = [[dateString substringWithRange:minutesRange] integerValue];
 	
 	NSDateComponents *dateComponents = [self.calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
 														fromDate:baseDate];
-	dateComponents.hour = [hoursString integerValue];
-	dateComponents.minute = [minutesString integerValue];
+	
+	dateComponents.hour = hours;
+	dateComponents.minute = minutes;
 	dateComponents.second = 0;
 	
-	return [self.calendar dateFromComponents:dateComponents];
+	NSDate *newDate = [self.calendar dateFromComponents:dateComponents];
+	
+	/**
+	 *  New date and base date are different times but the same day.
+	 *  If the new date time is before the base date's time then we need
+	 *  the time tomorrow.
+	 *  eg. if new date is 11:00 and base date is 12:00 then 11:00 tomorrow is needed.
+	 */
+	if ([newDate compare:baseDate] == NSOrderedAscending) {
+		NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+		[offsetComponents setDay:1];
+		newDate = [self.calendar dateByAddingComponents:offsetComponents
+														  toDate:newDate
+														 options:0];
+	}
+	
+	return newDate;
 }
+
 
 - (NSDate *)dateFromMinutesString:(NSString *)mintuesString baseDate:(NSDate *)baseDate {
 	NSArray *components = [mintuesString componentsSeparatedByString:@" "];

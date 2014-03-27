@@ -206,7 +206,11 @@
 }
 
 - (NSDate *)liveDateFromString:(NSString *)liveTimeString {
-	return [self.dateParser dateFromString:liveTimeString baseDate:[NSDate date]];
+	return [self.dateParser dateFromString:liveTimeString baseDate:[self currentDate]];
+}
+
+- (NSDate *)currentDate {
+	return [NSDate date];
 }
 
 @end

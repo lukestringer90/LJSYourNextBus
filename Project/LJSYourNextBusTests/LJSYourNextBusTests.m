@@ -30,6 +30,7 @@
 
 @interface LJSScraper (TestVisibility)
 - (NSDate *)liveDateFromString:(NSString *)liveTimeString;
+- (NSDate *)currentDate;
 @end
 
 @interface LJSYourNextBusTests : XCTestCase
@@ -80,6 +81,12 @@
 	return scraperMock;
 }
 
+- (id)stubCurrentDate:(NSDate *)liveDate ofScraper:(LJSScraper *)scraper {
+	id scraperMock = [OCMockObject partialMockForObject:scraper];
+	[[[scraperMock stub] andReturn:liveDate] currentDate];
+	return scraperMock;
+}
+
 - (NSArray *)sortedServicesForStop:(LJSStop *)stop {
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
 	return [stop.services sortedArrayUsingDescriptors:@[sortDescriptor]];
@@ -98,10 +105,10 @@
 	return [service.departures sortedArrayUsingDescriptors:sortDescriptors];
 }
 
-- (NSDate *)todayAtHours:(NSInteger)hours minutes:(NSInteger)minutes {
-	NSDate *today = [NSDate date];
+
+- (NSDate *)augmentDate:(NSDate *)date hours:(NSInteger)hours minutes:(NSInteger)minutes {
 	NSDateComponents *dateComponents = [self.calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay
-														fromDate:today];
+														fromDate:date];
 	dateComponents.hour = hours;
 	dateComponents.minute = minutes;
 	dateComponents.second = 0;
@@ -192,10 +199,14 @@
 }
 
 - (void)testStopLiveDate {
+	// Stub the current date to 24.03.2014 09:00:00
+	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395651600];
+	self.yourNextBusClient.scraper = [self stubCurrentDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
+	
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
-		NSDate *correctLiveDate = [self todayAtHours:10 minutes:46];
+		NSDate *correctLiveDate = [self augmentDate:currentDateTime hours:10 minutes:46];
 		assertThatInteger([stop.liveDate timeIntervalSince1970], equalToInteger([correctLiveDate timeIntervalSince1970]));
 	}];
 	
@@ -258,6 +269,10 @@
 #pragma mark - LJSDeparture
 
 - (void)testDepartureDetails {
+	// Stub the current date to 24.03.2014 09:00:00
+	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395651600];
+	self.yourNextBusClient.scraper = [self stubCurrentDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
+	
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
@@ -274,8 +289,10 @@
 		LJSDeparture *firstDepartureOfFirstService = firstServiceDepartures[0];
 		assertThat(firstDepartureOfFirstService.destination, equalTo(@"Mexborough"));
 		assertThat(firstDepartureOfFirstService.service, equalTo(firstService));
+		// TODO: Stub a date rather than using today.
+		// If tests run at 23:59:59 it might fail
 		assertThatInteger([firstDepartureOfFirstService.expectedDepartureDate timeIntervalSince1970],
-						  equalToInteger([[self todayAtHours:11 minutes:11] timeIntervalSince1970]));
+						  equalToInteger([[self augmentDate:currentDateTime hours:11 minutes:11] timeIntervalSince1970]));
 		assertThatBool(firstDepartureOfFirstService.hasLowFloorAccess, equalToBool(NO));
 		
 		
@@ -285,8 +302,10 @@
 		LJSDeparture *secondDepartureOfFirstService = firstServiceDepartures[1];
 		assertThat(secondDepartureOfFirstService.service, equalTo(firstService));
 		assertThat(secondDepartureOfFirstService.destination, equalTo(@"Thurnscoe"));
+		// TODO: Stub a date rather than using today.
+		// If tests run at 23:59:59 it might fail
 		assertThatInteger([secondDepartureOfFirstService.expectedDepartureDate timeIntervalSince1970],
-						  equalToInteger([[self todayAtHours:11 minutes:41] timeIntervalSince1970]));
+						  equalToInteger([[self augmentDate:currentDateTime hours:11 minutes:41] timeIntervalSince1970]));
 		assertThatBool(secondDepartureOfFirstService.hasLowFloorAccess, equalToBool(NO));
 		
 		
@@ -296,8 +315,10 @@
 		LJSDeparture *firstDepartureOfSecondService = secondServiceDepartures[0];
 		assertThat(firstDepartureOfSecondService.destination, equalTo(@"Barnsley"));
 		assertThat(firstDepartureOfSecondService.service, equalTo(secondService));
+		// TODO: Stub a date rather than using today.
+		// If tests run at 23:59:59 it might fail
 		assertThatInteger([firstDepartureOfSecondService.expectedDepartureDate timeIntervalSince1970],
-						  equalToInteger([[self todayAtHours:10 minutes:56] timeIntervalSince1970]));
+						  equalToInteger([[self augmentDate:currentDateTime hours:10 minutes:56] timeIntervalSince1970]));
 		assertThatBool(firstDepartureOfSecondService.hasLowFloorAccess, equalToBool(NO));
 		
 		
@@ -328,8 +349,8 @@
 
 - (void)testDepartureCountdown {
 	// Stub the live date to 24.03.2014 10:56:00
-	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395658560];
-	self.yourNextBusClient.scraper = [self stubLiveDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
+	NSDate *liveDate = [NSDate dateWithTimeIntervalSince1970:1395658560];
+	self.yourNextBusClient.scraper = [self stubLiveDate:liveDate ofScraper:self.yourNextBusClient.scraper];
 	
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
@@ -382,7 +403,7 @@
 		assertThatInteger(thirdDepartureOfSecondService.minutesUntilDeparture, equalToInteger(70));
 	}];
 	
-	AGWW_WAIT_WHILE(!self.done, 60.0);
+	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
 #pragma mark - Later URL
