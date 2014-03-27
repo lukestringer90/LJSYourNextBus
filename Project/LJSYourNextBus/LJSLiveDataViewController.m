@@ -118,7 +118,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return self.sortedDepartures != nil ? [NSString stringWithFormat:@"Depatures For %@", [self.dateFormatter stringFromDate:self.stop.liveDate]] : nil;
+	return self.sortedDepartures != nil ? [NSString stringWithFormat:@"Departures For %@", [self.dateFormatter stringFromDate:self.stop.liveDate]] : nil;
 }
 
 
