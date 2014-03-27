@@ -27,7 +27,9 @@
 }
 
 - (BOOL)isEqualToService:(LJSService *)service {
-	return [self.title isEqualToString:service.title] && [self allDeparturesEqualWithService:service];
+	BOOL titlesEqual = [self.title isEqualToString:service.title];
+	BOOL departuresEqual = [self.departures isEqualToArray:service.departures] || (self.departures.count == 0 && service.departures.count == 0);
+	return titlesEqual && departuresEqual;
 }
 
 - (BOOL)isEqual:(id)object {
@@ -42,11 +44,6 @@
 	return [self isEqualToService:object];
 }
 
-- (BOOL)allDeparturesEqualWithService:(LJSService *)service {
-	NSSet *departuresA = [NSSet setWithArray:self.departures];
-	NSSet *departuresB = [NSSet setWithArray:service.departures];
-	return [departuresA isEqualToSet:departuresB];
-}
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"Title: %@ - Stop: %@ - Departures: %ld", self.title, self.stop.title, (unsigned long)self.departures.count];
