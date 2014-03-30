@@ -28,9 +28,9 @@
 		A34A1951189EB768002EEF2B /* LJSYourNextBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */; };
 		A34A1957189EBF86002EEF2B /* 37010071.html in Resources */ = {isa = PBXBuildFile; fileRef = A34A1956189EBF86002EEF2B /* 37010071.html */; };
 		A34B1C1918CE49F800184A12 /* 37010115.html in Resources */ = {isa = PBXBuildFile; fileRef = A34B1C1818CE49F800184A12 /* 37010115.html */; };
+		A37DE9A818E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = A37DE9A718E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m */; };
+		A37DE9AE18E874A800795500 /* NSDate+LJSCountDownString.m in Sources */ = {isa = PBXBuildFile; fileRef = A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */; };
 		A388CE5D18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A388CE5C18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m */; };
-		A388CE6018E0EE6900B28A6C /* NSDate+LJSCountDownString.m in Sources */ = {isa = PBXBuildFile; fileRef = A388CE5F18E0EE6900B28A6C /* NSDate+LJSCountDownString.m */; };
-		A388CE6318E31BF700B28A6C /* LJSYourNextBusClient+LJSSaveToDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = A388CE6218E31BF700B28A6C /* LJSYourNextBusClient+LJSSaveToDisk.m */; };
 		A388CE6718E46C9000B28A6C /* 37010200-original.html in Resources */ = {isa = PBXBuildFile; fileRef = A388CE6418E46C9000B28A6C /* 37010200-original.html */; };
 		A388CE6818E46C9000B28A6C /* 37010200-time-changes.html in Resources */ = {isa = PBXBuildFile; fileRef = A388CE6518E46C9000B28A6C /* 37010200-time-changes.html */; };
 		A388CE6918E46C9000B28A6C /* 37010200-departure-changes.html in Resources */ = {isa = PBXBuildFile; fileRef = A388CE6618E46C9000B28A6C /* 37010200-departure-changes.html */; };
@@ -88,11 +88,14 @@
 		A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSYourNextBusTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = 37010071.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		A34B1C1818CE49F800184A12 /* 37010115.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = 37010115.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
+		A37DE9A618E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSYourNextBusClient+LJSSaveToDisk.h"; path = "../../Classes/LJSYourNextBusClient+LJSSaveToDisk.h"; sourceTree = "<group>"; };
+		A37DE9A718E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "LJSYourNextBusClient+LJSSaveToDisk.m"; path = "../../Classes/LJSYourNextBusClient+LJSSaveToDisk.m"; sourceTree = "<group>"; };
+		A37DE9A918E8749800795500 /* LJSDeparture+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSDeparture+LJSSetters.h"; path = "../../Classes/LJSDeparture+LJSSetters.h"; sourceTree = "<group>"; };
+		A37DE9AA18E8749800795500 /* LJSService+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSService+LJSSetters.h"; path = "../../Classes/LJSService+LJSSetters.h"; sourceTree = "<group>"; };
+		A37DE9AB18E8749800795500 /* LJSStop+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSStop+LJSSetters.h"; path = "../../Classes/LJSStop+LJSSetters.h"; sourceTree = "<group>"; };
+		A37DE9AC18E874A800795500 /* NSDate+LJSCountDownString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+LJSCountDownString.h"; path = "../../Classes/NSDate+LJSCountDownString.h"; sourceTree = "<group>"; };
+		A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+LJSCountDownString.m"; path = "../../Classes/NSDate+LJSCountDownString.m"; sourceTree = "<group>"; };
 		A388CE5C18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSNSDateCountDownStringTests.m; sourceTree = "<group>"; };
-		A388CE5E18E0EE6900B28A6C /* NSDate+LJSCountDownString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LJSCountDownString.h"; sourceTree = "<group>"; };
-		A388CE5F18E0EE6900B28A6C /* NSDate+LJSCountDownString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LJSCountDownString.m"; sourceTree = "<group>"; };
-		A388CE6118E31BF700B28A6C /* LJSYourNextBusClient+LJSSaveToDisk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSYourNextBusClient+LJSSaveToDisk.h"; sourceTree = "<group>"; };
-		A388CE6218E31BF700B28A6C /* LJSYourNextBusClient+LJSSaveToDisk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LJSYourNextBusClient+LJSSaveToDisk.m"; sourceTree = "<group>"; };
 		A388CE6418E46C9000B28A6C /* 37010200-original.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "37010200-original.html"; sourceTree = "<group>"; };
 		A388CE6518E46C9000B28A6C /* 37010200-time-changes.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "37010200-time-changes.html"; sourceTree = "<group>"; };
 		A388CE6618E46C9000B28A6C /* 37010200-departure-changes.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "37010200-departure-changes.html"; sourceTree = "<group>"; };
@@ -115,9 +118,6 @@
 		A3D5BEF518DE6E3700622915 /* messages.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = messages.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		A3D5BEF718E0A3AE00622915 /* LJSDepatureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSDepatureCell.h; sourceTree = "<group>"; };
 		A3D5BEF818E0A3AE00622915 /* LJSDepatureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSDepatureCell.m; sourceTree = "<group>"; };
-		A3FE172118DE106100B8E47E /* LJSStop+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSStop+LJSSetters.h"; sourceTree = SOURCE_ROOT; };
-		A3FE172418DE10AD00B8E47E /* LJSService+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "LJSService+LJSSetters.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		A3FE172718DE111C00B8E47E /* LJSDeparture+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "LJSDeparture+LJSSetters.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		A3FE172A18DE44C900B8E47E /* LJSLiveDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSLiveDataViewController.h; sourceTree = "<group>"; };
 		A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSLiveDataViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A3FE172D18DE4EAC00B8E47E /* invalid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = invalid.html; sourceTree = "<group>"; };
@@ -281,19 +281,19 @@
 		A3B9F82D18E0D5EA00CCACC1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A388CE6118E31BF700B28A6C /* LJSYourNextBusClient+LJSSaveToDisk.h */,
-				A388CE6218E31BF700B28A6C /* LJSYourNextBusClient+LJSSaveToDisk.m */,
+				A37DE9A618E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.h */,
+				A37DE9A718E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m */,
 				A3BD2755189EF72200540C5F /* LJSHTMLDownloader.h */,
 				A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */,
 				A3BD2759189EF72200540C5F /* LJSScraper.h */,
 				A3BD275A189EF72200540C5F /* LJSScraper.m */,
 				A337FDA318C24F4B002FB29F /* LJSDepartureDateParser.h */,
 				A337FDA418C24F4B002FB29F /* LJSDepartureDateParser.m */,
-				A3FE172118DE106100B8E47E /* LJSStop+LJSSetters.h */,
-				A3FE172418DE10AD00B8E47E /* LJSService+LJSSetters.h */,
-				A3FE172718DE111C00B8E47E /* LJSDeparture+LJSSetters.h */,
-				A388CE5E18E0EE6900B28A6C /* NSDate+LJSCountDownString.h */,
-				A388CE5F18E0EE6900B28A6C /* NSDate+LJSCountDownString.m */,
+				A37DE9A918E8749800795500 /* LJSDeparture+LJSSetters.h */,
+				A37DE9AA18E8749800795500 /* LJSService+LJSSetters.h */,
+				A37DE9AB18E8749800795500 /* LJSStop+LJSSetters.h */,
+				A37DE9AC18E874A800795500 /* NSDate+LJSCountDownString.h */,
+				A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -490,14 +490,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A31CBF6F189988D000747F46 /* LJSAppDelegate.m in Sources */,
+				A37DE9AE18E874A800795500 /* NSDate+LJSCountDownString.m in Sources */,
 				A3BD2763189EF72200540C5F /* LJSService.m in Sources */,
 				A31CBF78189988D000747F46 /* LJSNaPTANEntryViewController.m in Sources */,
 				A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */,
 				A3BD2762189EF72200540C5F /* LJSScraper.m in Sources */,
 				A337FDA518C24F4B002FB29F /* LJSDepartureDateParser.m in Sources */,
 				A31CBF6B189988D000747F46 /* main.m in Sources */,
-				A388CE6018E0EE6900B28A6C /* NSDate+LJSCountDownString.m in Sources */,
-				A388CE6318E31BF700B28A6C /* LJSYourNextBusClient+LJSSaveToDisk.m in Sources */,
+				A37DE9A818E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m in Sources */,
 				A3FE172C18DE44C900B8E47E /* LJSLiveDataViewController.m in Sources */,
 				A3BD275F189EF72200540C5F /* LJSDeparture.m in Sources */,
 				A3BD2764189EF72200540C5F /* LJSStop.m in Sources */,

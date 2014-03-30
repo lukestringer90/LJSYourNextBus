@@ -71,7 +71,9 @@
 }
 
 - (NSArray *)sortedDepartures {
-	return [[self.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"];
+	NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate" ascending:YES]];
+
+	return [[[self.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"] sortedArrayUsingDescriptors:sortDescriptors];
 }
 
 #pragma mark - Private

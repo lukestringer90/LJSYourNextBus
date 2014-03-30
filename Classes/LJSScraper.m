@@ -156,8 +156,6 @@
 		else {
 			NSArray *sortDescriptors = @[
 										 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
-																	   ascending:YES],
-										 [NSSortDescriptor sortDescriptorWithKey:@"destination"
 																	   ascending:YES]];
 			service.departures = [[service.departures arrayByAddingObject:departure] sortedArrayUsingDescriptors:sortDescriptors];
 		}
