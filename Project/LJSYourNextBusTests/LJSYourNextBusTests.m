@@ -88,15 +88,6 @@
 	return [stop.services sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
 
-- (NSArray *)departuresForStop:(LJSStop *)stop {
-	NSArray *sortDescriptors = @[
-								 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
-															   ascending:YES],
-								 [NSSortDescriptor sortDescriptorWithKey:@"destination"
-															   ascending:YES]];
-	return [[[stop.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"] sortedArrayUsingDescriptors:sortDescriptors];
-}
-
 - (NSArray *)sortedDeparturesForService:(LJSService *)service {
 	NSArray *sortDescriptors = @[
 								 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
@@ -261,7 +252,7 @@
 	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
-		NSArray *allDepartures = [self departuresForStop:stop];
+		NSArray *allDepartures = [stop sortedDepartures];
 		assertThat(allDepartures, hasCountOf(16));
 	}];
 	
@@ -495,7 +486,7 @@
 			assertThat(originalStop.services, isNot(equalTo(refreshedStop.services))); // different services
 			assertThat(refreshedStop.liveDate, equalTo([self augmentDate:currentDateTime hours:14 minutes:23]));
 			
-			NSArray *allDepartures = [self departuresForStop:refreshedStop];
+			NSArray *allDepartures = [refreshedStop sortedDepartures];
 			assertThat(allDepartures, hasCountOf(21)); // same number of departures
 			
 			/**
@@ -544,7 +535,7 @@
 			assertThat(originalStop.services, isNot(equalTo(refreshedStop.services))); // different services
 			assertThat(refreshedStop.liveDate, equalTo([self augmentDate:currentDateTime hours:14 minutes:25]));
 			
-			NSArray *allDepartures = [self departuresForStop:refreshedStop];
+			NSArray *allDepartures = [refreshedStop sortedDepartures];
 			assertThat(allDepartures, hasCountOf(18)); // different number of departures
 			
 			/**

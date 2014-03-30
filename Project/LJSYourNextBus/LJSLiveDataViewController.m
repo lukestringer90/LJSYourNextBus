@@ -59,7 +59,7 @@
 		if (!error) {
 			self.stop = stop;
 			self.title = self.stop.title;
-			self.allDepartures = [[stop.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"];
+			self.allDepartures = [stop sortedDepartures];
 			[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 		}
 		else {

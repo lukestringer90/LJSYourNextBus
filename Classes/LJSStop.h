@@ -26,6 +26,9 @@
 @property (nonatomic, copy, readonly) NSArray *services;
 
 - (BOOL)isEqualToStop:(LJSStop *)stop;
+
+- (NSArray *)sortedDepartures;
+
 - (NSDictionary *)JSONRepresentation;
 
 @end

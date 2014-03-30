@@ -210,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				A34A1954189EBF5D002EEF2B /* Tests */,
+				A37DE9A518E86A7B00795500 /* Mocks */,
 				A34A1955189EBF62002EEF2B /* Data */,
 				A31CBF87189988D000747F46 /* Supporting Files */,
 			);
@@ -234,8 +235,6 @@
 				A3BD276F189FF46500540C5F /* LJSStopTests.m */,
 				A337FDA818C3BD05002FB29F /* LJSServiceTests.m */,
 				A337FDAA18C3C7C1002FB29F /* LJSDepartureTests.m */,
-				A3B37FBD18E4A16E00B6D445 /* LJSMockHTMLDownloader.h */,
-				A3B37FBE18E4A16E00B6D445 /* LJSMockHTMLDownloader.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -253,6 +252,15 @@
 				A3D5BEF518DE6E3700622915 /* messages.html */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		A37DE9A518E86A7B00795500 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A3B37FBD18E4A16E00B6D445 /* LJSMockHTMLDownloader.h */,
+				A3B37FBE18E4A16E00B6D445 /* LJSMockHTMLDownloader.m */,
+			);
+			name = Mocks;
 			sourceTree = "<group>";
 		};
 		A3B9F82C18E0D5E100CCACC1 /* Public */ = {

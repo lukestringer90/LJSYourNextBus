@@ -22,6 +22,8 @@
 
 @implementation LJSStop
 
+#pragma mark - Public
+
 - (instancetype)copyWithZone:(NSZone *)zone {
 	LJSStop *copy = [[LJSStop allocWithZone:zone] init];
 	copy.NaPTANCode = self.NaPTANCode;
@@ -49,13 +51,6 @@
     return [self isEqualToStop:(LJSStop *)object];
 }
 
-- (BOOL)allServicesEqualWithStop:(LJSStop *)stop {
-	NSSet *servicesA = [NSSet setWithArray:self.services];
-	NSSet *servicesB = [NSSet setWithArray:stop.services];
-	return [servicesA isEqualToSet:servicesB];
-}
-
-
 - (NSString *)description {
 	return [NSString stringWithFormat:@"Title: %@ - NaPTAN Code: %@ - Live Date : %@ - Services: %ld", self.title, self.NaPTANCode, self.liveDate, (unsigned long)self.services.count];
 }
@@ -74,6 +69,19 @@
 			 @"services" : servicesJSON
 			 };
 }
+
+- (NSArray *)sortedDepartures {
+	return [[self.services valueForKeyPath:@"departures"] valueForKeyPath:@"@unionOfArrays.self"];
+}
+
+#pragma mark - Private
+
+- (BOOL)allServicesEqualWithStop:(LJSStop *)stop {
+	NSSet *servicesA = [NSSet setWithArray:self.services];
+	NSSet *servicesB = [NSSet setWithArray:stop.services];
+	return [servicesA isEqualToSet:servicesB];
+}
+
 
 - (NSDateFormatter *)dateFormatter {
 	if (!_dateFormatter) {
