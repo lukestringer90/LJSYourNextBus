@@ -37,7 +37,9 @@
 #pragma mark - Public
 
 - (BOOL)htmlIsValid:(NSString *)html {
-	return [html rangeOfString:@"is invalid"].location == NSNotFound;
+	BOOL invalidFound = [html rangeOfString:@"is invalid"].location != NSNotFound;
+	BOOL listFound = [html rangeOfString:@"The following list of stops matches the stop that you requested."].location != NSNotFound;
+	return !invalidFound && !listFound;
 }
 - (BOOL)htmlContainServices:(NSString *)html {
 	return [html rangeOfString:@"There are no departures in the next hour from this stop."].location == NSNotFound;

@@ -137,6 +137,23 @@
 	AGWW_WAIT_WHILE(!self.done, 0.5);
 }
 
+- (void)testScrapeFailureWithStopSuggestionsHTML {
+    NSString *invalidHTML = [self loadHTMLFileNamed:@"555"];
+	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"555"];
+	[self.yourNextBusClient liveDataForNaPTANCode:@"555" completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+		self.done = YES;
+		
+		assertThat(stop, equalTo(nil));
+		assertThat(error.domain, equalTo(LJSYourNextBusErrorDomain));
+		assertThatInteger(error.code, equalToInteger(LJSYourNextBusErrorScrapeFailure));
+		assertThat(error.userInfo[NSLocalizedDescriptionKey], equalTo(@"Scraping the YourNextBus HTML failed for the NaPTANCode 555."));
+		assertThat(error.userInfo[NSLocalizedFailureReasonErrorKey], equalTo(@"The HTML did not contain any live data. This could be due to a problems with the YourNextBus service, or an invalid NaPTAN code was specified."));
+		assertThat(error.userInfo[NSLocalizedRecoverySuggestionErrorKey], equalTo(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire."));
+	}];
+	
+	AGWW_WAIT_WHILE(!self.done, 0.5);
+}
+
 - (void)testNoDataAvaiable {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"no_depatures"];
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"no_depatures"];
