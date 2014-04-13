@@ -79,7 +79,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber {
     if (stopNumber) {
-        return [NSURL URLWithString:[NSString stringWithFormat:@"http://tsy.acislive.com/pip/stop.asp?naptan=%@&textonly=1&pda=1", stopNumber]];
+        return [NSURL URLWithString:[NSString stringWithFormat:@"http://tsy.acislive.com/web/stop_reference.asp?areacode=&naptan=%@&textonly=1", stopNumber]];
     }
     return nil;
 }
