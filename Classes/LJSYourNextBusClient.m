@@ -72,8 +72,8 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 							   NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire.", nil),
 							   };
 	return [NSError errorWithDomain:LJSYourNextBusErrorDomain
-										 code:LJSYourNextBusErrorScrapeFailure
-									 userInfo:userInfo];
+							   code:LJSYourNextBusErrorScrapeFailure
+						   userInfo:userInfo];
 }
 
 
@@ -95,14 +95,13 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 }
 
 - (void)safeCallCompletionBlockWithStop:(LJSStop *)stop messages:(NSArray *)messages error:(NSError *)error {
-    if (self.completion) {
-		
-		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+		if (self.completion) {
 			/**
 			 *  Only nil out the completion block if it is the same block
 			 *  as the one that was set before it was called.
 			 *  If the completion block calls liveDataAtURL:completion:
-			 *  the another completion block will be set before we have 
+			 *  the another completion block will be set before we have
 			 *  change to nil it out. If we nil out the completion block
 			 *  in this case then the second liveDataAtURL:completion: call
 			 *  will not get a completion block call back.
@@ -112,7 +111,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 			if (self.completion == thisCompletion) {
 				self.completion = nil;
 			}
-		}];
-    }
+		}
+	}];
 }
 @end
