@@ -35,29 +35,33 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
     return self;
 }
 
-- (void)liveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion {
+- (void)getLiveDataForNaPTANCode:(NSString *)NaPTANCode {
 	[self.backgroundQueue addOperationWithBlock:^{
 		self.NaPTANCode = NaPTANCode;
 		NSURL *url = [self urlForNaPTANCode:NaPTANCode];
-		[self liveDataAtURL:url completion:completion];
+		[self liveDataAtURL:url];
 	}];
 }
 
-- (void)refreshStop:(LJSStop *)stop completion:(LJSLiveDataCompletion)completion {
-	[self liveDataForNaPTANCode:stop.NaPTANCode completion:completion];
+- (void)getLiveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion {
+    self.completion = completion;
+	[self getLiveDataForNaPTANCode:NaPTANCode];
 }
 
-- (void)liveDataAtURL:(NSURL *)url completion:(LJSLiveDataCompletion)completion {
-    self.completion = completion;
+- (void)refreshStop:(LJSStop *)stop completion:(LJSLiveDataCompletion)completion {
+	[self getLiveDataForNaPTANCode:stop.NaPTANCode completion:completion];
+}
+
+- (void)liveDataAtURL:(NSURL *)url {
     
     NSError *error = nil;
     NSString *html = [self.htmlDownloader downloadHTMLFromURL:url error:&error];
     
     if (error) {
-		[self safeCallCompletionBlockWithStop:nil messages:nil error:error];
+		[self handleFinishWithStop:nil messages:nil error:error];
     }
 	else if (![self.scraper htmlIsValid:html]) {
-		[self safeCallCompletionBlockWithStop:nil messages:nil error:[self invalidHTMLError]];
+		[self handleFinishWithStop:nil messages:nil error:[self invalidHTMLError]];
 	}
 	else {
 		NSArray *messages = [self.scraper scrapeMessagesFromHTML:html];
@@ -86,32 +90,48 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
 - (void)scrapeHTML:(NSString *)html messages:(NSArray *)messages{
     LJSStop *stop = [self.scraper scrapeStopDataFromHTML:html];
-    [self safeCallCompletionBlockWithStop:stop messages:messages error:nil];
+	[self handleFinishWithStop:stop messages:messages error:nil];
 	
 	if (self.saveDataToDisk) {
 		[self saveToDisk:html stop:stop];
 	}
+}
+
+- (void)handleFinishWithStop:(LJSStop *)stop messages:(NSArray *)messages error:(NSError *)error {
 	
+	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+		
+		// Call delegate first
+		if (error && [self.delegate respondsToSelector:@selector(client:failedWithError:)]) {
+			[self.delegate client:self failedWithError:error];
+		}
+		else if ([self.delegate respondsToSelector:@selector(client:returnedStop:messages:)]) {
+			[self.delegate client:self returnedStop:stop messages:messages];
+		}
+		
+		// Then completion block
+		[self safeCallCompletionBlockWithStop:stop messages:messages error:error];
+		
+	}];
 }
 
 - (void)safeCallCompletionBlockWithStop:(LJSStop *)stop messages:(NSArray *)messages error:(NSError *)error {
-	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-		if (self.completion) {
-			/**
-			 *  Only nil out the completion block if it is the same block
-			 *  as the one that was set before it was called.
-			 *  If the completion block calls liveDataAtURL:completion:
-			 *  the another completion block will be set before we have
-			 *  change to nil it out. If we nil out the completion block
-			 *  in this case then the second liveDataAtURL:completion: call
-			 *  will not get a completion block call back.
-			 */
-			LJSLiveDataCompletion thisCompletion = self.completion;
-			self.completion(stop, messages, error);
-			if (self.completion == thisCompletion) {
-				self.completion = nil;
-			}
+	if (self.completion) {
+		/**
+		 *  Only nil out the completion block if it is the same block
+		 *  as the one that was set before it was called.
+		 *  If the completion block calls liveDataAtURL:completion:
+		 *  the another completion block will be set before we have
+		 *  change to nil it out. If we nil out the completion block
+		 *  in this case then the second liveDataAtURL:completion: call
+		 *  will not get a completion block call back.
+		 */
+		LJSLiveDataCompletion thisCompletion = self.completion;
+		self.completion(stop, messages, error);
+		if (self.completion == thisCompletion) {
+			self.completion = nil;
 		}
-	}];
+	}
+	
 }
 @end

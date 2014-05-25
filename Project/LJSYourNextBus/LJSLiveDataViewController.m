@@ -13,7 +13,7 @@
 #import "LJSDeparture.h"
 #import "LJSDepatureCell.h"
 
-@interface LJSLiveDataViewController ()
+@interface LJSLiveDataViewController () <LJSYourNextBusClientDelegate>
 @property (nonatomic, copy, readwrite) NSString *NaPTANCode;
 @property (nonatomic, strong) LJSStop *stop;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
@@ -30,6 +30,7 @@
 		self.NaPTANCode = NaPTANCode;
 		
 		self.yourNextBusClient = [LJSYourNextBusClient new];
+		self.yourNextBusClient.delegate = self;
 		self.yourNextBusClient.saveDataToDisk = YES;
 		
 		self.dateFormatter = [[NSDateFormatter alloc] init];
@@ -52,26 +53,7 @@
 
 - (void)getLiveData {
 	
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
-		
-		[self.refreshControl endRefreshing];
-		
-		if (!error) {
-			self.stop = stop;
-			self.title = self.stop.title;
-			self.allDepartures = [stop sortedDepartures];
-			[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-		}
-		else {
-			UIAlertView *alert = [[UIAlertView alloc]
-								  initWithTitle:@"Error"
-								  message:[error localizedDescription]
-								  delegate:nil
-								  cancelButtonTitle:@"Okay"
-								  otherButtonTitles: nil];
-			[alert show];
-		}
-	}];
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
 	
 }
@@ -113,6 +95,26 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	return self.allDepartures != nil ? [NSString stringWithFormat:@"Departures For %@", [self.dateFormatter stringFromDate:self.stop.liveDate]] : nil;
+}
+
+#pragma mark - LJSYourNextBusClientDelegate
+
+- (void)client:(LJSYourNextBusClient *)client returnedStop:(LJSStop *)stop messages:(NSArray *)messages {
+	[self.refreshControl endRefreshing];
+	self.stop = stop;
+	self.title = self.stop.title;
+	self.allDepartures = [stop sortedDepartures];
+	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)client:(LJSYourNextBusClient *)client failedWithError:(NSError *)error {
+	UIAlertView *alert = [[UIAlertView alloc]
+						  initWithTitle:@"Error"
+						  message:[error localizedDescription]
+						  delegate:nil
+						  cancelButtonTitle:@"Okay"
+						  otherButtonTitles: nil];
+	[alert show];
 }
 
 

@@ -27,17 +27,24 @@ typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
 	LJSYourNextBusErrorDataUnavaiable
 };
 
-@class LJSStop;
+@class LJSYourNextBusClient, LJSStop;
+@protocol LJSYourNextBusClientDelegate <NSObject>
+
+- (void)client:(LJSYourNextBusClient *)client returnedStop:(LJSStop *)stop messages:(NSArray *)messages;
+- (void)client:(LJSYourNextBusClient *)client failedWithError:(NSError *)error;
+
+@end
 
 @interface LJSYourNextBusClient : NSObject
 
 @property (nonatomic, assign) BOOL saveDataToDisk;
+@property (nonatomic, weak) id<LJSYourNextBusClientDelegate> delegate;
 
 typedef void (^LJSLiveDataCompletion)(LJSStop *stop, NSArray *messages, NSError *error);
 
-- (void)liveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion;
+- (void)getLiveDataForNaPTANCode:(NSString *)NaPTANCode;
+- (void)getLiveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion;
 
-- (void)liveDataAtURL:(NSURL *)url completion:(LJSLiveDataCompletion)completion;
 - (void)refreshStop:(LJSStop *)stop completion:(LJSLiveDataCompletion)completion;
 
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber;

@@ -123,7 +123,7 @@
 - (void)testScrapeFailure {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"invalid"];
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"invalid"];
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		assertThat(stop, equalTo(nil));
@@ -140,7 +140,7 @@
 - (void)testScrapeFailureWithStopSuggestionsHTML {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"555"];
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"555"];
-	[self.yourNextBusClient liveDataForNaPTANCode:@"555" completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:@"555" completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		assertThat(stop, equalTo(nil));
@@ -157,7 +157,7 @@
 - (void)testNoDataAvaiable {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"no_depatures"];
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"no_depatures"];
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		assertThat(error, equalTo(nil));
@@ -172,7 +172,7 @@
 - (void)testMessages {
     NSString *invalidHTML = [self loadHTMLFileNamed:@"messages"];
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"messages"];
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		assertThat(messages, hasCountOf(3));
@@ -185,7 +185,7 @@
 }
 
 - (void)testNoMessages {
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		assertThat(messages, equalTo(nil));
@@ -197,7 +197,7 @@
 #pragma mark - LJSStop
 
 - (void)testStopDetails {
-    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+    [self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		assertThat(stop.NaPTANCode, equalTo(@"37010071"));
@@ -212,7 +212,7 @@
 	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395651600];
 	self.yourNextBusClient.scraper = [self stubCurrentDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
 	
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		NSDate *correctLiveDate = [self augmentDate:currentDateTime hours:10 minutes:46];
@@ -223,7 +223,7 @@
 }
 
 - (void)testServicesCount {
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		NSArray *services = stop.services;
@@ -236,7 +236,7 @@
 #pragma mark - LJSService
 
 - (void)testServicesDetails {
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		NSArray *services = [self sortedServicesForStop:stop];
@@ -266,7 +266,7 @@
 }
 
 - (void)testDeparturesCount {
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		NSArray *allDepartures = [stop sortedDepartures];
@@ -282,7 +282,7 @@
 	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395651600];
 	self.yourNextBusClient.scraper = [self stubCurrentDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
 	
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		NSArray *services = [self sortedServicesForStop:stop];
@@ -361,7 +361,7 @@
 	NSDate *liveDate = [NSDate dateWithTimeIntervalSince1970:1395658560];
 	self.yourNextBusClient.scraper = [self stubLiveDate:liveDate ofScraper:self.yourNextBusClient.scraper];
 	
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		NSArray *services = [self sortedServicesForStop:stop];
@@ -418,7 +418,7 @@
 #pragma mark - Later URL
 
 - (void)testLaterURL {
-    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+    [self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		assertThat(stop.laterURL.absoluteString, equalTo(@"/pip/stop.asp?naptan=37010071&pscode=218&dest=&offset=1&textonly=1"));
@@ -431,7 +431,7 @@
 	NSString *HTML = [self loadHTMLFileNamed:@"37010115"];
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:HTML ID:@"37010115"];
 	
-    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+    [self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		assertThat(stop.earlierURL.absoluteString, equalTo(@"/pip/stop.asp?naptan=37010115&pscode=120&dest=&offset=0&textonly=1"));
@@ -441,7 +441,7 @@
 }
 
 - (void)testNilEarlierURL {
-    [self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
+    [self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *stop, NSArray *messages, NSError *error) {
 		self.done = YES;
 		
 		assertThat(stop.earlierURL, equalTo(nil));
@@ -460,7 +460,7 @@
 	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395651600];
 	self.yourNextBusClient.scraper = [self stubCurrentDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
 	
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *originalStop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *originalStop, NSArray *messages, NSError *error) {
 		
 		[self.yourNextBusClient refreshStop:originalStop completion:^(LJSStop *refreshedStop, NSArray *messages, NSError *error) {
 			self.done = YES;
@@ -486,7 +486,7 @@
 	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395651600];
 	self.yourNextBusClient.scraper = [self stubCurrentDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
 	
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *originalStop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *originalStop, NSArray *messages, NSError *error) {
 		
 		assertThat(originalStop, notNilValue());
 		
@@ -535,7 +535,7 @@
 	NSDate *currentDateTime = [NSDate dateWithTimeIntervalSince1970:1395651600];
 	self.yourNextBusClient.scraper = [self stubCurrentDate:currentDateTime ofScraper:self.yourNextBusClient.scraper];
 	
-	[self.yourNextBusClient liveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *originalStop, NSArray *messages, NSError *error) {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode completion:^(LJSStop *originalStop, NSArray *messages, NSError *error) {
 		
 		assertThat(originalStop, notNilValue());
 		
