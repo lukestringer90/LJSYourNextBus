@@ -40,12 +40,7 @@ typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
 @property (nonatomic, assign) BOOL saveDataToDisk;
 @property (nonatomic, weak) id<LJSYourNextBusClientDelegate> delegate;
 
-typedef void (^LJSLiveDataCompletion)(LJSStop *stop, NSArray *messages, NSError *error);
-
 - (void)getLiveDataForNaPTANCode:(NSString *)NaPTANCode;
-- (void)getLiveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion;
-
-- (void)refreshStop:(LJSStop *)stop completion:(LJSLiveDataCompletion)completion;
 
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber;
 

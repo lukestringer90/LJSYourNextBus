@@ -15,7 +15,6 @@
 NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
 @interface LJSYourNextBusClient ()
-@property (nonatomic, copy) LJSLiveDataCompletion completion;
 @property (nonatomic, copy) NSString *NaPTANCode;
 @property (nonatomic, strong) LJSScraper *scraper;
 @property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
@@ -43,14 +42,6 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 	}];
 }
 
-- (void)getLiveDataForNaPTANCode:(NSString *)NaPTANCode completion:(LJSLiveDataCompletion)completion {
-    self.completion = completion;
-	[self getLiveDataForNaPTANCode:NaPTANCode];
-}
-
-- (void)refreshStop:(LJSStop *)stop completion:(LJSLiveDataCompletion)completion {
-	[self getLiveDataForNaPTANCode:stop.NaPTANCode completion:completion];
-}
 
 - (void)liveDataAtURL:(NSURL *)url {
     
@@ -101,7 +92,6 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 	
 	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 		
-		// Call delegate first
 		if (error && [self.delegate respondsToSelector:@selector(client:failedWithError:)]) {
 			[self.delegate client:self failedWithError:error];
 		}
@@ -109,29 +99,6 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 			[self.delegate client:self returnedStop:stop messages:messages];
 		}
 		
-		// Then completion block
-		[self safeCallCompletionBlockWithStop:stop messages:messages error:error];
-		
 	}];
-}
-
-- (void)safeCallCompletionBlockWithStop:(LJSStop *)stop messages:(NSArray *)messages error:(NSError *)error {
-	if (self.completion) {
-		/**
-		 *  Only nil out the completion block if it is the same block
-		 *  as the one that was set before it was called.
-		 *  If the completion block calls liveDataAtURL:completion:
-		 *  the another completion block will be set before we have
-		 *  change to nil it out. If we nil out the completion block
-		 *  in this case then the second liveDataAtURL:completion: call
-		 *  will not get a completion block call back.
-		 */
-		LJSLiveDataCompletion thisCompletion = self.completion;
-		self.completion(stop, messages, error);
-		if (self.completion == thisCompletion) {
-			self.completion = nil;
-		}
-	}
-	
 }
 @end
