@@ -39,10 +39,16 @@
 @property (nonatomic, strong) LJSYourNextBusClient *yourNextBusClient;
 @property (nonatomic, strong) NSCalendar *calendar;
 @property (nonatomic, strong) NSString *NaPTANCode;
-@property (nonatomic, assign) BOOL delegateCalled;
+@property (nonatomic, strong) NSString *stubbedHTML;
+
+@property (nonatomic, assign) BOOL delegateCalledForWillScrape;
+@property (nonatomic, assign) BOOL delegateCalledForReturnedStop;
+@property (nonatomic, assign) BOOL delegateCalledForError;
 @property (nonatomic, strong) LJSStop *returnedStop;
 @property (nonatomic, strong) NSArray *messages;
 @property (nonatomic, strong) NSError *error;
+@property (nonatomic, strong) NSString *returnedHTML;
+@property (nonatomic, strong) NSString *returnedNaPTANCode;
 @end
 
 
@@ -50,15 +56,21 @@
 
 #pragma mark - LJSYourNextBusClientDelegate
 
+- (void)client:(LJSYourNextBusClient *)client willScrapeHTML:(NSString *)HTML NaPTANCode:(NSString *)NaPTANCode {
+	self.returnedHTML = HTML;
+	self.returnedNaPTANCode = NaPTANCode;
+	self.delegateCalledForWillScrape = YES;
+}
+
 - (void)client:(LJSYourNextBusClient *)client returnedStop:(LJSStop *)stop messages:(NSArray *)messages {
 	self.returnedStop = stop;
 	self.messages = messages;
-	self.delegateCalled = YES;
+	self.delegateCalledForReturnedStop = YES;
 }
 
 - (void)client:(LJSYourNextBusClient *)client failedWithError:(NSError *)error {
 	self.error = error;
-	self.delegateCalled = YES;
+	self.delegateCalledForError = YES;
 }
 
 #pragma mark - setUp / tearDown
@@ -69,15 +81,17 @@
 	
 	self.yourNextBusClient = [[LJSYourNextBusClient alloc] init];
 	self.yourNextBusClient.delegate = self;
-	NSString *HTML = [self loadHTMLFileNamed:@"37010071"];
-	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:HTML ID:@"37010071"];
+	self.stubbedHTML = [self loadHTMLFileNamed:@"37010071"];
+	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:self.stubbedHTML ID:@"37010071"];
 	
 	self.NaPTANCode = @"37010071";
 	
 	self.returnedStop = nil;
 	self.messages = nil;
 	self.error = nil;
-	self.delegateCalled = NO;
+	self.delegateCalledForWillScrape = NO;
+	self.delegateCalledForReturnedStop = NO;
+	self.delegateCalledForError = NO;
 }
 
 #pragma mark - Helpers
@@ -145,7 +159,7 @@
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"invalid"];
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForError, 0.5);
 	
 	assertThat(self.returnedStop, equalTo(nil));
 	assertThat(self.error.domain, equalTo(LJSYourNextBusErrorDomain));
@@ -161,7 +175,7 @@
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"555"];
 	[self.yourNextBusClient getLiveDataForNaPTANCode:@"555"];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForError, 0.5);
 	
 	assertThat(self.returnedStop, equalTo(nil));
 	assertThat(self.error.domain, equalTo(LJSYourNextBusErrorDomain));
@@ -177,7 +191,7 @@
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"no_depatures"];
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	assertThat(self.error, equalTo(nil));
 	assertThat(self.returnedStop.services, equalTo(nil));
@@ -190,7 +204,7 @@
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"messages"];
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	
 	assertThat(self.messages, hasCountOf(3));
@@ -202,9 +216,20 @@
 - (void)testNoMessages {
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	assertThat(self.messages, equalTo(nil));
+}
+
+#pragma mark - Started scraping HTML delegate
+
+- (void)testCallsDelegateWhenScrapingHasStarted {
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
+	
+	AGWW_WAIT_WHILE(!self.delegateCalledForWillScrape, 0.5);
+	
+	assertThat(self.returnedHTML, equalTo(self.stubbedHTML));
+	assertThat(self.returnedNaPTANCode, equalTo(self.NaPTANCode));
 }
 
 #pragma mark - LJSStop
@@ -212,7 +237,7 @@
 - (void)testStopDetails {
     [self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	assertThat(self.returnedStop.NaPTANCode, equalTo(@"37010071"));
 	assertThat(self.returnedStop.title, equalTo(@"Rotherham Intc"));
@@ -225,7 +250,7 @@
 	
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	NSDate *correctLiveDate = [self augmentDate:currentDateTime hours:10 minutes:46];
 	assertThatInteger([self.returnedStop.liveDate timeIntervalSince1970], equalToInteger([correctLiveDate timeIntervalSince1970]));
@@ -234,7 +259,7 @@
 - (void)testServicesCount {
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	NSArray *services = self.returnedStop.services;
 	assertThat(services, hasCountOf(4));
@@ -245,7 +270,7 @@
 - (void)testServicesDetails {
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	NSArray *services = [self sortedServicesForStop:self.returnedStop];
 	
@@ -273,7 +298,7 @@
 - (void)testDeparturesCount {
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	NSArray *allDepartures = [self.returnedStop sortedDepartures];
 	assertThat(allDepartures, hasCountOf(16));
@@ -289,7 +314,7 @@
 	
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	NSArray *services = [self sortedServicesForStop:self.returnedStop];
 	
@@ -366,7 +391,7 @@
 	
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	NSArray *services = [self sortedServicesForStop:self.returnedStop];
 	
@@ -421,7 +446,7 @@
 - (void)testLaterURL {
     [self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	assertThat(self.returnedStop.laterURL.absoluteString, equalTo(@"/pip/stop.asp?naptan=37010071&pscode=218&dest=&offset=1&textonly=1"));
 }
@@ -432,7 +457,7 @@
 	
     [self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	assertThat(self.returnedStop.earlierURL.absoluteString, equalTo(@"/pip/stop.asp?naptan=37010115&pscode=120&dest=&offset=0&textonly=1"));
 }
@@ -440,7 +465,7 @@
 - (void)testNilEarlierURL {
     [self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalled, 0.5);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	assertThat(self.returnedStop.earlierURL, equalTo(nil));
 }

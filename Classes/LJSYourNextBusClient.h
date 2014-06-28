@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
 @class LJSYourNextBusClient, LJSStop;
 @protocol LJSYourNextBusClientDelegate <NSObject>
 
+- (void)client:(LJSYourNextBusClient *)client willScrapeHTML:(NSString *)HTML NaPTANCode:(NSString *)NaPTANCode;
 - (void)client:(LJSYourNextBusClient *)client returnedStop:(LJSStop *)stop messages:(NSArray *)messages;
 - (void)client:(LJSYourNextBusClient *)client failedWithError:(NSError *)error;
 
