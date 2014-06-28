@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LJSYourNextBus"
-  s.version      = "1.1.0"
+  s.version      = "2.0.0"
   s.summary      = "Native Objective-C interface to South Yorkshire Passenger Transport Executive Live departure information (http://tsy.acislive.com)."
   s.description  = <<-DESC
                     Native Objective-C interface to South Yorkshire Passenger Transport Executive Live departure information
