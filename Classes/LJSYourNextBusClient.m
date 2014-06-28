@@ -55,9 +55,11 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 		[self handleFinishWithStop:nil messages:nil error:[self invalidHTMLError]];
 	}
 	else {
-		if ([self.delegate respondsToSelector:@selector(client:willScrapeHTML:NaPTANCode:)]) {
-			[self.delegate client:self willScrapeHTML:html NaPTANCode:self.NaPTANCode];
-		}
+		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+			if ([self.delegate respondsToSelector:@selector(client:willScrapeHTML:NaPTANCode:)]) {
+				[self.delegate client:self willScrapeHTML:html NaPTANCode:self.NaPTANCode];
+			}
+		}];
 		
 		NSArray *messages = [self.scraper scrapeMessagesFromHTML:html];
 		[self scrapeHTML:html messages:messages];
