@@ -30,6 +30,7 @@
 		A34B1C1918CE49F800184A12 /* 37010115.html in Resources */ = {isa = PBXBuildFile; fileRef = A34B1C1818CE49F800184A12 /* 37010115.html */; };
 		A37DE9A818E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = A37DE9A718E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m */; };
 		A37DE9AE18E874A800795500 /* NSDate+LJSCountDownString.m in Sources */ = {isa = PBXBuildFile; fileRef = A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */; };
+		A388BE5C19686A0F00CF4DA3 /* invalid_2.html in Resources */ = {isa = PBXBuildFile; fileRef = A388BE5B19686A0F00CF4DA3 /* invalid_2.html */; };
 		A388CE5D18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A388CE5C18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m */; };
 		A388CE6718E46C9000B28A6C /* 37010200-original.html in Resources */ = {isa = PBXBuildFile; fileRef = A388CE6418E46C9000B28A6C /* 37010200-original.html */; };
 		A388CE6818E46C9000B28A6C /* 37010200-time-changes.html in Resources */ = {isa = PBXBuildFile; fileRef = A388CE6518E46C9000B28A6C /* 37010200-time-changes.html */; };
@@ -47,7 +48,7 @@
 		A3D5BEF618DE6E3700622915 /* messages.html in Resources */ = {isa = PBXBuildFile; fileRef = A3D5BEF518DE6E3700622915 /* messages.html */; };
 		A3D5BEF918E0A3AE00622915 /* LJSDepatureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D5BEF818E0A3AE00622915 /* LJSDepatureCell.m */; };
 		A3FE172C18DE44C900B8E47E /* LJSLiveDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */; };
-		A3FE172E18DE4EAC00B8E47E /* invalid.html in Resources */ = {isa = PBXBuildFile; fileRef = A3FE172D18DE4EAC00B8E47E /* invalid.html */; };
+		A3FE172E18DE4EAC00B8E47E /* invalid_1.html in Resources */ = {isa = PBXBuildFile; fileRef = A3FE172D18DE4EAC00B8E47E /* invalid_1.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		A37DE9AB18E8749800795500 /* LJSStop+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSStop+LJSSetters.h"; path = "../../Classes/LJSStop+LJSSetters.h"; sourceTree = "<group>"; };
 		A37DE9AC18E874A800795500 /* NSDate+LJSCountDownString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+LJSCountDownString.h"; path = "../../Classes/NSDate+LJSCountDownString.h"; sourceTree = "<group>"; };
 		A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+LJSCountDownString.m"; path = "../../Classes/NSDate+LJSCountDownString.m"; sourceTree = "<group>"; };
+		A388BE5B19686A0F00CF4DA3 /* invalid_2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = invalid_2.html; sourceTree = "<group>"; };
 		A388CE5C18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSNSDateCountDownStringTests.m; sourceTree = "<group>"; };
 		A388CE6418E46C9000B28A6C /* 37010200-original.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "37010200-original.html"; sourceTree = "<group>"; };
 		A388CE6518E46C9000B28A6C /* 37010200-time-changes.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "37010200-time-changes.html"; sourceTree = "<group>"; };
@@ -122,7 +124,7 @@
 		A3D5BEF818E0A3AE00622915 /* LJSDepatureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSDepatureCell.m; sourceTree = "<group>"; };
 		A3FE172A18DE44C900B8E47E /* LJSLiveDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSLiveDataViewController.h; sourceTree = "<group>"; };
 		A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSLiveDataViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		A3FE172D18DE4EAC00B8E47E /* invalid.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = invalid.html; sourceTree = "<group>"; };
+		A3FE172D18DE4EAC00B8E47E /* invalid_1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = invalid_1.html; sourceTree = "<group>"; };
 		D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBusTests.xcconfig"; path = "Pods/Pods-LJSYourNextBusTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,7 +251,8 @@
 				A388CE6618E46C9000B28A6C /* 37010200-departure-changes.html */,
 				A34B1C1818CE49F800184A12 /* 37010115.html */,
 				A34A1956189EBF86002EEF2B /* 37010071.html */,
-				A3FE172D18DE4EAC00B8E47E /* invalid.html */,
+				A3FE172D18DE4EAC00B8E47E /* invalid_1.html */,
+				A388BE5B19686A0F00CF4DA3 /* invalid_2.html */,
 				A3D5BEF318DE5B7600622915 /* no_depatures.html */,
 				A3D5BEF518DE6E3700622915 /* messages.html */,
 				A3A79C7518FB028C0044914B /* 555.html */,
@@ -411,9 +414,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A31CBF8B189988D000747F46 /* InfoPlist.strings in Resources */,
+				A388BE5C19686A0F00CF4DA3 /* invalid_2.html in Resources */,
 				A34B1C1918CE49F800184A12 /* 37010115.html in Resources */,
 				A388CE6918E46C9000B28A6C /* 37010200-departure-changes.html in Resources */,
-				A3FE172E18DE4EAC00B8E47E /* invalid.html in Resources */,
+				A3FE172E18DE4EAC00B8E47E /* invalid_1.html in Resources */,
 				A388CE6718E46C9000B28A6C /* 37010200-original.html in Resources */,
 				A388CE6818E46C9000B28A6C /* 37010200-time-changes.html in Resources */,
 				A3D5BEF418DE5B7600622915 /* no_depatures.html in Resources */,

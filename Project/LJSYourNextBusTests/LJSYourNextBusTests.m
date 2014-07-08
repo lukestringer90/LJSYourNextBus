@@ -154,8 +154,8 @@
 
 #pragma mark - Errors
 
-- (void)testScrapeFailure {
-    NSString *invalidHTML = [self loadHTMLFileNamed:@"invalid"];
+- (void)testScrapeFailure1 {
+    NSString *invalidHTML = [self loadHTMLFileNamed:@"invalid_1"];
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"invalid"];
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
@@ -168,6 +168,22 @@
 	assertThat(self.error.userInfo[NSLocalizedFailureReasonErrorKey], equalTo(@"The HTML did not contain any live data. This could be due to a problems with the YourNextBus service, or an invalid NaPTAN code was specified."));
 	assertThat(self.error.userInfo[NSLocalizedRecoverySuggestionErrorKey], equalTo(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire."));
 
+}
+
+- (void)testScrapeFailure2 {
+    NSString *invalidHTML = [self loadHTMLFileNamed:@"invalid_2"];
+	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"invalid"];
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
+	
+	AGWW_WAIT_WHILE(!self.delegateCalledForError, 0.5);
+	
+	assertThat(self.returnedStop, equalTo(nil));
+	assertThat(self.error.domain, equalTo(LJSYourNextBusErrorDomain));
+	assertThatInteger(self.error.code, equalToInteger(LJSYourNextBusErrorScrapeFailure));
+	assertThat(self.error.userInfo[NSLocalizedDescriptionKey], equalTo(@"Scraping the YourNextBus HTML failed for the NaPTANCode 37010071."));
+	assertThat(self.error.userInfo[NSLocalizedFailureReasonErrorKey], equalTo(@"The HTML did not contain any live data. This could be due to a problems with the YourNextBus service, or an invalid NaPTAN code was specified."));
+	assertThat(self.error.userInfo[NSLocalizedRecoverySuggestionErrorKey], equalTo(@"Try again, making sure the NaPTAN code is valid; an 8 digit number starting with 450 for West Yorkshire or 370 for South Yorkshire."));
+	
 }
 
 - (void)testScrapeFailureWithStopSuggestionsHTML {

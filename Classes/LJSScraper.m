@@ -37,10 +37,11 @@
 #pragma mark - Public
 
 - (BOOL)htmlIsValid:(NSString *)html {
-	BOOL invalidFound = [html rangeOfString:@"is invalid"].location != NSNotFound;
-	BOOL listFound = [html rangeOfString:@"The following list of stops matches the stop that you requested."].location != NSNotFound;
-	return !invalidFound && !listFound;
+	BOOL validTitleFound = [html rangeOfString:@"Departure information for"].location != NSNotFound;
+	BOOL listFound = [html rangeOfString:@"The following list of stops matches the stop that you requested."].location == NSNotFound;
+	return validTitleFound && listFound;
 }
+
 - (BOOL)htmlContainServices:(NSString *)html {
 	return [html rangeOfString:@"There are no departures in the next hour from this stop."].location == NSNotFound;
 }
@@ -211,7 +212,10 @@
 }
 
 - (NSDate *)liveDateFromString:(NSString *)liveTimeString {
-	return [self.dateParser dateFromString:liveTimeString baseDate:[self currentDate]];
+	if (liveTimeString) {
+		return [self.dateParser dateFromString:liveTimeString baseDate:[self currentDate]];
+	}
+	return nil;
 }
 
 - (NSDate *)currentDate {
