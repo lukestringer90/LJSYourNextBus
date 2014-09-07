@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Classes'
-  s.public_header_files = 'Classes/LJSYourNextBusClient.h', 'Classes/LJSStop.h', 'Classes/LJSService.h', 'Classes/LJSDeparture.h'
+  s.public_header_files = 'Classes/LJSYourNextBusClient.h', 'Classes/LJSSouthYorkshireClient.h', 'Classes/LJSWestYorkshireClient.h', 'Classes/LJSStop.h', 'Classes/LJSService.h', 'Classes/LJSDeparture.h'
   s.dependency 'ObjectiveGumbo'
 end

@@ -14,7 +14,7 @@
 
 #import <AGAsyncTestHelper/AGAsyncTestHelper.h>
 
-#import "LJSYourNextBusClient.h"
+#import "LJSSouthYorkshireClient.h"
 #import "LJSScraper.h"
 #import "LJSHTMLDownloader.h"
 #import "LJSDepartureDateParser.h"
@@ -36,7 +36,7 @@
 @end
 
 @interface LJSYourNextBusTests : XCTestCase <LJSYourNextBusClientDelegate>
-@property (nonatomic, strong) LJSYourNextBusClient *yourNextBusClient;
+@property (nonatomic, strong) LJSSouthYorkshireClient *yourNextBusClient;
 @property (nonatomic, strong) NSCalendar *calendar;
 @property (nonatomic, strong) NSString *NaPTANCode;
 @property (nonatomic, strong) NSString *stubbedHTML;
@@ -79,7 +79,7 @@
     [super setUp];
 	self.calendar = [NSCalendar currentCalendar];
 	
-	self.yourNextBusClient = [[LJSYourNextBusClient alloc] init];
+	self.yourNextBusClient = [[LJSSouthYorkshireClient alloc] init];
 	self.yourNextBusClient.delegate = self;
 	self.stubbedHTML = [self loadHTMLFileNamed:@"37010071"];
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:self.stubbedHTML ID:@"37010071"];

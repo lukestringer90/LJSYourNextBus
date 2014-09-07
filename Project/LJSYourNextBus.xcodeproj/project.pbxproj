@@ -44,6 +44,8 @@
 		A3BD2763189EF72200540C5F /* LJSService.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275C189EF72200540C5F /* LJSService.m */; };
 		A3BD2764189EF72200540C5F /* LJSStop.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD275E189EF72200540C5F /* LJSStop.m */; };
 		A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD276F189FF46500540C5F /* LJSStopTests.m */; };
+		A3D058B219BA385D00084C12 /* LJSSouthYorkshireClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D058B119BA385D00084C12 /* LJSSouthYorkshireClient.m */; };
+		A3D058B819BA3E8200084C12 /* LJSWestYorkshireClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D058B719BA3E8200084C12 /* LJSWestYorkshireClient.m */; };
 		A3D5BEF418DE5B7600622915 /* no_depatures.html in Resources */ = {isa = PBXBuildFile; fileRef = A3D5BEF318DE5B7600622915 /* no_depatures.html */; };
 		A3D5BEF618DE6E3700622915 /* messages.html in Resources */ = {isa = PBXBuildFile; fileRef = A3D5BEF518DE6E3700622915 /* messages.html */; };
 		A3D5BEF918E0A3AE00622915 /* LJSDepatureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D5BEF818E0A3AE00622915 /* LJSDepatureCell.m */; };
@@ -118,6 +120,10 @@
 		A3BD275D189EF72200540C5F /* LJSStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSStop.h; path = ../../Classes/LJSStop.h; sourceTree = "<group>"; };
 		A3BD275E189EF72200540C5F /* LJSStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSStop.m; path = ../../Classes/LJSStop.m; sourceTree = "<group>"; };
 		A3BD276F189FF46500540C5F /* LJSStopTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSStopTests.m; sourceTree = "<group>"; };
+		A3D058B019BA385D00084C12 /* LJSSouthYorkshireClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSSouthYorkshireClient.h; path = ../../Classes/LJSSouthYorkshireClient.h; sourceTree = "<group>"; };
+		A3D058B119BA385D00084C12 /* LJSSouthYorkshireClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSSouthYorkshireClient.m; path = ../../Classes/LJSSouthYorkshireClient.m; sourceTree = "<group>"; };
+		A3D058B619BA3E8200084C12 /* LJSWestYorkshireClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSWestYorkshireClient.h; path = ../../Classes/LJSWestYorkshireClient.h; sourceTree = "<group>"; };
+		A3D058B719BA3E8200084C12 /* LJSWestYorkshireClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSWestYorkshireClient.m; path = ../../Classes/LJSWestYorkshireClient.m; sourceTree = "<group>"; };
 		A3D5BEF318DE5B7600622915 /* no_depatures.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = no_depatures.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		A3D5BEF518DE6E3700622915 /* messages.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = messages.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		A3D5BEF718E0A3AE00622915 /* LJSDepatureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSDepatureCell.h; sourceTree = "<group>"; };
@@ -274,6 +280,10 @@
 			children = (
 				A3BD2757189EF72200540C5F /* LJSYourNextBusClient.h */,
 				A3BD2758189EF72200540C5F /* LJSYourNextBusClient.m */,
+				A3D058B019BA385D00084C12 /* LJSSouthYorkshireClient.h */,
+				A3D058B119BA385D00084C12 /* LJSSouthYorkshireClient.m */,
+				A3D058B619BA3E8200084C12 /* LJSWestYorkshireClient.h */,
+				A3D058B719BA3E8200084C12 /* LJSWestYorkshireClient.m */,
 				A3BD275D189EF72200540C5F /* LJSStop.h */,
 				A3BD275E189EF72200540C5F /* LJSStop.m */,
 				A3BD275B189EF72200540C5F /* LJSService.h */,
@@ -499,6 +509,7 @@
 			files = (
 				A31CBF6F189988D000747F46 /* LJSAppDelegate.m in Sources */,
 				A37DE9AE18E874A800795500 /* NSDate+LJSCountDownString.m in Sources */,
+				A3D058B219BA385D00084C12 /* LJSSouthYorkshireClient.m in Sources */,
 				A3BD2763189EF72200540C5F /* LJSService.m in Sources */,
 				A31CBF78189988D000747F46 /* LJSNaPTANEntryViewController.m in Sources */,
 				A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */,
@@ -510,6 +521,7 @@
 				A3BD275F189EF72200540C5F /* LJSDeparture.m in Sources */,
 				A3BD2764189EF72200540C5F /* LJSStop.m in Sources */,
 				A3BD2761189EF72200540C5F /* LJSYourNextBusClient.m in Sources */,
+				A3D058B819BA3E8200084C12 /* LJSWestYorkshireClient.m in Sources */,
 				A3D5BEF918E0A3AE00622915 /* LJSDepatureCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

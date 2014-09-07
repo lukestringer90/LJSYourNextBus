@@ -79,10 +79,10 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
 
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber {
-    if (stopNumber) {
-        return [NSURL URLWithString:[NSString stringWithFormat:@"http://tsy.acislive.com/web/stop_reference.asp?areacode=&naptan=%@&textonly=1", stopNumber]];
-    }
-    return nil;
+	@throw [NSException
+			exceptionWithName:NSInternalInconsistencyException
+			reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+			userInfo:nil];
 }
 
 - (void)scrapeHTML:(NSString *)html messages:(NSArray *)messages{
