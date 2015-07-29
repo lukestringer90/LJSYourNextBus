@@ -64,9 +64,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A70DA27B033339208CA1DE7 /* Pods-LJSYourNextBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LJSYourNextBus/Pods-LJSYourNextBus.debug.xcconfig"; sourceTree = "<group>"; };
+		6B6477FD31927403F1099DD3 /* Pods-LJSYourNextBusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBusTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LJSYourNextBusTests/Pods-LJSYourNextBusTests.release.xcconfig"; sourceTree = "<group>"; };
 		7FD060CB0EF341FBA8373B81 /* libPods-LJSYourNextBusTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSYourNextBusTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DD8126FA3B54D25AE88E27F /* libPods-LJSYourNextBus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LJSYourNextBus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D3C9105FFD54543B20B4913 /* Pods-LJSYourNextBus.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBus.xcconfig"; path = "Pods/Pods-LJSYourNextBus.xcconfig"; sourceTree = "<group>"; };
 		A31CBF5B189988D000747F46 /* YourNextBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourNextBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31CBF5E189988D000747F46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A31CBF60189988D000747F46 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -131,7 +132,8 @@
 		A3FE172A18DE44C900B8E47E /* LJSLiveDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSLiveDataViewController.h; sourceTree = "<group>"; };
 		A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSLiveDataViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A3FE172D18DE4EAC00B8E47E /* invalid_1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = invalid_1.html; sourceTree = "<group>"; };
-		D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBusTests.xcconfig"; path = "Pods/Pods-LJSYourNextBusTests.xcconfig"; sourceTree = "<group>"; };
+		B76D9C4A649D3CF12028D920 /* Pods-LJSYourNextBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-LJSYourNextBus/Pods-LJSYourNextBus.release.xcconfig"; sourceTree = "<group>"; };
+		D920ABBD19EA3D5E8D06AEBC /* Pods-LJSYourNextBusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBusTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LJSYourNextBusTests/Pods-LJSYourNextBusTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		660DEC921D9F57EF4B068559 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A70DA27B033339208CA1DE7 /* Pods-LJSYourNextBus.debug.xcconfig */,
+				B76D9C4A649D3CF12028D920 /* Pods-LJSYourNextBus.release.xcconfig */,
+				D920ABBD19EA3D5E8D06AEBC /* Pods-LJSYourNextBusTests.debug.xcconfig */,
+				6B6477FD31927403F1099DD3 /* Pods-LJSYourNextBusTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A31CBF52189988D000747F46 = {
 			isa = PBXGroup;
 			children = (
@@ -167,8 +180,7 @@
 				A31CBF86189988D000747F46 /* LJSYourNextBusTests */,
 				A31CBF5D189988D000747F46 /* Frameworks */,
 				A31CBF5C189988D000747F46 /* Products */,
-				9D3C9105FFD54543B20B4913 /* Pods-LJSYourNextBus.xcconfig */,
-				D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */,
+				660DEC921D9F57EF4B068559 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -467,7 +479,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-LJSYourNextBus-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LJSYourNextBus/Pods-LJSYourNextBus-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D1BBA40A561E4D2F8B83CCC4 /* Check Pods Manifest.lock */ = {
@@ -497,7 +509,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-LJSYourNextBusTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LJSYourNextBusTests/Pods-LJSYourNextBusTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -644,7 +656,7 @@
 		};
 		A31CBF91189988D000747F46 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D3C9105FFD54543B20B4913 /* Pods-LJSYourNextBus.xcconfig */;
+			baseConfigurationReference = 6A70DA27B033339208CA1DE7 /* Pods-LJSYourNextBus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -661,7 +673,7 @@
 		};
 		A31CBF92189988D000747F46 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D3C9105FFD54543B20B4913 /* Pods-LJSYourNextBus.xcconfig */;
+			baseConfigurationReference = B76D9C4A649D3CF12028D920 /* Pods-LJSYourNextBus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -678,7 +690,7 @@
 		};
 		A31CBF94189988D000747F46 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */;
+			baseConfigurationReference = D920ABBD19EA3D5E8D06AEBC /* Pods-LJSYourNextBusTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/$(PRODUCT_NAME).app/$(PRODUCT_NAME)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -701,7 +713,7 @@
 		};
 		A31CBF95189988D000747F46 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D261ED41120F40D88E871BAA /* Pods-LJSYourNextBusTests.xcconfig */;
+			baseConfigurationReference = 6B6477FD31927403F1099DD3 /* Pods-LJSYourNextBusTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/$(PRODUCT_NAME).app/$(PRODUCT_NAME)";
 				FRAMEWORK_SEARCH_PATHS = (

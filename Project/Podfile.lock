@@ -1,8 +1,8 @@
 PODS:
   - AGAsyncTestHelper (1.0):
-    - AGAsyncTestHelper/Core
+    - AGAsyncTestHelper/Core (= 1.0)
   - AGAsyncTestHelper/Core (1.0)
-  - Masonry (0.4.0)
+  - Masonry (0.6.2)
   - ObjectiveGumbo (0.1)
   - OCHamcrest (3.0.1)
   - OCMock (2.2.3)
@@ -15,10 +15,10 @@ DEPENDENCIES:
   - OCMock (~> 2.2.2)
 
 SPEC CHECKSUMS:
-  AGAsyncTestHelper: fc9d44460933d8167ae431f466ab3a09a5121582
-  Masonry: 392466f4090cb28cc5349adec067453463e2ecd9
-  ObjectiveGumbo: 4922f0019c890d998a5302c15f4b256daca0adae
-  OCHamcrest: 207233b7d7a44dadd66aca398947cc7e029c9be5
-  OCMock: 807b6904818c42b86f42f36352ce7615b816e61a
+  AGAsyncTestHelper: 8bcc5f789bd2a8581c3eb58038158ce71f9f0640
+  Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
+  ObjectiveGumbo: 0704c4930688132abb3d5df2000334f30504856f
+  OCHamcrest: e19857683e4eefab64b878668eac04c2f4567118
+  OCMock: d2a4f33dcdd80da8af651eda9a598646c9bcc0b5
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.37.1
