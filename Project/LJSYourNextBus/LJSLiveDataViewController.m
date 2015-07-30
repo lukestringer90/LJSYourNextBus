@@ -7,7 +7,7 @@
 //
 
 #import "LJSLiveDataViewController.h"
-#import "LJSYourNextBusClient.h"
+#import "LJSSouthYorkshireClient.h"
 #import "LJSStop.h"
 #import "LJSService.h"
 #import "LJSDeparture.h"
@@ -18,8 +18,7 @@
 @property (nonatomic, strong) LJSStop *stop;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, copy) NSArray *allDepartures;
-@property (nonatomic, strong) LJSYourNextBusClient *yourNextBusClient;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) LJSSouthYorkshireClient *yourNextBusClient;
 @end
 
 @implementation LJSLiveDataViewController
@@ -29,7 +28,7 @@
 	if (self) {
 		self.NaPTANCode = NaPTANCode;
 		
-		self.yourNextBusClient = [LJSYourNextBusClient new];
+		self.yourNextBusClient = [LJSSouthYorkshireClient new];
 		self.yourNextBusClient.delegate = self;
 		self.yourNextBusClient.saveDataToDisk = YES;
 		
