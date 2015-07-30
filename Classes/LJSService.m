@@ -18,11 +18,12 @@
 
 @implementation LJSService
 
-- (instancetype)initWithTitle:(NSString *)title stop:(LJSStop *)stop
+- (instancetype)initWithTitle:(NSString *)title stop:(LJSStop *)stop departuresProvider:(id <LJSDeparturesProvider>)departuresProvider
 {
 	if (self = [super init]) {
 		self.title = title;
 		self.stop = stop;
+		self.departures = [departuresProvider departuresForService:self];
 	}
 	return self;
 }
