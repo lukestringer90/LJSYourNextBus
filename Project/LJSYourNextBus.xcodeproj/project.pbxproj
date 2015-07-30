@@ -97,9 +97,6 @@
 		A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSYourNextBusTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = 37010071.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		A34B1C1818CE49F800184A12 /* 37010115.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = 37010115.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
-		A37DE9A918E8749800795500 /* LJSDeparture+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSDeparture+LJSSetters.h"; path = "../../Classes/LJSDeparture+LJSSetters.h"; sourceTree = "<group>"; };
-		A37DE9AA18E8749800795500 /* LJSService+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSService+LJSSetters.h"; path = "../../Classes/LJSService+LJSSetters.h"; sourceTree = "<group>"; };
-		A37DE9AB18E8749800795500 /* LJSStop+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSStop+LJSSetters.h"; path = "../../Classes/LJSStop+LJSSetters.h"; sourceTree = "<group>"; };
 		A37DE9AC18E874A800795500 /* NSDate+LJSCountDownString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+LJSCountDownString.h"; path = "../../Classes/NSDate+LJSCountDownString.h"; sourceTree = "<group>"; };
 		A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+LJSCountDownString.m"; path = "../../Classes/NSDate+LJSCountDownString.m"; sourceTree = "<group>"; };
 		A388BE5B19686A0F00CF4DA3 /* invalid_2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = invalid_2.html; sourceTree = "<group>"; };
@@ -341,9 +338,6 @@
 				A3BD275A189EF72200540C5F /* LJSScraper.m */,
 				A337FDA318C24F4B002FB29F /* LJSDepartureDateParser.h */,
 				A337FDA418C24F4B002FB29F /* LJSDepartureDateParser.m */,
-				A37DE9A918E8749800795500 /* LJSDeparture+LJSSetters.h */,
-				A37DE9AA18E8749800795500 /* LJSService+LJSSetters.h */,
-				A37DE9AB18E8749800795500 /* LJSStop+LJSSetters.h */,
 				A37DE9AC18E874A800795500 /* NSDate+LJSCountDownString.h */,
 				A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */,
 			);

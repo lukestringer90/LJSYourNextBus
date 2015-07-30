@@ -10,13 +10,13 @@
 #import <ObjectiveGumbo/ObjectiveGumbo.h>
 
 #import "LJSStop.h"
-#import "LJSStop+LJSSetters.h"
 #import "LJSService.h"
-#import "LJSService+LJSSetters.h"
 #import "LJSDeparture.h"
-#import "LJSDeparture+LJSSetters.h"
 #import "LJSDepartureDateParser.h"
 #import "NSDate+LJSCountDownString.h"
+#import "LJSStopBuilder.h"
+#import "LJSServiceBuilder.h"
+#import "LJSDepartureBuilder.h"
 
 @interface LJSScraper ()
 @property (nonatomic, strong) LJSDepartureDateParser *dateParser;
@@ -80,20 +80,20 @@
 	NSString *liveTimeString = [self scrapeLiveDateStringFromHTML:html];
 	NSDate *liveDate = [self liveDateFromString:liveTimeString];
     
-    LJSStop *stop = [LJSStop new];
-	stop.NaPTANCode = naptanCode;
-	stop.title = title;
-	stop.liveDate = liveDate;
+    LJSStopBuilder *stopBuilder = [LJSStopBuilder new];
+	stopBuilder.NaPTANCode = naptanCode;
+	stopBuilder.title = title;
+	stopBuilder.liveDate = liveDate;
 	
 	if ([self htmlContainServices:html]) {
-		NSArray *services = [self scrapeServicesFromHTML:html stop:stop liveDate:liveDate];
-		stop.services = services;
+		NSArray *serviceBuilders = [self scrapeServicesFromHTML:html liveDate:liveDate];
+		stopBuilder.serviceBuilders = serviceBuilders;
 		
-		stop.laterURL = [self scrapeLaterDeparturesURL:html];
-		stop.earlierURL = [self scrapeEarlierDeparturesURL:html];
+		stopBuilder.laterURL = [self scrapeLaterDeparturesURL:html];
+		stopBuilder.earlierURL = [self scrapeEarlierDeparturesURL:html];
 	}
     
-    return stop;
+    return [stopBuilder build];
 }
 
 - (NSURL *)scrapeLaterDeparturesURL:(NSString *)html {
@@ -110,22 +110,21 @@
 
 #pragma mark - Scraping
 
-- (NSArray *)scrapeServicesFromHTML:(NSString *)html stop:(LJSStop *)stop liveDate:(NSDate *)liveDate {
+- (NSArray *)scrapeServicesFromHTML:(NSString *)html liveDate:(NSDate *)liveDate {
     OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];
     NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
-    
-    NSArray *services = [NSArray array];
-    
+	
+    NSArray *servicesBuilders = [NSArray array];
+	
     for (NSInteger titleRowIndex = 0; titleRowIndex < tds.count; titleRowIndex+=4) {
         OGElement *titleElement = tds[titleRowIndex];
         NSString *title = [self removeLastCharacterFromString:titleElement.text];
         
-        LJSService *service = [[services filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title == %@", title]] firstObject];
-        if (!service) {
-			service = [LJSService new];
-			service.title = title;
-			service.stop = stop;
-            services = [services arrayByAddingObject:service];
+        LJSServiceBuilder *serviceBuilder = [[servicesBuilders filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title == %@", title]] firstObject];
+        if (!serviceBuilder) {
+			serviceBuilder = [LJSServiceBuilder new];
+			serviceBuilder.title = title;
+            servicesBuilders = [servicesBuilders arrayByAddingObject:serviceBuilder];
         }
         
         
@@ -144,28 +143,26 @@
 		
         BOOL hasLowFloorAccess = [self lowFloorAccessFromString:lowFloorAccessElement.text];
 		
-		LJSDeparture *departure = [LJSDeparture new];
-		departure.destination = destinationStringValue;
-		departure.expectedDepartureDate = expectedDepartureDate;
-		departure.countdownString = countDownString;
-		departure.minutesUntilDeparture	= minutesUntilDeparture;
-		departure.hasLowFloorAccess = hasLowFloorAccess;
-		departure.service = service;
+		LJSDepartureBuilder *departureBuilder = [LJSDepartureBuilder new];
+		departureBuilder.destination = destinationStringValue;
+		departureBuilder.expectedDepartureDate = expectedDepartureDate;
+		departureBuilder.countdownString = countDownString;
+		departureBuilder.minutesUntilDeparture	= minutesUntilDeparture;
+		departureBuilder.hasLowFloorAccess = hasLowFloorAccess;
 		
-		
-		if (!service.departures) {
-			service.departures = @[departure];
+		if (!serviceBuilder.departureBuilders) {
+			serviceBuilder.departureBuilders = @[departureBuilder];
 		}
 		else {
 			NSArray *sortDescriptors = @[
 										 [NSSortDescriptor sortDescriptorWithKey:@"expectedDepartureDate"
 																	   ascending:YES]];
-			service.departures = [[service.departures arrayByAddingObject:departure] sortedArrayUsingDescriptors:sortDescriptors];
+			serviceBuilder.departureBuilders = [[serviceBuilder.departureBuilders arrayByAddingObject:departureBuilder] sortedArrayUsingDescriptors:sortDescriptors];
 		}
 		
         
     }
-    return services;
+    return servicesBuilders;
 }
 
 - (NSString *)scrapeNaPTANCodeFromHTML:(NSString *)html {
