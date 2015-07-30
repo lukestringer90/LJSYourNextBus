@@ -45,13 +45,6 @@
  */
 @property (nonatomic, assign, readonly) BOOL hasLowFloorAccess;
 
-/**
- *  Test equality with another Departue.
- *
- *  @param stop The other Departue to test for equality.
- *
- *  @return YES if the NaPTAN codes are equal and all the Services and Departures are also equal. Otherwise NO.
- */
 - (BOOL)isEqualToDeparture:(LJSDeparture *)Departure;
 
 /**
@@ -60,5 +53,7 @@
  *  @return JSON representation of the Departure.
  */
 - (NSDictionary *)JSONRepresentation;
+
+- (instancetype)initWithDestination:(NSString *)destination expectedDepartureDate:(NSDate *)expectedDepartureDate countdownString:(NSString *)countdownString minutesUntilDeparture:(NSInteger)minutesUntilDeparture hasLowFloorAccess:(BOOL)hasLowFloorAccess service:(LJSService *)service;
 
 @end
