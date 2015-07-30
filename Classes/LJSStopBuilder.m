@@ -12,12 +12,23 @@
 
 - (LJSStop *)build
 {
-	return [[LJSStop alloc] initWithNaPTANCode:self.NaPTANCode title:self.title liveDate:self.liveDate laterURL:self.laterURL earlierURL:self.earlierURL servicesProvider:self];
+	return [[LJSStop alloc] initWithNaPTANCode:self.NaPTANCode
+										 title:self.title
+									  liveDate:self.liveDate
+									  laterURL:self.laterURL
+									earlierURL:self.earlierURL
+							  servicesProvider:self];
 }
 
 - (NSArray *)provideServicesForStop:(LJSStop *)stop
 {
-	return nil;
+	NSMutableArray *services = [NSMutableArray array];
+	for (id <LJSServiceBuilder> serviceBuilder in self.serviceBuilders) {
+		LJSService *service = [serviceBuilder buildForWithStop:stop];
+		[services addObject:service];
+	}
+	
+	return [NSArray arrayWithArray:services];
 }
 
 @end
