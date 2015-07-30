@@ -38,6 +38,7 @@
  *
  *  @return YES if the titles are equal and all the Departures are also equal. Otherwise NO.
  */
+
 - (BOOL)isEqualToService:(LJSService *)service;
 
 /**
@@ -46,5 +47,7 @@
  *  @return JSON representation of the Service.
  */
 - (NSDictionary *)JSONRepresentation;
+
+- (instancetype)initWithTitle:(NSString *)title stop:(LJSStop *)stop;
 
 @end
