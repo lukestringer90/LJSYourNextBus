@@ -53,8 +53,6 @@
 - (void)getLiveData {
 	
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
-	
-	
 }
 
 #pragma mark - UITableViewDelegate
@@ -114,6 +112,11 @@
 						  cancelButtonTitle:@"Okay"
 						  otherButtonTitles: nil];
 	[alert show];
+}
+
+- (void)client:(LJSYourNextBusClient *)client willScrapeHTML:(NSString *)HTML NaPTANCode:(NSString *)NaPTANCode
+{
+	NSLog(@"Will scrape for NaPTAN: %@", NaPTANCode);
 }
 
 
