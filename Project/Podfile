@@ -5,7 +5,7 @@ target "LJSYourNextBus" do
 end
 
 target "LJSYourNextBusTests" do
-    pod 'OCMock', '~> 2.2.2'
+	pod 'OCMock', '~> 3.1'
 	pod 'OCHamcrest', '~> 3.0'
 	pod 'AGAsyncTestHelper', '~> 1.0'
 end
