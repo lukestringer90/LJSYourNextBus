@@ -37,9 +37,9 @@
 		A3A79C7618FB028C0044914B /* 555.html in Resources */ = {isa = PBXBuildFile; fileRef = A3A79C7518FB028C0044914B /* 555.html */; };
 		A3B02E1A1B6A74DA00D029F8 /* LJSStopBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B02E191B6A74DA00D029F8 /* LJSStopBuilder.m */; };
 		A3B02E1C1B6A8BA000D029F8 /* LJSStopBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B02E1B1B6A8BA000D029F8 /* LJSStopBuilderTests.m */; };
-		A3B02E201B6A9B8600D029F8 /* LJSServiceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B02E1F1B6A9B8600D029F8 /* LJSServiceBuilder.m */; };
 		A3B02E221B6A9C0A00D029F8 /* LJSServiceBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B02E211B6A9C0A00D029F8 /* LJSServiceBuilderTests.m */; };
 		A3B02E2B1B6AA23A00D029F8 /* LJSDepartureBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B02E2A1B6AA23A00D029F8 /* LJSDepartureBuilder.m */; };
+		A3B02E2E1B6AAA0A00D029F8 /* LJSServiceBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B02E2D1B6AAA0A00D029F8 /* LJSServiceBuilder.m */; };
 		A3B37FBF18E4A16E00B6D445 /* LJSMockHTMLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B37FBE18E4A16E00B6D445 /* LJSMockHTMLDownloader.m */; };
 		A3BD275F189EF72200540C5F /* LJSDeparture.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2754189EF72200540C5F /* LJSDeparture.m */; };
 		A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */; };
@@ -108,11 +108,11 @@
 		A3B02E181B6A74DA00D029F8 /* LJSStopBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSStopBuilder.h; path = ../../Classes/LJSStopBuilder.h; sourceTree = "<group>"; };
 		A3B02E191B6A74DA00D029F8 /* LJSStopBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSStopBuilder.m; path = ../../Classes/LJSStopBuilder.m; sourceTree = "<group>"; };
 		A3B02E1B1B6A8BA000D029F8 /* LJSStopBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSStopBuilderTests.m; sourceTree = "<group>"; };
-		A3B02E1E1B6A9B8600D029F8 /* LJSServiceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSServiceBuilder.h; sourceTree = "<group>"; };
-		A3B02E1F1B6A9B8600D029F8 /* LJSServiceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSServiceBuilder.m; sourceTree = "<group>"; };
 		A3B02E211B6A9C0A00D029F8 /* LJSServiceBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSServiceBuilderTests.m; sourceTree = "<group>"; };
 		A3B02E291B6AA23A00D029F8 /* LJSDepartureBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSDepartureBuilder.h; path = ../../Classes/LJSDepartureBuilder.h; sourceTree = "<group>"; };
 		A3B02E2A1B6AA23A00D029F8 /* LJSDepartureBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSDepartureBuilder.m; path = ../../Classes/LJSDepartureBuilder.m; sourceTree = "<group>"; };
+		A3B02E2C1B6AAA0A00D029F8 /* LJSServiceBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSServiceBuilder.h; path = ../../Classes/LJSServiceBuilder.h; sourceTree = "<group>"; };
+		A3B02E2D1B6AAA0A00D029F8 /* LJSServiceBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSServiceBuilder.m; path = ../../Classes/LJSServiceBuilder.m; sourceTree = "<group>"; };
 		A3B37FBD18E4A16E00B6D445 /* LJSMockHTMLDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSMockHTMLDownloader.h; sourceTree = "<group>"; };
 		A3B37FBE18E4A16E00B6D445 /* LJSMockHTMLDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSMockHTMLDownloader.m; sourceTree = "<group>"; };
 		A3BD2753189EF72200540C5F /* LJSDeparture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = LJSDeparture.h; path = ../../Classes/LJSDeparture.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -301,10 +301,10 @@
 			children = (
 				A3B02E181B6A74DA00D029F8 /* LJSStopBuilder.h */,
 				A3B02E191B6A74DA00D029F8 /* LJSStopBuilder.m */,
-				A3B02E1E1B6A9B8600D029F8 /* LJSServiceBuilder.h */,
-				A3B02E1F1B6A9B8600D029F8 /* LJSServiceBuilder.m */,
 				A3B02E291B6AA23A00D029F8 /* LJSDepartureBuilder.h */,
 				A3B02E2A1B6AA23A00D029F8 /* LJSDepartureBuilder.m */,
+				A3B02E2C1B6AAA0A00D029F8 /* LJSServiceBuilder.h */,
+				A3B02E2D1B6AAA0A00D029F8 /* LJSServiceBuilder.m */,
 			);
 			name = Builders;
 			sourceTree = "<group>";
@@ -540,7 +540,7 @@
 				A31CBF6F189988D000747F46 /* LJSAppDelegate.m in Sources */,
 				A37DE9AE18E874A800795500 /* NSDate+LJSCountDownString.m in Sources */,
 				A3D058B219BA385D00084C12 /* LJSSouthYorkshireClient.m in Sources */,
-				A3B02E201B6A9B8600D029F8 /* LJSServiceBuilder.m in Sources */,
+				A3B02E2E1B6AAA0A00D029F8 /* LJSServiceBuilder.m in Sources */,
 				A3BD2763189EF72200540C5F /* LJSService.m in Sources */,
 				A31CBF78189988D000747F46 /* LJSNaPTANEntryViewController.m in Sources */,
 				A3BD2760189EF72200540C5F /* LJSHTMLDownloader.m in Sources */,
