@@ -48,7 +48,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
     NSError *error = nil;
     NSString *html = [self.htmlDownloader downloadHTMLFromURL:url error:&error];
     
-    if (error) {
+    if (!html) {
 		[self handleFinishWithStop:nil messages:nil error:error];
     }
 	else if (![self.scraper htmlIsValid:html]) {
