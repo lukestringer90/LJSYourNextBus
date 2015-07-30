@@ -38,12 +38,12 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 	[self.backgroundQueue addOperationWithBlock:^{
 		self.NaPTANCode = NaPTANCode;
 		NSURL *url = [self urlForNaPTANCode:NaPTANCode];
-		[self liveDataAtURL:url];
+		[self attemptScrapeWithURL:url];
 	}];
 }
 
 
-- (void)liveDataAtURL:(NSURL *)url {
+- (void)attemptScrapeWithURL:(NSURL *)url {
     
     NSError *error = nil;
     NSString *html = [self.htmlDownloader downloadHTMLFromURL:url error:&error];
@@ -56,8 +56,8 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 	}
 	else {
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-			if ([self.delegate respondsToSelector:@selector(client:willScrapeHTML:NaPTANCode:)]) {
-				[self.delegate client:self willScrapeHTML:html NaPTANCode:self.NaPTANCode];
+			if ([self.scrapeDelegate respondsToSelector:@selector(client:willScrapeHTML:NaPTANCode:)]) {
+				[self.scrapeDelegate client:self willScrapeHTML:html NaPTANCode:self.NaPTANCode];
 			}
 		}];
 		
@@ -98,11 +98,11 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 	
 	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 		
-		if (error && [self.delegate respondsToSelector:@selector(client:failedWithError:)]) {
-			[self.delegate client:self failedWithError:error];
+		if (error && [self.clientDelegate respondsToSelector:@selector(client:failedWithError:NaPTANCode:)]) {
+			[self.clientDelegate client:self failedWithError:error NaPTANCode:self.NaPTANCode];
 		}
-		else if ([self.delegate respondsToSelector:@selector(client:returnedStop:messages:)]) {
-			[self.delegate client:self returnedStop:stop messages:messages];
+		else if ([self.clientDelegate respondsToSelector:@selector(client:returnedStop:messages:)]) {
+			[self.clientDelegate client:self returnedStop:stop messages:messages];
 		}
 		
 	}];

@@ -30,16 +30,22 @@ typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
 @class LJSYourNextBusClient, LJSStop;
 @protocol LJSYourNextBusClientDelegate <NSObject>
 
-- (void)client:(LJSYourNextBusClient *)client willScrapeHTML:(NSString *)HTML NaPTANCode:(NSString *)NaPTANCode;
 - (void)client:(LJSYourNextBusClient *)client returnedStop:(LJSStop *)stop messages:(NSArray *)messages;
-- (void)client:(LJSYourNextBusClient *)client failedWithError:(NSError *)error;
+- (void)client:(LJSYourNextBusClient *)client failedWithError:(NSError *)error NaPTANCode:(NSString *)NaPTANCode;
+
+@end
+
+@protocol LJSYourNextBusScrapeDelegate <NSObject>
+
+- (void)client:(LJSYourNextBusClient *)client willScrapeHTML:(NSString *)HTML NaPTANCode:(NSString *)NaPTANCode;
 
 @end
 
 @interface LJSYourNextBusClient : NSObject
 
 @property (nonatomic, assign) BOOL saveDataToDisk;
-@property (nonatomic, weak) id<LJSYourNextBusClientDelegate> delegate;
+@property (nonatomic, weak) id<LJSYourNextBusClientDelegate> clientDelegate;
+@property (nonatomic, weak) id<LJSYourNextBusScrapeDelegate> scrapeDelegate;
 
 - (void)getLiveDataForNaPTANCode:(NSString *)NaPTANCode;
 

@@ -13,7 +13,7 @@
 #import "LJSDeparture.h"
 #import "LJSDepatureCell.h"
 
-@interface LJSLiveDataViewController () <LJSYourNextBusClientDelegate>
+@interface LJSLiveDataViewController () <LJSYourNextBusScrapeDelegate, LJSYourNextBusClientDelegate>
 @property (nonatomic, copy, readwrite) NSString *NaPTANCode;
 @property (nonatomic, strong) LJSStop *stop;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
@@ -29,7 +29,8 @@
 		self.NaPTANCode = NaPTANCode;
 		
 		self.yourNextBusClient = [LJSSouthYorkshireClient new];
-		self.yourNextBusClient.delegate = self;
+		self.yourNextBusClient.clientDelegate = self;
+		self.yourNextBusClient.scrapeDelegate = self;
 		self.yourNextBusClient.saveDataToDisk = YES;
 		
 		self.dateFormatter = [[NSDateFormatter alloc] init];
@@ -94,7 +95,7 @@
 	return self.allDepartures != nil ? [NSString stringWithFormat:@"Departures For %@", [self.dateFormatter stringFromDate:self.stop.liveDate]] : nil;
 }
 
-#pragma mark - LJSYourNextBusClientDelegate
+#pragma mark - LJSYourNextBusStopDelegate
 
 - (void)client:(LJSYourNextBusClient *)client returnedStop:(LJSStop *)stop messages:(NSArray *)messages {
 	[self.refreshControl endRefreshing];
@@ -104,7 +105,7 @@
 	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-- (void)client:(LJSYourNextBusClient *)client failedWithError:(NSError *)error {
+- (void)client:(LJSYourNextBusClient *)client failedWithError:(NSError *)error NaPTANCode:(NSString *)NaPTANCode {
 	UIAlertView *alert = [[UIAlertView alloc]
 						  initWithTitle:@"Error"
 						  message:[error localizedDescription]
@@ -114,7 +115,8 @@
 	[alert show];
 }
 
-- (void)client:(LJSYourNextBusClient *)client willScrapeHTML:(NSString *)HTML NaPTANCode:(NSString *)NaPTANCode
+#pragma mark - LJSYourNextBusScrapeDelegate
+- (void)client:(LJSYourNextBusClient *)client willScrapeHTML:(NSString *)HTML NaPTANCode:(NSString *)NaPTANCode;
 {
 	NSLog(@"Will scrape for NaPTAN: %@", NaPTANCode);
 }
