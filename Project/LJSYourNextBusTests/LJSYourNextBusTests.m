@@ -35,7 +35,7 @@
 - (NSDate *)currentDate;
 @end
 
-@interface LJSYourNextBusTests : XCTestCase <LJSYourNextBusClientDelegate>
+@interface LJSYourNextBusTests : XCTestCase <LJSYourNextBusClientDelegate, LJSYourNextBusScrapeDelegate>
 @property (nonatomic, strong) LJSSouthYorkshireClient *yourNextBusClient;
 @property (nonatomic, strong) NSCalendar *calendar;
 @property (nonatomic, strong) NSString *NaPTANCode;
@@ -62,15 +62,16 @@
 	self.delegateCalledForWillScrape = YES;
 }
 
+- (void)client:(LJSYourNextBusClient *)client failedWithError:(NSError *)error NaPTANCode:(NSString *)NaPTANCode {
+	self.error = error;
+	self.delegateCalledForError = YES;
+}
+
+#pragma mark - LJSYourNextBusScrapeDelegate
 - (void)client:(LJSYourNextBusClient *)client returnedStop:(LJSStop *)stop messages:(NSArray *)messages {
 	self.returnedStop = stop;
 	self.messages = messages;
 	self.delegateCalledForReturnedStop = YES;
-}
-
-- (void)client:(LJSYourNextBusClient *)client failedWithError:(NSError *)error {
-	self.error = error;
-	self.delegateCalledForError = YES;
 }
 
 #pragma mark - setUp / tearDown
@@ -80,7 +81,8 @@
 	self.calendar = [NSCalendar currentCalendar];
 	
 	self.yourNextBusClient = [[LJSSouthYorkshireClient alloc] init];
-	self.yourNextBusClient.delegate = self;
+	self.yourNextBusClient.clientDelegate = self;
+	self.yourNextBusClient.scrapeDelegate = self;
 	self.stubbedHTML = [self loadHTMLFileNamed:@"37010071"];
 	self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:self.stubbedHTML ID:@"37010071"];
 	
@@ -428,7 +430,7 @@
 	 *  217 	Thurnscoe 	11:41
 	 */
 	LJSDeparture *secondDepartureOfFirstService = firstServiceDepartures[1];
-	assertThat(secondDepartureOfFirstService.countdownString, equalTo(@"45 Mins"));
+	assertThat(secondDepartureOfFirstService.countdownString, equalTo(@"11:41 AM"));
 	assertThatInteger(secondDepartureOfFirstService.minutesUntilDeparture, equalToInteger(45));
 	
 	
@@ -445,7 +447,7 @@
 	 *  218 	Barnsley 	40 mins 	LF
 	 */
 	LJSDeparture *secondDepartureOfSecondService = secondServiceDepartures[1];
-	assertThat(secondDepartureOfSecondService.countdownString, equalTo(@"40 Mins"));
+	assertThat(secondDepartureOfSecondService.countdownString, equalTo(@"11:36 AM"));
 	assertThatInteger(secondDepartureOfSecondService.minutesUntilDeparture, equalToInteger(40));
 	
 	
@@ -453,7 +455,7 @@
 	 *  218 	Barnsley 	70 mins 	LF
 	 */
 	LJSDeparture *thirdDepartureOfSecondService = secondServiceDepartures[2];
-	assertThat(thirdDepartureOfSecondService.countdownString, equalTo(@"70 Mins"));
+	assertThat(thirdDepartureOfSecondService.countdownString, equalTo(@"12:06 PM"));
 	assertThatInteger(thirdDepartureOfSecondService.minutesUntilDeparture, equalToInteger(70));
 }
 

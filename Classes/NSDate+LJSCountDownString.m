@@ -27,11 +27,24 @@
 	else if (dateComponents.minute == 1) {
 		return [NSString stringWithFormat:@"%ld Min", (long)dateComponents.minute];
 	}
-	else {
+	else if (dateComponents.minute <= 20) {
 		return [NSString stringWithFormat:@"%ld Mins", (long)dateComponents.minute];
+	}
+	else {
+		return [[self dateFormatter] stringFromDate:self];
 	}
 	
 	return nil;
+}
+
+- (NSDateFormatter *)dateFormatter
+{
+	static NSDateFormatter *dateFormatter = nil;
+	if (!dateFormatter) {
+		dateFormatter = [[NSDateFormatter alloc] init];
+		dateFormatter.timeStyle = NSDateFormatterShortStyle;
+	}
+	return dateFormatter;
 }
 
 @end

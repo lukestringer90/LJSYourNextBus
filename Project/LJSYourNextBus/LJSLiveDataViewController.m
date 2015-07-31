@@ -79,13 +79,7 @@
 	cell.destinationLabel.text = departure.destination;
 	cell.serviceTitleLabel.text = departure.service.title;
 	cell.lowFloorAccessLabelVisible = departure.hasLowFloorAccess;
-	
-	if (departure.minutesUntilDeparture <= 10) {
-		cell.expectedDepatureLabel.text = departure.countdownString;
-	}
-	else {
-		cell.expectedDepatureLabel.text = [self.dateFormatter stringFromDate:departure.expectedDepartureDate];
-	}
+	cell.expectedDepatureLabel.text = departure.countdownString;
 	
     return cell;
 }
