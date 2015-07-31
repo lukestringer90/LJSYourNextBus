@@ -25,7 +25,8 @@ client.clientDelegate = self;
 	NSLog(@"Failed to get live data for NaPTAN: %@ with error: %@", NaPTANCode, error);
 }
 
-- (void)client:(LJSYourNextBusClient *)client returnedStop:(LJSStop *)stop messages:(NSArray *)messages {
+- (void)client:(LJSYourNextBusClient *)client returnedLiveDataResult:(LJSLiveDataResult *)result {
+	LJSStop *stop = result.stop;
 	NSLog(@"Live Data for: %@ %@", stop.NaPTANCode, stop.title);
 	for (LJSDeparture *departure in [stop sortedDepartures]) {
 		NSLog(@"\t%@ at %@", departure.service.title, departure.countdownString);
