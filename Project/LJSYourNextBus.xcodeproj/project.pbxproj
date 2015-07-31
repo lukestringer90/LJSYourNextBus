@@ -28,7 +28,8 @@
 		A34A1951189EB768002EEF2B /* LJSYourNextBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */; };
 		A34A1957189EBF86002EEF2B /* 37010071.html in Resources */ = {isa = PBXBuildFile; fileRef = A34A1956189EBF86002EEF2B /* 37010071.html */; };
 		A34B1C1918CE49F800184A12 /* 37010115.html in Resources */ = {isa = PBXBuildFile; fileRef = A34B1C1818CE49F800184A12 /* 37010115.html */; };
-		A35CF47C1B6C06BA006CDD11 /* LJSDelayedMockHTMLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A35CF47B1B6C06BA006CDD11 /* LJSDelayedMockHTMLDownloader.m */; };
+		A35CF4791B6BF926006CDD11 /* LJSLiveDataResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A35CF4781B6BF926006CDD11 /* LJSLiveDataResult.m */; };
+		A35CF47F1B6C1046006CDD11 /* LJSDelayedMockHTMLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A35CF47E1B6C1046006CDD11 /* LJSDelayedMockHTMLDownloader.m */; };
 		A37DE9AE18E874A800795500 /* NSDate+LJSCountDownString.m in Sources */ = {isa = PBXBuildFile; fileRef = A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */; };
 		A388BE5C19686A0F00CF4DA3 /* invalid_2.html in Resources */ = {isa = PBXBuildFile; fileRef = A388BE5B19686A0F00CF4DA3 /* invalid_2.html */; };
 		A388CE5D18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A388CE5C18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m */; };
@@ -98,8 +99,10 @@
 		A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSYourNextBusTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = 37010071.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		A34B1C1818CE49F800184A12 /* 37010115.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = 37010115.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
-		A35CF47A1B6C06BA006CDD11 /* LJSDelayedMockHTMLDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSDelayedMockHTMLDownloader.h; sourceTree = "<group>"; };
-		A35CF47B1B6C06BA006CDD11 /* LJSDelayedMockHTMLDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSDelayedMockHTMLDownloader.m; sourceTree = "<group>"; };
+		A35CF4771B6BF926006CDD11 /* LJSLiveDataResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSLiveDataResult.h; path = ../../Classes/LJSLiveDataResult.h; sourceTree = "<group>"; };
+		A35CF4781B6BF926006CDD11 /* LJSLiveDataResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSLiveDataResult.m; path = ../../Classes/LJSLiveDataResult.m; sourceTree = "<group>"; };
+		A35CF47D1B6C1046006CDD11 /* LJSDelayedMockHTMLDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSDelayedMockHTMLDownloader.h; sourceTree = "<group>"; };
+		A35CF47E1B6C1046006CDD11 /* LJSDelayedMockHTMLDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSDelayedMockHTMLDownloader.m; sourceTree = "<group>"; };
 		A37DE9AC18E874A800795500 /* NSDate+LJSCountDownString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+LJSCountDownString.h"; path = "../../Classes/NSDate+LJSCountDownString.h"; sourceTree = "<group>"; };
 		A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+LJSCountDownString.m"; path = "../../Classes/NSDate+LJSCountDownString.m"; sourceTree = "<group>"; };
 		A388BE5B19686A0F00CF4DA3 /* invalid_2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = invalid_2.html; sourceTree = "<group>"; };
@@ -293,10 +296,10 @@
 		A37DE9A518E86A7B00795500 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				A35CF47D1B6C1046006CDD11 /* LJSDelayedMockHTMLDownloader.h */,
+				A35CF47E1B6C1046006CDD11 /* LJSDelayedMockHTMLDownloader.m */,
 				A3B37FBD18E4A16E00B6D445 /* LJSMockHTMLDownloader.h */,
 				A3B37FBE18E4A16E00B6D445 /* LJSMockHTMLDownloader.m */,
-				A35CF47A1B6C06BA006CDD11 /* LJSDelayedMockHTMLDownloader.h */,
-				A35CF47B1B6C06BA006CDD11 /* LJSDelayedMockHTMLDownloader.m */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -329,6 +332,8 @@
 				A3BD275C189EF72200540C5F /* LJSService.m */,
 				A3BD2753189EF72200540C5F /* LJSDeparture.h */,
 				A3BD2754189EF72200540C5F /* LJSDeparture.m */,
+				A35CF4771B6BF926006CDD11 /* LJSLiveDataResult.h */,
+				A35CF4781B6BF926006CDD11 /* LJSLiveDataResult.m */,
 			);
 			name = Public;
 			sourceTree = "<group>";
@@ -559,6 +564,7 @@
 				A3BD2761189EF72200540C5F /* LJSYourNextBusClient.m in Sources */,
 				A3D058B819BA3E8200084C12 /* LJSWestYorkshireClient.m in Sources */,
 				A3D5BEF918E0A3AE00622915 /* LJSDepatureCell.m in Sources */,
+				A35CF4791B6BF926006CDD11 /* LJSLiveDataResult.m in Sources */,
 				A3B02E2B1B6AA23A00D029F8 /* LJSDepartureBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,7 +575,7 @@
 			files = (
 				A337FDA718C3A1BE002FB29F /* LJSDepartureDateParserTests.m in Sources */,
 				A3B02E1C1B6A8BA000D029F8 /* LJSStopBuilderTests.m in Sources */,
-				A35CF47C1B6C06BA006CDD11 /* LJSDelayedMockHTMLDownloader.m in Sources */,
+				A35CF47F1B6C1046006CDD11 /* LJSDelayedMockHTMLDownloader.m in Sources */,
 				A337FDA918C3BD05002FB29F /* LJSServiceTests.m in Sources */,
 				A337FDAB18C3C7C1002FB29F /* LJSDepartureTests.m in Sources */,
 				A3B02E221B6A9C0A00D029F8 /* LJSServiceBuilderTests.m in Sources */,

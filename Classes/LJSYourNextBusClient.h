@@ -27,17 +27,16 @@ typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
 	LJSYourNextBusErrorDataUnavaiable
 };
 
-@class LJSYourNextBusClient, LJSStop;
+@class LJSYourNextBusClient, LJSStop, LJSLiveDataResult;
 @protocol LJSYourNextBusClientDelegate <NSObject>
 
 /**
- *  Delegate callback when the client has successfully obtained live data.
+ *   Delegate callback when the client has successfully obtained live data.
  *
- *  @param client   The Your Next Bus client that has obtained data.
- *  @param stop     A Stop object representing the live data.
- *  @param messages A list of messages for the stop live data containing meta information about the stop such as warnings or alerts. Or nil if their are no messages.
+ *  @param client The Your Next Bus client that has obtained data.
+ *  @param result The obtained live data - a Result object that contains an optional Stop object detailing the departure information, and an optional array of messages containing meta information about the Stop such as warnings or alerts.
  */
-- (void)client:(LJSYourNextBusClient *)client returnedStop:(LJSStop *)stop messages:(NSArray *)messages;
+- (void)client:(LJSYourNextBusClient *)client returnedLiveDataResult:(LJSLiveDataResult *)result;
 
 /**
  *  Delegate callback when the client has failed to obtained live data.
