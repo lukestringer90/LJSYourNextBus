@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class LJSService;
 
 /**
@@ -45,6 +47,14 @@
  */
 @property (nonatomic, assign, readonly) BOOL hasLowFloorAccess;
 
+
+/**
+ *  Test equality with another Departure.
+ *
+ *  @param stop The other Departure to test for equality.
+ *
+ *  @return YES all the properties are equal. Otherwise NO.
+ */
 - (BOOL)isEqualToDeparture:(LJSDeparture *)Departure;
 
 /**
@@ -55,5 +65,7 @@
 - (NSDictionary *)JSONRepresentation;
 
 - (instancetype)initWithDestination:(NSString *)destination expectedDepartureDate:(NSDate *)expectedDepartureDate countdownString:(NSString *)countdownString minutesUntilDeparture:(NSInteger)minutesUntilDeparture hasLowFloorAccess:(BOOL)hasLowFloorAccess service:(LJSService *)service;
+
+NS_ASSUME_NONNULL_END
 
 @end

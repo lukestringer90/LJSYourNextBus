@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class LJSStop;
 
 /**
@@ -23,13 +25,15 @@
 /**
  *  The Stop representing the successful parsing of live departure data from HTML. Or nil if the HTML did not contain any data.
  */
-@property (nonatomic, strong, readonly) LJSStop *stop;
+@property (nonatomic, strong, readonly, nullable) LJSStop *stop;
 
 /**
  *  An array of messages representing meta information such as warnings. Or nil if the HTML did not contain any data.
  */
-@property (nonatomic, copy, readonly) NSArray *messages;
+@property (nonatomic, copy, readonly, nullable) NSArray *messages;
 
-- (instancetype)initWithNaPTANCode:(NSString *)NaPTANCode stop:(LJSStop *)stop messages:(NSArray *)messages;
+- (instancetype)initWithNaPTANCode:(NSString *)NaPTANCode stop:(LJSStop * __nullable)stop messages:(NSArray * __nullable)messages;
+
+NS_ASSUME_NONNULL_END
 
 @end

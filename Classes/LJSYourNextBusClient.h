@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  Domain for errors from LJSYourNextBusClient.
  */
@@ -26,6 +28,7 @@ typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
 	 */
 	LJSYourNextBusErrorDataUnavaiable
 };
+
 
 @class LJSYourNextBusClient, LJSStop, LJSLiveDataResult;
 @protocol LJSYourNextBusClientDelegate <NSObject>
@@ -70,12 +73,12 @@ typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
 /**
  *  Delegate to get client callbacks.
  */
-@property (nonatomic, weak) id<LJSYourNextBusClientDelegate> clientDelegate;
+@property (nonatomic, weak, nullable) id<LJSYourNextBusClientDelegate> clientDelegate;
 
 /**
  *  Delegate to get scrape callbacks.
  */
-@property (nonatomic, weak) id<LJSYourNextBusScrapeDelegate> scrapeDelegate;
+@property (nonatomic, weak, nullable) id<LJSYourNextBusScrapeDelegate> scrapeDelegate;
 
 
 /**
@@ -100,5 +103,7 @@ typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
  *  @return A URL to the web page where live data is location for a stop in a specific region.
  */
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber;
+
+NS_ASSUME_NONNULL_END
 
 @end

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class LJSStop;
 @protocol LJSServicesProvider <NSObject>
 
@@ -47,7 +49,7 @@
 /**
  *  A list of LJSService objects detailing which services are departing from the Stop within the next hour. Or nil if there are no departure in the next hour.
  */
-@property (nonatomic, copy, readonly) NSArray *services;
+@property (nonatomic, copy, readonly, nullable) NSArray *services;
 
 
 /**
@@ -74,5 +76,7 @@
 - (NSDictionary *)JSONRepresentation;
 
 - (instancetype)initWithNaPTANCode:(NSString *)NaPTANCode title:(NSString *)title liveDate:(NSDate *)liveDate laterURL:(NSURL *)laterURL earlierURL:(NSURL *)earlierURL servicesProvider:(id <LJSServicesProvider>)servicesProvider;
+
+NS_ASSUME_NONNULL_END
 
 @end

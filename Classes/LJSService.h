@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class LJSService;
 @protocol LJSDeparturesProvider <NSObject>
 
@@ -35,8 +37,16 @@
 /**
  *  A list of Departures detailing when the Service is departing from the Stop.
  */
-@property (nonatomic, copy, readonly) NSArray *departures;
+@property (nonatomic, copy, readonly, nullable) NSArray *departures;
 
+
+/**
+ *  Test equality with another Service.
+ *
+ *  @param stop The other Service to test for equality.
+ *
+ *  @return YES if the titles are equal and all the Departures are also equal. Otherwise NO.
+ */
 - (BOOL)isEqualToService:(LJSService *)service;
 
 /**
@@ -47,5 +57,7 @@
 - (NSDictionary *)JSONRepresentation;
 
 - (instancetype)initWithTitle:(NSString *)title stop:(LJSStop *)stop departuresProvider:(id <LJSDeparturesProvider>)departuresProvider;
+
+NS_ASSUME_NONNULL_END
 
 @end
