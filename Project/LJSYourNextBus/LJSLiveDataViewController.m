@@ -31,7 +31,6 @@
 		self.yourNextBusClient = [LJSSouthYorkshireClient new];
 		self.yourNextBusClient.clientDelegate = self;
 		self.yourNextBusClient.scrapeDelegate = self;
-		self.yourNextBusClient.saveDataToDisk = YES;
 		
 		self.dateFormatter = [[NSDateFormatter alloc] init];
 		self.dateFormatter.timeStyle = NSDateFormatterShortStyle;

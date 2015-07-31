@@ -28,7 +28,6 @@
 		A34A1951189EB768002EEF2B /* LJSYourNextBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */; };
 		A34A1957189EBF86002EEF2B /* 37010071.html in Resources */ = {isa = PBXBuildFile; fileRef = A34A1956189EBF86002EEF2B /* 37010071.html */; };
 		A34B1C1918CE49F800184A12 /* 37010115.html in Resources */ = {isa = PBXBuildFile; fileRef = A34B1C1818CE49F800184A12 /* 37010115.html */; };
-		A37DE9A818E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m in Sources */ = {isa = PBXBuildFile; fileRef = A37DE9A718E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m */; };
 		A37DE9AE18E874A800795500 /* NSDate+LJSCountDownString.m in Sources */ = {isa = PBXBuildFile; fileRef = A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */; };
 		A388BE5C19686A0F00CF4DA3 /* invalid_2.html in Resources */ = {isa = PBXBuildFile; fileRef = A388BE5B19686A0F00CF4DA3 /* invalid_2.html */; };
 		A388CE5D18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A388CE5C18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m */; };
@@ -93,8 +92,6 @@
 		A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSYourNextBusTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = 37010071.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		A34B1C1818CE49F800184A12 /* 37010115.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = 37010115.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
-		A37DE9A618E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSYourNextBusClient+LJSSaveToDisk.h"; path = "../../Classes/LJSYourNextBusClient+LJSSaveToDisk.h"; sourceTree = "<group>"; };
-		A37DE9A718E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "LJSYourNextBusClient+LJSSaveToDisk.m"; path = "../../Classes/LJSYourNextBusClient+LJSSaveToDisk.m"; sourceTree = "<group>"; };
 		A37DE9A918E8749800795500 /* LJSDeparture+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSDeparture+LJSSetters.h"; path = "../../Classes/LJSDeparture+LJSSetters.h"; sourceTree = "<group>"; };
 		A37DE9AA18E8749800795500 /* LJSService+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSService+LJSSetters.h"; path = "../../Classes/LJSService+LJSSetters.h"; sourceTree = "<group>"; };
 		A37DE9AB18E8749800795500 /* LJSStop+LJSSetters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LJSStop+LJSSetters.h"; path = "../../Classes/LJSStop+LJSSetters.h"; sourceTree = "<group>"; };
@@ -309,8 +306,6 @@
 		A3B9F82D18E0D5EA00CCACC1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A37DE9A618E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.h */,
-				A37DE9A718E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m */,
 				A3BD2755189EF72200540C5F /* LJSHTMLDownloader.h */,
 				A3BD2756189EF72200540C5F /* LJSHTMLDownloader.m */,
 				A3BD2759189EF72200540C5F /* LJSScraper.h */,
@@ -528,7 +523,6 @@
 				A3BD2762189EF72200540C5F /* LJSScraper.m in Sources */,
 				A337FDA518C24F4B002FB29F /* LJSDepartureDateParser.m in Sources */,
 				A31CBF6B189988D000747F46 /* main.m in Sources */,
-				A37DE9A818E8747900795500 /* LJSYourNextBusClient+LJSSaveToDisk.m in Sources */,
 				A3FE172C18DE44C900B8E47E /* LJSLiveDataViewController.m in Sources */,
 				A3BD275F189EF72200540C5F /* LJSDeparture.m in Sources */,
 				A3BD2764189EF72200540C5F /* LJSStop.m in Sources */,

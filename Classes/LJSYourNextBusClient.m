@@ -9,7 +9,6 @@
 #import "LJSYourNextBusClient.h"
 #import "LJSHTMLDownloader.h"
 #import "LJSScraper.h"
-#import "LJSYourNextBusClient+LJSSaveToDisk.h"
 #import "LJSStop.h"
 
 NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
@@ -88,10 +87,6 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 - (void)scrapeHTML:(NSString *)html messages:(NSArray *)messages{
     LJSStop *stop = [self.scraper scrapeStopDataFromHTML:html];
 	[self handleFinishWithStop:stop messages:messages error:nil];
-	
-	if (self.saveDataToDisk) {
-		[self saveToDisk:html stop:stop];
-	}
 }
 
 - (void)handleFinishWithStop:(LJSStop *)stop messages:(NSArray *)messages error:(NSError *)error {
