@@ -8,6 +8,9 @@
 
 #import "LJSYourNextBusClient.h"
 
+/**
+ *  A concrete Your Next Bus client subclass for South Yorkshire. Use a South Yorkshire client for NaPTAN codes starting with '370'.
+ */
 @interface LJSSouthYorkshireClient : LJSYourNextBusClient
 
 @end
