@@ -1,20 +1,21 @@
 Pod::Spec.new do |s|
   s.name         = "LJSYourNextBus"
   s.version      = "2.0.2"
-  s.summary      = "Native Objective-C interface to South Yorkshire Passenger Transport Executive Live departure information (http://tsy.acislive.com)."
+  s.summary      = "Objective-C wrapper for YourNextBus times from South and West Yorkshire Transport."
   s.description  = <<-DESC
-                    Native Objective-C interface to South Yorkshire Passenger Transport Executive Live departure information
-                    Scrapes live departure data from http://tsy.acislive.com into Objective-C `Stop`, `Service` and `Departure` objects.
+                    Objective-C wrapper for YourNextBus times from South and West Yorkshire Transport
+                    Scrapes live departure data from South or West Yorkshire Transport into Objective-C `Stop`, `Service` and `Departure` objects.
                    DESC
-  s.homepage     = "https://bitbucket.org/lukestringer90/ljstravelsouthyorkshire"
+  s.homepage     = "https://github.com/lukestringer90/LJSYourNextBus"
   s.license      = 'MIT'
-  s.author       = { "Luke Stringer" => "lukestringer630@gmail.com" }
-  s.source       = { :git => "git@bitbucket.org:lukestringer90/ljstravelsouthyorkshire.git", :tag => s.version.to_s }
+  s.author       = { "Luke Stringer" => "lukestringer90@gmail.com" }
+  s.source       = { :git => "git@github.com:lukestringer90/LJSYourNextBus.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
   s.source_files = 'Classes'
   s.public_header_files = 'Classes/LJSYourNextBusClient.h', 'Classes/LJSSouthYorkshireClient.h', 'Classes/LJSWestYorkshireClient.h', 'Classes/LJSStop.h', 'Classes/LJSService.h', 'Classes/LJSDeparture.h'
+  
   s.dependency 'ObjectiveGumbo'
 end
