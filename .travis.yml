@@ -1,4 +1,4 @@
 language: objective-c
 xcode_workspace: 'Project/LJSYourNextBus.xcworkspace'
 xcode_scheme: LJSYourNextBus
-podfile: Project/Podfile'
+podfile: 'Project/Podfile'
