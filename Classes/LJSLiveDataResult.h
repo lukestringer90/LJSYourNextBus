@@ -16,6 +16,11 @@
 @interface LJSLiveDataResult : NSObject
 
 /**
+ *  NaPTAN code of the original request to get live data.
+ */
+@property (nonatomic, strong, readonly) NSString *NaPTANCode;
+
+/**
  *  The Stop representing the successful parsing of live departure data from HTML. Or nil if the HTML did not contain any data.
  */
 @property (nonatomic, strong, readonly) LJSStop *stop;
@@ -25,6 +30,6 @@
  */
 @property (nonatomic, copy, readonly) NSArray *messages;
 
-- (instancetype)initWithStop:(LJSStop *)stop messages:(NSArray *)messages;
+- (instancetype)initWithNaPTANCode:(NSString *)NaPTANCode stop:(LJSStop *)stop messages:(NSArray *)messages;
 
 @end

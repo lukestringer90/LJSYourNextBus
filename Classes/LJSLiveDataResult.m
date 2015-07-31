@@ -9,15 +9,17 @@
 #import "LJSLiveDataResult.h"
 
 @interface LJSLiveDataResult ()
+@property (nonatomic, strong, readwrite) NSString *NaPTANCode;
 @property (nonatomic, strong, readwrite) LJSStop *stop;
 @property (nonatomic, copy, readwrite) NSArray *messages;
 @end
 
 @implementation LJSLiveDataResult
 
-- (instancetype)initWithStop:(LJSStop *)stop messages:(NSArray *)messages
+- (instancetype)initWithNaPTANCode:(NSString *)NaPTANCode stop:(LJSStop *)stop messages:(NSArray *)messages
 {
 	if (self = [super init]) {
+		self.NaPTANCode = NaPTANCode;
 		self.stop = stop;
 		self.messages = messages;
 	}

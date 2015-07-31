@@ -100,7 +100,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 }
 
 - (void)handleFinishWithStop:(LJSStop *)stop messages:(NSArray *)messages error:(NSError *)error {
-	LJSLiveDataResult *result = [[LJSLiveDataResult alloc] initWithStop:stop messages:messages];
+	LJSLiveDataResult *result = [[LJSLiveDataResult alloc] initWithNaPTANCode:self.NaPTANCode stop:stop messages:messages];
 	
 	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 		self.gettingLiveData = NO;
