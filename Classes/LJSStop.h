@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class LJSStop;
+@protocol LJSServicesProvider <NSObject>
+
+- (NSArray *)provideServicesForStop:(LJSStop *)stop;
+
+@end
+
 /**
  *  A Stop represents the results from parsing HTML and should be considered relevant for no longer than 60 seconds. It is the root of the live data hierarchy and has a list of Services each of which have a list of Departures for the next hour.
  */
@@ -65,5 +72,7 @@
  *  @return JSON representation of the Stop.
  */
 - (NSDictionary *)JSONRepresentation;
+
+- (instancetype)initWithNaPTANCode:(NSString *)NaPTANCode title:(NSString *)title liveDate:(NSDate *)liveDate laterURL:(NSURL *)laterURL earlierURL:(NSURL *)earlierURL servicesProvider:(id <LJSServicesProvider>)servicesProvider;
 
 @end

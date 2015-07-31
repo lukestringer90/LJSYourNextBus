@@ -22,6 +22,19 @@
 
 @implementation LJSDeparture
 
+- (instancetype)initWithDestination:(NSString *)destination expectedDepartureDate:(NSDate *)expectedDepartureDate countdownString:(NSString *)countdownString minutesUntilDeparture:(NSInteger)minutesUntilDeparture hasLowFloorAccess:(BOOL)hasLowFloorAccess service:(LJSService *)service
+{
+	if (self = [super init]) {
+		self.destination = destination;
+		self.expectedDepartureDate = expectedDepartureDate;
+		self.countdownString = countdownString;
+		self.minutesUntilDeparture = minutesUntilDeparture;
+		self.hasLowFloorAccess = hasLowFloorAccess;
+		self.service = service;
+	}
+	return self;
+}
+
 - (instancetype)copyWithZone:(NSZone *)zone {
 	LJSDeparture *copy = [[LJSDeparture allocWithZone:zone] init];
 	copy.service = self.service;

@@ -24,6 +24,20 @@
 
 #pragma mark - Public
 
+- (instancetype)initWithNaPTANCode:(NSString *)NaPTANCode title:(NSString *)title liveDate:(NSDate *)liveDate laterURL:(NSURL *)laterURL earlierURL:(NSURL *)earlierURL servicesProvider:(id <LJSServicesProvider>)servicesProvider
+{
+	if (self = [super init]) {
+		self.NaPTANCode = NaPTANCode;
+		self.title = title;
+		self.liveDate = liveDate;
+		self.laterURL = laterURL;
+		self.earlierURL = earlierURL;
+		self.services = [servicesProvider provideServicesForStop:self];
+		
+	}
+	return self;
+}
+
 - (instancetype)copyWithZone:(NSZone *)zone {
 	LJSStop *copy = [[LJSStop allocWithZone:zone] init];
 	copy.NaPTANCode = self.NaPTANCode;

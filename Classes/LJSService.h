@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class LJSService;
+@protocol LJSDeparturesProvider <NSObject>
+
+- (NSArray *)departuresForService:(LJSService *)service;
+
+@end
+
 @class LJSStop;
 
 /**
@@ -30,14 +37,6 @@
  */
 @property (nonatomic, copy, readonly) NSArray *departures;
 
-
-/**
- *  Test equality with another Service.
- *
- *  @param service The other Service to test for equality.
- *
- *  @return YES if the titles are equal and all the Departures are also equal. Otherwise NO.
- */
 - (BOOL)isEqualToService:(LJSService *)service;
 
 /**
@@ -46,5 +45,7 @@
  *  @return JSON representation of the Service.
  */
 - (NSDictionary *)JSONRepresentation;
+
+- (instancetype)initWithTitle:(NSString *)title stop:(LJSStop *)stop departuresProvider:(id <LJSDeparturesProvider>)departuresProvider;
 
 @end
