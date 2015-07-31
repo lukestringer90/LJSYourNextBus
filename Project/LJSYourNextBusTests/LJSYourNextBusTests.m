@@ -20,6 +20,7 @@
 #import "LJSDepartureDateParser.h"
 
 #import "LJSMockHTMLDownloader.h"
+#import "LJSDelayedMockHTMLDownloader.h"
 
 #import "LJSStop.h"
 #import "LJSService.h"
@@ -486,6 +487,31 @@
 	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 0.5);
 	
 	assertThat(self.returnedStop.earlierURL, equalTo(nil));
+}
+
+#pragma mark - Multple Requests
+
+- (void)testPreventsASecondRequestWhenFirstHasNotFiinshed
+{
+	NSString *HTML = [self loadHTMLFileNamed:@"37010115"];
+	self.yourNextBusClient.htmlDownloader = [[LJSDelayedMockHTMLDownloader alloc] initWithHTML:HTML ID:@"37010115" delay:5.0];
+	
+	XCTAssertTrue([self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode]);
+	XCTAssertTrue(self.yourNextBusClient.isGettingLiveData);
+	XCTAssertFalse([self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode]);
+}
+
+- (void)testAllowsASecondRequestOnceTheFirstHasFiinshed
+{
+	NSString *HTML = [self loadHTMLFileNamed:@"37010115"];
+	self.yourNextBusClient.htmlDownloader = [[LJSDelayedMockHTMLDownloader alloc] initWithHTML:HTML ID:@"37010115" delay:0.5];
+	
+	XCTAssertTrue([self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode]);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 1.0);
+	XCTAssertFalse(self.yourNextBusClient.isGettingLiveData);
+	
+	XCTAssertTrue([self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode]);
+	XCTAssertTrue(self.yourNextBusClient.isGettingLiveData);
 }
 
 @end

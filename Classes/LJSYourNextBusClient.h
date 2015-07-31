@@ -78,12 +78,20 @@ typedef NS_ENUM(NSInteger, LJSYourNextBusError) {
  */
 @property (nonatomic, weak) id<LJSYourNextBusScrapeDelegate> scrapeDelegate;
 
+
 /**
- *  Asynchronously get live data for a stop as sepcified by a NaPTAN code.
+ *  Asynchronously get live data for a stop as sepcified by a NaPTAN code. NOTE: only one live data requests can be active at a time.
  *
  *  @param NaPTANCode The NaPTAN code of the stop to get live data for. For more information see `LJSStop`.
+ *
+ *  @return YES if the requests for live data was started. NO if the request was not started due to previous request being still active.
  */
-- (void)getLiveDataForNaPTANCode:(NSString *)NaPTANCode;
+- (BOOL)getLiveDataForNaPTANCode:(NSString *)NaPTANCode;
+
+/**
+ *  YES if a request to get live data is being performed. NO if client is idle and no requests are being perofmed.
+ */
+@property (nonatomic, assign, readonly, getter=isGettingLiveData) BOOL gettingLiveData;
 
 /**
  *  Construct a URL to the web page where the live data is located for a NaPTAN code. Must be overriden in a subclass to construct the correct form of URL for a specific region.

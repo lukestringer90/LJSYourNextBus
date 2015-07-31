@@ -18,7 +18,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 @property (nonatomic, strong) LJSScraper *scraper;
 @property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
 @property (nonatomic, strong) NSOperationQueue *backgroundQueue;
-
+@property (nonatomic, assign, readwrite, getter=isGettingLiveData) BOOL gettingLiveData;
 @end
 
 @implementation LJSYourNextBusClient
@@ -33,12 +33,21 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
     return self;
 }
 
-- (void)getLiveDataForNaPTANCode:(NSString *)NaPTANCode {
+- (BOOL)getLiveDataForNaPTANCode:(NSString *)NaPTANCode {
+	// Prevent multiple requests
+	if (self.backgroundQueue.operations.count > 0) {
+		return NO;
+	}
+	
+	self.gettingLiveData = YES;
+	
 	[self.backgroundQueue addOperationWithBlock:^{
 		self.NaPTANCode = NaPTANCode;
 		NSURL *url = [self urlForNaPTANCode:NaPTANCode];
 		[self attemptScrapeWithURL:url];
 	}];
+	
+	return YES;
 }
 
 
@@ -90,8 +99,9 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 }
 
 - (void)handleFinishWithStop:(LJSStop *)stop messages:(NSArray *)messages error:(NSError *)error {
-	
+
 	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+		self.gettingLiveData = NO;
 		
 		if (error && [self.clientDelegate respondsToSelector:@selector(client:failedWithError:NaPTANCode:)]) {
 			[self.clientDelegate client:self failedWithError:error NaPTANCode:self.NaPTANCode];
