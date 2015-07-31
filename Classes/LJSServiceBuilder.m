@@ -18,6 +18,10 @@
 
 - (NSArray *)departuresForService:(LJSService *)service
 {
+	if (self.departureBuilders.count == 0) {
+		return nil;
+	}
+	
 	NSMutableArray *departures = [NSMutableArray array];
 	for (id <LJSDepartureBuilder>departudeBuilder in self.departureBuilders) {
 		LJSDeparture *departure = [departudeBuilder buildForService:service];

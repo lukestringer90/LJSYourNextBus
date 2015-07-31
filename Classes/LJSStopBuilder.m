@@ -22,6 +22,10 @@
 
 - (NSArray *)provideServicesForStop:(LJSStop *)stop
 {
+	if (self.serviceBuilders.count == 0) {
+		return nil;
+	}
+	
 	NSMutableArray *services = [NSMutableArray array];
 	for (id <LJSServiceBuilder> serviceBuilder in self.serviceBuilders) {
 		LJSService *service = [serviceBuilder buildForWithStop:stop];

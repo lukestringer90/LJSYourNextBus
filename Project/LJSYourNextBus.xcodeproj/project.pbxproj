@@ -301,10 +301,10 @@
 			children = (
 				A3B02E181B6A74DA00D029F8 /* LJSStopBuilder.h */,
 				A3B02E191B6A74DA00D029F8 /* LJSStopBuilder.m */,
-				A3B02E291B6AA23A00D029F8 /* LJSDepartureBuilder.h */,
-				A3B02E2A1B6AA23A00D029F8 /* LJSDepartureBuilder.m */,
 				A3B02E2C1B6AAA0A00D029F8 /* LJSServiceBuilder.h */,
 				A3B02E2D1B6AAA0A00D029F8 /* LJSServiceBuilder.m */,
+				A3B02E291B6AA23A00D029F8 /* LJSDepartureBuilder.h */,
+				A3B02E2A1B6AA23A00D029F8 /* LJSDepartureBuilder.m */,
 			);
 			name = Builders;
 			sourceTree = "<group>";
