@@ -16,7 +16,7 @@
 @end
 
 /**
- *  A Stop represents the results from parsing HTML and should be considered relevant for no longer than 60 seconds. It is the root of the live data hierarchy and has a list of Services each of which have a list of Departures for the next hour.
+ *  A Stop represents the successful parsing of live departure data from HTML. It is the root of the live data hierarchy and has a list of Services each of which have a list of Departures for the next hour. A Stop should only be considered relevant for no longer than 60 seconds.
  */
 @interface LJSStop : NSObject <NSCopying>
 

@@ -10,6 +10,7 @@
 #import "LJSHTMLDownloader.h"
 #import "LJSScraper.h"
 #import "LJSStop.h"
+#import "LJSLiveDataResult.h"
 
 NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
@@ -99,15 +100,16 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 }
 
 - (void)handleFinishWithStop:(LJSStop *)stop messages:(NSArray *)messages error:(NSError *)error {
-
+	LJSLiveDataResult *result = [[LJSLiveDataResult alloc] initWithNaPTANCode:self.NaPTANCode stop:stop messages:messages];
+	
 	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 		self.gettingLiveData = NO;
 		
 		if (error && [self.clientDelegate respondsToSelector:@selector(client:failedWithError:NaPTANCode:)]) {
 			[self.clientDelegate client:self failedWithError:error NaPTANCode:self.NaPTANCode];
 		}
-		else if ([self.clientDelegate respondsToSelector:@selector(client:returnedStop:messages:)]) {
-			[self.clientDelegate client:self returnedStop:stop messages:messages];
+		else if ([self.clientDelegate respondsToSelector:@selector(client:returnedLiveDataResult:)]) {
+			[self.clientDelegate client:self returnedLiveDataResult:result];
 		}
 		
 	}];

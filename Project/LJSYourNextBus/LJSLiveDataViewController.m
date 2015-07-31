@@ -12,6 +12,7 @@
 #import "LJSService.h"
 #import "LJSDeparture.h"
 #import "LJSDepatureCell.h"
+#import "LJSLiveDataResult.h"
 
 @interface LJSLiveDataViewController () <LJSYourNextBusScrapeDelegate, LJSYourNextBusClientDelegate>
 @property (nonatomic, copy, readwrite) NSString *NaPTANCode;
@@ -90,11 +91,11 @@
 
 #pragma mark - LJSYourNextBusStopDelegate
 
-- (void)client:(LJSYourNextBusClient *)client returnedStop:(LJSStop *)stop messages:(NSArray *)messages {
+- (void)client:(LJSYourNextBusClient *)client returnedLiveDataResult:(LJSLiveDataResult *)result {
 	[self.refreshControl endRefreshing];
-	self.stop = stop;
+	self.stop = result.stop;
 	self.title = self.stop.title;
-	self.allDepartures = [stop sortedDepartures];
+	self.allDepartures = [self.stop sortedDepartures];
 	[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 

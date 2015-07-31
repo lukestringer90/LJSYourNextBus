@@ -25,6 +25,7 @@
 #import "LJSStop.h"
 #import "LJSService.h"
 #import "LJSDeparture.h"
+#import "LJSLiveDataResult.h"
 
 @interface LJSYourNextBusClient (TestVisibility)
 @property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
@@ -69,9 +70,9 @@
 }
 
 #pragma mark - LJSYourNextBusScrapeDelegate
-- (void)client:(LJSYourNextBusClient *)client returnedStop:(LJSStop *)stop messages:(NSArray *)messages {
-	self.returnedStop = stop;
-	self.messages = messages;
+- (void)client:(LJSYourNextBusClient *)client returnedLiveDataResult:(LJSLiveDataResult *)result {
+	self.returnedStop = result.stop;
+	self.messages = result.messages;
 	self.delegateCalledForReturnedStop = YES;
 }
 
