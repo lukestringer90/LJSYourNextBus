@@ -2,14 +2,22 @@
 
 Objective-C wrapper for YourNextBus times from South and West Yorkshire Transport. Scrapes live departure data from http://tsy.acislive.com/web (South Yorkshire) and http://wypte.acislive.com (West Yorkshire).
 
+## NaPTAN Code
+
+In the UK every public transport stop (Bus, Tram, Train etc) is a known as a "National Public Transport Access Node". Each of these nodes is given a unique identifier: a 8 digit number called a NaPTANCode. More information here: https://www.gov.uk/government/publications/national-public-transport-access-node-schema
+
 ## Usage
+
+To obtain live data for a stop, the NaPTAN code is specified to a `LJSYourNextBusClient` object for either South or West Yorkshire. South Yorkshire codes begin with "310" and West Yorkshire code being with "450". Use the correct subclass for your needs: either `LJSSouthYorkshireClient` or `LJSWestYorkshireClient`. These subclasses construct a URL to the live data for a specific region. This URL is used by the base `LJSYourNextBusClient` to get live data. 
+
+Note: do create and use instances of `LJSYourNextBusClient` directly. Either use a `LJSSouthYorkshireClient` or `LJSWestYorkshireClient` instance or create a custom subclass yourself, overriding the method to construct the URL to the live data.
 
 ```
 // LJSSouthYorkshireClient or LJSWestYorkshireClient
 LJSYourNextBusClient *client = [LJSSouthYorkshireClient new];
 client.clientDelegate = self;
 
-[self.yourNextBusClient getLiveDataForNaPTANCode:@"37010200"];
+[client getLiveDataForNaPTANCode:@"37010200"];
 
 #pragma mark - LJSYourNextBusStopDelegate
 
