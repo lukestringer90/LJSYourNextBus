@@ -8,27 +8,62 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  A Stop represents the results from parsing HTML and should be considered relevant for no longer than 60 seconds. It is the root of the live data hierarchy and has a list of Services each of which have a list of Departures for the next hour.
+ */
 @interface LJSStop : NSObject <NSCopying>
 
 /**
- *  An 8 digit stop number starting with e.g. 450 for West Yorkshire or 370 for South Yorkshire
+ *  An 8 digit number identifying a the Stop as a "National Public Transport Access Nodes". See here for more information: https://www.gov.uk/government/publications/national-public-transport-access-node-schema
  */
 @property (nonatomic, copy, readonly) NSString *NaPTANCode;
 
+/**
+ *  The common title for the Stop as displayed on the sign post. e.g. "Sheffield Interchange"
+ */
 @property (nonatomic, copy, readonly) NSString *title;
+
+/**
+ *  The date on which the Stop was created from the live data source.
+ */
 @property (nonatomic, copy, readonly) NSDate *liveDate;
+
+/**
+ *  URL to the HTML page where later departure times (between +1 and +2 hours from now) can be found.
+ */
 @property (nonatomic, strong, readonly) NSURL *laterURL;
+/**
+ *  URL to the HTML page where earlier departure times (between -1 and 0 hours from now) can be found.
+ */
 @property (nonatomic, strong, readonly) NSURL *earlierURL;
 
 /**
- *  Nil if there are no departures for the stop in the next hour.
+ *  A list of LJSService objects detailing which services are departing from the Stop within the next hour. Or nil if there are no departure in the next hour.
  */
 @property (nonatomic, copy, readonly) NSArray *services;
 
+
+/**
+ *  Test equality with another Stop.
+ *
+ *  @param stop The other Stop to test for equality.
+ *
+ *  @return YES if the NaPTAN codes are equal and all the Services and Departures are also equal. Otherwise NO.
+ */
 - (BOOL)isEqualToStop:(LJSStop *)stop;
 
+/**
+ *  Sorts all the Departures for all the Services for the Stop  by expected departure date.
+ *
+ *  @return All the Departures for all the Services for the Stop, sorted by expected departure date.
+ */
 - (NSArray *)sortedDepartures;
 
+/**
+ *  JSON representation of the Stop.
+ *
+ *  @return JSON representation of the Stop.
+ */
 - (NSDictionary *)JSONRepresentation;
 
 @end
