@@ -8,9 +8,10 @@
 
 #import <XCTest/XCTest.h>
 #import "LJSDeparture.h"
-#import "LJSDeparture+LJSSetters.h"
+#import "LJSDepartureBuilder.h"
 
 @interface LJSDepartureTests : XCTestCase
+@property (nonatomic, strong) LJSDepartureBuilder *departureBuilder;
 @property (nonatomic, strong) LJSDeparture *departureA;
 @property (nonatomic, strong) LJSDeparture *departureB;
 @property (nonatomic, strong) NSDate *departureDate;
@@ -20,25 +21,28 @@
 
 - (void)setUp {
     [super setUp];
-	 
+	
+	self.departureBuilder = [LJSDepartureBuilder new];
+	
 	self.departureDate = [NSDate date];
 	
-    self.departureA = [LJSDeparture new];
-	self.departureA.expectedDepartureDate = self.departureDate;
-	self.departureA.countdownString = @"2 Mins";
-	self.departureA.destination = @"Sheffield";
-	self.departureA.hasLowFloorAccess = YES;
-	self.departureA.minutesUntilDeparture = 10;
+	self.departureBuilder.expectedDepartureDate = self.departureDate;
+	self.departureBuilder.countdownString = @"2 Mins";
+	self.departureBuilder.destination = @"Sheffield";
+	self.departureBuilder.hasLowFloorAccess = YES;
+	self.departureBuilder.minutesUntilDeparture = 10;
 	
-	self.departureB = [LJSDeparture new];
+	self.departureA = [self.departureBuilder buildForService:nil];
 }
 
 - (void)testEquality {
-	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"2 Mins";
-	self.departureB.destination = @"Sheffield";
-	self.departureB.hasLowFloorAccess = YES;
-	self.departureB.minutesUntilDeparture = 10;
+	self.departureBuilder.expectedDepartureDate = self.departureDate;
+	self.departureBuilder.countdownString = @"2 Mins";
+	self.departureBuilder.destination = @"Sheffield";
+	self.departureBuilder.hasLowFloorAccess = YES;
+	self.departureBuilder.minutesUntilDeparture = 10;
+	
+	self.departureB = [self.departureBuilder buildForService:nil];
 
 	XCTAssertEqualObjects(self.departureA,self.departureB, @"");
 }
@@ -47,53 +51,59 @@
 	NSDate *departureDateA = [NSDate dateWithTimeIntervalSince1970:100000];
 	NSDate *departureDateB = [NSDate dateWithTimeIntervalSince1970:100001];
 	
-	self.departureA.expectedDepartureDate = departureDateA;
+	self.departureBuilder.expectedDepartureDate = departureDateA;
+	self.departureA = [self.departureBuilder buildForService:nil];
 	
-	self.departureB.expectedDepartureDate = departureDateB;
-	self.departureB.countdownString = @"2 Mins";
-	self.departureB.destination = @"Sheffield";
-	self.departureB.hasLowFloorAccess = YES;
-	self.departureB.minutesUntilDeparture = 10;
+	self.departureBuilder.expectedDepartureDate = departureDateB;
+	self.departureBuilder.countdownString = @"2 Mins";
+	self.departureBuilder.destination = @"Sheffield";
+	self.departureBuilder.hasLowFloorAccess = YES;
+	self.departureBuilder.minutesUntilDeparture = 10;
+	self.departureB = [self.departureBuilder buildForService:nil];
 
 	XCTAssertNotEqualObjects(self.departureA, self.departureB, @"");
 }
 
 - (void)testInequalityForCountDownString {
-	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"10 Mins";
-	self.departureB.destination = @"Sheffield";
-	self.departureB.hasLowFloorAccess = YES;
-	self.departureB.minutesUntilDeparture = 10;
+	self.departureBuilder.expectedDepartureDate = self.departureDate;
+	self.departureBuilder.countdownString = @"10 Mins";
+	self.departureBuilder.destination = @"Sheffield";
+	self.departureBuilder.hasLowFloorAccess = YES;
+	self.departureBuilder.minutesUntilDeparture = 10;
+	self.departureB = [self.departureBuilder buildForService:nil];
 	
 	XCTAssertNotEqualObjects(self.departureA, self.departureB, @"");
 }
 
 - (void)testInequalityForDestination {
-	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"2 Mins";
-	self.departureB.destination = @"Rotherham";
-	self.departureB.hasLowFloorAccess = YES;
-	self.departureB.minutesUntilDeparture = 10;
+	self.departureBuilder.expectedDepartureDate = self.departureDate;
+	self.departureBuilder.countdownString = @"2 Mins";
+	self.departureBuilder.destination = @"Rotherham";
+	self.departureBuilder.hasLowFloorAccess = YES;
+	self.departureBuilder.minutesUntilDeparture = 10;
+	self.departureB = [self.departureBuilder buildForService:nil];
 	
 	XCTAssertNotEqualObjects(self.departureA, self.departureB, @"");
 }
 
 - (void)testInequalityForLowFloorAccess {
-	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"2 Mins";
-	self.departureB.destination = @"Sheffield";
-	self.departureB.hasLowFloorAccess = NO;
-	self.departureB.minutesUntilDeparture = 10;
+	self.departureBuilder.expectedDepartureDate = self.departureDate;
+	self.departureBuilder.countdownString = @"2 Mins";
+	self.departureBuilder.destination = @"Sheffield";
+	self.departureBuilder.hasLowFloorAccess = NO;
+	self.departureBuilder.minutesUntilDeparture = 10;
+	self.departureB = [self.departureBuilder buildForService:nil];
 	
 	XCTAssertNotEqualObjects(self.departureA, self.departureB, @"");
 }
 
 - (void)testInequalityForMinutesUntilDeparture {
-	self.departureB.expectedDepartureDate = self.departureDate;
-	self.departureB.countdownString = @"2 Mins";
-	self.departureB.destination = @"Sheffield";
-	self.departureB.hasLowFloorAccess = YES;
-	self.departureB.minutesUntilDeparture = 20;
+	self.departureBuilder.expectedDepartureDate = self.departureDate;
+	self.departureBuilder.countdownString = @"2 Mins";
+	self.departureBuilder.destination = @"Sheffield";
+	self.departureBuilder.hasLowFloorAccess = YES;
+	self.departureBuilder.minutesUntilDeparture = 20;
+	self.departureB = [self.departureBuilder buildForService:nil];
 	
 	XCTAssertNotEqualObjects(self.departureA, self.departureB, @"");
 }

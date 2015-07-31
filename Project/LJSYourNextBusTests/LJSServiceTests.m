@@ -8,11 +8,12 @@
 
 #import <XCTest/XCTest.h>
 #import "LJSService.h"
-#import "LJSService+LJSSetters.h"
 #import "LJSDeparture.h"
-#import "LJSDeparture+LJSSetters.h"
+#import "LJSServiceBuilder.h"
+#import "LJSDepartureBuilder.h"
 
 @interface LJSServiceTests : XCTestCase
+@property (nonatomic, strong) LJSServiceBuilder *serviceBuilder;
 @property (nonatomic, strong) LJSService *serviceA;
 @property (nonatomic, strong) LJSService *serviceB;
 @end
@@ -21,20 +22,24 @@
 
 - (void)setUp {
 	[super setUp];
-	self.serviceA = [LJSService new];
-	self.serviceB = [LJSService new];
+	
+	self.serviceBuilder = [LJSServiceBuilder new];
 }
 
 - (void)testEquality {
-	self.serviceA.title = @"service-123";
-	self.serviceB.title = @"service-123";
+	self.serviceBuilder.title = @"service-123";
+	self.serviceA = [self.serviceBuilder buildForWithStop:nil];
+	self.serviceB = [self.serviceBuilder buildForWithStop:nil];
+
 	
 	XCTAssertEqualObjects(self.serviceA, self.serviceB, @"");
 }
 
 - (void)testInequalityForTitle {
-	self.serviceA.title = @"service-123";
-	self.serviceB.title = @"service-456";
+	self.serviceBuilder.title = @"service-123";
+	self.serviceA = [self.serviceBuilder buildForWithStop:nil];
+	self.serviceBuilder.title = @"service-456";
+	self.serviceB = [self.serviceBuilder buildForWithStop:nil];
 	
 	XCTAssertNotEqualObjects(self.serviceA, self.serviceB, @"");
 }
@@ -44,37 +49,44 @@
 	NSDate *departureDateB = [NSDate dateWithTimeIntervalSince1970:100001];
 	NSDate *departureDateC = [NSDate dateWithTimeIntervalSince1970:100002];
 	
-	LJSDeparture *departureA = [LJSDeparture new];
-	departureA.expectedDepartureDate = departureDateA;
-	departureA.destination = @"Sheffield";
-	departureA.hasLowFloorAccess = YES;
+	LJSDepartureBuilder *departureBuilderA = [LJSDepartureBuilder new];
+	departureBuilderA.expectedDepartureDate = departureDateA;
+	departureBuilderA.destination = @"Sheffield";
+	departureBuilderA.hasLowFloorAccess = YES;
+
+	LJSDepartureBuilder *departureBuilderB = [LJSDepartureBuilder new];
+	departureBuilderB.expectedDepartureDate = departureDateB;
+	departureBuilderB.destination = @"Rotherham";
+	departureBuilderB.hasLowFloorAccess = NO;
+
+	LJSDepartureBuilder *departureBuilderC = [LJSDepartureBuilder new];
+	departureBuilderC.expectedDepartureDate = departureDateC;
+	departureBuilderC.destination = @"Barnsley";
+	departureBuilderC.hasLowFloorAccess = YES;
+
+	LJSServiceBuilder *serviceBuilderA = [LJSServiceBuilder new];
+	serviceBuilderA.title = @"service-123";
+	serviceBuilderA.departureBuilders = @[departureBuilderA, departureBuilderB];
 	
-	LJSDeparture *departureB = [LJSDeparture new];
-	departureB.expectedDepartureDate = departureDateB;
-	departureB.destination = @"Rotherham";
-	departureB.hasLowFloorAccess = NO;
+	LJSServiceBuilder *serviceBuilderB = [LJSServiceBuilder new];
+	serviceBuilderB.title = @"service-123";
+	serviceBuilderB.departureBuilders = @[departureBuilderA, departureBuilderC];
 	
-	LJSDeparture *departureC = [LJSDeparture new];
-	departureC.expectedDepartureDate = departureDateC;
-	departureC.destination = @"Barnsley";
-	departureC.hasLowFloorAccess = YES;
-	
-	self.serviceA.title = @"service-123";
-	self.serviceA.departures = @[departureA, departureB];
-	self.serviceB.title = @"service-123";
-	self.serviceB.departures = @[departureA, departureC];
+	self.serviceA = [serviceBuilderA buildForWithStop:nil];
+	self.serviceB = [serviceBuilderB buildForWithStop:nil];
 	
 	XCTAssertNotEqualObjects(self.serviceA, self.serviceB, @"");
 }
 
 - (void)testCopies {
-	LJSDeparture *departure = [LJSDeparture new];
-	departure.expectedDepartureDate = [NSDate date];
-	departure.destination = @"Sheffield";
-	departure.hasLowFloorAccess = YES;
+	LJSDepartureBuilder *departureBuilder = [LJSDepartureBuilder new];
+	departureBuilder.expectedDepartureDate = [NSDate date];
+	departureBuilder.destination = @"Sheffield";
+	departureBuilder.hasLowFloorAccess = YES;
 	
-	self.serviceA.title = @"service-123";
-	self.serviceA.departures = @[departure];
+	self.serviceBuilder.title = @"service-123";
+	self.serviceBuilder.departureBuilders = @[departureBuilder];
+	self.serviceA = [self.serviceBuilder buildForWithStop:nil];
 
     LJSService *copiedService = [self.serviceA copy];
 	
@@ -88,29 +100,34 @@
 	NSDate *departureDateB = [NSDate dateWithTimeIntervalSince1970:100001];
 	NSDate *departureDateC = [NSDate dateWithTimeIntervalSince1970:100002];
 	
-	LJSDeparture *departureA = [LJSDeparture new];
-	departureA.expectedDepartureDate = departureDateA;
-	departureA.destination = @"Sheffield";
-	departureA.hasLowFloorAccess = YES;
-	departureA.countdownString = @"11:12";
-	departureA.minutesUntilDeparture = 1;
+	LJSDepartureBuilder *departureBuilderA = [LJSDepartureBuilder new];
+	departureBuilderA.expectedDepartureDate = departureDateA;
+	departureBuilderA.destination = @"Sheffield";
+	departureBuilderA.hasLowFloorAccess = YES;
+	departureBuilderA.countdownString = @"11:12";
+	departureBuilderA.minutesUntilDeparture = 1;
 	
-	LJSDeparture *departureB = [LJSDeparture new];
-	departureB.expectedDepartureDate = departureDateB;
-	departureB.destination = @"Rotherham";
-	departureB.hasLowFloorAccess = NO;
-	departureB.countdownString = @"12:12";
-	departureB.minutesUntilDeparture = 2;
+	LJSDepartureBuilder *departureBuilderB = [LJSDepartureBuilder new];
+	departureBuilderB.expectedDepartureDate = departureDateB;
+	departureBuilderB.destination = @"Rotherham";
+	departureBuilderB.hasLowFloorAccess = NO;
+	departureBuilderB.countdownString = @"12:12";
+	departureBuilderB.minutesUntilDeparture = 2;
 	
-	LJSDeparture *departureC = [LJSDeparture new];
-	departureC.expectedDepartureDate = departureDateC;
-	departureC.destination = @"Barnsley";
-	departureC.hasLowFloorAccess = YES;
-	departureC.countdownString = @"13:12";
-	departureC.minutesUntilDeparture = 3;
+	LJSDepartureBuilder *departureBuilderC = [LJSDepartureBuilder new];
+	departureBuilderC.expectedDepartureDate = departureDateC;
+	departureBuilderC.destination = @"Barnsley";
+	departureBuilderC.hasLowFloorAccess = YES;
+	departureBuilderC.countdownString = @"13:12";
+	departureBuilderC.minutesUntilDeparture = 3;
 	
-	self.serviceA.title = @"service-123";
-	self.serviceA.departures = @[departureA, departureB, departureC];
+	self.serviceBuilder.title = @"service-123";
+	self.serviceBuilder.departureBuilders = @[departureBuilderA, departureBuilderB, departureBuilderC];
+	
+	self.serviceA = [self.serviceBuilder buildForWithStop:nil];
+	LJSDeparture *departureA = self.serviceA.departures[0];
+	LJSDeparture *departureB = self.serviceA.departures[1];
+	LJSDeparture *departureC = self.serviceA.departures[2];
 	
 	NSDictionary *correctJSON = @{
 								  @"title" : @"service-123",

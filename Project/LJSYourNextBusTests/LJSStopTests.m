@@ -8,15 +8,18 @@
 
 #import <XCTest/XCTest.h>
 #import "LJSStop.h"
-#import "LJSStop+LJSSetters.h"
 #import "LJSService.h"
-#import "LJSService+LJSSetters.h"
-#import "LJSDeparture+LJSSetters.h"
+#import "LJSStopBuilder.h"
+#import "LJSServiceBuilder.h"
+#import "LJSDepartureBuilder.h"
 
 #define HC_SHORTHAND
 #import <OCHamcrest/OCHamcrest.h>
 
 @interface LJSStopTests : XCTestCase
+@property (nonatomic, strong) LJSStopBuilder *stopBuilder;
+@property (nonatomic, strong) LJSDepartureBuilder *departureBuilder;
+@property (nonatomic, strong) LJSServiceBuilder *serviceBuilder;
 @property (nonatomic, strong) LJSStop *stopA;
 @property (nonatomic, strong) LJSStop *stopB;
 @end
@@ -25,50 +28,58 @@
 
 - (void)setUp {
     [super setUp];
-	self.stopA = [LJSStop new];
-	self.stopB = [LJSStop new];
+	self.stopBuilder = [LJSStopBuilder new];
+	self.serviceBuilder = [LJSServiceBuilder new];
+	self.departureBuilder = [LJSDepartureBuilder new];
 }
 
 - (void)testEquality {
-	self.stopA.NaPTANCode = @"123";
-	self.stopB.NaPTANCode = @"123";
+	self.stopBuilder.NaPTANCode = @"123";
+	self.stopA = [self.stopBuilder build];
+	self.stopB = [self.stopBuilder build];
     
     assertThat(self.stopA, equalTo(self.stopB));
 }
 
 - (void)testInequalityForTitles {
-    self.stopA.NaPTANCode = @"123";
-	self.stopB.NaPTANCode = @"456";
+	self.stopBuilder.NaPTANCode = @"123";
+	self.stopA = [self.stopBuilder build];
+	self.stopBuilder.NaPTANCode = @"456";
+	self.stopB = [self.stopBuilder build];
     
     assertThat(self.stopA, isNot(equalTo(self.stopB)));
 }
 
 - (void)testInequalityForServices {
-	LJSService *serviceA = [LJSService new];
-	LJSService *serviceB = [LJSService new];
-	LJSService *serviceC = [LJSService new];
+	LJSServiceBuilder *serviceBuilderA = [LJSServiceBuilder new];
+	LJSServiceBuilder *serviceBuilderB = [LJSServiceBuilder new];
+	LJSServiceBuilder *serviceBuilderC = [LJSServiceBuilder new];
 	
-	serviceA.title = @"service-123";
-	serviceB.title = @"service-456";
-	serviceC.title = @"service-789";
+	serviceBuilderA.title = @"service-123";
+	serviceBuilderB.title = @"service-456";
+	serviceBuilderC.title = @"service-789";
 	
-	self.stopA.NaPTANCode = @"123";
-	self.stopA.services = @[serviceA, serviceB];
-	self.stopB.NaPTANCode = @"123";
-	self.stopA.services = @[serviceA, serviceC];
+	self.stopBuilder.NaPTANCode = @"123";
+	self.stopBuilder.serviceBuilders = @[serviceBuilderA, serviceBuilderB];
+	self.stopA = [self.stopBuilder build];
+	
+	self.stopBuilder.serviceBuilders = @[serviceBuilderA, serviceBuilderC];
+	self.stopB = [self.stopBuilder build];
 	
 	assertThat(self.stopA, isNot(equalTo(self.stopB)));
 }
 
 - (void)testCopies {
-	LJSService *serviceA = [LJSService new];
-	serviceA.title = @"service-123";
-	self.stopA.NaPTANCode = @"123";
-	self.stopA.services = @[serviceA];
-	self.stopA.liveDate = [NSDate date];
-	self.stopA.laterURL = [NSURL URLWithString:@"www.foo.com"];
-	self.stopA.earlierURL = [NSURL URLWithString:@"www.bar.com"];
+	LJSServiceBuilder *serviceBuilderA = [LJSServiceBuilder new];
+	serviceBuilderA.title = @"service-123";
 	
+	self.stopBuilder.NaPTANCode = @"123";
+	self.stopBuilder.serviceBuilders = @[serviceBuilderA];
+	self.stopBuilder.liveDate = [NSDate date];
+	self.stopBuilder.laterURL = [NSURL URLWithString:@"www.foo.com"];
+	self.stopBuilder.earlierURL = [NSURL URLWithString:@"www.bar.com"];
+	
+	self.stopA = [self.stopBuilder build];
     LJSStop *copy = [self.stopA copy];
 	
 	assertThat(copy.title, equalTo(self.stopA.title));
@@ -84,30 +95,33 @@
 	dateFormatter.dateStyle = NSDateFormatterShortStyle;
 	dateFormatter.timeStyle = NSDateFormatterShortStyle;
 	
-	LJSDeparture *departureA = [LJSDeparture new];
+	LJSDepartureBuilder *departureA = [LJSDepartureBuilder new];
 	departureA.expectedDepartureDate = [NSDate date];
 	departureA.destination = @"Sheffield";
 	departureA.hasLowFloorAccess = YES;
 	departureA.countdownString = @"11:12";
 	departureA.minutesUntilDeparture = 1;
 	
-	LJSDeparture *departureB = [LJSDeparture new];
+	LJSDepartureBuilder *departureB = [LJSDepartureBuilder new];
 	departureB.expectedDepartureDate = [NSDate date];
 	departureB.destination = @"Rotherham";
 	departureB.hasLowFloorAccess = NO;
 	departureB.countdownString = @"12:12";
 	departureB.minutesUntilDeparture = 2;
 
-	LJSService *serviceA = [LJSService new];
-	serviceA.title = @"service-123";
-	serviceA.departures = @[departureA, departureB];
+	LJSServiceBuilder *serviceBuilderA = [LJSServiceBuilder new];
+	serviceBuilderA.title = @"service-123";
+	serviceBuilderA.departureBuilders = @[departureA, departureB];
 	
 	NSDate *liveDate = [NSDate date];
-	self.stopA.NaPTANCode = @"123";
-	self.stopA.services = @[serviceA];
-	self.stopA.liveDate = liveDate;
-	self.stopA.laterURL = [NSURL URLWithString:@"www.foo.com"];
-	self.stopA.earlierURL = [NSURL URLWithString:@"www.bar.com"];
+	self.stopBuilder.NaPTANCode = @"123";
+	self.stopBuilder.serviceBuilders = @[serviceBuilderA];
+	self.stopBuilder.liveDate = liveDate;
+	self.stopBuilder.laterURL = [NSURL URLWithString:@"www.foo.com"];
+	self.stopBuilder.earlierURL = [NSURL URLWithString:@"www.bar.com"];
+	
+	self.stopA = [self.stopBuilder build];
+	LJSService *serviceA = self.stopA.services[0];
 	
 	NSDictionary *correctJSON = @{
 								  @"NaPTANCode" : @"123",
@@ -123,41 +137,48 @@
 }
 
 - (void)testDepartures {
-    LJSDeparture *departureA = [LJSDeparture new];
-	departureA.expectedDepartureDate = [NSDate date];
-	departureA.destination = @"Sheffield";
-	departureA.hasLowFloorAccess = YES;
-	departureA.countdownString = @"11:12";
-	departureA.minutesUntilDeparture = 1;
+    LJSDepartureBuilder *departureBuilderA = [LJSDepartureBuilder new];
+	departureBuilderA.expectedDepartureDate = [NSDate date];
+	departureBuilderA.destination = @"Sheffield";
+	departureBuilderA.hasLowFloorAccess = YES;
+	departureBuilderA.countdownString = @"11:12";
+	departureBuilderA.minutesUntilDeparture = 1;
 	
-	LJSDeparture *departureB = [LJSDeparture new];
-	departureB.expectedDepartureDate = [NSDate date];
-	departureB.destination = @"Rotherham";
-	departureB.hasLowFloorAccess = NO;
-	departureB.countdownString = @"12:12";
-	departureB.minutesUntilDeparture = 2;
+	LJSDepartureBuilder *departureBuilderB = [LJSDepartureBuilder new];
+	departureBuilderB.expectedDepartureDate = [NSDate date];
+	departureBuilderB.destination = @"Rotherham";
+	departureBuilderB.hasLowFloorAccess = NO;
+	departureBuilderB.countdownString = @"12:12";
+	departureBuilderB.minutesUntilDeparture = 2;
 	
-	LJSDeparture *departureC = [LJSDeparture new];
-	departureC.expectedDepartureDate = [NSDate date];
-	departureC.destination = @"Leeds";
-	departureC.hasLowFloorAccess = NO;
-	departureC.countdownString = @"13:12";
-	departureC.minutesUntilDeparture = 3;
+	LJSDepartureBuilder *departureBuilderC = [LJSDepartureBuilder new];
+	departureBuilderC.expectedDepartureDate = [NSDate date];
+	departureBuilderC.destination = @"Leeds";
+	departureBuilderC.hasLowFloorAccess = NO;
+	departureBuilderC.countdownString = @"13:12";
+	departureBuilderC.minutesUntilDeparture = 3;
 	
-	LJSService *serviceA = [LJSService new];
-	serviceA.title = @"serviceA";
-	serviceA.departures = @[departureA, departureB];
+	LJSServiceBuilder *serviceBuilderA = [LJSServiceBuilder new];
+	serviceBuilderA.title = @"serviceA";
+	serviceBuilderA.departureBuilders = @[departureBuilderA, departureBuilderB];
 	
-	LJSService *serviceB = [LJSService new];
-	serviceB.title = @"serviceB";
-	serviceB.departures = @[departureC];
+	LJSServiceBuilder *serviceBuilderB = [LJSServiceBuilder new];
+	serviceBuilderB.title = @"serviceB";
+	serviceBuilderB.departureBuilders = @[departureBuilderC];
 	
 	NSDate *liveDate = [NSDate date];
-	self.stopA.NaPTANCode = @"123";
-	self.stopA.services = @[serviceA, serviceB];
-	self.stopA.liveDate = liveDate;
-	self.stopA.laterURL = [NSURL URLWithString:@"www.foo.com"];
-	self.stopA.earlierURL = [NSURL URLWithString:@"www.bar.com"];
+	self.stopBuilder.NaPTANCode = @"123";
+	self.stopBuilder.serviceBuilders = @[serviceBuilderA, serviceBuilderB];
+	self.stopBuilder.liveDate = liveDate;
+	self.stopBuilder.laterURL = [NSURL URLWithString:@"www.foo.com"];
+	self.stopBuilder.earlierURL = [NSURL URLWithString:@"www.bar.com"];
+	
+	self.stopA = [self.stopBuilder build];
+	LJSService *serviceA = self.stopA.services[0];
+	LJSService *serviceB = self.stopA.services[1];
+	LJSDeparture *departureA = serviceA.departures[0];
+	LJSDeparture *departureB = serviceA.departures[1];
+	LJSDeparture *departureC = serviceB.departures[0];
 	
 	NSArray *allDepartures = [self.stopA sortedDepartures];
 	assertThat(allDepartures, hasCountOf(3));
