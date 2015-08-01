@@ -1,4 +1,5 @@
 # LJSYourNextBus
+[![Build Status](https://travis-ci.org/lukestringer90/LJSYourNextBus.svg?branch=master)](https://travis-ci.org/lukestringer90/LJSYourNextBus)
 
 Objective-C wrapper for YourNextBus times from South and West Yorkshire Transport. Scrapes live departure data from http://tsy.acislive.com/web (South Yorkshire) and http://wypte.acislive.com (West Yorkshire).
 
