@@ -61,7 +61,7 @@ Data model.
 │ - liveDate    │────services────▶│ - stop        │──────departures────▶│ - countdownString         │
 │ - laterURL    │                 │ - departures  │                     │ - minutesUntilDeparture   │
 │ - earlierURL  │                 └───────────────┘                     │ - hasLowFloorAccess       │
-│ - departures  │                                                       │ - service                 │
+│ - services    │                                                       │ - service                 │
 └───────────────┘                                                       └───────────────────────────┘
 ```	 
 
