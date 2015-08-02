@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LJSYourNextBus"
-  s.version      = "2.0.2"
+  s.version      = "3.0.0"
   s.summary      = "Objective-C wrapper for YourNextBus times from South and West Yorkshire Transport."
   s.description  = <<-DESC
                     Objective-C wrapper for YourNextBus times from South and West Yorkshire Transport
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/lukestringer90/LJSYourNextBus"
   s.license      = 'MIT'
   s.author       = { "Luke Stringer" => "lukestringer90@gmail.com" }
-  s.source       = { :git => "git@github.com:lukestringer90/LJSYourNextBus.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/lukestringer90/LJSYourNextBus.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
