@@ -4,3 +4,11 @@ xcode_scheme: LJSYourNextBus
 podfile: 'Project/Podfile'
 xcode_sdk: iphonesimulator
 osx_image: xcode6.4
+
+before_install: rvm use $RVM_RUBY_VERSION
+install: 
+ - bundle install --without=documentation --path ../travis_bundle_dir
+ - cd Project
+ - pod install
+ - cd ..
+after_success: slather
