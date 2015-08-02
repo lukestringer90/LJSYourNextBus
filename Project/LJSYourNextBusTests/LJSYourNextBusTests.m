@@ -505,7 +505,7 @@
 - (void)testAllowsASecondRequestOnceTheFirstHasFiinshed
 {
 	NSString *HTML = [self loadHTMLFileNamed:@"37010115"];
-	self.yourNextBusClient.htmlDownloader = [[LJSDelayedMockHTMLDownloader alloc] initWithHTML:HTML ID:@"37010115" delay:1.0];
+	self.yourNextBusClient.htmlDownloader = [[LJSDelayedMockHTMLDownloader alloc] initWithHTML:HTML ID:@"37010115" delay:0.5];
 	
 	XCTAssertTrue([self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode]);
 	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 2.0);
