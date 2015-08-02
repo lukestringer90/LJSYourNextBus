@@ -411,7 +411,7 @@
 	
 	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
-	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 1.0);
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 2.0);
 	
 	NSArray *services = [self sortedServicesForStop:self.returnedStop];
 	
