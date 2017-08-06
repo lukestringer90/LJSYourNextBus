@@ -30,6 +30,7 @@
 		A34B1C1918CE49F800184A12 /* 37010115.html in Resources */ = {isa = PBXBuildFile; fileRef = A34B1C1818CE49F800184A12 /* 37010115.html */; };
 		A35CF4791B6BF926006CDD11 /* LJSLiveDataResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A35CF4781B6BF926006CDD11 /* LJSLiveDataResult.m */; };
 		A35CF47F1B6C1046006CDD11 /* LJSDelayedMockHTMLDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A35CF47E1B6C1046006CDD11 /* LJSDelayedMockHTMLDownloader.m */; };
+		A37522341B8A45CC002F6D4A /* stop_reference.html in Resources */ = {isa = PBXBuildFile; fileRef = A37522331B8A45CC002F6D4A /* stop_reference.html */; };
 		A37DE9AE18E874A800795500 /* NSDate+LJSCountDownString.m in Sources */ = {isa = PBXBuildFile; fileRef = A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */; };
 		A388BE5C19686A0F00CF4DA3 /* invalid_2.html in Resources */ = {isa = PBXBuildFile; fileRef = A388BE5B19686A0F00CF4DA3 /* invalid_2.html */; };
 		A388CE5D18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A388CE5C18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m */; };
@@ -103,6 +104,7 @@
 		A35CF4781B6BF926006CDD11 /* LJSLiveDataResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LJSLiveDataResult.m; path = ../../Classes/LJSLiveDataResult.m; sourceTree = "<group>"; };
 		A35CF47D1B6C1046006CDD11 /* LJSDelayedMockHTMLDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJSDelayedMockHTMLDownloader.h; sourceTree = "<group>"; };
 		A35CF47E1B6C1046006CDD11 /* LJSDelayedMockHTMLDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSDelayedMockHTMLDownloader.m; sourceTree = "<group>"; };
+		A37522331B8A45CC002F6D4A /* stop_reference.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = stop_reference.html; sourceTree = "<group>"; };
 		A37DE9AC18E874A800795500 /* NSDate+LJSCountDownString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+LJSCountDownString.h"; path = "../../Classes/NSDate+LJSCountDownString.h"; sourceTree = "<group>"; };
 		A37DE9AD18E874A800795500 /* NSDate+LJSCountDownString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+LJSCountDownString.m"; path = "../../Classes/NSDate+LJSCountDownString.m"; sourceTree = "<group>"; };
 		A388BE5B19686A0F00CF4DA3 /* invalid_2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = invalid_2.html; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				A3D5BEF318DE5B7600622915 /* no_depatures.html */,
 				A3D5BEF518DE6E3700622915 /* messages.html */,
 				A3A79C7518FB028C0044914B /* 555.html */,
+				A37522331B8A45CC002F6D4A /* stop_reference.html */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				A388CE6918E46C9000B28A6C /* 37010200-departure-changes.html in Resources */,
 				A3FE172E18DE4EAC00B8E47E /* invalid_1.html in Resources */,
 				A388CE6718E46C9000B28A6C /* 37010200-original.html in Resources */,
+				A37522341B8A45CC002F6D4A /* stop_reference.html in Resources */,
 				A388CE6818E46C9000B28A6C /* 37010200-time-changes.html in Resources */,
 				A3D5BEF418DE5B7600622915 /* no_depatures.html in Resources */,
 				A3D5BEF618DE6E3700622915 /* messages.html in Resources */,

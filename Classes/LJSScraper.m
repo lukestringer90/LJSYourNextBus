@@ -98,13 +98,13 @@
 
 - (NSURL *)scrapeLaterDeparturesURL:(NSString *)html {
     NSString *pattern = @".*<a href=\"(.*)\">Later.*";
-    NSString *path = [self scrapeHTML:html usingRegexPattern:pattern];
+    NSString *path = [self scrapeHTML:html usingRegexPattern:pattern groupIndex:1];
     return [NSURL URLWithString:path];
 }
 
 - (NSURL *)scrapeEarlierDeparturesURL:(NSString *)html {
     NSString *pattern = @".*<a href=\"(.*)\">Earlier.*";
-    NSString *path = [self scrapeHTML:html usingRegexPattern:pattern];
+    NSString *path = [self scrapeHTML:html usingRegexPattern:pattern groupIndex:1];
     return [NSURL URLWithString:path];
 }
 
@@ -166,21 +166,21 @@
 }
 
 - (NSString *)scrapeNaPTANCodeFromHTML:(NSString *)html {
-    NSString *pattern = @".*<p>Stop Number: <b>(.*?)</b></p>.*";
-    return [self scrapeHTML:html usingRegexPattern:pattern];
+    NSString *pattern = @".*<p>Stop (Number|Reference): <b>(.*?)</b></p>.*";
+    return [self scrapeHTML:html usingRegexPattern:pattern groupIndex:2];
 }
 
 - (NSString *)scrapeTitleFromHTML:(NSString *)html {
     NSString *pattern = @".*<p>Departure information for <b>(.*?)</b> at.*";
-    return [self scrapeHTML:html usingRegexPattern:pattern];
+    return [self scrapeHTML:html usingRegexPattern:pattern groupIndex:1];
 }
 
 - (NSString *)scrapeLiveDateStringFromHTML:(NSString *)html {
     NSString *pattern = @".*at <b>(.*?)</b>.*";
-    return [self scrapeHTML:html usingRegexPattern:pattern];
+    return [self scrapeHTML:html usingRegexPattern:pattern groupIndex:1];
 }
 
-- (NSString *)scrapeHTML:(NSString *)html usingRegexPattern:(NSString *)pattern {
+- (NSString *)scrapeHTML:(NSString *)html usingRegexPattern:(NSString *)pattern groupIndex:(NSInteger)groupIndex {
     NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
                                                                            options:NSRegularExpressionDotMatchesLineSeparators
@@ -193,7 +193,7 @@
 	
     NSString *foundString = nil;
     if (match) {
-        foundString = [html substringWithRange:[match rangeAtIndex:1]];
+        foundString = [html substringWithRange:[match rangeAtIndex:groupIndex]];
     }
     
     return foundString;

@@ -254,7 +254,7 @@
 
 #pragma mark - LJSStop
 
-- (void)testStopDetails {
+- (void)testNaPTANCodeWhenSpecifiedAsAStopNumber {
     [self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
 	
 	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 1.0);
@@ -262,6 +262,18 @@
 	assertThat(self.returnedStop.NaPTANCode, equalTo(@"37010071"));
 	assertThat(self.returnedStop.title, equalTo(@"Rotherham Intc"));
 }
+
+- (void)testNaPTANCodeWhenSpecifiedAsAStopReference {
+	NSString *HTML = [self loadHTMLFileNamed:@"stop_reference"];
+	self.yourNextBusClient.htmlDownloader = [[LJSDelayedMockHTMLDownloader alloc] initWithHTML:HTML ID:@"37090149" delay:0.5];
+	[self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
+	
+	AGWW_WAIT_WHILE(!self.delegateCalledForReturnedStop, 1.0);
+	
+	assertThat(self.returnedStop.NaPTANCode, equalTo(@"37090149"));
+	assertThat(self.returnedStop.title, equalTo(@"West Street"));
+}
+
 
 - (void)testStopLiveDate {
 	// Stub the current date to 24.03.2014 09:00:00
