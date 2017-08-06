@@ -12,7 +12,9 @@
 
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber {
     if (stopNumber) {
-        return [NSURL URLWithString:[NSString stringWithFormat:@"http://tsy.acislive.com/web/stop_reference.asp?areacode=&naptan=%@&textonly=1", stopNumber]];
+        return [NSURL URLWithString:[NSString stringWithFormat:
+        @"http://gettheresooner.travelsouthyorkshire.com/MobileNaptan.aspx?t=departure&sa=%@&dc&ac=99&vc&x=0&y=0&format=text&Mode=Mobile", stopNumber]];
+        
     }
     return nil;
 }

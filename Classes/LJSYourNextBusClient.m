@@ -88,10 +88,11 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 
 
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber {
-	@throw [NSException
-			exceptionWithName:NSInternalInconsistencyException
-			reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
-			userInfo:nil];
+    if (stopNumber) {
+        return [NSURL URLWithString:[NSString stringWithFormat:
+                                     @"http://gettheresooner.travelsouthyorkshire.com/MobileNaptan.aspx?t=departure&sa=%@&dc&ac=99&vc&x=0&y=0&format=text&Mode=Mobile", stopNumber]];
+    }
+    return nil;
 }
 
 - (void)scrapeHTML:(NSString *)html messages:(NSArray *)messages{
