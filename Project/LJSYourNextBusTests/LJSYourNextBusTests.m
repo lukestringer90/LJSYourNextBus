@@ -156,6 +156,14 @@
 
 #pragma mark - Tests
 
+- (void)testNewScrape {
+    NSString *invalidHTML = [self loadHTMLFileNamed:@"37090148-new"];
+    self.yourNextBusClient.htmlDownloader = [[LJSMockHTMLDownloader alloc] initWithHTML:invalidHTML ID:@"37090148-new"];
+    [self.yourNextBusClient getLiveDataForNaPTANCode:self.NaPTANCode];
+    
+    AGWW_WAIT_WHILE(!self.delegateCalledForError, 100.0);
+}
+
 #pragma mark - Errors
 
 - (void)testScrapeFailure1 {
