@@ -58,6 +58,7 @@
 		A3D5BEF918E0A3AE00622915 /* LJSDepatureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D5BEF818E0A3AE00622915 /* LJSDepatureCell.m */; };
 		A3FE172C18DE44C900B8E47E /* LJSLiveDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */; };
 		A3FE172E18DE4EAC00B8E47E /* invalid_1.html in Resources */ = {isa = PBXBuildFile; fileRef = A3FE172D18DE4EAC00B8E47E /* invalid_1.html */; };
+		F5FFB0881F35C05D006EB86D /* 37090148-new.html in Resources */ = {isa = PBXBuildFile; fileRef = F5FFB0871F35C05D006EB86D /* 37090148-new.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		A3FE172D18DE4EAC00B8E47E /* invalid_1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = invalid_1.html; sourceTree = "<group>"; };
 		B76D9C4A649D3CF12028D920 /* Pods-LJSYourNextBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-LJSYourNextBus/Pods-LJSYourNextBus.release.xcconfig"; sourceTree = "<group>"; };
 		D920ABBD19EA3D5E8D06AEBC /* Pods-LJSYourNextBusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBusTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LJSYourNextBusTests/Pods-LJSYourNextBusTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F5FFB0871F35C05D006EB86D /* 37090148-new.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "37090148-new.html"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +283,7 @@
 		A34A1955189EBF62002EEF2B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F5FFB0871F35C05D006EB86D /* 37090148-new.html */,
 				A388CE6418E46C9000B28A6C /* 37010200-original.html */,
 				A388CE6518E46C9000B28A6C /* 37010200-time-changes.html */,
 				A388CE6618E46C9000B28A6C /* 37010200-departure-changes.html */,
@@ -422,7 +425,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = LJS;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Luke Stringer";
 				TargetAttributes = {
 					A31CBF5A189988D000747F46 = {
@@ -473,6 +476,7 @@
 				A3FE172E18DE4EAC00B8E47E /* invalid_1.html in Resources */,
 				A388CE6718E46C9000B28A6C /* 37010200-original.html in Resources */,
 				A37522341B8A45CC002F6D4A /* stop_reference.html in Resources */,
+				F5FFB0881F35C05D006EB86D /* 37090148-new.html in Resources */,
 				A388CE6818E46C9000B28A6C /* 37010200-time-changes.html in Resources */,
 				A3D5BEF418DE5B7600622915 /* no_depatures.html in Resources */,
 				A3D5BEF618DE6E3700622915 /* messages.html in Resources */,
@@ -633,13 +637,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -652,7 +662,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -672,20 +682,25 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -703,6 +718,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LJSYourNextBus/LJSYourNextBus-Prefix.pch";
 				INFOPLIST_FILE = "LJSYourNextBus/LJSYourNextBus-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lukestringer.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = YourNextBus;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -720,6 +736,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LJSYourNextBus/LJSYourNextBus-Prefix.pch";
 				INFOPLIST_FILE = "LJSYourNextBus/LJSYourNextBus-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lukestringer.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = YourNextBus;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -743,6 +760,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "LJSYourNextBusTests/LJSYourNextBusTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lukestringer.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = YourNextBus;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -762,6 +780,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LJSYourNextBus/LJSYourNextBus-Prefix.pch";
 				INFOPLIST_FILE = "LJSYourNextBusTests/LJSYourNextBusTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lukestringer.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = YourNextBus;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
