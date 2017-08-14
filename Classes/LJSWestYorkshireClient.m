@@ -13,7 +13,7 @@
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber {
     if (stopNumber) {
         return [NSURL URLWithString:[NSString stringWithFormat:
-                                     @"http://gettheresooner.travelsouthyorkshire.com/MobileNaptan.aspx?t=departure&sa=%@&dc&ac=99&vc&x=0&y=0&format=text&Mode=Mobile", stopNumber]];
+                                     @"http://gettheresooner.travelsouthyorkshire.com/MobileNaptan.aspx?t=departure&sa=&dc&ac=99&vc&x=0&y=0&format=text&Mode=Mobile", stopNumber]];
     }
     return nil;
 }

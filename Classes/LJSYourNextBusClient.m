@@ -58,10 +58,10 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
     NSString *html = [self.htmlDownloader downloadHTMLFromURL:url error:&error];
     
     if (!html) {
-		[self handleFinishWithStop:nil messages:nil error:error];
+		[self handleFinishWithStop:nil error:error];
     }
 	else if (![self.scraper htmlIsValid:html]) {
-		[self handleFinishWithStop:nil messages:nil error:[self invalidHTMLError]];
+		[self handleFinishWithStop:nil error:[self invalidHTMLError]];
 	}
 	else {
 		[[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -70,8 +70,7 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 			}
 		}];
 		
-		NSArray *messages = [self.scraper scrapeMessagesFromHTML:html];
-		[self scrapeHTML:html messages:messages];
+		[self scrapeHTML:html];
 	}
 }
 
@@ -90,18 +89,18 @@ NSString * const LJSYourNextBusErrorDomain = @"com.yournextbus.domain";
 - (NSURL *)urlForNaPTANCode:(NSString *)stopNumber {
     if (stopNumber) {
         return [NSURL URLWithString:[NSString stringWithFormat:
-                                     @"http://gettheresooner.travelsouthyorkshire.com/MobileNaptan.aspx?t=departure&sa=%@&dc&ac=99&vc&x=0&y=0&format=text&Mode=Mobile", stopNumber]];
+                                     @"http://gettheresooner.travelsouthyorkshire.com/MobileNaptan.aspx?t=departure&sa=%@&dc&ac=99&vc&x=0&y=0&Mode=Mobile", stopNumber]];
     }
     return nil;
 }
 
-- (void)scrapeHTML:(NSString *)html messages:(NSArray *)messages{
+- (void)scrapeHTML:(NSString *)html {
     LJSStop *stop = [self.scraper scrapeStopDataFromHTML:html];
-	[self handleFinishWithStop:stop messages:messages error:nil];
+	[self handleFinishWithStop:stop error:nil];
 }
 
-- (void)handleFinishWithStop:(LJSStop *)stop messages:(NSArray *)messages error:(NSError *)error {
-	LJSLiveDataResult *result = [[LJSLiveDataResult alloc] initWithNaPTANCode:self.NaPTANCode stop:stop messages:messages];
+- (void)handleFinishWithStop:(LJSStop *)stop error:(NSError *)error {
+	LJSLiveDataResult *result = [[LJSLiveDataResult alloc] initWithNaPTANCode:self.NaPTANCode stop:stop messages:nil];
 	
 	[[NSOperationQueue mainQueue] addOperationWithBlock:^{
 		self.gettingLiveData = NO;

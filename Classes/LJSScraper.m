@@ -46,32 +46,6 @@
 	return [html rangeOfString:@"There are no departures in the next hour from this stop."].location == NSNotFound;
 }
 
-- (NSArray *)scrapeMessagesFromHTML:(NSString *)html {
-	NSString *pattern = @".*msgs\\[\\d+\\] = \\\"(.*?)\\\";.*";
-	
-	NSError *error = nil;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
-                                                                           options:0
-                                                                             error:&error];
-	if (error) return nil;
-	
-	__block NSArray *matches = nil;
-	[regex enumerateMatchesInString:html
-							options:0
-							  range:NSMakeRange(0, [html length])
-						 usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-							 NSString *match = [html substringWithRange:[result rangeAtIndex:1]];
-							 if (match.length > 0) {
-								 if (!matches) {
-									 matches = [NSArray array];
-								 }
-								 matches = [matches arrayByAddingObject:match];
-							 }
-						 }];
-	
-    return matches;
-}
-
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html {
     
     OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];

@@ -37,6 +37,71 @@
                BlueprintName = "LJSYourNextBusTests"
                ReferencedContainer = "container:LJSYourNextBus.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "LJSYourNextBusTests">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testAllowsASecondRequestOnceTheFirstHasFiinshed">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testCallsDelegateWhenScrapingHasStarted">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testDepartureCountdown">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testDepartureDetails">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testDeparturesCount">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testEarlierURL">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testLaterURL">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testMessages">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testNaPTANCodeWhenSpecifiedAsAStopNumber">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testNaPTANCodeWhenSpecifiedAsAStopReference">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testNilEarlierURL">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testNoDataAvaiable">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testNoMessages">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testPreventsASecondRequestWhenFirstHasNotFiinshed">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testScrapeFailure1">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testScrapeFailure2">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testScrapeFailureWithStopSuggestionsHTML">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testServicesCount">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testServicesDetails">
+               </Test>
+               <Test
+                  Identifier = "LJSYourNextBusTests/testStopLiveDate">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

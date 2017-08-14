@@ -25,7 +25,6 @@
 		A337FDA718C3A1BE002FB29F /* LJSDepartureDateParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDA618C3A1BE002FB29F /* LJSDepartureDateParserTests.m */; };
 		A337FDA918C3BD05002FB29F /* LJSServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDA818C3BD05002FB29F /* LJSServiceTests.m */; };
 		A337FDAB18C3C7C1002FB29F /* LJSDepartureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A337FDAA18C3C7C1002FB29F /* LJSDepartureTests.m */; };
-		A34A1951189EB768002EEF2B /* LJSYourNextBusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */; };
 		A34A1957189EBF86002EEF2B /* 37010071.html in Resources */ = {isa = PBXBuildFile; fileRef = A34A1956189EBF86002EEF2B /* 37010071.html */; };
 		A34B1C1918CE49F800184A12 /* 37010115.html in Resources */ = {isa = PBXBuildFile; fileRef = A34B1C1818CE49F800184A12 /* 37010115.html */; };
 		A35CF4791B6BF926006CDD11 /* LJSLiveDataResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A35CF4781B6BF926006CDD11 /* LJSLiveDataResult.m */; };
@@ -58,6 +57,8 @@
 		A3D5BEF918E0A3AE00622915 /* LJSDepatureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D5BEF818E0A3AE00622915 /* LJSDepatureCell.m */; };
 		A3FE172C18DE44C900B8E47E /* LJSLiveDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3FE172B18DE44C900B8E47E /* LJSLiveDataViewController.m */; };
 		A3FE172E18DE4EAC00B8E47E /* invalid_1.html in Resources */ = {isa = PBXBuildFile; fileRef = A3FE172D18DE4EAC00B8E47E /* invalid_1.html */; };
+		F5B9FB371F40C1CD007F4ADB /* 37090148-none.html in Resources */ = {isa = PBXBuildFile; fileRef = F5B9FB361F40C1CD007F4ADB /* 37090148-none.html */; };
+		F5B9FB3C1F421700007F4ADB /* LJSYourNextBusNewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B9FB3B1F421700007F4ADB /* LJSYourNextBusNewTests.m */; };
 		F5FFB0881F35C05D006EB86D /* 37090148-new.html in Resources */ = {isa = PBXBuildFile; fileRef = F5FFB0871F35C05D006EB86D /* 37090148-new.html */; };
 /* End PBXBuildFile section */
 
@@ -98,7 +99,6 @@
 		A337FDA818C3BD05002FB29F /* LJSServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSServiceTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A337FDAA18C3C7C1002FB29F /* LJSDepartureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSDepartureTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A3435FEC18C92747004296CB /* LJSYourNextBus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LJSYourNextBus-Prefix.pch"; sourceTree = "<group>"; };
-		A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LJSYourNextBusTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		A34A1956189EBF86002EEF2B /* 37010071.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = 37010071.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		A34B1C1818CE49F800184A12 /* 37010115.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; lineEnding = 2; path = 37010115.html; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.html; };
 		A35CF4771B6BF926006CDD11 /* LJSLiveDataResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LJSLiveDataResult.h; path = ../../Classes/LJSLiveDataResult.h; sourceTree = "<group>"; };
@@ -150,6 +150,8 @@
 		A3FE172D18DE4EAC00B8E47E /* invalid_1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = invalid_1.html; sourceTree = "<group>"; };
 		B76D9C4A649D3CF12028D920 /* Pods-LJSYourNextBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-LJSYourNextBus/Pods-LJSYourNextBus.release.xcconfig"; sourceTree = "<group>"; };
 		D920ABBD19EA3D5E8D06AEBC /* Pods-LJSYourNextBusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LJSYourNextBusTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LJSYourNextBusTests/Pods-LJSYourNextBusTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F5B9FB361F40C1CD007F4ADB /* 37090148-none.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "37090148-none.html"; sourceTree = "<group>"; };
+		F5B9FB3B1F421700007F4ADB /* LJSYourNextBusNewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJSYourNextBusNewTests.m; sourceTree = "<group>"; };
 		F5FFB0871F35C05D006EB86D /* 37090148-new.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "37090148-new.html"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,7 +270,7 @@
 		A34A1954189EBF5D002EEF2B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A34A1950189EB768002EEF2B /* LJSYourNextBusTests.m */,
+				F5B9FB3B1F421700007F4ADB /* LJSYourNextBusNewTests.m */,
 				A388CE5C18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m */,
 				A337FDA618C3A1BE002FB29F /* LJSDepartureDateParserTests.m */,
 				A3BD276F189FF46500540C5F /* LJSStopTests.m */,
@@ -283,6 +285,7 @@
 		A34A1955189EBF62002EEF2B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F5B9FB361F40C1CD007F4ADB /* 37090148-none.html */,
 				F5FFB0871F35C05D006EB86D /* 37090148-new.html */,
 				A388CE6418E46C9000B28A6C /* 37010200-original.html */,
 				A388CE6518E46C9000B28A6C /* 37010200-time-changes.html */,
@@ -432,6 +435,7 @@
 						DevelopmentTeam = C7F3D3W6BZ;
 					};
 					A31CBF7E189988D000747F46 = {
+						LastSwiftMigration = 0830;
 						TestTargetID = A31CBF5A189988D000747F46;
 					};
 				};
@@ -473,6 +477,7 @@
 				A388BE5C19686A0F00CF4DA3 /* invalid_2.html in Resources */,
 				A34B1C1918CE49F800184A12 /* 37010115.html in Resources */,
 				A388CE6918E46C9000B28A6C /* 37010200-departure-changes.html in Resources */,
+				F5B9FB371F40C1CD007F4ADB /* 37090148-none.html in Resources */,
 				A3FE172E18DE4EAC00B8E47E /* invalid_1.html in Resources */,
 				A388CE6718E46C9000B28A6C /* 37010200-original.html in Resources */,
 				A37522341B8A45CC002F6D4A /* stop_reference.html in Resources */,
@@ -587,9 +592,9 @@
 				A337FDA918C3BD05002FB29F /* LJSServiceTests.m in Sources */,
 				A337FDAB18C3C7C1002FB29F /* LJSDepartureTests.m in Sources */,
 				A3B02E221B6A9C0A00D029F8 /* LJSServiceBuilderTests.m in Sources */,
+				F5B9FB3C1F421700007F4ADB /* LJSYourNextBusNewTests.m in Sources */,
 				A3B37FBF18E4A16E00B6D445 /* LJSMockHTMLDownloader.m in Sources */,
 				A388CE5D18E0EE4900B28A6C /* LJSNSDateCountDownStringTests.m in Sources */,
-				A34A1951189EB768002EEF2B /* LJSYourNextBusTests.m in Sources */,
 				A3BD2770189FF46500540C5F /* LJSStopTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
