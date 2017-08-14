@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "LJSYourNextBus"
-  s.version      = "3.0.0"
+  s.version      = "3.1.0"
   s.summary      = "Objective-C wrapper for YourNextBus times from South and West Yorkshire Transport."
   s.description  = <<-DESC
                     Objective-C wrapper for YourNextBus times from South and West Yorkshire Transport
