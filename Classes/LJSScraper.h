@@ -13,6 +13,5 @@
 
 - (BOOL)htmlIsValid:(NSString *)html;
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html;
-- (NSArray *)scrapeMessagesFromHTML:(NSString *)html;
 
 @end

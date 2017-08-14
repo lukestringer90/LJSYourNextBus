@@ -37,48 +37,26 @@
 #pragma mark - Public
 
 - (BOOL)htmlIsValid:(NSString *)html {
-	BOOL validTitleFound = [html rangeOfString:@"Departure information for"].location != NSNotFound;
+    BOOL htmlHasContent = html.length > 0;
 	BOOL listFound = [html rangeOfString:@"The following list of stops matches the stop that you requested."].location == NSNotFound;
-	return validTitleFound && listFound;
+	return htmlHasContent && listFound;
 }
 
 - (BOOL)htmlContainServices:(NSString *)html {
 	return [html rangeOfString:@"There are no departures in the next hour from this stop."].location == NSNotFound;
 }
 
-- (NSArray *)scrapeMessagesFromHTML:(NSString *)html {
-	NSString *pattern = @".*msgs\\[\\d+\\] = \\\"(.*?)\\\";.*";
-	
-	NSError *error = nil;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
-                                                                           options:0
-                                                                             error:&error];
-	if (error) return nil;
-	
-	__block NSArray *matches = nil;
-	[regex enumerateMatchesInString:html
-							options:0
-							  range:NSMakeRange(0, [html length])
-						 usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-							 NSString *match = [html substringWithRange:[result rangeAtIndex:1]];
-							 if (match.length > 0) {
-								 if (!matches) {
-									 matches = [NSArray array];
-								 }
-								 matches = [matches arrayByAddingObject:match];
-							 }
-						 }];
-	
-    return matches;
-}
-
 - (LJSStop *)scrapeStopDataFromHTML:(NSString *)html {
-    NSString *naptanCode = [self scrapeNaPTANCodeFromHTML:html];
-    NSString *title = [self scrapeTitleFromHTML:html];
-	
-	// The "live date" is the time as specified in the HTML on the current day
-	NSString *liveTimeString = [self scrapeLiveDateStringFromHTML:html];
-	NSDate *liveDate = [self liveDateFromString:liveTimeString];
+    
+    OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];
+    NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
+    
+    NSArray *stopInfo = [tds subarrayWithRange:NSMakeRange(0, 3)];
+    
+    NSString *naptanCode = [(OGElement *)stopInfo[0] text];
+    NSString *title =  [(OGElement *)stopInfo[1] text];
+    NSString *liveTimeString =  [(OGElement *)stopInfo[2] text];
+    NSDate *liveDate = [self liveDateFromString:liveTimeString];
     
     LJSStopBuilder *stopBuilder = [LJSStopBuilder new];
 	stopBuilder.NaPTANCode = naptanCode;
@@ -113,12 +91,22 @@
 - (NSArray *)scrapeServicesFromHTML:(NSString *)html liveDate:(NSDate *)liveDate {
     OGNode *rootNode = [ObjectiveGumbo parseDocumentWithString:html];
     NSArray *tds = [rootNode elementsWithTag:GUMBO_TAG_TD];
+    
+    NSArray *stopInfo = [tds subarrayWithRange:NSMakeRange(0, 3)];
+    
+    OGElement *naptan = stopInfo[0];
+    OGElement *stopName = stopInfo[1];
+    OGElement *time = stopInfo[2];
+    
+    NSLog(@"%@, %@, %@", naptan.text, stopName.text, time.text);
+    
+    NSArray *serviceInfo = [tds subarrayWithRange:NSMakeRange(3, tds.count - 1 - 3)];
 	
     NSArray *servicesBuilders = [NSArray array];
 	
-    for (NSInteger titleRowIndex = 0; titleRowIndex < tds.count; titleRowIndex+=4) {
-        OGElement *titleElement = tds[titleRowIndex];
-        NSString *title = [self removeLastCharacterFromString:titleElement.text];
+    for (NSInteger titleRowIndex = 0; titleRowIndex < serviceInfo.count; titleRowIndex += 6) {
+        OGElement *titleElement = serviceInfo[titleRowIndex];
+        NSString *title = titleElement.text;
         
         LJSServiceBuilder *serviceBuilder = [[servicesBuilders filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title == %@", title]] firstObject];
         if (!serviceBuilder) {
@@ -127,13 +115,12 @@
             servicesBuilders = [servicesBuilders arrayByAddingObject:serviceBuilder];
         }
         
+        OGElement *destinationElement = serviceInfo[titleRowIndex+1];
+        OGElement *departureDateElement = serviceInfo[titleRowIndex+2];
+        OGElement *lowFloorAccessElement = serviceInfo[titleRowIndex+3];
         
-        OGElement *destinationElement = tds[titleRowIndex+1];
-        OGElement *departureDateElement = tds[titleRowIndex+2];
-        OGElement *lowFloorAccessElement = tds[titleRowIndex+3];
-        
-		NSString *destinationStringValue = [self removeLastCharacterFromString:destinationElement.text];
-		NSString *departureDateStringValue = [self removeLastCharacterFromString:departureDateElement.text];
+		NSString *destinationStringValue = destinationElement.text;
+		NSString *departureDateStringValue = departureDateElement.text;
 		
 		NSDate *expectedDepartureDate = [self.dateParser dateFromString:departureDateStringValue baseDate:liveDate];
 		NSString *countDownString = [expectedDepartureDate countdownStringTowardsDate:liveDate
