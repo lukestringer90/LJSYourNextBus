@@ -20,6 +20,7 @@
 
 @interface LJSScraper ()
 @property (nonatomic, strong) LJSDepartureDateParser *dateParser;
+@property (nonatomic, strong) NSDateFormatter *liveDateFormatter;
 @property (nonatomic, strong) NSCalendar *calendar;
 @end
 
@@ -30,6 +31,8 @@
     if (self) {
 		self.dateParser = [[LJSDepartureDateParser alloc] init];
 		self.calendar = [NSCalendar currentCalendar];
+        self.liveDateFormatter = [[NSDateFormatter alloc] init];
+        self.liveDateFormatter.dateFormat = @"dd/MM/yyyy HH:mm:ss";
     }
     return self;
 }
@@ -197,7 +200,8 @@
 
 - (NSDate *)liveDateFromString:(NSString *)liveTimeString {
 	if (liveTimeString) {
-		return [self.dateParser dateFromString:liveTimeString baseDate:[self currentDate]];
+		id date = [self.liveDateFormatter dateFromString:liveTimeString];
+        return date;
 	}
 	return nil;
 }

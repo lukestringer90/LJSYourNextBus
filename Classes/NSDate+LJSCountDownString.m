@@ -17,18 +17,19 @@
 														fromDate:date
 														  toDate:self
 														 options:0];
-	
-	if (dateComponents.minute == 0 && dateComponents.second <= 59 && dateComponents.second >= 0) {
+    
+    NSInteger minute = dateComponents.minute;
+    NSInteger second = dateComponents.second;
+    
+	if (minute == 0) {
 		return @"Due";
 	}
-	else if (dateComponents.minute < 0 || dateComponents.second < 0) {
+	else if (minute < 0 || second < 0) {
 		return @"Departed";
 	}
-	else if (dateComponents.minute == 1) {
-		return [NSString stringWithFormat:@"%ld Min", (long)dateComponents.minute];
-	}
-	else if (dateComponents.minute <= 20) {
-		return [NSString stringWithFormat:@"%ld Mins", (long)dateComponents.minute];
+	else if (minute <= 20) {
+        NSInteger roundedMinute = second > 0 ? minute + 1 : minute;
+		return [NSString stringWithFormat:@"%ld Mins", (long)roundedMinute];
 	}
 	else {
 		return [[self dateFormatter] stringFromDate:self];

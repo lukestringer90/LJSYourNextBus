@@ -7,6 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
+
 #import "LJSSouthYorkshireClient.h"
 #import "LJSMockHTMLDownloader.h"
 #import "LJSScraper.h"
@@ -18,6 +20,11 @@
 @interface LJSYourNextBusClient (TestVisibility)
 @property (nonatomic, strong) LJSHTMLDownloader *htmlDownloader;
 @property (nonatomic, strong) LJSScraper *scraper;
+@end
+
+@interface LJSScraper (TestVisibility)
+- (NSDate *)liveDateFromString:(NSString *)liveTimeString;
+- (NSDate *)currentDate;
 @end
 
 @interface LJSYourNextBusNewTests : XCTestCase <LJSYourNextBusClientDelegate, LJSYourNextBusScrapeDelegate>
@@ -53,6 +60,18 @@
 }
 
 #pragma mark - Helpers
+
+- (id)stubLiveDate:(NSDate *)liveDate ofScraper:(LJSScraper *)scraper {
+    id scraperMock = [OCMockObject partialMockForObject:scraper];
+    [[[scraperMock stub] andReturn:liveDate] liveDateFromString:[OCMArg any]];
+    return scraperMock;
+}
+
+- (id)stubCurrentDate:(NSDate *)liveDate ofScraper:(LJSScraper *)scraper {
+    id scraperMock = [OCMockObject partialMockForObject:scraper];
+    [[[scraperMock stub] andReturn:liveDate] currentDate];
+    return scraperMock;
+}
 
 - (void)setupReturnedStopExpectation
 {
@@ -98,6 +117,8 @@
     [self.yourNextBusClient getLiveDataForNaPTANCode:@"37090148"];
     
     [self waitForExpectationsWithTimeout:2.0 handler:^(NSError * _Nullable error) {
+        
+        XCTAssertEqual(self.returnedStop.liveDate.timeIntervalSince1970, 1501927067);
         
         XCTAssertNotNil(self.returnedStop);
         XCTAssertEqual(self.returnedStop.services.count, 2);
