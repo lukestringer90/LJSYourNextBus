@@ -33,7 +33,6 @@
 		self.calendar = [NSCalendar currentCalendar];
         self.liveDateFormatter = [[NSDateFormatter alloc] init];
         self.liveDateFormatter.dateFormat = @"dd/MM/yyyy HH:mm:ss";
-        self.liveDateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     }
     return self;
 }
