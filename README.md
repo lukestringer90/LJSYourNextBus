@@ -1,7 +1,8 @@
 # LJSYourNextBus
-[![Build Status](https://travis-ci.org/lukestringer90/LJSYourNextBus.svg?branch=master)](https://travis-ci.org/lukestringer90/LJSYourNextBus)
 
-Objective-C wrapper for YourNextBus times from South and West Yorkshire Transport. Scrapes live departure data from http://tsy.acislive.com/web (South Yorkshire) and http://wypte.acislive.com (West Yorkshire).
+Objective-C wrapper for the "Get There Sooner" live departure information service from from Travel South Yorkshire Transport. Scrapes data from http://gettheresooner.travelsouthyorkshire.com/MobileNaptan.aspx
+
+(NOTE: Previously the data was obtained by scraping the YourNextBus service, however this no longer works. This cocoapod gets it's name from that.)
 
 ## NaPTAN Code
 
