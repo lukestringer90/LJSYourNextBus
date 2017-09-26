@@ -27,9 +27,11 @@
 	else if (minute < 0 || second < 0) {
 		return @"Departed";
 	}
+	if (minute == 1) {
+		return @"1 Min";
+	}
 	else if (minute <= 20) {
-        NSInteger roundedMinute = second > 0 ? minute + 1 : minute;
-		return [NSString stringWithFormat:@"%ld Mins", (long)roundedMinute];
+		return [NSString stringWithFormat:@"%ld Mins", (long)minute];
 	}
 	else {
 		return [[self dateFormatter] stringFromDate:self];
